@@ -1,19 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.geometry.Insets?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="br.com.fitcontrol.fitcontrol.controllers.PaymentsScreenController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.PaymentsScreenController">
+    <Pane layoutX="401.0" layoutY="343.0" prefHeight="99.0" prefWidth="658.0" style="-fx-background-radius: 10; -fx-background-color: FFFFFF; -fx-border-color: E9AF00; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+        <children>
+         <Label alignment="CENTER" layoutX="302.0" layoutY="7.0" prefHeight="34.0" prefWidth="54.0" text="Filtros" textAlignment="JUSTIFY">
+            <font>
+               <Font name="Roboto Light" size="12.0" />
+            </font>
+         </Label>
+         <Label layoutX="421.0" layoutY="73.0" text="Valor:">
+            <font>
+               <Font name="Roboto Light" size="12.0" />
+            </font>
+         </Label>
+         <Label layoutX="236.0" layoutY="73.0" text="até">
+            <font>
+               <Font name="Roboto Light" size="12.0" />
+            </font>
+         </Label>
+            <Label layoutX="22.0" layoutY="73.0" text="Período:">
+            <font>
+               <Font name="Roboto Light" size="12.0" />
+            </font></Label>
+            <Pane layoutX="97.0" layoutY="69.0" prefHeight="25.0" prefWidth="124.0">
+            <children>
+               <TextField layoutY="-1.0" prefHeight="25.0" prefWidth="124.0" promptText="dd/mm/aaaa" style="-fx-border-radius: 10; -fx-border-color: E9AF00; -fx-background-radius: 10;">
+                  <font>
+                     <Font name="Roboto Light" size="12.0" />
+                  </font>
+               </TextField>
+               <ImageView fitHeight="19.0" fitWidth="23.0" layoutX="93.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-color: E9AF00; -fx-border-radius: 10;">
+                  <image>
+                     <Image url="@icons/calendario.png" />
+                  </image>
+               </ImageView>
+            </children>
+            </Pane>
+         <Pane layoutX="278.0" layoutY="69.0" prefHeight="25.0" prefWidth="124.0">
+            <children>
+               <TextField prefHeight="25.0" prefWidth="124.0" promptText="dd/mm/aaaa" style="-fx-border-radius: 10; -fx-border-color: E9AF00; -fx-background-radius: 10;">
+                  <font>
+                     <Font name="Roboto Light" size="12.0" />
+                  </font>
+               </TextField>
+               <ImageView fitHeight="19.0" fitWidth="23.0" layoutX="94.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-color: E9AF00; -fx-border-radius: 10;">
+                  <image>
+                     <Image url="@icons/calendario.png" />
+                  </image>
+               </ImageView>
+            </children>
+         </Pane>
+         <Pane layoutX="473.0" layoutY="69.0" prefHeight="25.0" prefWidth="124.0">
+            <children>
+               <TextField prefHeight="25.0" prefWidth="124.0" promptText="R$" style="-fx-border-radius: 10; -fx-border-color: E9AF00; -fx-background-radius: 10;">
+                  <font>
+                     <Font name="Roboto Light" size="12.0" />
+                  </font>
+               </TextField>
+            </children>
+         </Pane>
+         <ImageView fitHeight="25.0" fitWidth="43.0" layoutX="601.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@icons/Pesquisa.png" />
+            </image></ImageView>
+        </children>
+      <effect>
+         <InnerShadow blurType="TWO_PASS_BOX">
+            <color>
+               <Color red="1.0" green="0.7490196228027344" />
+            </color>
+         </InnerShadow>
+      </effect>
+    </Pane>
+
     <StackPane prefHeight="160.0" prefWidth="1440.0">
         <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffbf00" height="160.0" stroke="BLACK" strokeType="INSIDE" width="1440.0" />
@@ -25,5 +93,15 @@
                     <Insets left="160.0" />
                 </StackPane.margin>
             </ImageView>
-        </children></StackPane>
+
+              </children>
+   </StackPane>
+   <TableView layoutX="396.0" layoutY="507.0" prefHeight="429.0" prefWidth="667.0" style="-fx-border-color: #FFBF00; -fx-background-color: #FFECB5; -fx-border-width: 3;">
+     <columns>
+       <TableColumn id="ColunaId" prefWidth="166.75" style="-fx-background-color: #FFBF00;" text="ID" />
+       <TableColumn id="ColunaData" prefWidth="166.75" style="-fx-background-color: #FFBF00;" text="Data" />
+         <TableColumn id="ColunaValor" prefWidth="166.75" style="-fx-background-color: #FFBF00;" text="Valor" />
+         <TableColumn prefWidth="166.75" style="-fx-background-color: #FFBF00;" text="Ações" />
+     </columns>
+   </TableView>
 </AnchorPane>

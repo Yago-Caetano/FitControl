@@ -2,31 +2,22 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.PaymentsScreenController">
     <Pane layoutX="401.0" layoutY="343.0" prefHeight="99.0" prefWidth="658.0" style="-fx-background-radius: 10; -fx-background-color: FFFFFF; -fx-border-color: E9AF00; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
         <children>
-            <Pane layoutX="97.0" layoutY="69.0" prefHeight="25.0" prefWidth="124.0" style="-fx-background-radius: 10; -fx-background-color: FFFFFF; -fx-border-color: E9AF00; -fx-border-radius: 10;">
-                <children>
-                    <Label layoutX="9.0" layoutY="4.0" prefHeight="14.0" prefWidth="71.0" text="dd/mm/aaaa">
-                  <font>
-                     <Font name="Roboto Light" size="12.0" />
-                  </font></Label>
-               <ImageView fitHeight="19.0" fitWidth="23.0" layoutX="89.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@icons/calendario.png" />
-                  </image></ImageView>
-                </children>
-            </Pane>
-            <Label layoutX="22.0" layoutY="73.0" text="Período:">
+         <Label alignment="CENTER" layoutX="302.0" layoutY="7.0" prefHeight="34.0" prefWidth="54.0" text="Filtros" textAlignment="JUSTIFY">
             <font>
                <Font name="Roboto Light" size="12.0" />
-            </font></Label>
-         <Label alignment="CENTER" layoutX="302.0" layoutY="7.0" prefHeight="34.0" prefWidth="54.0" text="Filtros" textAlignment="JUSTIFY">
+            </font>
+         </Label>
+         <Label layoutX="421.0" layoutY="73.0" text="Valor:">
             <font>
                <Font name="Roboto Light" size="12.0" />
             </font>
@@ -36,41 +27,59 @@
                <Font name="Roboto Light" size="12.0" />
             </font>
          </Label>
-         <Pane layoutX="267.0" layoutY="69.0" prefHeight="25.0" prefWidth="124.0" style="-fx-background-radius: 10; -fx-background-color: FFFFFF; -fx-border-color: E9AF00; -fx-border-radius: 10;">
-            <children>
-               <Label layoutX="6.0" layoutY="4.0" prefHeight="14.0" prefWidth="71.0" text="dd/mm/aaaa">
-                  <font>
-                     <Font name="Roboto Light" size="12.0" />
-                  </font>
-               </Label>
-               <ImageView fitHeight="19.0" fitWidth="23.0" layoutX="89.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@icons/calendario.png" />
-                  </image>
-               </ImageView>
-            </children>
-         </Pane>
-         <Label layoutX="412.0" layoutY="73.0" text="Valor:">
+            <Label layoutX="22.0" layoutY="73.0" text="Período:">
             <font>
                <Font name="Roboto Light" size="12.0" />
-            </font>
-         </Label>
-         <Pane layoutX="464.0" layoutY="69.0" prefHeight="25.0" prefWidth="124.0" style="-fx-background-radius: 10; -fx-background-color: FFFFFF; -fx-border-color: E9AF00; -fx-border-radius: 10;">
+            </font></Label>
+            <Pane layoutX="97.0" layoutY="69.0" prefHeight="25.0" prefWidth="124.0">
             <children>
-               <Label layoutX="6.0" layoutY="4.0" opacity="0.41" prefHeight="17.0" prefWidth="112.0" text="R$">
+               <TextField layoutY="-1.0" prefHeight="25.0" prefWidth="124.0" promptText="dd/mm/aaaa" style="-fx-border-radius: 10; -fx-border-color: E9AF00; -fx-background-radius: 10;">
                   <font>
                      <Font name="Roboto Light" size="12.0" />
                   </font>
-               </Label>
-               <ImageView fitHeight="19.0" fitWidth="23.0" layoutX="473.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+               </TextField>
+               <ImageView fitHeight="19.0" fitWidth="23.0" layoutX="93.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-color: E9AF00; -fx-border-radius: 10;">
+                  <image>
+                     <Image url="@icons/calendario.png" />
+                  </image>
+               </ImageView>
+            </children>
+            </Pane>
+         <Pane layoutX="278.0" layoutY="69.0" prefHeight="25.0" prefWidth="124.0">
+            <children>
+               <TextField prefHeight="25.0" prefWidth="124.0" promptText="dd/mm/aaaa" style="-fx-border-radius: 10; -fx-border-color: E9AF00; -fx-background-radius: 10;">
+                  <font>
+                     <Font name="Roboto Light" size="12.0" />
+                  </font>
+               </TextField>
+               <ImageView fitHeight="19.0" fitWidth="23.0" layoutX="94.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-color: E9AF00; -fx-border-radius: 10;">
                   <image>
                      <Image url="@icons/calendario.png" />
                   </image>
                </ImageView>
             </children>
          </Pane>
-         <ImageView fitHeight="25.0" fitWidth="29.0" layoutX="607.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true" />
+         <Pane layoutX="473.0" layoutY="69.0" prefHeight="25.0" prefWidth="124.0">
+            <children>
+               <TextField prefHeight="25.0" prefWidth="124.0" promptText="R$" style="-fx-border-radius: 10; -fx-border-color: E9AF00; -fx-background-radius: 10;">
+                  <font>
+                     <Font name="Roboto Light" size="12.0" />
+                  </font>
+               </TextField>
+            </children>
+         </Pane>
+         <ImageView fitHeight="25.0" fitWidth="43.0" layoutX="601.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@icons/Pesquisa.png" />
+            </image></ImageView>
         </children>
+      <effect>
+         <InnerShadow blurType="TWO_PASS_BOX">
+            <color>
+               <Color red="1.0" green="0.7490196228027344" />
+            </color>
+         </InnerShadow>
+      </effect>
     </Pane>
 
     <StackPane prefHeight="160.0" prefWidth="1440.0">
@@ -87,12 +96,12 @@
 
               </children>
    </StackPane>
-   <TableView layoutX="396.0" layoutY="529.0" prefHeight="429.0" prefWidth="667.0" style="-fx-border-color: #FFBF00;">
+   <TableView layoutX="396.0" layoutY="507.0" prefHeight="429.0" prefWidth="667.0" style="-fx-border-color: #FFBF00; -fx-background-color: #FFECB5; -fx-border-width: 3;">
      <columns>
-       <TableColumn prefWidth="166.75" text="ID" />
-       <TableColumn prefWidth="166.75" text="Data" />
-         <TableColumn prefWidth="166.75" text="Valor" />
-         <TableColumn prefWidth="166.75" text="Ações" />
+       <TableColumn id="ColunaId" prefWidth="166.75" style="-fx-background-color: #FFBF00;" text="ID" />
+       <TableColumn id="ColunaData" prefWidth="166.75" style="-fx-background-color: #FFBF00;" text="Data" />
+         <TableColumn id="ColunaValor" prefWidth="166.75" style="-fx-background-color: #FFBF00;" text="Valor" />
+         <TableColumn prefWidth="166.75" style="-fx-background-color: #FFBF00;" text="Ações" />
      </columns>
    </TableView>
 </AnchorPane>
