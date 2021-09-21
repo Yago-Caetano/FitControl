@@ -96,12 +96,24 @@
 
               </children>
    </StackPane>
-   <TableView layoutX="396.0" layoutY="507.0" prefHeight="429.0" prefWidth="667.0" style="-fx-border-color: #FFBF00; -fx-background-color: #FFECB5; -fx-border-width: 3;">
+   <TableView fx:id="tabela" editable="true" layoutX="396.0" layoutY="507.0" prefHeight="429.0" prefWidth="667.0" style="-fx-border-color: #FFBF00; -fx-border-width: 3;">
      <columns>
-       <TableColumn id="ColunaId" prefWidth="166.75" style="-fx-background-color: #FFBF00;" text="ID" />
-       <TableColumn id="ColunaData" prefWidth="166.75" style="-fx-background-color: #FFBF00;" text="Data" />
-         <TableColumn id="ColunaValor" prefWidth="166.75" style="-fx-background-color: #FFBF00;" text="Valor" />
-         <TableColumn prefWidth="166.75" style="-fx-background-color: #FFBF00;" text="Ações" />
+       <TableColumn id="ColunaId" fx:id="idCol" prefWidth="166.75" text="ID" />
+       <TableColumn id="ColunaData" fx:id="dataCol" prefWidth="166.75" text="Data" />
+         <TableColumn id="ColunaValor" fx:id="valorCol" prefWidth="166.75" text="Valor" />
+         <TableColumn prefWidth="166.75" text="Ações" />
      </columns>
    </TableView>
+   <Button layoutX="423.0" layoutY="955.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="52.0" style="-fx-background-color: #FED355; -fx-border-color: #BE8E00;" text="Voltar">
+      <font>
+         <Font name="Roboto Light" size="12.0" />
+      </font>
+      <effect>
+         <DropShadow offsetY="4.0">
+            <color>
+               <Color opacity="0.25" />
+            </color>
+         </DropShadow>
+      </effect>
+   </Button>
 </AnchorPane>
