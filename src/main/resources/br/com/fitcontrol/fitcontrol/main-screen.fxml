@@ -29,7 +29,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #A27811; -fx-background-radius: 32;">
+                  <HBox fx:id="catracaHbox"  prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #A27811; -fx-background-radius: 32;">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
