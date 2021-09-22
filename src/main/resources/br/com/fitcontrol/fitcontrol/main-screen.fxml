@@ -29,7 +29,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #A27811; -fx-background-radius: 32;">
+                  <HBox fx:id="catracaHbox" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #A27811; -fx-background-radius: 32;">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -52,7 +52,7 @@
                         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                      </GridPane.margin>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #A27811; -fx-background-radius: 32;" GridPane.columnIndex="1">
+                  <HBox fx:id="pagamentoHbox" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #A27811; -fx-background-radius: 32;" GridPane.columnIndex="1">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -75,7 +75,7 @@
                         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                      </GridPane.margin>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #A27811; -fx-background-radius: 32;" GridPane.columnIndex="2">
+                  <HBox fx:id="alunoHbox" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #A27811; -fx-background-radius: 32;" GridPane.columnIndex="2">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -98,7 +98,7 @@
                         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                      </GridPane.margin>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #A27811; -fx-background-radius: 32;" GridPane.rowIndex="1">
+                  <HBox fx:id="staffHbox" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #A27811; -fx-background-radius: 32;" GridPane.rowIndex="1">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -121,7 +121,7 @@
                         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                      </GridPane.margin>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #A27811; -fx-background-radius: 32;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <HBox fx:id="rewardHbox" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #A27811; -fx-background-radius: 32;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -144,7 +144,7 @@
                         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
                      </GridPane.margin>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #A27811; -fx-background-radius: 32;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <HBox fx:id="relatHbox" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #A27811; -fx-background-radius: 32;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
