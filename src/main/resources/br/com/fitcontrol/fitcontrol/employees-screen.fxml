@@ -22,12 +22,12 @@
                 </StackPane.margin>
             </ImageView>
         </children></StackPane>
-   <TableView layoutX="107.0" layoutY="391.0" prefHeight="462.0" prefWidth="1226.0" style="-fx-border-color: #8B6800; -fx-background-color: #FFECB5; -fx-border-width: 2;">
+   <TableView fx:id="tabela" layoutX="107.0" layoutY="391.0" prefHeight="462.0" prefWidth="1226.0" style="-fx-border-color: #8B6800; -fx-border-width: 2;">
      <columns>
-       <TableColumn prefWidth="306.5" style="-fx-background-color: FFBF00;" text="ID" />
-       <TableColumn prefWidth="306.5" style="-fx-background-color: FFBF00;" text="Nome" />
-         <TableColumn prefWidth="306.5" style="-fx-background-color: FFBF00;" text="Nível" />
-         <TableColumn prefWidth="306.5" style="-fx-background-color: FFBF00;" text="Ações" />
+       <TableColumn fx:id="id" prefWidth="306.5" text="ID" />
+       <TableColumn fx:id="nome" prefWidth="306.5" text="Nome" />
+         <TableColumn fx:id="nivel" prefWidth="306.5" text="Nível" />
+         <TableColumn prefWidth="306.5" text="Ações" />
      </columns>
    </TableView>
    <Pane layoutX="200.0" layoutY="331.0" prefHeight="40.0" prefWidth="114.0" style="-fx-background-color: #FED355; -fx-border-color: #BE8E00;">

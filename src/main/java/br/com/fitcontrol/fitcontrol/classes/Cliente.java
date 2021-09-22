@@ -1,4 +1,4 @@
-package classes;
+package br.com.fitcontrol.fitcontrol.classes;
 
 public class Cliente {
     private int id,pontos;
