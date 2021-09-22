@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,6 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="1024.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.RewardScreenController">
     <StackPane prefHeight="160.0" prefWidth="1440.0">
@@ -35,4 +37,10 @@
        <RowConstraints maxHeight="218.0" minHeight="10.0" prefHeight="218.0" vgrow="SOMETIMES" />
      </rowConstraints>
    </GridPane>
+   <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#ffffff00" height="758.0" layoutX="52.0" layoutY="203.0" stroke="#d79d04" strokeType="INSIDE" width="1340.0" />
+   <Label layoutX="544.0" layoutY="215.0" text="Recompensas Disponíveis">
+      <font>
+         <Font name="System Bold" size="25.0" />
+      </font>
+   </Label>
 </AnchorPane>
