@@ -15,7 +15,6 @@ public class MainScreenController implements Initializable {
     private HBox catracaHbox;
 
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources){
         catracaHbox.addEventFilter(MouseEvent.MOUSE_CLICKED,catracaClicked);

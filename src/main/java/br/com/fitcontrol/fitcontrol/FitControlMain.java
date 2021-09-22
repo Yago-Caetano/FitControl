@@ -9,7 +9,9 @@ public class FitControlMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource("main-screen.fxml"));
+        /*FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource("main-screen.fxml"));*/
+        FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource("rewards-screen.fxml"));
+
         Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
         primaryStage.setTitle("Fit Control");
         primaryStage.setScene(scene);
