@@ -42,11 +42,11 @@
    </Pane>
    <TableView fx:id="tabela" layoutX="107.0" layoutY="391.0" prefHeight="462.0" prefWidth="1226.4" style="-fx-border-color: #8B6800; -fx-border-width: 2;">
       <columns>
-         <TableColumn fx:id="idCol" prefWidth="204.4" text="Id" />
-         <TableColumn fx:id="nomeCol" prefWidth="204.4" text="Nome" />
-         <TableColumn fx:id="emailCol" prefWidth="204.4" text="Email" />
-         <TableColumn fx:id="telefoneCol" prefWidth="204.4" text="Telefone" />
-         <TableColumn fx:id="pontoCol" prefWidth="204.4" text="Pontos" />
+         <TableColumn fx:id="id" prefWidth="204.4" text="Id" />
+         <TableColumn fx:id="nome" prefWidth="204.4" text="Nome" />
+         <TableColumn fx:id="email" prefWidth="204.4" text="Email" />
+         <TableColumn fx:id="telefone" prefWidth="204.4" text="Telefone" />
+         <TableColumn fx:id="ponto" prefWidth="204.4" text="Pontos" />
          <TableColumn prefWidth="204.4" text="Ações" />
       </columns></TableView>
    <Button layoutX="200.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="88.0" style="-fx-background-color: #FED355; -fx-border-color: #BE8E00;" text="Novo Cliente">
@@ -61,7 +61,7 @@
          </DropShadow>
       </effect>
    </Button>
-   <Button layoutX="143.0" layoutY="880.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="52.0" style="-fx-background-color: #FED355; -fx-border-color: #BE8E00;" text="Voltar">
+   <Button layoutX="143.0" layoutY="880.0" mnemonicParsing="false" onAction="#voltarClicked" prefHeight="34.0" prefWidth="52.0" style="-fx-background-color: #FED355; -fx-border-color: #BE8E00;" text="Voltar">
       <font>
          <Font name="Roboto Light" size="12.0" />
       </font>

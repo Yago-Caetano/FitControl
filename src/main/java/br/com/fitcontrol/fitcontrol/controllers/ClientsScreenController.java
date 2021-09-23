@@ -1,15 +1,25 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
 
+import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
+import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
+import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
+import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,51 +31,61 @@ public class ClientsScreenController implements Initializable {
     @FXML
     public TableView<ClienteModel> tabela;
     @FXML
-    public TableColumn<ClienteModel, Integer> idCol;
+    public TableColumn<ClienteModel, Integer> id;
     @FXML
-    public  TableColumn<ClienteModel, String> nomeCol;
+    public  TableColumn<ClienteModel, String> nome;
     @FXML
-    public TableColumn<ClienteModel, String> emailCol;
+    public TableColumn<ClienteModel, String> email;
     @FXML
-    public TableColumn<ClienteModel, String> telefoneCol;
+    public TableColumn<ClienteModel, String> telefone;
     @FXML
-    public TableColumn<ClienteModel, Integer> pontoCol;
+    public TableColumn<ClienteModel, Integer> ponto;
 
 
     private List<ClienteModel> clienteModels = new ArrayList<ClienteModel>();
 
-
+    private NavigationSingleton navigation;
+    @FXML
+    private Button voltar;
+    @FXML
+    protected void voltarClicked() {
+        executeNavigation(NavigationSingleton.MAIN_SCREEN);
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
 
-        carregarClientes();
-    }
+        navigation = NavigationSingleton.getInstance();
 
-    public void carregarClientes(){
-
-        ClienteModel c1 = new ClienteModel(1,"Douglas","Douglas@gmail.com","4992-8922", 20);
-        ClienteModel c2 = new ClienteModel(2,"Rafael","Rafael@gmail.com","3471-1195", 30);
-        ClienteModel c3 = new ClienteModel(3,"Julio","Julio@gmail.com","2781-9895", 70);
-
-        clienteModels.add(c1);
-        clienteModels.add(c2);
-        clienteModels.add(c3);
-
-        ObservableList<ClienteModel> obsClienteModels = FXCollections.observableArrayList(clienteModels);
-
-        idCol.setCellValueFactory(
+        id.setCellValueFactory(
                 new PropertyValueFactory<ClienteModel, Integer>("id"));
-        nomeCol.setCellValueFactory(
+        nome.setCellValueFactory(
                 new PropertyValueFactory<ClienteModel, String>("nome"));
-        emailCol.setCellValueFactory(
+        email.setCellValueFactory(
                 new PropertyValueFactory<ClienteModel, String>("email"));
-        telefoneCol.setCellValueFactory(
+        telefone.setCellValueFactory(
                 new PropertyValueFactory<ClienteModel, String>("telefone"));
-        pontoCol.setCellValueFactory(
+        ponto.setCellValueFactory(
                 new PropertyValueFactory<ClienteModel, Integer>("pontos"));
 
-        tabela.setItems(obsClienteModels);
+        ObservableList<ClienteModel> list = FXCollections.observableArrayList( new ClienteModel(1,"Douglas","Douglas@gmail.com","4992-8922", 20),
+                new ClienteModel(2,"Rafael","Rafael@gmail.com","3471-1195", 30),new ClienteModel(3,"Julio","Julio@gmail.com","2781-9895", 70));
+
+        tabela.setItems(list);
+
+    }
+
+
+    private void executeNavigation(int screenId)
+    {
+        navigation.navigate(screenId, new iNavCallback() {
+            @Override
+            public void navigateCb(String screenName) throws IOException {
+                FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
+                Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
+                navigation.getStage().setScene(scene);
+            }
+        });
     }
 
 }

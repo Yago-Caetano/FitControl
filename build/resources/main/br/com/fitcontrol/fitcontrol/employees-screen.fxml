@@ -24,28 +24,12 @@
         </children></StackPane>
    <TableView fx:id="tabela" layoutX="107.0" layoutY="391.0" prefHeight="462.0" prefWidth="1226.0" style="-fx-border-color: #8B6800; -fx-border-width: 2;" stylesheets="@css/tabela.css">
      <columns>
-       <TableColumn fx:id="id" prefWidth="306.5" text="ID" />
+       <TableColumn fx:id="id" prefWidth="306.5" text="Id" />
        <TableColumn fx:id="nome" prefWidth="306.5" text="Nome" />
          <TableColumn fx:id="nivel" prefWidth="306.5" text="Nível" />
          <TableColumn prefWidth="306.5" text="Ações" />
      </columns>
    </TableView>
-   <Pane layoutX="200.0" layoutY="331.0" prefHeight="40.0" prefWidth="114.0" style="-fx-background-color: #FED355; -fx-border-color: #BE8E00;">
-      <children>
-         <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" text="Novo Funcionário" textAlignment="JUSTIFY">
-            <font>
-               <Font name="Roboto Light" size="12.0" />
-            </font>
-         </Label>
-      </children>
-      <effect>
-         <DropShadow offsetY="4.0">
-            <color>
-               <Color opacity="0.25" />
-            </color>
-         </DropShadow>
-      </effect>
-   </Pane>
    <Pane layoutX="327.0" layoutY="331.0" prefHeight="40.0" prefWidth="884.0" style="-fx-background-color: #FFDC75; -fx-border-color: #BE8E00;">
       <children>
          <TextField prefHeight="40.0" prefWidth="884.0" style="-fx-background-color: #FFDC75; -fx-border-color: #BE8E00;" />
@@ -62,14 +46,11 @@
          </DropShadow>
       </effect>
    </Pane>
-   <Pane layoutX="143.0" layoutY="880.0" prefHeight="34.0" prefWidth="52.0" style="-fx-background-color: #FED355; -fx-border-color: #BE8E00;">
-      <children>
-         <Label alignment="CENTER" layoutX="10.0" layoutY="10.0" text="Voltar" textAlignment="JUSTIFY">
-            <font>
-               <Font name="Roboto Light" size="12.0" />
-            </font>
-         </Label>
-      </children>
+   <Button layoutX="200.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="114.0" style="-fx-background-color: #FED355; -fx-border-color: #BE8E00;" text="Novo Funcionário" />
+   <Button fx:id="voltar" layoutX="143.0" layoutY="880.0" mnemonicParsing="false" onAction="#voltarClicked" prefHeight="34.0" prefWidth="52.0" style="-fx-background-color: #FED355; -fx-border-color: #BE8E00;" text="Voltar">
+      <font>
+         <Font name="Roboto Light" size="12.0" />
+      </font>
       <effect>
          <DropShadow offsetY="4.0">
             <color>
@@ -77,5 +58,5 @@
             </color>
          </DropShadow>
       </effect>
-   </Pane>
+   </Button>
 </AnchorPane>
