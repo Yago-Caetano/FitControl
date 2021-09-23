@@ -1,6 +1,6 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
-import br.com.fitcontrol.fitcontrol.classes.Pagamento;
+import br.com.fitcontrol.fitcontrol.models.PagamentoModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,25 +15,25 @@ import java.util.ResourceBundle;
 public class PaymentsScreenController implements Initializable {
 
     @FXML
-    public TableView<Pagamento> tabela;
+    public TableView<PagamentoModel> tabela;
     @FXML
-    public TableColumn<Pagamento, Integer> id;
+    public TableColumn<PagamentoModel, Integer> id;
     @FXML
-    public  TableColumn<Pagamento, String> data;
+    public  TableColumn<PagamentoModel, String> data;
     @FXML
-    public  TableColumn<Pagamento, Double> valor;
+    public  TableColumn<PagamentoModel, Double> valor;
 
     public void initialize(URL location, ResourceBundle resources){
         id.setCellValueFactory(
-                new PropertyValueFactory<Pagamento, Integer>("id"));
+                new PropertyValueFactory<PagamentoModel, Integer>("id"));
         data.setCellValueFactory(
-                new PropertyValueFactory<Pagamento, String>("data"));
+                new PropertyValueFactory<PagamentoModel, String>("data"));
         valor.setCellValueFactory(
-                new PropertyValueFactory<Pagamento, Double>("valor"));
+                new PropertyValueFactory<PagamentoModel, Double>("valor"));
 
 
-        ObservableList<Pagamento> list = FXCollections.observableArrayList(new Pagamento(1 ,"09/07/2004",19.85),
-                new Pagamento(1 ,"09/07/2004",19.85),new Pagamento(1 ,"09/07/2004",19.85),new Pagamento(1 ,"09/07/2004",19.85));
+        ObservableList<PagamentoModel> list = FXCollections.observableArrayList(new PagamentoModel(1 ,"09/07/2004",19.85),
+                new PagamentoModel(1 ,"09/07/2004",19.85),new PagamentoModel(1 ,"09/07/2004",19.85),new PagamentoModel(1 ,"09/07/2004",19.85));
 
         tabela.setItems(list);
 

@@ -1,11 +1,11 @@
-package br.com.fitcontrol.fitcontrol.classes;
+package br.com.fitcontrol.fitcontrol.models;
 
-public class Pagamento {
+public class PagamentoModel {
     private int id;
     private String data;
     private double valor;
 
-    public Pagamento(int id, String data, double valor) {
+    public PagamentoModel(int id, String data, double valor) {
         this.id = id;
         this.data = data;
         this.valor = valor;

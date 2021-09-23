@@ -1,7 +1,7 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
 
-import br.com.fitcontrol.fitcontrol.classes.Funcionario;
+import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,27 +17,27 @@ import java.util.ResourceBundle;
 public class EmployeesScreenController implements Initializable {
 
     @FXML
-    public TableView<Funcionario> tabela;
+    public TableView<FuncionarioModel> tabela;
     @FXML
-    public TableColumn<Funcionario, Integer> id;
+    public TableColumn<FuncionarioModel, Integer> id;
     @FXML
-    public  TableColumn<Funcionario, String> nome;
+    public  TableColumn<FuncionarioModel, String> nome;
     @FXML
-    public TableColumn<Funcionario, Integer> nivel;
+    public TableColumn<FuncionarioModel, Integer> nivel;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
         id.setCellValueFactory(
-                new PropertyValueFactory<Funcionario, Integer>("id"));
+                new PropertyValueFactory<FuncionarioModel, Integer>("id"));
         nome.setCellValueFactory(
-                new PropertyValueFactory<Funcionario, String>("nome"));
+                new PropertyValueFactory<FuncionarioModel, String>("nome"));
         nivel.setCellValueFactory(
-                new PropertyValueFactory<Funcionario, Integer>("nivel"));
+                new PropertyValueFactory<FuncionarioModel, Integer>("nivel"));
 
 
-        ObservableList<Funcionario> list = FXCollections.observableArrayList(new Funcionario(1 ,"Jeferson",1),
-                new Funcionario(1 ,"Jeferson",2),new Funcionario(1 ,"Jeferson",3),new Funcionario(5 ,"Jeferson",1));
+        ObservableList<FuncionarioModel> list = FXCollections.observableArrayList(new FuncionarioModel(1 ,"Jeferson",1),
+                new FuncionarioModel(2 ,"Claudia",2),new FuncionarioModel(3 ,"Roberta",3),new FuncionarioModel(4 ,"Murilo",1));
 
         tabela.setItems(list);
 

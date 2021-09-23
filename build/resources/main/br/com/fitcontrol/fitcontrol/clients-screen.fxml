@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.ClientsScreenController">
+<AnchorPane prefHeight="1024.0" prefWidth="1440.0" stylesheets="@css/tabela.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.ClientsScreenController">
     <StackPane prefHeight="160.0" prefWidth="1440.0">
         <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffbf00" height="160.0" stroke="BLACK" strokeType="INSIDE" width="1440.0" />

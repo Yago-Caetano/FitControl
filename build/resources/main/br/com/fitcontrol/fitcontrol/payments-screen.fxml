@@ -10,7 +10,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.PaymentsScreenController">
-    <Pane layoutX="401.0" layoutY="343.0" prefHeight="99.0" prefWidth="658.0" style="-fx-background-radius: 10; -fx-background-color: FFFFFF; -fx-border-color: E9AF00; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+    <Pane layoutX="401.0" layoutY="314.0" prefHeight="99.0" prefWidth="658.0" style="-fx-background-radius: 10; -fx-background-color: FFFFFF; -fx-border-color: E9AF00; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
         <children>
          <Label alignment="CENTER" layoutX="302.0" layoutY="7.0" prefHeight="34.0" prefWidth="54.0" text="Filtros" textAlignment="JUSTIFY">
             <font>
@@ -96,7 +96,7 @@
 
               </children>
    </StackPane>
-   <Button layoutX="423.0" layoutY="955.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="52.0" style="-fx-background-color: #FED355; -fx-border-color: #BE8E00;" text="Voltar">
+   <Button layoutX="423.0" layoutY="926.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="52.0" style="-fx-background-color: #FED355; -fx-border-color: #BE8E00;" text="Voltar">
       <font>
          <Font name="Roboto Light" size="12.0" />
       </font>
@@ -108,12 +108,12 @@
          </DropShadow>
       </effect>
    </Button>
-    <TableView fx:id="tabela" editable="true" layoutX="396.0" layoutY="507.0" prefHeight="429.0" prefWidth="667.0" style="-fx-border-color: #FFBF00; -fx-border-width: 3;">
+    <TableView fx:id="tabela" editable="true" layoutX="397.0" layoutY="441.0" prefHeight="463.0" prefWidth="667.0" style="-fx-border-color: #FFBF00; -fx-border-width: 3;" stylesheets="@css/tabela.css">
         <columns>
             <TableColumn id="ColunaId" fx:id="id" prefWidth="166.75" text="id" />
             <TableColumn id="ColunaData" fx:id="data" prefWidth="166.75" text="data" />
             <TableColumn id="ColunaValor" fx:id="valor" prefWidth="166.75" text="valor" />
-            <TableColumn prefWidth="166.75" text="Column X" />
+            <TableColumn prefWidth="166.75" text="Ações" />
         </columns>
     </TableView>
 </AnchorPane>

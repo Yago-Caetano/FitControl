@@ -22,7 +22,7 @@
                 </StackPane.margin>
             </ImageView>
         </children></StackPane>
-   <TableView fx:id="tabela" layoutX="107.0" layoutY="391.0" prefHeight="462.0" prefWidth="1226.0" style="-fx-border-color: #8B6800; -fx-border-width: 2;">
+   <TableView fx:id="tabela" layoutX="107.0" layoutY="391.0" prefHeight="462.0" prefWidth="1226.0" style="-fx-border-color: #8B6800; -fx-border-width: 2;" stylesheets="@css/tabela.css">
      <columns>
        <TableColumn fx:id="id" prefWidth="306.5" text="ID" />
        <TableColumn fx:id="nome" prefWidth="306.5" text="Nome" />

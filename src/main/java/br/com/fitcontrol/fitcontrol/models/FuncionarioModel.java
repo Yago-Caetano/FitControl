@@ -1,11 +1,11 @@
-package br.com.fitcontrol.fitcontrol.classes;
+package br.com.fitcontrol.fitcontrol.models;
 
-public class Funcionario {
+public class FuncionarioModel {
     private int id;
     private String nome;
     private int nivel;
 
-    public Funcionario(int id, String nome, int nivel) {
+    public FuncionarioModel(int id, String nome, int nivel) {
         this.id = id;
         this.nome = nome;
         this.nivel = nivel;

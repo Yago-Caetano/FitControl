@@ -1,7 +1,7 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
 
-import br.com.fitcontrol.fitcontrol.classes.Cliente;
+import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,20 +19,20 @@ public class ClientsScreenController implements Initializable {
 
 
     @FXML
-    public TableView<Cliente> tabela;
+    public TableView<ClienteModel> tabela;
     @FXML
-    public TableColumn<Cliente, Integer> idCol;
+    public TableColumn<ClienteModel, Integer> idCol;
     @FXML
-    public  TableColumn<Cliente, String> nomeCol;
+    public  TableColumn<ClienteModel, String> nomeCol;
     @FXML
-    public TableColumn<Cliente, String> emailCol;
+    public TableColumn<ClienteModel, String> emailCol;
     @FXML
-    public TableColumn<Cliente, String> telefoneCol;
+    public TableColumn<ClienteModel, String> telefoneCol;
     @FXML
-    public TableColumn<Cliente, Integer> pontoCol;
+    public TableColumn<ClienteModel, Integer> pontoCol;
 
 
-    private List<Cliente> clientes = new ArrayList<Cliente>();
+    private List<ClienteModel> clienteModels = new ArrayList<ClienteModel>();
 
 
 
@@ -42,41 +42,30 @@ public class ClientsScreenController implements Initializable {
         carregarClientes();
     }
 
-   /* private ObservableList<Cliente> listaDeClientes() {
-        return FXCollections.observableArrayList(
-                new Cliente(1,"Douglas","Douglas@gmail.com","4992-8922", 20),
-                new Cliente(2,"Rafael","Rafael@gmail.com","3471-1195", 30),
-                new Cliente(2,"Rafael","Rafael@gmail.com","3471-1195", 30),
-                new Cliente(2,"Rafael","Rafael@gmail.com","3471-1195", 30),
-                new Cliente(2,"Rafael","Rafael@gmail.com","3471-1195", 30),
-                new Cliente(2,"Rafael","Rafael@gmail.com","3471-1195", 30)
-        );
-    }*/
-
     public void carregarClientes(){
 
-        Cliente c1 = new Cliente(1,"Douglas","Douglas@gmail.com","4992-8922", 20);
-        Cliente c2 = new Cliente(2,"Rafael","Rafael@gmail.com","3471-1195", 30);
-        Cliente c3 = new Cliente(2,"Rafael","Rafael@gmail.com","3471-1195", 30);
+        ClienteModel c1 = new ClienteModel(1,"Douglas","Douglas@gmail.com","4992-8922", 20);
+        ClienteModel c2 = new ClienteModel(2,"Rafael","Rafael@gmail.com","3471-1195", 30);
+        ClienteModel c3 = new ClienteModel(3,"Julio","Julio@gmail.com","2781-9895", 70);
 
-        clientes.add(c1);
-        clientes.add(c2);
-        clientes.add(c3);
+        clienteModels.add(c1);
+        clienteModels.add(c2);
+        clienteModels.add(c3);
 
-        ObservableList<Cliente> obsClientes = FXCollections.observableArrayList(clientes);
+        ObservableList<ClienteModel> obsClienteModels = FXCollections.observableArrayList(clienteModels);
 
         idCol.setCellValueFactory(
-                new PropertyValueFactory<Cliente, Integer>("id"));
+                new PropertyValueFactory<ClienteModel, Integer>("id"));
         nomeCol.setCellValueFactory(
-                new PropertyValueFactory<Cliente, String>("nome"));
+                new PropertyValueFactory<ClienteModel, String>("nome"));
         emailCol.setCellValueFactory(
-                new PropertyValueFactory<Cliente, String>("email"));
+                new PropertyValueFactory<ClienteModel, String>("email"));
         telefoneCol.setCellValueFactory(
-                new PropertyValueFactory<Cliente, String>("telefone"));
+                new PropertyValueFactory<ClienteModel, String>("telefone"));
         pontoCol.setCellValueFactory(
-                new PropertyValueFactory<Cliente, Integer>("pontos"));
+                new PropertyValueFactory<ClienteModel, Integer>("pontos"));
 
-        tabela.setItems(obsClientes);
+        tabela.setItems(obsClienteModels);
     }
 
 }

@@ -11,7 +11,7 @@ public class FitControlClients extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource("clients-screen.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
         primaryStage.setTitle("Fit Control");
-        scene.getStylesheets().add("CSS/tabela.css");
+        scene.getStylesheets().add("br/com/fitcontrol/fitcontrol/css/tabela.css");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

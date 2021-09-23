@@ -1,10 +1,10 @@
-package br.com.fitcontrol.fitcontrol.classes;
+package br.com.fitcontrol.fitcontrol.models;
 
-public class Cliente {
+public class ClienteModel {
     private int id,pontos;
     private String nome,email,telefone;
 
-    public Cliente(int id, String nome, String email, String telefone, int pontos){
+    public ClienteModel(int id, String nome, String email, String telefone, int pontos){
         this.id = id;
         this.nome = nome;
         this.email = email;
