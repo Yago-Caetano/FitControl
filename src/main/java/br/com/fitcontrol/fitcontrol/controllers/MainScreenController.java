@@ -27,7 +27,7 @@ public class MainScreenController implements Initializable {
     public void initialize(URL location, ResourceBundle resources){
 
         navigation = NavigationSingleton.getInstance();
-
+        navigation.setRootScreen(NavigationSingleton.MAIN_SCREEN);
         catracaHbox.addEventFilter(MouseEvent.MOUSE_CLICKED,catracaClicked);
         pagamentoHbox.addEventFilter(MouseEvent.MOUSE_CLICKED,pagamentoClicked);
         alunoHbox.addEventFilter(MouseEvent.MOUSE_CLICKED,alunoClicked);

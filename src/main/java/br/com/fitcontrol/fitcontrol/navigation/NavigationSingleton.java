@@ -45,7 +45,13 @@ public  class NavigationSingleton {
         stagePrincipal = stage;
     }
 
+    public void setRootScreen(int screenCode)
+    {
+        setCurrentScreen(screenCode);
+    }
+
     public Stage getStage(){return  stagePrincipal;}
+
 
     public void goBack(iNavCallback navigationCallback) throws IOException {
         if(telas.size()>1)
@@ -56,62 +62,68 @@ public  class NavigationSingleton {
         }
     }
 
+    private void setCurrentScreen(int screenId)
+    {
+        String resourceName = "";
+
+        switch (screenId)
+        {
+            case MAIN_SCREEN:
+                resourceName = "main-screen.fxml";
+                break;
+
+            case CATRACA_SCREEN:
+                resourceName = "rewards-screen.fxml";
+                break;
+
+            case STAFF_SCREEN:
+                resourceName = "employees-screen.fxml";
+                break;
+
+            case PAYMENT_SCREEN:
+                resourceName = "payments-screen.fxml";
+                break;
+
+            case CLIENTS_SCREEN:
+                resourceName = "clients-screen.fxml";
+                break;
+
+            case REWARDS_SCREEN:
+                resourceName = "rewards-screen.fxml";
+                break;
+
+            case REPORT_SCREEN:
+                resourceName = "rewards-screen.fxml";
+                break;
+
+            case CLIENTS_EDIT_SCREEN:
+                resourceName = "client-edit-screen.fxml";
+                break;
+
+            case EMPLOYEE_EDIT_SCREEN:
+                resourceName = "employee-edit-screen.fxml";
+                break;
+
+            case PAYMENT_EDIT_SCREEN:
+                resourceName = "payment-edit-screen.fxml";
+                break;
+            case LOGIN_SCREEN:
+                resourceName = "login-screen.fxml";
+                break;
+        }
+
+
+        if(telaAtual != null)
+            telas.add(resourceName);
+
+        telaAtual = resourceName;
+
+    }
+
     public void navigate(int screenId,iNavCallback navigationCallback)
     {
         try{
-            String resourceName = "";
-
-            switch (screenId)
-            {
-                case MAIN_SCREEN:
-                    resourceName = "main-screen.fxml";
-                    break;
-
-                case CATRACA_SCREEN:
-                    resourceName = "rewards-screen.fxml";
-                    break;
-
-                case STAFF_SCREEN:
-                    resourceName = "employees-screen.fxml";
-                    break;
-
-                case PAYMENT_SCREEN:
-                    resourceName = "payments-screen.fxml";
-                    break;
-
-                case CLIENTS_SCREEN:
-                    resourceName = "clients-screen.fxml";
-                    break;
-
-                case REWARDS_SCREEN:
-                    resourceName = "rewards-screen.fxml";
-                    break;
-
-                case REPORT_SCREEN:
-                    resourceName = "rewards-screen.fxml";
-                    break;
-
-                case CLIENTS_EDIT_SCREEN:
-                    resourceName = "client-edit-screen.fxml";
-                    break;
-
-                case EMPLOYEE_EDIT_SCREEN:
-                    resourceName = "employee-edit-screen.fxml";
-                    break;
-
-                case PAYMENT_EDIT_SCREEN:
-                    resourceName = "payment-edit-screen.fxml";
-                    break;
-                case LOGIN_SCREEN:
-                    resourceName = "login-screen.fxml";
-                    break;
-            }
-
-
-            if(telaAtual != null)
-                telas.add(resourceName);
-
-            telaAtual = resourceName;
+            setCurrentScreen(screenId);
             navigationCallback.navigateCb(telaAtual);
 
         }
