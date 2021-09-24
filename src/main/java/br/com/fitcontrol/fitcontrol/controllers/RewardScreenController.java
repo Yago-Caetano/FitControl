@@ -57,79 +57,11 @@ public class RewardScreenController implements Initializable {
         }
     }
 
-    private void completaLista()
-    {
-        Recompensas.add(new RecompensaModel(1,15000.0,"Coqueteleira"));
-        Recompensas.add(new RecompensaModel(2,7000.0,"Abraçadeira"));
-        Recompensas.add(new RecompensaModel(3,150000.0,"Mensalidade Gratuita"));
-        Recompensas.add(new RecompensaModel(4,75000.0,"Camiseta"));
-        Recompensas.add(new RecompensaModel(5,130000.0,"Garrafa térmica"));
-        Recompensas.add(new RecompensaModel(6,300000.0,"Mochila"));
-    }
 
-    private void carregaGrid()
-    {
-        completaLista();
-        int linha = 0;
-        int col = -1;
-
-        for(RecompensaModel rec : Recompensas)
-        {
-
-            Label Titulo = new Label(rec.getDescricao());
-
-            File file = new File("src/main/resources/br/com/fitcontrol/fitcontrol/icons/award_icon.png");
-            Image image = new Image(file.toURI().toString());
-
-            ImageView Icone = new ImageView();
-            Icone.setImage(image);
-
-            Icone.setFitWidth(200);
-            Icone.setFitHeight(150);
-
-            //Titulo.setAlignment(Pos.CENTER);
-
-            Button BtAplicar = new Button();
-            BtAplicar.setText("Aplicar");
-            //BtAplicar.setAlignment(Pos.CENTER);
-
-
-            VBox vboxAux = new VBox();
-            vboxAux.getStyleClass().add("reward-item");
-            vboxAux.setPadding(new Insets(32,32,32,32));
-
-            vboxAux.getChildren().addAll(Titulo,Icone,BtAplicar);
-
-            HBox hboxAux = new HBox();
-            hboxAux.setPadding(new Insets(10, 50, 50, 50));
-            hboxAux.setSpacing(10);
-
-            hboxAux.getChildren().add(vboxAux);
-
-            HBox.setMargin(vboxAux,new Insets(16,16,16,16));
-            //hboxAux.setPadding(new Insets(32,32,32,32));
-
-            if(col < 2)
-                col++;
-            else{
-                col = 0;
-                linha++;
-            }
-
-            gridRecompensas.add(hboxAux,col,linha);
-
-
-        }
-
-        gridRecompensas.setVgap(32);
-
-
-    }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         navigation = NavigationSingleton.getInstance();
-        carregaGrid();
     }
 }
