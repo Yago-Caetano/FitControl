@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
 <AnchorPane prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.LoginScreenController">
    <children>
       <Pane layoutX="414.0" layoutY="247.0" prefHeight="594.0" prefWidth="612.0" style="-fx-background-color: FFBF00; -fx-background-radius: 82;">
@@ -31,7 +30,7 @@
             <Font name="Roboto Light" size="24.0" />
          </font>
       </TextField>
-      <Button layoutX="529.0" layoutY="720.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="381.0" style="-fx-background-color: transparent; -fx-border-color: FFFFFF; -fx-border-width: 4; -fx-border-radius: 16;" text="ENTRAR">
+      <Button fx:id="entrar" layoutX="529.0" layoutY="720.0" mnemonicParsing="false" onAction="#entrarClicked" prefHeight="65.0" prefWidth="381.0" style="-fx-background-color: transparent; -fx-border-color: FFFFFF; -fx-border-width: 4; -fx-border-radius: 16;" text="ENTRAR">
          <font>
             <Font size="24.0" />
          </font>

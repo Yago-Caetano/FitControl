@@ -20,7 +20,7 @@
       </Pane>
       <Pane layoutX="108.0" layoutY="229.0" prefHeight="293.0" prefWidth="1214.0" style="-fx-border-color: A27811; -fx-border-radius: 16;">
          <children>
-            <Button layoutX="39.0" layoutY="15.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="92.0" style="-fx-border-color: BE8E00; -fx-background-color: FED355;" text="Nova Catraca">
+            <Button fx:id="novaCatraca" layoutX="39.0" layoutY="15.0" mnemonicParsing="false" onAction="#novaCatracaClicked" prefHeight="40.0" prefWidth="92.0" style="-fx-border-color: BE8E00; -fx-background-color: FED355;" text="Nova Catraca">
                <font>
                   <Font name="Roboto Light" size="12.0" />
                </font>
@@ -32,7 +32,7 @@
                   </DropShadow>
                </effect>
             </Button>
-            <TableView layoutX="33.0" layoutY="67.0" prefHeight="190.0" prefWidth="1161.0" stylesheets="@css/tabela.css">
+            <TableView fx:id="tabela" layoutX="33.0" layoutY="67.0" prefHeight="190.0" prefWidth="1161.0" stylesheets="@css/tabela.css">
               <columns>
                 <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
                 <TableColumn fx:id="modelo" prefWidth="75.0" text="Modelo" />
@@ -51,12 +51,34 @@
                   <Font name="Roboto Light" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="279.0" layoutY="151.0" mnemonicParsing="false" prefHeight="168.0" prefWidth="274.0" style="-fx-background-color: A27811;" text="Liberar Acesso" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="52.0" layoutY="128.0" mnemonicParsing="false" prefHeight="168.0" prefWidth="274.0" style="-fx-background-color: A27811;" text="Liberar Acesso" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="464.0" layoutY="128.0" mnemonicParsing="false" prefHeight="168.0" prefWidth="274.0" style="-fx-background-color: A27811;" text="Bloquear Acesso" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="876.0" layoutY="131.0" mnemonicParsing="false" prefHeight="168.0" prefWidth="274.0" style="-fx-background-color: A27811;" text="Reiniciar Catraca" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
          </children>
       </Pane>
+      <Button fx:id="voltar" layoutX="117.0" layoutY="976.0" mnemonicParsing="false" onAction="#voltarClicked" prefHeight="34.0" prefWidth="80.0" style="-fx-border-color: BE8E00; -fx-background-color: FED355;" text="Voltar">
+         <font>
+            <Font name="Roboto Light" size="12.0" />
+         </font>
+         <effect>
+            <DropShadow offsetY="4.0">
+               <color>
+                  <Color opacity="0.25" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
    </children>
 </AnchorPane>

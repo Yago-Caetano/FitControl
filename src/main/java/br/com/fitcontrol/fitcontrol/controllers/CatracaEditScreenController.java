@@ -13,31 +13,31 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginScreenController implements Initializable {
+public class CatracaEditScreenController implements Initializable {
+
 
     private NavigationSingleton navigation;
     @FXML
-    private Button entrar;
+    private Button voltar;
     @FXML
-    protected void entrarClicked() {
-        executeNavigation(NavigationSingleton.MAIN_SCREEN);
+    protected void voltarClicked() {
+        try {
+            navigation.goBack(new iNavCallback() {
+                @Override
+                public void navigateCb(String screenName) throws IOException {
+                    FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
+                    Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
+                    navigation.getStage().setScene(scene);
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         navigation = NavigationSingleton.getInstance();
     }
-
-    private void executeNavigation(int screenId)
-    {
-        navigation.navigate(screenId, new iNavCallback() {
-            @Override
-            public void navigateCb(String screenName) throws IOException {
-                FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
-                navigation.getStage().setScene(scene);
-            }
-        });
-    }
 }
+
+

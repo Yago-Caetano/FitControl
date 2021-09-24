@@ -39,6 +39,9 @@ public class RewardScreenController implements Initializable {
 
     private NavigationSingleton navigation;
 
+    @FXML
+    private Button voltar;
+    @FXML
     protected void voltarClicked() {
         try {
             navigation.goBack(new iNavCallback() {

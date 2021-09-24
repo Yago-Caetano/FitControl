@@ -22,6 +22,7 @@ public  class NavigationSingleton {
     public static final int EMPLOYEE_EDIT_SCREEN = 8;
     public static final int PAYMENT_EDIT_SCREEN = 9;
     public static final int LOGIN_SCREEN = 10;
+    public static final int CATRACA_EDIT_SCREEN = 11;
 
 
     private Stack<String> telas;
@@ -73,7 +74,7 @@ public  class NavigationSingleton {
                 break;
 
             case CATRACA_SCREEN:
-                resourceName = "rewards-screen.fxml";
+                resourceName = "catracas-screen.fxml";
                 break;
 
             case STAFF_SCREEN:
@@ -93,7 +94,7 @@ public  class NavigationSingleton {
                 break;
 
             case REPORT_SCREEN:
-                resourceName = "rewards-screen.fxml";
+                resourceName = "reports-screen.fxml";
                 break;
 
             case CLIENTS_EDIT_SCREEN:
@@ -109,6 +110,9 @@ public  class NavigationSingleton {
                 break;
             case LOGIN_SCREEN:
                 resourceName = "login-screen.fxml";
+                break;
+            case CATRACA_EDIT_SCREEN:
+                resourceName = "catraca-edit-screen.fxml";
                 break;
         }
 

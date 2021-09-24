@@ -24,7 +24,7 @@ public class FitControlMain extends Application {
         primaryStage.setTitle("Fit Control");
         primaryStage.setScene(scene);
         primaryStage.show();*/
-        navigation.navigate(NavigationSingleton.MAIN_SCREEN, new iNavCallback() {
+        navigation.navigate(NavigationSingleton.LOGIN_SCREEN, new iNavCallback() {
             @Override
             public void navigateCb(String screenName) throws IOException {
                 FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
