@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -46,7 +47,15 @@ public  class NavigationSingleton {
 
     public Stage getStage(){return  stagePrincipal;}
 
-    public void navigate(int screenId,iNavCallback cb)
+    public void goBack(iNavCallback navigationCallback) throws IOException {
+        if(telas.size()>1)
+        {
+            telaAtual = telas.pop();
+            navigationCallback.navigateCb(telaAtual);
+        }
+    }
+
+    public void navigate(int screenId,iNavCallback navigationCallback)
     {
         try{
             String resourceName = "";
@@ -102,7 +111,7 @@ public  class NavigationSingleton {
                 telas.add(resourceName);
 
             telaAtual = resourceName;
-            cb.navigateCb(telaAtual);
+            navigationCallback.navigateCb(telaAtual);
 
         }
         catch(Exception e)

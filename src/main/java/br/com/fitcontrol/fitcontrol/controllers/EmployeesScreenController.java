@@ -37,7 +37,18 @@ public class EmployeesScreenController implements Initializable {
     private Button voltar,novoFuncionario;
     @FXML
     protected void voltarClicked() {
-        executeNavigation(NavigationSingleton.MAIN_SCREEN);
+        try {
+            navigation.goBack(new iNavCallback() {
+                @Override
+                public void navigateCb(String screenName) throws IOException {
+                    FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
+                    Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
+                    navigation.getStage().setScene(scene);
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     @FXML
     protected void NovoFuncionarioClicked() {
@@ -66,16 +77,5 @@ public class EmployeesScreenController implements Initializable {
 
     }
 
-    private void executeNavigation(int screenId)
-    {
-        navigation.navigate(screenId, new iNavCallback() {
-            @Override
-            public void navigateCb(String screenName) throws IOException {
-                FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
-                navigation.getStage().setScene(scene);
-            }
-        });
-    }
 
 }
