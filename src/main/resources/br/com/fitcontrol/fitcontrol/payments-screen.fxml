@@ -116,4 +116,16 @@
             <TableColumn prefWidth="166.75" text="Ações" />
         </columns>
     </TableView>
+   <Button fx:id="novoPagamento" layoutX="508.0" layoutY="926.0" mnemonicParsing="false" onAction="#novoPagamentoClicked" prefHeight="34.0" prefWidth="114.0" style="-fx-background-color: #FED355; -fx-border-color: #BE8E00;" text="Novo Pagamento">
+      <font>
+         <Font name="Roboto Light" size="12.0" />
+      </font>
+      <effect>
+         <DropShadow offsetY="4.0">
+            <color>
+               <Color opacity="0.25" />
+            </color>
+         </DropShadow>
+      </effect>
+   </Button>
 </AnchorPane>

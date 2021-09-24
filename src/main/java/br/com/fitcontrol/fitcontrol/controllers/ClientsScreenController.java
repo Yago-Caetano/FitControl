@@ -42,14 +42,19 @@ public class ClientsScreenController implements Initializable {
     public TableColumn<ClienteModel, Integer> ponto;
 
 
-    private List<ClienteModel> clienteModels = new ArrayList<ClienteModel>();
+    //private List<ClienteModel> clienteModels = new ArrayList<ClienteModel>();
 
     private NavigationSingleton navigation;
     @FXML
-    private Button voltar;
+    private Button voltar,novoCliente;
+
     @FXML
     protected void voltarClicked() {
         executeNavigation(NavigationSingleton.MAIN_SCREEN);
+    }
+    @FXML
+    protected void novoClienteClicked() {
+        executeNavigation(NavigationSingleton.CLIENTS_EDIT_SCREEN);
     }
 
     @Override

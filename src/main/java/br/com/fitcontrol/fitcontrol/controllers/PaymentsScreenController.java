@@ -32,10 +32,14 @@ public class PaymentsScreenController implements Initializable {
 
     private NavigationSingleton navigation;
     @FXML
-    private Button voltar;
+    private Button voltar,novoPagamento;
     @FXML
     protected void voltarClicked() {
         executeNavigation(NavigationSingleton.MAIN_SCREEN);
+    }
+    @FXML
+    protected void novoPagamentoClicked() {
+        executeNavigation(NavigationSingleton.PAYMENT_EDIT_SCREEN);
     }
 
     public void initialize(URL location, ResourceBundle resources){

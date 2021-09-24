@@ -49,7 +49,7 @@
          <TableColumn fx:id="ponto" prefWidth="204.4" text="Pontos" />
          <TableColumn prefWidth="204.4" text="Ações" />
       </columns></TableView>
-   <Button layoutX="200.0" layoutY="331.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="88.0" style="-fx-background-color: #FED355; -fx-border-color: #BE8E00;" text="Novo Cliente">
+   <Button fx:id="novoCliente" layoutX="200.0" layoutY="331.0" mnemonicParsing="false" onAction="#novoClienteClicked" prefHeight="40.0" prefWidth="88.0" style="-fx-background-color: #FED355; -fx-border-color: #BE8E00;" text="Novo Cliente">
       <font>
          <Font name="Roboto Light" size="12.0" />
       </font>

@@ -34,10 +34,14 @@ public class EmployeesScreenController implements Initializable {
 
     private NavigationSingleton navigation;
     @FXML
-    private Button voltar;
+    private Button voltar,novoFuncionario;
     @FXML
     protected void voltarClicked() {
         executeNavigation(NavigationSingleton.MAIN_SCREEN);
+    }
+    @FXML
+    protected void NovoFuncionarioClicked() {
+        executeNavigation(NavigationSingleton.EMPLOYEE_EDIT_SCREEN);
     }
 
 
