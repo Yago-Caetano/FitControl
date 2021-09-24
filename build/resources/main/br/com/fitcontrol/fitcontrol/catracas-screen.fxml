@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.CatracaScreenController">
+   <children>
+      <Pane prefHeight="160.0" prefWidth="1440.0" style="-fx-background-color: FFBF00;">
+         <children>
+            <ImageView fitHeight="88.0" fitWidth="260.0" layoutX="62.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/icone.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="108.0" layoutY="229.0" prefHeight="293.0" prefWidth="1214.0" style="-fx-border-color: A27811; -fx-border-radius: 16;">
+         <children>
+            <Button layoutX="39.0" layoutY="15.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="92.0" style="-fx-border-color: BE8E00; -fx-background-color: FED355;" text="Nova Catraca">
+               <font>
+                  <Font name="Roboto Light" size="12.0" />
+               </font>
+               <effect>
+                  <DropShadow offsetY="4.0">
+                     <color>
+                        <Color opacity="0.25" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Button>
+            <TableView layoutX="33.0" layoutY="67.0" prefHeight="190.0" prefWidth="1161.0" stylesheets="@css/tabela.css">
+              <columns>
+                <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
+                <TableColumn fx:id="modelo" prefWidth="75.0" text="Modelo" />
+                  <TableColumn prefWidth="75.0" text="Ações" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+         </children>
+      </Pane>
+      <Pane layoutX="117.0" layoutY="559.0" prefHeight="404.0" prefWidth="1205.0" style="-fx-border-color: D79D04; -fx-border-radius: 41;">
+         <children>
+            <Label layoutX="509.0" layoutY="37.0" text="Ações da Catraca X">
+               <font>
+                  <Font name="Roboto Light" size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="279.0" layoutY="151.0" mnemonicParsing="false" prefHeight="168.0" prefWidth="274.0" style="-fx-background-color: A27811;" text="Liberar Acesso" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -50,6 +50,7 @@ public  class NavigationSingleton {
     public void goBack(iNavCallback navigationCallback) throws IOException {
         if(telas.size()>1)
         {
+            telas.pop();
             telaAtual = telas.pop();
             navigationCallback.navigateCb(telaAtual);
         }
