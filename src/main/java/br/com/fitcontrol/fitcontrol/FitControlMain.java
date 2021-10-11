@@ -17,6 +17,7 @@ public class FitControlMain extends Application {
     public void start(Stage primaryStage) throws Exception {
         navigation = NavigationSingleton.getInstance();
         navigation.setStage(primaryStage);
+
         /*//FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource("main-screen.fxml"));
         FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource("rewards-screen.fxml"));
 
