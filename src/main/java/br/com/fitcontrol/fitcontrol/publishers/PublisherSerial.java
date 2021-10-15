@@ -4,6 +4,7 @@ import br.com.fitcontrol.fitcontrol.events.EnumEventTypes;
 import br.com.fitcontrol.fitcontrol.events.EventManager;
 import br.com.fitcontrol.fitcontrol.listenners.AccessCheckInListenner;
 import br.com.fitcontrol.fitcontrol.listenners.AcessCheckOutListenner;
+import br.com.fitcontrol.fitcontrol.listenners.UserRegisterListenner;
 
 public class PublisherSerial {
 
@@ -24,4 +25,5 @@ public class PublisherSerial {
     {
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_ACESS_CHECK_OUT);
     }
+
 }
