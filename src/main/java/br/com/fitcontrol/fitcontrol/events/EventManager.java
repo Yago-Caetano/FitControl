@@ -1,5 +1,6 @@
 package br.com.fitcontrol.fitcontrol.events;
 
+import br.com.fitcontrol.fitcontrol.FitControlContext;
 import br.com.fitcontrol.fitcontrol.listenners.ISubscriber;
 import br.com.fitcontrol.fitcontrol.models.EventModel;
 
@@ -30,11 +31,11 @@ public class EventManager {
         }
     }
 
-    public void notify(EnumEventTypes event){
+    public void notify(EnumEventTypes event, FitControlContext context){
         for (EventModel e: Events) {
             if(e.getEventType() == event)
             {
-                e.getEventListenner().update();
+                e.getEventListenner().update(context);
             }
 
         }
