@@ -1,7 +1,9 @@
 package br.com.fitcontrol.fitcontrol;
 
+import br.com.fitcontrol.fitcontrol.events.EventManager;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
+import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,6 +19,9 @@ public class FitControlMain extends Application {
     public void start(Stage primaryStage) throws Exception {
         navigation = NavigationSingleton.getInstance();
         navigation.setStage(primaryStage);
+
+
+
 
         /*//FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource("main-screen.fxml"));
         FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource("rewards-screen.fxml"));

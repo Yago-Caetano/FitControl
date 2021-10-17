@@ -69,7 +69,7 @@
                <Insets left="100.0" right="500.0" top="290.0" />
             </StackPane.margin>
          </TextField>
-         <Button fx:id="BtnSalvar" mnemonicParsing="false" prefHeight="72.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Salvar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+         <Button fx:id="BtnSalvar" mnemonicParsing="false" onMouseClicked="#salvarClicked" prefHeight="72.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Salvar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
             <StackPane.margin>
                <Insets left="130.0" top="650.0" />
             </StackPane.margin>
@@ -114,7 +114,7 @@
                <Insets left="100.0" top="430.0" />
             </StackPane.margin>
          </Label>
-         <TextField fx:id="txtEmail" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
+         <TextField fx:id="txtTelefone" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
             <StackPane.margin>
                <Insets left="100.0" right="1000.0" top="470.0" />
             </StackPane.margin>

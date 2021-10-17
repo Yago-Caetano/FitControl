@@ -2,10 +2,16 @@
 
 package br.com.fitcontrol.fitcontrol.controllers;
 
+import br.com.fitcontrol.fitcontrol.FitControlContext;
 import br.com.fitcontrol.fitcontrol.FitControlMain;
+import br.com.fitcontrol.fitcontrol.dao.PadraoDAO;
+import br.com.fitcontrol.fitcontrol.events.EnumEventTypes;
+import br.com.fitcontrol.fitcontrol.events.EventManager;
+import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.models.PagamentoModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
+import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,13 +27,13 @@ import java.util.ResourceBundle;
 
 public class ClientEditScreenController implements Initializable {
     @FXML
-    public TableView<PagamentoModel> tabela;
+    public TextField txtID;
     @FXML
-    public TableColumn<PagamentoModel, Integer> id;
+    public TextField txtNomeCliente;
     @FXML
-    public  TableColumn<PagamentoModel, String> data;
+    public TextField txtEmail;
     @FXML
-    public  TableColumn<PagamentoModel, Double> valor;
+    public TextField txtTelefone;
 
     private NavigationSingleton navigation;
     @FXML
@@ -45,6 +52,25 @@ public class ClientEditScreenController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    protected void salvarClicked() {
+        EventManager eventManager = new EventManager();
+        FitControlContext context = new FitControlContext();
+        ClienteModel cliente = new ClienteModel();
+
+        cliente.setId(Integer.parseInt(txtID.getText()));
+        cliente.setNome(txtNomeCliente.getText());
+        cliente.setEmail(txtEmail.getText());
+        cliente.setTelefone(txtTelefone.getText());
+        cliente.setPontos(0);
+
+        PublisherTela publisherTela = new PublisherTela(eventManager);
+        publisherTela.UserRegisterEvent();
+
+
+        voltarClicked();
     }
 
     @Override

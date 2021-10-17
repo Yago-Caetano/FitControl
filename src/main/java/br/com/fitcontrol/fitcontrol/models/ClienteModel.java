@@ -12,6 +12,9 @@ public class ClienteModel {
         this.pontos = pontos;
     }
 
+    public ClienteModel(){
+    }
+
     public int getId() {
         return id;
     }
