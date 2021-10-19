@@ -23,6 +23,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class ClientEditScreenController implements Initializable {
@@ -36,6 +37,7 @@ public class ClientEditScreenController implements Initializable {
     public TextField txtTelefone;
 
     private NavigationSingleton navigation;
+    private boolean update;
     @FXML
     private Button voltar;
     @FXML
@@ -66,15 +68,40 @@ public class ClientEditScreenController implements Initializable {
         cliente.setTelefone(txtTelefone.getText());
         cliente.setPontos(0);
 
-        PublisherTela publisherTela = new PublisherTela(eventManager);
-        publisherTela.UserRegisterEvent();
+        //Verifica se é Edit ou Insert
+        if(update == false){ //Insert
+            PublisherTela publisherTela = new PublisherTela(eventManager);
+            publisherTela.UserRegisterEvent();
 
+            voltarClicked();
+        }
+        else{   // Edit
+            PublisherTela publisherTela = new PublisherTela(eventManager);
+            publisherTela.UserUpdateEvent();
 
-        voltarClicked();
+            voltarClicked();
+            setUpdate(false);
+        }
+
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         navigation = NavigationSingleton.getInstance();
     }
+
+    void preencheTextField(ClienteModel aluno) {
+
+        txtID.setText(Integer.toString(aluno.getId()));
+        txtTelefone.setText(aluno.getTelefone());
+        txtEmail.setText(aluno.getEmail());
+        txtNomeCliente.setText(aluno.getNome());
+    }
+
+    void setUpdate(boolean b) {
+        this.update = b;
+
+    }
 }
+
+
