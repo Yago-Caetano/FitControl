@@ -1,6 +1,7 @@
 package br.com.fitcontrol.fitcontrol;
 
 import br.com.fitcontrol.fitcontrol.events.EventManager;
+import br.com.fitcontrol.fitcontrol.log.LogSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
@@ -13,14 +14,19 @@ import java.io.IOException;
 
 public class FitControlMain extends Application {
 
+
+
     NavigationSingleton navigation;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        LogSingleton log = LogSingleton.getInstance();
+        log.GeraLog("TESTE - LOG");
+
         navigation = NavigationSingleton.getInstance();
         navigation.setStage(primaryStage);
-
-
 
 
         /*//FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource("main-screen.fxml"));
@@ -41,6 +47,8 @@ public class FitControlMain extends Application {
             }
         });
         primaryStage.show();
+
+
     }
 
 }
