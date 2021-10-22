@@ -39,8 +39,6 @@ public class ClientEditScreenController implements Initializable {
     private NavigationSingleton navigation;
     private boolean update;
     @FXML
-    private Button voltar;
-    @FXML
     protected void voltarClicked() {
         try {
             navigation.goBack(new iNavCallback() {

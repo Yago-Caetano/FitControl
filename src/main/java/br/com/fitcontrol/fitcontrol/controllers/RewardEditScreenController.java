@@ -1,9 +1,14 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
+import br.com.fitcontrol.fitcontrol.FitControlContext;
 import br.com.fitcontrol.fitcontrol.FitControlMain;
+import br.com.fitcontrol.fitcontrol.events.EventManager;
+import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.models.PagamentoModel;
+import br.com.fitcontrol.fitcontrol.models.RecompensaModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
+import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,17 +24,14 @@ import java.util.ResourceBundle;
 
 public class RewardEditScreenController implements Initializable {
     @FXML
-    public TableView<PagamentoModel> tabela;
+    public TextField txtID;
     @FXML
-    public TableColumn<PagamentoModel, Integer> id;
+    public TextField txtTitulo;
     @FXML
-    public  TableColumn<PagamentoModel, String> data;
-    @FXML
-    public  TableColumn<PagamentoModel, Double> valor;
+    public TextField txtQtPontos;
 
     private NavigationSingleton navigation;
-    @FXML
-    private Button voltar;
+    private boolean update;
     @FXML
     protected void voltarClicked() {
         try {
@@ -45,8 +48,43 @@ public class RewardEditScreenController implements Initializable {
         }
     }
 
+    @FXML
+    protected void salvarClicked() {
+        EventManager eventManager = new EventManager();
+        FitControlContext context = new FitControlContext();
+        RecompensaModel recompensa = new RecompensaModel();
+
+        recompensa.setId(Integer.parseInt(txtID.getText()));
+        recompensa.setDescricao(txtTitulo.getText());
+        recompensa.setPontosNecessarios(Double.parseDouble(txtQtPontos.getText()));
+
+        context.setRecompensaData(recompensa);
+
+        //Verifica se é Edit ou Insert
+        if(update == false){ //Insert
+            PublisherTela publisherTela = new PublisherTela(eventManager);
+            publisherTela.RewardRegisterEvent();
+
+            voltarClicked();
+        }
+        else{   // Edit
+            PublisherTela publisherTela = new PublisherTela(eventManager);
+            publisherTela.RewardUpdateEvent(context);
+            setUpdate(false);
+
+            voltarClicked();
+        }
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         navigation = NavigationSingleton.getInstance();
     }
+
+    void setUpdate(boolean b) {
+        this.update = b;
+
+    }
 }
+

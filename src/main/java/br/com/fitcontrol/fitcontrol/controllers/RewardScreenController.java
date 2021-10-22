@@ -56,8 +56,23 @@ public class RewardScreenController implements Initializable {
             e.printStackTrace();
         }
     }
+    @FXML
+    protected void novaRecompensaClicked() {
+        executeNavigation(NavigationSingleton.REWARDS_EDIT_SCREEN);
+    }
 
 
+    private void executeNavigation(int screenId)
+    {
+        navigation.navigate(screenId, new iNavCallback() {
+            @Override
+            public void navigateCb(String screenName) throws IOException {
+                FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
+                Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
+                navigation.getStage().setScene(scene);
+            }
+        });
+    }
 
 
     @Override

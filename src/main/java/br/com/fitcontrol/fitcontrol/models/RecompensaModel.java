@@ -14,6 +14,9 @@ public class RecompensaModel {
         this.PontosNecessarios = Pontos;
     }
 
+    public RecompensaModel() {
+    }
+
     public String getDescricao() {
         return Descricao;
     }

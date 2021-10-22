@@ -44,9 +44,9 @@ public class PublisherTela {
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_REWARD_REGISTER,c);
     }
 
-    public void RewardUpdateEvent()
+    public void RewardUpdateEvent(FitControlContext c)
     {
-        FitControlContext c = new FitControlContext();
+        //FitControlContext c = new FitControlContext();
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_REWARD_UPDATE,c);
     }
 

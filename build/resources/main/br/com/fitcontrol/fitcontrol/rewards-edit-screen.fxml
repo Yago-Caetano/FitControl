@@ -68,7 +68,7 @@
                <Insets left="100.0" right="700.0" top="290.0" />
             </StackPane.margin>
          </TextField>
-         <Button fx:id="BtnSalvar" mnemonicParsing="false" prefHeight="72.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Salvar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+         <Button fx:id="BtnSalvar" mnemonicParsing="false" onAction="#salvarClicked" prefHeight="72.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Salvar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
             <StackPane.margin>
                <Insets left="130.0" top="650.0" />
             </StackPane.margin>
@@ -76,20 +76,12 @@
                <Font name="Arial" size="23.0" />
             </font>
          </Button>
-         <Button fx:id="BtnCancelar" layoutX="140.0" layoutY="610.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Cancelar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+         <Button fx:id="BtnCancelar" layoutX="140.0" layoutY="610.0" mnemonicParsing="false" onAction="#voltarClicked" prefHeight="72.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Cancelar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
             <font>
                <Font name="Arial" size="23.0" />
             </font>
             <StackPane.margin>
                <Insets left="350.0" top="650.0" />
-            </StackPane.margin>
-         </Button>
-         <Button fx:id="BtnVoltar" mnemonicParsing="false" onMouseClicked="#voltarClicked" prefHeight="72.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Voltar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
-            <font>
-               <Font name="Arial" size="23.0" />
-            </font>
-            <StackPane.margin>
-               <Insets left="1200.0" top="720.0" />
             </StackPane.margin>
          </Button>
          <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="232.0" text="Quantidade de pontos" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
