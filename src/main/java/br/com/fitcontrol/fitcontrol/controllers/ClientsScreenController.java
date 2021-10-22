@@ -1,11 +1,14 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
 
+import br.com.fitcontrol.fitcontrol.FitControlContext;
 import br.com.fitcontrol.fitcontrol.FitControlMain;
+import br.com.fitcontrol.fitcontrol.events.EventManager;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
+import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -128,7 +131,14 @@ public class ClientsScreenController implements Initializable {
                     {
                         btnDeletar.setStyle("-fx-background-color:#e05f55;");
                         btnDeletar.setOnAction((ActionEvent event) -> {
-                            ClienteModel data = getTableView().getItems().get(getIndex());
+                            ClienteModel cliente = getTableView().getItems().get(getIndex());
+
+                            EventManager eventManager = new EventManager();
+                            FitControlContext context = new FitControlContext();
+                            PublisherTela publisherTela = new PublisherTela(eventManager);
+                            context.setClienteData(cliente);
+
+                            publisherTela.UserDeleteEvent(context);
                         });
 
                     }

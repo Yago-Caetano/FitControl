@@ -78,9 +78,9 @@ public class ClientEditScreenController implements Initializable {
         else{   // Edit
             PublisherTela publisherTela = new PublisherTela(eventManager);
             publisherTela.UserUpdateEvent();
+            setUpdate(false);
 
             voltarClicked();
-            setUpdate(false);
         }
 
     }

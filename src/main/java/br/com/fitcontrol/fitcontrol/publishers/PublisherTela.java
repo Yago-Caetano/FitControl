@@ -32,9 +32,9 @@ public class PublisherTela {
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_USER_UPDATE,c);
     }
 
-    public void UserDeleteEvent()
+    public void UserDeleteEvent(FitControlContext c)
     {
-        FitControlContext c = new FitControlContext();
+        //FitControlContext c = new FitControlContext();
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_USER_DELETE,c);
     }
 
