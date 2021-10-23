@@ -22,7 +22,7 @@ public class LogSingleton {
     {
         WriteLog wLog = new WriteLog(log);
 
-        wLog.run();
+        wLog.start();
     }
 
 
