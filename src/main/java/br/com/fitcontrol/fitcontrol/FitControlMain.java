@@ -2,6 +2,8 @@ package br.com.fitcontrol.fitcontrol;
 
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
+import br.com.fitcontrol.fitcontrol.serialcom.SerialCommunicatorSingleton;
+import com.fazecast.jSerialComm.SerialPort;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,6 +17,15 @@ public class FitControlMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        SerialCommunicatorSingleton ser = SerialCommunicatorSingleton.getInstance();
+        for(SerialPort s : ser.getAvailablePorts())
+        {
+            System.out.println(s.getSystemPortName() + " - " + s.getDescriptivePortName());
+        }
+        ser.start();
+        ser.connect(ser.getAvailablePorts()[2]);
+
         navigation = NavigationSingleton.getInstance();
         navigation.setStage(primaryStage);
 
