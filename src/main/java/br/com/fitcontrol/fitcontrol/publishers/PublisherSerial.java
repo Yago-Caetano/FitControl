@@ -5,6 +5,7 @@ import br.com.fitcontrol.fitcontrol.events.EnumEventTypes;
 import br.com.fitcontrol.fitcontrol.events.EventManager;
 import br.com.fitcontrol.fitcontrol.listenners.AccessCheckInListenner;
 import br.com.fitcontrol.fitcontrol.listenners.AcessCheckOutListenner;
+import br.com.fitcontrol.fitcontrol.listenners.CatracaErroListenner;
 
 public class PublisherSerial {
 
@@ -14,6 +15,7 @@ public class PublisherSerial {
         mEventManager = eventManager;
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_ACESS_CHECK_IN,new AccessCheckInListenner());
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_ACESS_CHECK_OUT,new AcessCheckOutListenner());
+        mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_CATRACA_ERRO, new CatracaErroListenner());
     }
 
     public void CheckInEvent()
@@ -26,5 +28,11 @@ public class PublisherSerial {
     {
         FitControlContext c = new FitControlContext();
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_ACESS_CHECK_OUT,c);
+    }
+
+    public void ErroEvent()
+    {
+        FitControlContext c = new FitControlContext();
+        mEventManager.notify(EnumEventTypes.EVENT_TYPE_CATRACA_ERRO,c);
     }
 }

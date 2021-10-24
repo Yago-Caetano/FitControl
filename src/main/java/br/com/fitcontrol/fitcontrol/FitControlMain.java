@@ -1,7 +1,9 @@
 package br.com.fitcontrol.fitcontrol;
 
+import br.com.fitcontrol.fitcontrol.events.EventManager;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
+import br.com.fitcontrol.fitcontrol.publishers.PublisherSerial;
 import br.com.fitcontrol.fitcontrol.serialcom.SerialCommunicatorSingleton;
 import com.fazecast.jSerialComm.SerialPort;
 import javafx.application.Application;
@@ -18,7 +20,16 @@ public class FitControlMain extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        //event manager
+        EventManager evManager = new EventManager();
+        //publisher serial
+        PublisherSerial publisherSerial = new PublisherSerial(evManager);
+
         SerialCommunicatorSingleton ser = SerialCommunicatorSingleton.getInstance();
+
+        //register publisher
+        ser.registerPublisher(publisherSerial);
+
         for(SerialPort s : ser.getAvailablePorts())
         {
             System.out.println(s.getSystemPortName() + " - " + s.getDescriptivePortName());

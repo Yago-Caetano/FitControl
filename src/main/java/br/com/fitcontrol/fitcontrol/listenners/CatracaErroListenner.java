@@ -2,10 +2,9 @@ package br.com.fitcontrol.fitcontrol.listenners;
 
 import br.com.fitcontrol.fitcontrol.FitControlContext;
 
-public class AcessCheckOutListenner implements ISubscriber{
-
+public class CatracaErroListenner implements ISubscriber{
     @Override
     public void update(FitControlContext context) {
-        System.out.println("SAIU PELA CATRACA");
+        System.out.println("ERRO NA CATRACA");
     }
 }
