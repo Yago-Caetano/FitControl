@@ -65,8 +65,21 @@ public class SerialCommunicatorSingleton extends Thread {
     /**
      * @brief: Send data throught serial port
      */
-    public void sendData(){
+    public void sendData(byte[] data,EnumSerialFunctions function){
+        if(FLAG_PORT_OPENNED)
+        {
+            byte[] sendBuffer = new byte[data.length+3];
 
+            sendBuffer[0] = 0x02;
+            sendBuffer[1] = (byte) function.ordinal();
+            sendBuffer[(sendBuffer.length-1)] = 0x03;
+
+            for(int i = 0; i < data.length;i++)
+            {
+                sendBuffer[i+2] = data[i];
+            }
+            CurrentPort.writeBytes(sendBuffer,sendBuffer.length);
+        }
     }
 
     /**
