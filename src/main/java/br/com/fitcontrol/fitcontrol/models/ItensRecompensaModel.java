@@ -7,10 +7,19 @@ public class ItensRecompensaModel extends Entidade {
 
     private String descricao;
     private String foto;
+    private int idRecompensa;
 
     public ItensRecompensaModel() {
         this.setTipoEntidade(EnumEntidadesDisponiveis.ITENS_RECOMPENSA);
 
+    }
+
+    public int getIdRecompensa() {
+        return idRecompensa;
+    }
+
+    public void setIdRecompensa(int idRecompensa) {
+        this.idRecompensa = idRecompensa;
     }
 
     public String getDescricao() {

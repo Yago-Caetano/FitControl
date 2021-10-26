@@ -25,7 +25,7 @@ public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
 
 
     @Override
-    public void Insert(Entidade entidade) {
+    public void Insert(Entidade entidade) throws SQLException {
         try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA )) {
             String SQL = getInsertCommand((E) entidade);
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
