@@ -8,6 +8,7 @@ import br.com.fitcontrol.fitcontrol.events.EventManager;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherSerial;
+import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import br.com.fitcontrol.fitcontrol.serialcom.SerialCommunicatorSingleton;
 import com.fazecast.jSerialComm.SerialPort;
 import javafx.application.Application;
@@ -33,8 +34,17 @@ public class FitControlMain extends Application {
 
 
         EventManager evManager = new EventManager();
+
+        /**
+         *  Publishers
+         */
         //publisher serial
         PublisherSerial publisherSerial = new PublisherSerial(evManager);
+
+        //publisher tela
+        PublisherTela publisherTela =  PublisherTela.getInstance();
+        publisherTela.registerEventManager(evManager);
+
 
         SerialCommunicatorSingleton ser = SerialCommunicatorSingleton.getInstance();
 

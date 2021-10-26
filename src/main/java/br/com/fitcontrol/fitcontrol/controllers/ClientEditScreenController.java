@@ -4,8 +4,11 @@ package br.com.fitcontrol.fitcontrol.controllers;
 
 import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.models.PagamentoModel;
+import br.com.fitcontrol.fitcontrol.models.UsuarioModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
+import br.com.fitcontrol.fitcontrol.publishers.PublisherSerial;
+import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -34,6 +37,11 @@ public class ClientEditScreenController implements Initializable {
     @FXML
     protected void voltarClicked() {
         try {
+
+            //exemplo disparar evento
+            PublisherTela p = PublisherTela.getInstance();
+            p.RegisterUser(new UsuarioModel());
+
             navigation.goBack(new iNavCallback() {
                 @Override
                 public void navigateCb(String screenName) throws IOException {
