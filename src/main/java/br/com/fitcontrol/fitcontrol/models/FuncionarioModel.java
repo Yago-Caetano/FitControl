@@ -1,25 +1,13 @@
 package br.com.fitcontrol.fitcontrol.models;
 
-public class FuncionarioModel {
-    private int id;
-    private String nome;
-    private int nivel;
+import br.com.fitcontrol.fitcontrol.Basis.Entidade;
 
-    public FuncionarioModel(int id, String nome, int nivel) {
-        this.id = id;
-        this.nome = nome;
-        this.nivel = nivel;
-    }
+public class FuncionarioModel  extends UsuarioModel {
 
-    public int getId() {
-        return id;
-    }
 
-    public String getNome() {
-        return nome;
+    public FuncionarioModel(int id, String nome,int nivel) {
+        super(id,nome,(byte)nivel);
     }
-
-    public int getNivel() {
-        return nivel;
-    }
+    public FuncionarioModel()
+    {}
 }

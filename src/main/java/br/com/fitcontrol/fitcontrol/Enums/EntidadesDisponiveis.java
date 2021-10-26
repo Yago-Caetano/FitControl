@@ -1,9 +1,15 @@
-package main.java.br.com.fitcontrol.fitcontrol.Enums;
+package br.com.fitcontrol.fitcontrol.Enums;
 
 public enum EntidadesDisponiveis {
-    USUARIO("usuario"),
-    PEDIDO("pedido"),
-    PRODUTO("produto");
+    USUARIO("funcionario ou cliente"),
+    FUNCIONARIO ("funcionario"),
+    CLIENTE ("cliente"),
+    CATRACA("catraca"),
+    ACESSO("acesso"),
+    PONTUACAO("pontuacao"),
+    PAGAMENTO("pagamento"),
+    ITENS_RECOMPENSA("itens da recompensa"),
+    RECOMPENSA("recompensa");
 
     private String descricao;
 

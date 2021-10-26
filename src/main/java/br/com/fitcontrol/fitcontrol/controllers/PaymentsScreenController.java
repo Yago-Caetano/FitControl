@@ -17,6 +17,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 
 public class PaymentsScreenController implements Initializable {
@@ -64,10 +66,16 @@ public class PaymentsScreenController implements Initializable {
         valor.setCellValueFactory(
                 new PropertyValueFactory<PagamentoModel, Double>("valor"));
 
-
-        ObservableList<PagamentoModel> list = FXCollections.observableArrayList(new PagamentoModel(1 ,"09/07/2004",19.85),
-                new PagamentoModel(2 ,"03/08/2005",20.78),new PagamentoModel(3 ,"30/06/2006",7.81),
-                new PagamentoModel(4 ,"27/09/2021",210.62));
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        ObservableList<PagamentoModel> list = null;
+        try {
+            list = FXCollections.observableArrayList(new PagamentoModel(1 ,(java.sql.Date)format.parse("09/07/2004"),19.85),
+                    new PagamentoModel(2 ,(java.sql.Date)format.parse("03/08/2005"),20.78),
+                    new PagamentoModel(3 ,(java.sql.Date)format.parse("30/06/2006"),7.81),
+                    new PagamentoModel(4 ,(java.sql.Date)format.parse("27/09/2021"),210.62));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         tabela.setItems(list);
 

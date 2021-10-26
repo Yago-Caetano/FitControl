@@ -1,6 +1,6 @@
 package br.com.fitcontrol.fitcontrol.dao;
 
-import main.java.br.com.fitcontrol.fitcontrol.Basis.Entidade;
+import br.com.fitcontrol.fitcontrol.Basis.Entidade;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,8 +17,10 @@ public abstract class PadraoDAO <E extends Entidade> {
         this.entityClass = entityClass;
     }
 
-    public abstract E seleciona(int id);
-    public abstract E localiza(String codigo) throws SQLException;
+    public abstract E localiza(int codigo) throws SQLException;
+    public abstract void Insert(E entidade);
+    public abstract void Update(E entidade);
+    public abstract void Delete(E entidade);
     public abstract ArrayList<E> lista() throws SQLException;
 
     protected E getInstanceOfE()

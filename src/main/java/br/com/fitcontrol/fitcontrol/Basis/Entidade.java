@@ -1,4 +1,4 @@
-package main.java.br.com.fitcontrol.fitcontrol.Basis;
+package br.com.fitcontrol.fitcontrol.Basis;
 
 public class Entidade {
     private int id;
