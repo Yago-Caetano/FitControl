@@ -31,7 +31,7 @@ public class EventManager {
         }
     }
 
-    public void notify(EnumEventTypes event, FitControlContext context){
+    public synchronized void notify(EnumEventTypes event, FitControlContext context){
         for (EventModel e: Events) {
             if(e.getEventType() == event)
             {
