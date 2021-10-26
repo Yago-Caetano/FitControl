@@ -1,11 +1,12 @@
 package br.com.fitcontrol.fitcontrol.models;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
-import br.com.fitcontrol.fitcontrol.Enums.TipoUsuarios;
+import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
+import br.com.fitcontrol.fitcontrol.Enums.EnumTipoUsuarios;
 
 public class UsuarioModel  extends Entidade {
 
-    private TipoUsuarios tipo;
+    private EnumTipoUsuarios tipo;
     private String nome;
     private byte nivel;
     private String login;
@@ -31,12 +32,15 @@ public class UsuarioModel  extends Entidade {
     }
     public UsuarioModel()
     {
+        this.setTipoEntidade(EnumEntidadesDisponiveis.USUARIO);
 
     }
     public UsuarioModel(int id, String nome, byte nivel) {
         super.setId(id);
         this.nome = nome;
         this.nivel = nivel;
+        this.setTipoEntidade(EnumEntidadesDisponiveis.USUARIO);
+
     }
     public UsuarioModel ConvertToFuncOrCliente()
     {
@@ -68,11 +72,11 @@ public class UsuarioModel  extends Entidade {
         this.pontos = pontos;
     }
 
-    public TipoUsuarios getTipo() {
+    public EnumTipoUsuarios getTipo() {
         return tipo;
     }
 
-    public void setTipo(TipoUsuarios tipo) {
+    public void setTipo(EnumTipoUsuarios tipo) {
         this.tipo = tipo;
     }
 

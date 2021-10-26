@@ -1,7 +1,7 @@
 package br.com.fitcontrol.fitcontrol.dao.Cliente;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
-import br.com.fitcontrol.fitcontrol.Enums.TipoUsuarios;
+import br.com.fitcontrol.fitcontrol.Enums.EnumTipoUsuarios;
 import br.com.fitcontrol.fitcontrol.dao.MySQLDAO;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
@@ -28,7 +28,7 @@ public class ClienteMySQLDAO<E extends Entidade> extends MySQLDAO {
                 SQL= "select * from " + getTabela() + " where Id = ? and NivelAcesso=?";
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
                 stmt.setInt(1, codigo);
-                stmt.setInt(2, TipoUsuarios.CLIENTE.getCode());
+                stmt.setInt(2, EnumTipoUsuarios.CLIENTE.getCode());
                 try (ResultSet rs = stmt.executeQuery()) {
                     if (rs.next()){
                         entidade = (ClienteModel) preencheEntidade(rs);
@@ -45,9 +45,9 @@ public class ClienteMySQLDAO<E extends Entidade> extends MySQLDAO {
         try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
             String SQL;
             if (Has_Status)
-                SQL= "select * from " + getTabela() + " where _Status > 0 and  NivelAcesso="+TipoUsuarios.CLIENTE.getCode();
+                SQL= "select * from " + getTabela() + " where _Status > 0 and  NivelAcesso="+ EnumTipoUsuarios.CLIENTE.getCode();
             else
-                SQL= "select * from " + getTabela() +" where  NivelAcesso="+TipoUsuarios.CLIENTE.getCode();
+                SQL= "select * from " + getTabela() +" where  NivelAcesso="+ EnumTipoUsuarios.CLIENTE.getCode();
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
                 try (ResultSet rs = stmt.executeQuery()) {
                     while (rs.next()){
@@ -82,7 +82,7 @@ public class ClienteMySQLDAO<E extends Entidade> extends MySQLDAO {
         stmt.setString(2,user.getTelefone());
         stmt.setString(3,user.getLogin());
         stmt.setString(4,user.getSenha());
-        stmt.setByte(5, TipoUsuarios.FUNCIONARIO.getCode());
+        stmt.setByte(5, EnumTipoUsuarios.FUNCIONARIO.getCode());
         stmt.setByte(6,user.getNivel());
 
     }

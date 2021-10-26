@@ -2,11 +2,10 @@ package br.com.fitcontrol.fitcontrol.RepositorioMySQL;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
 import br.com.fitcontrol.fitcontrol.Basis.Repositorio;
-import br.com.fitcontrol.fitcontrol.Enums.EntidadesDisponiveis;
+import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 import br.com.fitcontrol.fitcontrol.dao.PadraoDAO;
 import br.com.fitcontrol.fitcontrol.Fabricas.FabricaDAOs;
 import br.com.fitcontrol.fitcontrol.dao.Usuario.UsuarioMySQLDAO;
-import main.java.br.com.fitcontrol.fitcontrol.Enums.TipoRepositorio;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,8 +14,8 @@ public class RepositorioMySQL  extends Repositorio {
 
 
     @Override
-    public Entidade localiza(int codigo, EntidadesDisponiveis tipoEntidade) {
-        PadraoDAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.MYSQL);
+    public Entidade localiza(int codigo, EnumEntidadesDisponiveis tipoEntidade) {
+        PadraoDAO dao = FabricaDAOs.Fabrica(tipoEntidade, main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio.MYSQL);
         Entidade entidade = null;
         try {
             entidade = dao.localiza(codigo);
@@ -27,15 +26,15 @@ public class RepositorioMySQL  extends Repositorio {
     }
 
     @Override
-    public ArrayList<Entidade> GetAll(EntidadesDisponiveis tipoEntidade) throws SQLException {
-        PadraoDAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.MYSQL);
+    public ArrayList<Entidade> GetAll(EnumEntidadesDisponiveis tipoEntidade) throws SQLException {
+        PadraoDAO dao = FabricaDAOs.Fabrica(tipoEntidade, main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio.MYSQL);
 
         return  dao.lista();
     }
 
     @Override
-    public Entidade login(String login, String Senha, EntidadesDisponiveis tipoEntidade) {
-        if (tipoEntidade.equals(EntidadesDisponiveis.USUARIO))
+    public Entidade login(String login, String Senha, EnumEntidadesDisponiveis tipoEntidade) {
+        if (tipoEntidade.equals(EnumEntidadesDisponiveis.USUARIO))
         {
             UsuarioMySQLDAO dao = new UsuarioMySQLDAO();
             Entidade entidade = null;
@@ -50,20 +49,20 @@ public class RepositorioMySQL  extends Repositorio {
     }
 
     @Override
-    public void Insert(Entidade entidade,EntidadesDisponiveis tipoEntidade) {
-        PadraoDAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.MYSQL);
+    public void Insert(Entidade entidade, EnumEntidadesDisponiveis tipoEntidade) {
+        PadraoDAO dao = FabricaDAOs.Fabrica(tipoEntidade, main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio.MYSQL);
         dao.Insert(entidade);
     }
 
     @Override
-    public void Update(Entidade entidade, EntidadesDisponiveis tipoEntidade) {
-        PadraoDAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.MYSQL);
+    public void Update(Entidade entidade, EnumEntidadesDisponiveis tipoEntidade) {
+        PadraoDAO dao = FabricaDAOs.Fabrica(tipoEntidade, main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio.MYSQL);
         dao.Update(entidade);
     }
 
     @Override
-    public void Delete(Entidade entidade, EntidadesDisponiveis tipoEntidade) {
-        PadraoDAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.MYSQL);
+    public void Delete(Entidade entidade, EnumEntidadesDisponiveis tipoEntidade) {
+        PadraoDAO dao = FabricaDAOs.Fabrica(tipoEntidade, main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio.MYSQL);
         dao.Delete(entidade);
     }
 }

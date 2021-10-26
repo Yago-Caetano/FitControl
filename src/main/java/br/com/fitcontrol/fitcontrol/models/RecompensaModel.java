@@ -1,6 +1,7 @@
 package br.com.fitcontrol.fitcontrol.models;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
+import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 
 public class RecompensaModel  extends Entidade {
 
@@ -13,6 +14,8 @@ public class RecompensaModel  extends Entidade {
         this.Descricao = Descricao;
         super.setId(id);
         this.PontosNecessarios = Pontos;
+        this.setTipoEntidade(EnumEntidadesDisponiveis.RECOMPENSA);
+
     }
 
     public String getDescricao() {

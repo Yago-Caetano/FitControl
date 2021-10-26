@@ -1,12 +1,8 @@
 package br.com.fitcontrol.fitcontrol.dao.Catraca;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
-import br.com.fitcontrol.fitcontrol.Enums.TipoUsuarios;
 import br.com.fitcontrol.fitcontrol.dao.MySQLDAO;
 import br.com.fitcontrol.fitcontrol.models.CatracaModel;
-import br.com.fitcontrol.fitcontrol.models.ClienteModel;
-import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
-import br.com.fitcontrol.fitcontrol.models.UsuarioModel;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

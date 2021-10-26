@@ -1,11 +1,11 @@
 package main.java.br.com.fitcontrol.fitcontrol.Enums;
 
-public enum TipoRepositorio {
+public enum EnumTipoRepositorio {
     MYSQL("MySQL");
 
     private String descricao;
 
-    private TipoRepositorio(String descricao) {
+    private EnumTipoRepositorio(String descricao) {
         this.descricao = descricao;
     }
 

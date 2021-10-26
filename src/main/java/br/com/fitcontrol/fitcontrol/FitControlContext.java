@@ -1,16 +1,17 @@
 package br.com.fitcontrol.fitcontrol;
 
+import br.com.fitcontrol.fitcontrol.Basis.Entidade;
 import br.com.fitcontrol.fitcontrol.dao.PadraoDAO;
 
 public class FitControlContext {
 
-   PadraoDAO daoData;
+    Entidade entityData;
 
-    public PadraoDAO getDaoData() {
-        return daoData;
+    public Entidade getEntityData() {
+        return entityData;
     }
 
-    public void setDaoData(PadraoDAO daoData) {
-        this.daoData = daoData;
+    public void setEntityData(Entidade entityData) {
+        this.entityData = entityData;
     }
 }

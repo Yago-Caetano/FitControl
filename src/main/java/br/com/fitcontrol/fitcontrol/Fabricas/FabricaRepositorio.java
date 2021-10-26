@@ -7,7 +7,7 @@ import br.com.fitcontrol.fitcontrol.RepositorioMySQL.RepositorioMySQL;
 public class  FabricaRepositorio {
 
     public static Repositorio Fabrica() throws Exception {
-        if (Config.getInstance().getTipoRepositorio() == main.java.br.com.fitcontrol.fitcontrol.Enums.TipoRepositorio.MYSQL)
+        if (Config.getInstance().getTipoRepositorio() == main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio.MYSQL)
             return new RepositorioMySQL();
         else
             throw new Exception("ERRO");

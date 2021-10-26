@@ -1,6 +1,7 @@
 package br.com.fitcontrol.fitcontrol.models;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
+import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 
 public class CatracaModel extends Entidade {
 
@@ -10,9 +11,13 @@ public class CatracaModel extends Entidade {
     private byte status;
 
     public CatracaModel()
-    {}
+    {
+        this.setTipoEntidade(EnumEntidadesDisponiveis.CATRACA);
+    }
+
     public CatracaModel(int id, String modelo) {
         this.modelo = modelo;
+        this.setTipoEntidade(EnumEntidadesDisponiveis.CATRACA);
         super.setId(id);
     }
 

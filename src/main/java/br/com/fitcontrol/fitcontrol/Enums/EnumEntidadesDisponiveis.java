@@ -1,6 +1,6 @@
 package br.com.fitcontrol.fitcontrol.Enums;
 
-public enum EntidadesDisponiveis {
+public enum EnumEntidadesDisponiveis {
     USUARIO("funcionario ou cliente"),
     FUNCIONARIO ("funcionario"),
     CLIENTE ("cliente"),
@@ -9,11 +9,13 @@ public enum EntidadesDisponiveis {
     PONTUACAO("pontuacao"),
     PAGAMENTO("pagamento"),
     ITENS_RECOMPENSA("itens da recompensa"),
+    HISTORIC_RECOMPENSA("historico de recompensa"),
     RECOMPENSA("recompensa");
+
 
     private String descricao;
 
-    private EntidadesDisponiveis(String descricao) {
+    private EnumEntidadesDisponiveis(String descricao) {
         this.descricao = descricao;
     }
 

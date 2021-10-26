@@ -1,5 +1,5 @@
 package br.com.fitcontrol.fitcontrol.Config;
-import main.java.br.com.fitcontrol.fitcontrol.Enums.TipoRepositorio;
+
 public class Config {
     private static Config uniqueInstance;
 
@@ -15,14 +15,14 @@ public class Config {
         return uniqueInstance;
     }
 
-    private TipoRepositorio tipoRepositorio;
+    private main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio enumTipoRepositorio;
 
-    public TipoRepositorio getTipoRepositorio() {
-        return tipoRepositorio;
+    public main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio getTipoRepositorio() {
+        return enumTipoRepositorio;
     }
 
 
-    public void setDatabase(TipoRepositorio tipoRepositorio) {
-        this.tipoRepositorio = tipoRepositorio;
+    public void setDatabase(main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio enumTipoRepositorio) {
+        this.enumTipoRepositorio = enumTipoRepositorio;
     }
 }

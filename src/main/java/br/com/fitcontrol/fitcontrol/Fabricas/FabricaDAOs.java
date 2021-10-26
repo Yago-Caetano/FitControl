@@ -1,12 +1,11 @@
 package br.com.fitcontrol.fitcontrol.Fabricas;
 
-import br.com.fitcontrol.fitcontrol.Enums.EntidadesDisponiveis;
+import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 import br.com.fitcontrol.fitcontrol.dao.PadraoDAO;
 import br.com.fitcontrol.fitcontrol.dao.Usuario.UsuarioMySQLDAO;
-import main.java.br.com.fitcontrol.fitcontrol.Enums.TipoRepositorio;
 
 public class FabricaDAOs {
-    public static br.com.fitcontrol.fitcontrol.dao.PadraoDAO  Fabrica(EntidadesDisponiveis enumEntidade, TipoRepositorio repositorio) {
+    public static br.com.fitcontrol.fitcontrol.dao.PadraoDAO  Fabrica(EnumEntidadesDisponiveis enumEntidade, main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio repositorio) {
         switch (repositorio)
         {
             case MYSQL:
@@ -17,7 +16,7 @@ public class FabricaDAOs {
 
     }
 
-    private static PadraoDAO montaDAOMySQL(EntidadesDisponiveis enumEntidade) {
+    private static PadraoDAO montaDAOMySQL(EnumEntidadesDisponiveis enumEntidade) {
         PadraoDAO retorno;
         switch (enumEntidade)
         {

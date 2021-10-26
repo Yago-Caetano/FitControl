@@ -1,6 +1,7 @@
 package br.com.fitcontrol.fitcontrol.models;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
+import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 
 import java.sql.Date;
 
@@ -9,11 +10,16 @@ public class PagamentoModel  extends Entidade {
     private double valor;
     private int idCliente;
     private int idFuncionario;
-    public PagamentoModel(){}
+    public PagamentoModel(){
+        this.setTipoEntidade(EnumEntidadesDisponiveis.PAGAMENTO);
+
+    }
     public PagamentoModel(int id, Date data, double valor) {
         super.setId(id);
         this.data = data;
         this.valor = valor;
+        this.setTipoEntidade(EnumEntidadesDisponiveis.PAGAMENTO);
+
     }
 
     public int getIdCliente() {

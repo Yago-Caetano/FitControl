@@ -4,21 +4,21 @@ import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum TipoUsuarios {
+public enum EnumTipoUsuarios {
     CLIENTE((byte)1),
     FUNCIONARIO((byte)2);
 
-    private static final Map<Integer,TipoUsuarios> lookup
-            = new HashMap<Integer,TipoUsuarios>();
+    private static final Map<Integer, EnumTipoUsuarios> lookup
+            = new HashMap<Integer, EnumTipoUsuarios>();
 
     static {
-        for(TipoUsuarios w : EnumSet.allOf(TipoUsuarios.class))
+        for(EnumTipoUsuarios w : EnumSet.allOf(EnumTipoUsuarios.class))
             lookup.put((int) w.getCode(), w);
     }
 
     private byte code;
     public byte getCode() { return code; }
-    private TipoUsuarios(byte code) {
+    private EnumTipoUsuarios(byte code) {
         this.code = code;
     }
 

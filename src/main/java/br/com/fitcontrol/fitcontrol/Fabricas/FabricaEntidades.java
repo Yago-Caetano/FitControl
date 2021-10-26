@@ -1,11 +1,10 @@
 package br.com.fitcontrol.fitcontrol.Fabricas;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
-import br.com.fitcontrol.fitcontrol.Enums.EntidadesDisponiveis;
-import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
+import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 
 public class FabricaEntidades {
-    public static Entidade Fabrica(EntidadesDisponiveis enumEntidade) {
+    public static Entidade Fabrica(EnumEntidadesDisponiveis enumEntidade) {
         Entidade retorno;
         switch (enumEntidade)
         {

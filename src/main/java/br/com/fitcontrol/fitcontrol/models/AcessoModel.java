@@ -1,6 +1,7 @@
 package br.com.fitcontrol.fitcontrol.models;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
+import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 
 import java.util.Date;
 
@@ -10,6 +11,10 @@ public class AcessoModel extends Entidade {
     private int idCliente;
     private int idFuncionario;
     private int idCatraca;
+
+    public AcessoModel() {
+        this.setTipoEntidade(EnumEntidadesDisponiveis.ACESSO);
+    }
 
     public int getIdFuncionario() {
         return idFuncionario;

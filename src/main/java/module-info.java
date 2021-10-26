@@ -4,6 +4,8 @@ module br.com.fitcontrol.fitcontrol {
     requires org.junit.jupiter.api;
     requires java.sql;
 
+    requires com.fazecast.jSerialComm;
+
 
     opens br.com.fitcontrol.fitcontrol.controllers to javafx.fxml;
     opens br.com.fitcontrol.fitcontrol.models;

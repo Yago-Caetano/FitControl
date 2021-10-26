@@ -1,6 +1,7 @@
 package br.com.fitcontrol.fitcontrol.models;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
+import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 
 import java.sql.Date;
 
@@ -9,6 +10,11 @@ public class RecompensaHistModel extends Entidade {
     private int pontos;
     private String titulo;
     private int idCliente;
+
+    public RecompensaHistModel() {
+        this.setTipoEntidade(EnumEntidadesDisponiveis.HISTORIC_RECOMPENSA);
+
+    }
 
     public String getTitulo() {
         return titulo;
