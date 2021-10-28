@@ -1,21 +1,44 @@
 package br.com.fitcontrol.fitcontrol.models;
 
-public class PagamentoModel {
-    private int id;
-    private String data;
-    private double valor;
+import br.com.fitcontrol.fitcontrol.Basis.Entidade;
+import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 
-    public PagamentoModel(int id, String data, double valor) {
-        this.id = id;
+import java.sql.Date;
+
+public class PagamentoModel  extends Entidade {
+    private Date data;
+    private double valor;
+    private int idCliente;
+    private int idFuncionario;
+    public PagamentoModel(){
+        this.setTipoEntidade(EnumEntidadesDisponiveis.PAGAMENTO);
+
+    }
+    public PagamentoModel(int id, Date data, double valor) {
+        super.setId(id);
         this.data = data;
         this.valor = valor;
+        this.setTipoEntidade(EnumEntidadesDisponiveis.PAGAMENTO);
+
     }
 
-    public int getId() {
-        return id;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public String getData() {
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public int getIdFuncionario() {
+        return idFuncionario;
+    }
+
+    public void setIdFuncionario(int idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
+
+    public Date getData() {
         return data;
     }
 
@@ -23,11 +46,7 @@ public class PagamentoModel {
         return valor;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
