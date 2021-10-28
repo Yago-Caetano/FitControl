@@ -1,17 +1,21 @@
 package br.com.fitcontrol.fitcontrol.models;
 
-public class RecompensaModel {
+import br.com.fitcontrol.fitcontrol.Basis.Entidade;
+import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
+
+public class RecompensaModel  extends Entidade {
 
     private String Descricao;
 
-    private Double PontosNecessarios;
+    private int PontosNecessarios;
 
-    private Integer id;
-
-    public RecompensaModel(Integer id,Double Pontos,String Descricao) {
+    public RecompensaModel(){}
+    public RecompensaModel(Integer id,int Pontos,String Descricao) {
         this.Descricao = Descricao;
-        this.id = id;
+        super.setId(id);
         this.PontosNecessarios = Pontos;
+        this.setTipoEntidade(EnumEntidadesDisponiveis.RECOMPENSA);
+
     }
 
     public RecompensaModel() {
@@ -25,20 +29,12 @@ public class RecompensaModel {
         Descricao = descricao;
     }
 
-    public Double getPontosNecessarios() {
+    public int getPontosNecessarios() {
         return PontosNecessarios;
     }
 
-    public void setPontosNecessarios(Double pontosNecessarios) {
+    public void setPontosNecessarios(int pontosNecessarios) {
         PontosNecessarios = pontosNecessarios;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     @Override

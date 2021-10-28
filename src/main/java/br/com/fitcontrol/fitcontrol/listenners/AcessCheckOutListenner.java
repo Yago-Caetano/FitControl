@@ -6,6 +6,6 @@ public class AcessCheckOutListenner implements ISubscriber{
 
     @Override
     public void update(FitControlContext context) {
-
+        System.out.println("SAIU PELA CATRACA");
     }
 }
