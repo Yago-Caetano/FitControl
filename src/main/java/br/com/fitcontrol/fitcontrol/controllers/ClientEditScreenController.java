@@ -95,6 +95,9 @@ public class ClientEditScreenController implements Initializable {
         txtTelefone.setText(aluno.getTelefone());
         txtEmail.setText(aluno.getLogin());
         txtNomeCliente.setText(aluno.getNome());
+
+        txtID.setEditable(false);
+        txtID.setDisable(true);
     }
 
     void setUpdate(boolean b) {
