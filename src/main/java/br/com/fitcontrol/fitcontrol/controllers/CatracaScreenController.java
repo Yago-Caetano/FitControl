@@ -28,22 +28,26 @@ public class CatracaScreenController implements Initializable {
     @FXML
     public TableColumn<CatracaModel, Integer> id;
     @FXML
-    public  TableColumn<CatracaModel, String> modelo;
+    public TableColumn<CatracaModel, String> modelo;
 
     private NavigationSingleton navigation;
     @FXML
-    private Button voltar,novoCliente;
+    private Button voltar, novoCliente;
+
+    @FXML
+    private Button liberarAcesso, bloquearAcesso, reiniciarCatraca;
 
     @FXML
     protected void voltarClicked() {
         executeNavigation(NavigationSingleton.MAIN_SCREEN);
     }
+
     @FXML
     protected void novaCatracaClicked() {
         executeNavigation(NavigationSingleton.CATRACA_EDIT_SCREEN);
     }
 
-    public void initialize(URL location, ResourceBundle resources){
+    public void initialize(URL location, ResourceBundle resources) {
         navigation = NavigationSingleton.getInstance();
 
         id.setCellValueFactory(
@@ -51,14 +55,13 @@ public class CatracaScreenController implements Initializable {
         modelo.setCellValueFactory(
                 new PropertyValueFactory<CatracaModel, String>("modelo"));
 
-        ObservableList<CatracaModel> list = FXCollections.observableArrayList( new CatracaModel(1,"Catraca 1"),
-                new CatracaModel(2,"Catraca 2"),new CatracaModel(3,"Catraca 3"));
+        ObservableList<CatracaModel> list = FXCollections.observableArrayList(new CatracaModel(1, "Catraca 1"),
+                new CatracaModel(2, "Catraca 2"), new CatracaModel(3, "Catraca 3"));
 
         tabela.setItems(list);
     }
 
-    private void executeNavigation(int screenId)
-    {
+    private void executeNavigation(int screenId) {
         navigation.navigate(screenId, new iNavCallback() {
             @Override
             public void navigateCb(String screenName) throws IOException {
@@ -67,5 +70,20 @@ public class CatracaScreenController implements Initializable {
                 navigation.getStage().setScene(scene);
             }
         });
+    }
+
+    @FXML
+    protected void liberarAcessoClicked() {
+
+    }
+
+    @FXML
+    protected void bloquearAcessoClicked() {
+
+    }
+
+    @FXML
+    protected void reiniciarCatracaClicked() {
+
     }
 }
