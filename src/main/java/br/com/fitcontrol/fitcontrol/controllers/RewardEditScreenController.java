@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class RewardEditScreenController implements Initializable {
@@ -49,7 +50,7 @@ public class RewardEditScreenController implements Initializable {
     }
 
     @FXML
-    protected void salvarClicked() {
+    protected void salvarClicked() throws SQLException {
         EventManager evtManager = new EventManager();
         RecompensaModel recompensa = new RecompensaModel();
         PublisherTela p = new PublisherTela(evtManager);

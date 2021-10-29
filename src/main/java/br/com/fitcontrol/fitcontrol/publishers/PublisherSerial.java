@@ -7,6 +7,8 @@ import br.com.fitcontrol.fitcontrol.listenners.AccessCheckInListenner;
 import br.com.fitcontrol.fitcontrol.listenners.AcessCheckOutListenner;
 import br.com.fitcontrol.fitcontrol.listenners.CatracaErroListenner;
 
+import java.sql.SQLException;
+
 public class PublisherSerial {
 
     EventManager mEventManager;
@@ -18,20 +20,17 @@ public class PublisherSerial {
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_CATRACA_ERRO, new CatracaErroListenner());
     }
 
-    public void CheckInEvent()
-    {
+    public void CheckInEvent() throws SQLException {
         FitControlContext c = new FitControlContext();
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_ACESS_CHECK_IN,c);
     }
 
-    public void CheckOutEvent()
-    {
+    public void CheckOutEvent() throws SQLException {
         FitControlContext c = new FitControlContext();
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_ACESS_CHECK_OUT,c);
     }
 
-    public void ErroEvent()
-    {
+    public void ErroEvent() throws SQLException {
         FitControlContext c = new FitControlContext();
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_CATRACA_ERRO,c);
     }

@@ -9,7 +9,7 @@ public abstract class Repositorio {
     public abstract Entidade localiza(int codigo, EnumEntidadesDisponiveis tipoEntidade);
     public abstract ArrayList<Entidade> GetAll(EnumEntidadesDisponiveis tipoEntidade) throws SQLException;
     public abstract Entidade login(String login,String Senha, EnumEntidadesDisponiveis tipoEntidade);
-    public abstract void Insert(Entidade entidade, EnumEntidadesDisponiveis tipoEntidade);
+    public abstract void Insert(Entidade entidade, EnumEntidadesDisponiveis tipoEntidade) throws SQLException;
     public abstract void Update(Entidade entidade, EnumEntidadesDisponiveis tipoEntidade);
     public abstract void Delete(Entidade entidade, EnumEntidadesDisponiveis tipoEntidade);
 }
