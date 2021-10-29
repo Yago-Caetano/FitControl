@@ -64,8 +64,6 @@ public class ClientsScreenController implements Initializable {
 
 
     private NavigationSingleton navigation;
-    @FXML
-    private Button voltar,novoCliente;
 
     @FXML
     protected void voltarClicked() {
@@ -120,13 +118,6 @@ public class ClientsScreenController implements Initializable {
 
         ObservableList<ClienteModel> listaTeste = FXCollections.observableArrayList(dao.lista());
 
-        list.addAll(
-                new ClienteModel(1, "Douglas", "Douglas@gmail.com", "4992-8922", 20),
-                new ClienteModel(2, "Rafael", "Rafael@gmail.com", "3471-1195", 30),
-                new ClienteModel(3, "Julio", "Julio@gmail.com", "2781-9895", 70)
-        );
-
-        //tabela.setItems(list);
         tabela.setItems(listaTeste);
     }
 
@@ -145,7 +136,6 @@ public class ClientsScreenController implements Initializable {
                             ClienteModel cliente = getTableView().getItems().get(getIndex());
                             EventManager evtmanager = new EventManager();
 
-                            //context.setEntityData(cliente);
                             PublisherTela p = new PublisherTela(evtmanager);
                             p.DeleteUser(cliente);
 

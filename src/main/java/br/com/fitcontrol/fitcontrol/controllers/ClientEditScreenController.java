@@ -50,6 +50,9 @@ public class ClientEditScreenController implements Initializable {
         navigation = NavigationSingleton.getInstance();
     }
 
+    /***
+     * Salva ou altera um cliente dependendo do valor do boolean update.
+     */
     @FXML
     protected void salvarClicked() throws SQLException {
         EventManager evtManager = new EventManager();
@@ -83,6 +86,9 @@ public class ClientEditScreenController implements Initializable {
 
     }
 
+    /**
+     * Preenche os TextFields da tela com o cliente que deseja editar.
+     */
     void preencheTextField(ClienteModel aluno) {
 
         txtID.setText(Integer.toString(aluno.getId()));
@@ -93,7 +99,6 @@ public class ClientEditScreenController implements Initializable {
 
     void setUpdate(boolean b) {
         this.update = b;
-
     }
 
     private void executeNavigation(int screenId)
