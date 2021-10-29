@@ -34,13 +34,13 @@ public class EmployeeEditScreenController implements Initializable {
         try {
             navigation.goBack(new iNavCallback() {
                 @Override
-                public void navigateCb(String screenName) throws IOException {
+                public void navigateCb(String screenName) throws Exception {
                     FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
                     Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
                     navigation.getStage().setScene(scene);
                 }
             });
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

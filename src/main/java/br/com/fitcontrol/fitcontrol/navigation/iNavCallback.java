@@ -4,5 +4,5 @@ import java.io.IOException;
 
 public interface iNavCallback {
 
-    void navigateCb(String screenName) throws IOException;
+    void navigateCb(String screenName) throws Exception;
 }

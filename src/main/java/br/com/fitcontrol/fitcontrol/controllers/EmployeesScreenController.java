@@ -46,7 +46,7 @@ public class EmployeesScreenController implements Initializable {
                     navigation.getStage().setScene(scene);
                 }
             });
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -56,13 +56,13 @@ public class PaymentsScreenController implements Initializable {
         try {
             navigation.goBack(new iNavCallback() {
                 @Override
-                public void navigateCb(String screenName) throws IOException {
+                public void navigateCb(String screenName) throws Exception {
                     FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
                     Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
                     navigation.getStage().setScene(scene);
                 }
             });
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -86,17 +86,17 @@ public class PaymentsScreenController implements Initializable {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         ObservableList<PagamentoModel> list = null;
         try {
-            list = FXCollections.observableArrayList(new PagamentoModel(1 ,(java.sql.Date)format.parse("09/07/2004"),19.85),
+            /*list = FXCollections.observableArrayList(new PagamentoModel(1 ,(java.sql.Date)format.parse("09/07/2004"),19.85),
                     new PagamentoModel(2 ,(java.sql.Date)format.parse("03/08/2005"),20.78),
                     new PagamentoModel(3 ,(java.sql.Date)format.parse("30/06/2006"),7.81),
-                    new PagamentoModel(4 ,(java.sql.Date)format.parse("27/09/2021"),210.62));
-        } catch (ParseException e) {
+                    new PagamentoModel(4 ,(java.sql.Date)format.parse("27/09/2021"),210.62));*/
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         tabela.setItems(list);
 
-        colunaAcoes();
+        //colunaAcoes();
     }
 
     public void carregarDados() throws SQLException {

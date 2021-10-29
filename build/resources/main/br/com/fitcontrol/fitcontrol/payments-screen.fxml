@@ -9,6 +9,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
+
 <AnchorPane prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.PaymentsScreenController">
     <Pane layoutX="401.0" layoutY="314.0" prefHeight="99.0" prefWidth="658.0" style="-fx-background-radius: 10; -fx-background-color: FFFFFF; -fx-border-color: E9AF00; -fx-border-radius: 10;" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
         <children>
