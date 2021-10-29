@@ -45,7 +45,8 @@ public class ClienteMySQLDAO<E extends Entidade> extends MySQLDAO {
         try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
             String SQL;
             if (Has_Status)
-                SQL= "select * from " + getTabela() + " where _Status > 0 and  NivelAcesso="+ EnumTipoUsuarios.CLIENTE.getCode();
+                //SQL= "select * from " + getTabela() + " where NivelAcesso= 1";
+            SQL= "select * from " + getTabela() + " where _Status > 0 and  NivelAcesso="+ EnumTipoUsuarios.CLIENTE.getCode();
             else
                 SQL= "select * from " + getTabela() +" where  NivelAcesso="+ EnumTipoUsuarios.CLIENTE.getCode();
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
@@ -89,7 +90,7 @@ public class ClienteMySQLDAO<E extends Entidade> extends MySQLDAO {
 
     @Override
     protected Entidade preencheEntidade(ResultSet rs) {
-        FuncionarioModel entidade = new FuncionarioModel();
+        ClienteModel entidade = new ClienteModel();
         try {
             entidade.setId(rs.getInt("id"));
             entidade.setNome(rs.getString("Nome"));

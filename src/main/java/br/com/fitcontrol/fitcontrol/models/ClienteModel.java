@@ -15,4 +15,6 @@ public class ClienteModel  extends UsuarioModel {
 
 
     }
+
+    public ClienteModel(){}
 }

@@ -18,8 +18,6 @@ public class RecompensaModel  extends Entidade {
 
     }
 
-    public RecompensaModel() {
-    }
 
     public String getDescricao() {
         return Descricao;
