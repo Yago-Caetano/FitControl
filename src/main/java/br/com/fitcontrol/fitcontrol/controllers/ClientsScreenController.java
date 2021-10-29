@@ -3,9 +3,11 @@ package br.com.fitcontrol.fitcontrol.controllers;
 
 import br.com.fitcontrol.fitcontrol.FitControlContext;
 import br.com.fitcontrol.fitcontrol.FitControlMain;
+import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
 import br.com.fitcontrol.fitcontrol.events.EventManager;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
+import br.com.fitcontrol.fitcontrol.models.UsuarioModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
@@ -35,6 +37,7 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -74,6 +77,7 @@ public class ClientsScreenController implements Initializable {
     }
 
     ObservableList<ClienteModel>  list = FXCollections.observableArrayList();
+    ClienteMySQLDAO dao = new ClienteMySQLDAO();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -85,13 +89,17 @@ public class ClientsScreenController implements Initializable {
         nome.setCellValueFactory(
                 new PropertyValueFactory<ClienteModel, String>("nome"));
         email.setCellValueFactory(
-                new PropertyValueFactory<ClienteModel, String>("email"));
+                new PropertyValueFactory<ClienteModel, String>("login"));
         telefone.setCellValueFactory(
                 new PropertyValueFactory<ClienteModel, String>("telefone"));
         ponto.setCellValueFactory(
                 new PropertyValueFactory<ClienteModel, Integer>("pontos"));
 
-        carregarDados();
+        try {
+            carregarDados();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         colunaAcoes();
 
     }
@@ -108,7 +116,9 @@ public class ClientsScreenController implements Initializable {
         });
     }
 
-    private void carregarDados(){
+    public void carregarDados() throws SQLException {
+
+        ObservableList<ClienteModel> listaTeste = FXCollections.observableArrayList(dao.lista());
 
         list.addAll(
                 new ClienteModel(1, "Douglas", "Douglas@gmail.com", "4992-8922", 20),
@@ -116,7 +126,8 @@ public class ClientsScreenController implements Initializable {
                 new ClienteModel(3, "Julio", "Julio@gmail.com", "2781-9895", 70)
         );
 
-        tabela.setItems(list);
+        //tabela.setItems(list);
+        tabela.setItems(listaTeste);
     }
 
     private void colunaAcoes(){
@@ -132,13 +143,18 @@ public class ClientsScreenController implements Initializable {
                         btnDeletar.setStyle("-fx-background-color:#e05f55;");
                         btnDeletar.setOnAction((ActionEvent event) -> {
                             ClienteModel cliente = getTableView().getItems().get(getIndex());
+                            EventManager evtmanager = new EventManager();
 
-                            EventManager eventManager = new EventManager();
-                            FitControlContext context = new FitControlContext();
-                            PublisherTela publisherTela = new PublisherTela(eventManager);
-                            context.setClienteData(cliente);
+                            //context.setEntityData(cliente);
+                            PublisherTela p = new PublisherTela(evtmanager);
+                            p.DeleteUser(cliente);
 
-                            publisherTela.UserDeleteEvent(context);
+                            try {
+                                carregarDados();
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
+
                         });
 
                     }

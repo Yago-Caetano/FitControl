@@ -1,10 +1,16 @@
 package br.com.fitcontrol.fitcontrol.listenners;
 
 import br.com.fitcontrol.fitcontrol.FitControlContext;
+import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
+import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 
 public class UserUpdateListenner implements ISubscriber{
     @Override
     public void update(FitControlContext context) {
-        System.out.println("Aluno Atualizado");
+        ClienteModel cliente = new ClienteModel();
+        ClienteMySQLDAO dao = new ClienteMySQLDAO();
+        cliente = (ClienteModel) context.getEntityData();
+        dao.Update(cliente);
+
     }
 }
