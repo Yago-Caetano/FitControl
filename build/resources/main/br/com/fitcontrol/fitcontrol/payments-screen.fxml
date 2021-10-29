@@ -113,7 +113,7 @@
             <TableColumn id="ColunaId" fx:id="id" prefWidth="166.75" text="Id" />
             <TableColumn id="ColunaData" fx:id="data" prefWidth="166.75" text="Data" />
             <TableColumn id="ColunaValor" fx:id="valor" prefWidth="166.75" text="Valor" />
-            <TableColumn prefWidth="166.75" text="Ações" />
+            <TableColumn prefWidth="166.75" text="acao" />
         </columns>
     </TableView>
    <Button fx:id="novoPagamento" layoutX="508.0" layoutY="926.0" mnemonicParsing="false" onAction="#novoPagamentoClicked" prefHeight="34.0" prefWidth="114.0" style="-fx-background-color: #FED355; -fx-border-color: #BE8E00;" text="Novo Pagamento">

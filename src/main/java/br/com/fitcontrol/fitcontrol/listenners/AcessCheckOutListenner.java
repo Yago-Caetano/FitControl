@@ -3,6 +3,7 @@ package br.com.fitcontrol.fitcontrol.listenners;
 import br.com.fitcontrol.fitcontrol.Basis.Repositorio;
 import br.com.fitcontrol.fitcontrol.Fabricas.FabricaRepositorio;
 import br.com.fitcontrol.fitcontrol.FitControlContext;
+import br.com.fitcontrol.fitcontrol.models.CatracaModel;
 
 public class AcessCheckOutListenner implements ISubscriber{
 
@@ -17,7 +18,9 @@ public class AcessCheckOutListenner implements ISubscriber{
 
             r.Insert(context.getEntityData(), context.getEntityData().getTipoEntidade());
 
-            System.out.println("SAIU PELA CATRACA");
+            CatracaModel catraca = new CatracaModel();
+            catraca = (CatracaModel) context.getEntityData();
+            System.out.println("SAIU PELA CATRACA" + catraca.getNome());
 
         } catch (Exception e) {
             e.printStackTrace();

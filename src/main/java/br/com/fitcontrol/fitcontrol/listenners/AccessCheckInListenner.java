@@ -4,6 +4,7 @@ import br.com.fitcontrol.fitcontrol.Basis.Repositorio;
 import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 import br.com.fitcontrol.fitcontrol.Fabricas.FabricaRepositorio;
 import br.com.fitcontrol.fitcontrol.FitControlContext;
+import br.com.fitcontrol.fitcontrol.models.CatracaModel;
 
 public class AccessCheckInListenner implements ISubscriber{
 
@@ -17,7 +18,9 @@ public class AccessCheckInListenner implements ISubscriber{
 
             r.Insert(context.getEntityData(), context.getEntityData().getTipoEntidade());
 
-            System.out.println("ENTROU PELA CATRACA");
+            CatracaModel catraca = new CatracaModel();
+            catraca = (CatracaModel) context.getEntityData();
+            System.out.println("ENTROU PELA CATRACA" + catraca.getNome());
 
         } catch (Exception e) {
             e.printStackTrace();
