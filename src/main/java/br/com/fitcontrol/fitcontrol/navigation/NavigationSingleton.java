@@ -23,6 +23,7 @@ public  class NavigationSingleton {
     public static final int PAYMENT_EDIT_SCREEN = 9;
     public static final int LOGIN_SCREEN = 10;
     public static final int CATRACA_EDIT_SCREEN = 11;
+    public static final int REWARDS_EDIT_SCREEN = 12;
 
 
     private Stack<String> telas;
@@ -113,6 +114,9 @@ public  class NavigationSingleton {
                 break;
             case CATRACA_EDIT_SCREEN:
                 resourceName = "catraca-edit-screen.fxml";
+                break;
+            case REWARDS_EDIT_SCREEN:
+                resourceName = "rewards-edit-screen.fxml";
                 break;
         }
 

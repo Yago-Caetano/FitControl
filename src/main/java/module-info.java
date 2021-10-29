@@ -9,6 +9,7 @@ module br.com.fitcontrol.fitcontrol {
 
     opens br.com.fitcontrol.fitcontrol.controllers to javafx.fxml;
     opens br.com.fitcontrol.fitcontrol.models;
+    opens br.com.fitcontrol.fitcontrol.Basis;
     exports br.com.fitcontrol.fitcontrol;
     exports br.com.fitcontrol.fitcontrol.controllers;
 }

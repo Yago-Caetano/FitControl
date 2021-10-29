@@ -1,15 +1,13 @@
 ## Projeto Fit Control
 <h5>Software de gerenciamento e controle de acesso para academias de pequeno porte<h5><br/>
 
-
-
 <!--te-->
 
 ### Features
 
-- [ ] Cadastro de alunos
-- [ ] Cadastro de Funcionários
-- [ ] Cadastro de recompensas
+- [x] Cadastro de alunos
+- [x] Cadastro de Funcionários
+- [x] Cadastro de recompensas
 - [ ] Comunicação com catraca
 - [x] Software desktop com interface gráfica
 - [ ] Sistema de pontuação por frequencia na academia
@@ -23,7 +21,27 @@
 * A camada de negócio possui interfaces expostas e documentadas
 * A camada de interface com JavaFX
 
- 
+
+ #### 🔌 Comunicação Serial  💻 
+
+
+Abaixo é apresentado a estrutura do protocolo de comunicação da catraca
+
+ <table>
+    <tr>
+      <td>STX</td>
+      <td>FUNÇÃO</td>
+      <td>DADOS</td>
+      <td>ETX</td>
+    </tr>
+    <tr>
+      <td>0x02</td>
+      <td>0xXX</td>
+      <td>0xXX 0xXX 0xXX 0xXX</td>
+      <td>0x03</td>
+    </tr>
+ </table>
+
  
  ### ⚠️ Sobre o desenvolvimento ⚠️
 
@@ -35,6 +53,18 @@
 A figura abaixo exibe como deve ser configurado o IntelliJ
 ![Configuração do IntelliJ](./setup.png)
 
+### Configurar Banco de Dados  🎲  🪑
+
+Na atual revisão a configuração do banco de dados é realizada na classe **MySQLDAO** 
+conforme mostrado abaixo
+
+
+```
+  protected final String USUARIO = "sua credencial de acessp";
+  protected final String SENHA = "sua senha";
+```
+
+Caso o banco não tenha sido instalado, execute esse [arquivo](./MySQL/CriaBancoFitControl.sql)
 
 ### Entregas 💪😎
 

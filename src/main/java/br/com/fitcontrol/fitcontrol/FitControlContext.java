@@ -14,4 +14,5 @@ public class FitControlContext {
     public void setEntityData(Entidade entityData) {
         this.entityData = entityData;
     }
+
 }

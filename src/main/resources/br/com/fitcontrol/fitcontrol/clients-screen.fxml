@@ -14,12 +14,12 @@
         <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffbf00" height="160.0" stroke="BLACK" strokeType="INSIDE" width="1440.0" />
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
-                <image>
-                    <Image url="@icons/icone.png" />
-                </image>
                 <StackPane.margin>
                     <Insets left="160.0" />
                 </StackPane.margin>
+            <image>
+               <Image url="@icons/icone.png" />
+            </image>
             </ImageView>
         </children></StackPane>
    <Pane layoutX="327.0" layoutY="331.0" prefHeight="40.0" prefWidth="884.0" style="-fx-background-color: FFDC75; -fx-border-color: BE8E00;">
@@ -47,7 +47,7 @@
          <TableColumn fx:id="email" prefWidth="204.4" text="Email" />
          <TableColumn fx:id="telefone" prefWidth="204.4" text="Telefone" />
          <TableColumn fx:id="ponto" prefWidth="204.4" text="Pontos" />
-         <TableColumn prefWidth="204.4" text="Ações" />
+         <TableColumn fx:id="acao" prefWidth="204.4" text="Ações" />
       </columns></TableView>
    <Button fx:id="novoCliente" layoutX="200.0" layoutY="331.0" mnemonicParsing="false" onAction="#novoClienteClicked" prefHeight="40.0" prefWidth="88.0" style="-fx-background-color: #FED355; -fx-border-color: #BE8E00;" text="Novo Cliente">
       <font>
