@@ -25,7 +25,7 @@
  #### 🔌 Comunicação Serial  💻 
 
 
-Protocolo de comunicação da catraca
+Abaixo é apresentado a estrutura do protocolo de comunicação da catraca
 
  <table>
     <tr>
@@ -53,6 +53,18 @@ Protocolo de comunicação da catraca
 A figura abaixo exibe como deve ser configurado o IntelliJ
 ![Configuração do IntelliJ](./setup.png)
 
+### Configurar Banco de Dados  🎲  🪑
+
+Na atual revisão a configuração do banco de dados é realizada na classe **MySQLDAO** 
+conforme mostrado abaixo
+
+
+```
+  protected final String USUARIO = "sua credencial de acessp";
+  protected final String SENHA = "sua senha";
+```
+
+Caso o banco não tenha sido instalado, execute esse [arquivo](./MySQL/CriaBancoFitControl.sql)
 
 ### Entregas 💪😎
 

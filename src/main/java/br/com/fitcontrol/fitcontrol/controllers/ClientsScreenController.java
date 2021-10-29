@@ -129,7 +129,6 @@ public class ClientsScreenController implements Initializable {
                 final TableCell<ClienteModel, Void> cell = new TableCell<ClienteModel, Void>() {
 
                     private final Button btnDeletar = new Button("Deletar");
-
                     {
                         btnDeletar.setStyle("-fx-background-color:#e05f55;");
                         btnDeletar.setOnAction((ActionEvent event) -> {
