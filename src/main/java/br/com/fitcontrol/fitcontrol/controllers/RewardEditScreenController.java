@@ -50,28 +50,24 @@ public class RewardEditScreenController implements Initializable {
 
     @FXML
     protected void salvarClicked() {
-        EventManager eventManager = new EventManager();
-        FitControlContext context = new FitControlContext();
+        EventManager evtManager = new EventManager();
         RecompensaModel recompensa = new RecompensaModel();
+        PublisherTela p = new PublisherTela(evtManager);
 
         recompensa.setId(Integer.parseInt(txtID.getText()));
         recompensa.setDescricao(txtTitulo.getText());
-        recompensa.setPontosNecessarios(Double.parseDouble(txtQtPontos.getText()));
+        recompensa.setPontosNecessarios(Integer.parseInt(txtQtPontos.getText()));
 
-        context.setRecompensaData(recompensa);
+
 
         //Verifica se é Edit ou Insert
-        if(update == false){ //Insert
-            PublisherTela publisherTela = new PublisherTela(eventManager);
-            publisherTela.RewardRegisterEvent();
-
+        if(!update){                        //Insert
+            p.RegisterReward(recompensa);
             voltarClicked();
         }
-        else{   // Edit
-            PublisherTela publisherTela = new PublisherTela(eventManager);
-            publisherTela.RewardUpdateEvent(context);
+        else{                               // Edit
+            p.UpdateReward(recompensa);
             setUpdate(false);
-
             voltarClicked();
         }
 

@@ -1,8 +1,15 @@
 package br.com.fitcontrol.fitcontrol;
 
+import br.com.fitcontrol.fitcontrol.Basis.Repositorio;
+import br.com.fitcontrol.fitcontrol.Config.Config;
+import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
+import br.com.fitcontrol.fitcontrol.Fabricas.FabricaRepositorio;
+import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
 import br.com.fitcontrol.fitcontrol.events.EventManager;
+import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
+import br.com.fitcontrol.fitcontrol.publishers.PublisherSerial;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class FitControlMain extends Application {
 
@@ -17,19 +25,44 @@ public class FitControlMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Config.getInstance().setDatabase(main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio.MYSQL);
         navigation = NavigationSingleton.getInstance();
         navigation.setStage(primaryStage);
 
 
+        Repositorio repositorio = FabricaRepositorio.Fabrica();
+        var user  =repositorio.GetAll(EnumEntidadesDisponiveis.USUARIO);
 
 
-        /*//FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource("main-screen.fxml"));
-        FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource("rewards-screen.fxml"));
+        EventManager evManager = new EventManager();
 
-        Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
-        primaryStage.setTitle("Fit Control");
-        primaryStage.setScene(scene);
-        primaryStage.show();*/
+        /**
+         *  Publishers
+         */
+        //publisher serial
+        PublisherSerial publisherSerial = new PublisherSerial(evManager);
+
+        //publisher tela
+        PublisherTela publisherTela = new PublisherTela(evManager);
+/*
+        SerialCommunicatorSingleton ser = SerialCommunicatorSingleton.getInstance();
+
+        //register publisher
+        ser.registerPublisher(publisherSerial);
+
+        //teste para abertura de porta serial
+        for(SerialPort s : ser.getAvailablePorts())
+        {
+            System.out.println(s.getSystemPortName() + " - " + s.getDescriptivePortName());
+        }
+        ser.start();
+        ser.connect(ser.getAvailablePorts()[2]);*/
+
+
+
+        navigation = NavigationSingleton.getInstance();
+        navigation.setStage(primaryStage);
+
         navigation.navigate(NavigationSingleton.LOGIN_SCREEN, new iNavCallback() {
             @Override
             public void navigateCb(String screenName) throws IOException {
