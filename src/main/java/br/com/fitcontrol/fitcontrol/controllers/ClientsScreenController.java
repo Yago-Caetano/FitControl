@@ -136,7 +136,11 @@ public class ClientsScreenController implements Initializable {
                             EventManager evtmanager = new EventManager();
 
                             PublisherTela p = new PublisherTela(evtmanager);
-                            p.DeleteUser(cliente);
+                            try {
+                                p.DeleteUser(cliente);
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
 
                             try {
                                 carregarDados();

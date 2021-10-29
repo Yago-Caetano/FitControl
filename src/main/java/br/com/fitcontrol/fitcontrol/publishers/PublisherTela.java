@@ -7,6 +7,8 @@ import br.com.fitcontrol.fitcontrol.events.EventManager;
 import br.com.fitcontrol.fitcontrol.listenners.*;
 import br.com.fitcontrol.fitcontrol.serialcom.SerialCommunicatorSingleton;
 
+import java.sql.SQLException;
+
 public class PublisherTela {
 
     /*private static PublisherTela instance = new PublisherTela();
@@ -36,32 +38,27 @@ public class PublisherTela {
     }
 
 
-    public void RegisterUser(Entidade e)
-    {
+    public void RegisterUser(Entidade e) throws SQLException {
         FitControlContext c = new FitControlContext();
         c.setEntityData(e);
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_USER_REGISTER,c);
     }
-    public void DeleteUser(Entidade e)
-    {
+    public void DeleteUser(Entidade e) throws SQLException {
         FitControlContext c = new FitControlContext();
         c.setEntityData(e);
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_USER_DELETE,c);
     }
-    public void UpdateUser(Entidade e)
-    {
+    public void UpdateUser(Entidade e) throws SQLException {
         FitControlContext c = new FitControlContext();
         c.setEntityData(e);
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_USER_UPDATE,c);
     }
-    public void RegisterReward(Entidade e)
-    {
+    public void RegisterReward(Entidade e) throws SQLException {
         FitControlContext c = new FitControlContext();
         c.setEntityData(e);
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_REWARD_REGISTER,c);
     }
-    public void UpdateReward(Entidade e)
-    {
+    public void UpdateReward(Entidade e) throws SQLException {
         FitControlContext c = new FitControlContext();
         c.setEntityData(e);
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_REWARD_UPDATE,c);

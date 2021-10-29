@@ -122,7 +122,11 @@ public class PaymentsScreenController implements Initializable {
                             EventManager evtmanager = new EventManager();
 
                             PublisherTela p = new PublisherTela(evtmanager);
-                            p.DeleteUser(pagamento);
+                            try {
+                                p.DeleteUser(pagamento);
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
 
                             try {
                                 carregarDados();

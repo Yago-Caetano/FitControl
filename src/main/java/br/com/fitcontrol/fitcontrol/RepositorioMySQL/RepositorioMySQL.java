@@ -49,7 +49,7 @@ public class RepositorioMySQL  extends Repositorio {
     }
 
     @Override
-    public void Insert(Entidade entidade, EnumEntidadesDisponiveis tipoEntidade) {
+    public void Insert(Entidade entidade, EnumEntidadesDisponiveis tipoEntidade) throws SQLException {
         PadraoDAO dao = FabricaDAOs.Fabrica(tipoEntidade, main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio.MYSQL);
         dao.Insert(entidade);
     }

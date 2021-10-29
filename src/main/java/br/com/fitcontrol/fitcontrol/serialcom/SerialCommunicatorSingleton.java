@@ -2,6 +2,7 @@ package br.com.fitcontrol.fitcontrol.serialcom;
 
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 
+import java.sql.SQLException;
 import java.util.Stack;
 
 import br.com.fitcontrol.fitcontrol.publishers.PublisherSerial;
@@ -118,8 +119,7 @@ public class SerialCommunicatorSingleton extends Thread {
     }
 
 
-    private void checkFunctionAndDispatchEvent(int[] data,int function)
-    {
+    private void checkFunctionAndDispatchEvent(int[] data,int function) throws SQLException {
         if(mPublisher == null)
             return;
 
@@ -149,8 +149,7 @@ public class SerialCommunicatorSingleton extends Thread {
      * @brief: Handle serial incoming data
      * @param bruteSerialData
      */
-    private void handleIncommingData(byte[] bruteSerialData)
-    {
+    private void handleIncommingData(byte[] bruteSerialData) throws SQLException {
         //simple validation
         if((bruteSerialData[0] == 2) && (bruteSerialData[bruteSerialData.length-1] == 3))
         {
