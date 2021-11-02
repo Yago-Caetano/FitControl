@@ -22,207 +22,32 @@
                 </StackPane.margin>
             </ImageView>
         </children></StackPane>
-    <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#ffffff00" height="758.0" layoutX="52.0" layoutY="203.0" stroke="#d79d04" strokeType="INSIDE" width="1340.0" />
-    <GridPane fx:id="gridRecompensas" layoutX="140.0" layoutY="271.0" prefHeight="660.0" prefWidth="1152.0" stylesheets="@css/reward.css" vgap="32.0">
-        <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints maxHeight="382.0" minHeight="10.0" prefHeight="251.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="455.0" minHeight="10.0" prefHeight="279.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="218.0" minHeight="10.0" prefHeight="218.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-        <children>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #A27811; -fx-background-radius: 16;">
-                <opaqueInsets>
-                    <Insets />
-                </opaqueInsets>
-                <GridPane.margin>
-                    <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
-                </GridPane.margin>
-                <children>
-                    <Label text="RECOMPENSA X" textFill="WHITE">
-                        <font>
-                            <Font name="System Bold" size="12.0" />
-                        </font>
-                        <VBox.margin>
-                            <Insets bottom="8.0" top="8.0" />
-                        </VBox.margin>
-                    </Label>
-                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                            <Image url="@icons/award_icon.png" />
-                        </image>
-                    </ImageView>
-                    <Button mnemonicParsing="false" style="-fx-background-color: none; -fx-border-color: #ffffff; -fx-border-radius: 8; -fx-min-width: 240;" text="Aplicar" textFill="WHITE">
-                        <opaqueInsets>
-                            <Insets />
-                        </opaqueInsets>
-                        <VBox.margin>
-                            <Insets bottom="8.0" top="8.0" />
-                        </VBox.margin>
-                    </Button>
-                </children></VBox>
-         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #A27811; -fx-background-radius: 16;" GridPane.columnIndex="1">
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
+    <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#ffffff00" height="758.0" layoutX="52.0" layoutY="225.0" stroke="#d79d04" strokeType="INSIDE" width="1340.0" />
+   <ScrollPane layoutX="40.0" layoutY="224.0" prefHeight="766.0" prefWidth="1358.0">
+     <content>
+       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
             <children>
-               <Label text="RECOMPENSA X" textFill="WHITE">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-                  <VBox.margin>
-                     <Insets bottom="8.0" top="8.0" />
-                  </VBox.margin>
-               </Label>
-               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@icons/award_icon.png" />
-                  </image>
-               </ImageView>
-               <Button mnemonicParsing="false" style="-fx-background-color: none; -fx-border-color: #ffffff; -fx-border-radius: 8; -fx-min-width: 240;" text="Aplicar" textFill="WHITE">
-                  <opaqueInsets>
-                     <Insets />
-                  </opaqueInsets>
-                  <VBox.margin>
-                     <Insets bottom="8.0" top="8.0" />
-                  </VBox.margin>
-               </Button>
+                <GridPane fx:id="gridRecompensas" layoutX="-10.0" layoutY="80.0" prefHeight="750.0" prefWidth="1162.0" stylesheets="@css/reward.css" vgap="32.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                     <RowConstraints maxHeight="382.0" minHeight="240.0" prefHeight="240.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="382.0" minHeight="240.0" prefHeight="240.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="455.0" minHeight="240.0" prefHeight="240.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="200.0" minHeight="200.0" prefHeight="200.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                </GridPane>
             </children>
-            <GridPane.margin>
-               <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
-            </GridPane.margin>
-         </VBox>
-         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #A27811; -fx-background-radius: 16;" GridPane.columnIndex="2">
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-            <children>
-               <Label text="RECOMPENSA X" textFill="WHITE">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-                  <VBox.margin>
-                     <Insets bottom="8.0" top="8.0" />
-                  </VBox.margin>
-               </Label>
-               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@icons/award_icon.png" />
-                  </image>
-               </ImageView>
-               <Button mnemonicParsing="false" style="-fx-background-color: none; -fx-border-color: #ffffff; -fx-border-radius: 8; -fx-min-width: 240;" text="Aplicar" textFill="WHITE">
-                  <opaqueInsets>
-                     <Insets />
-                  </opaqueInsets>
-                  <VBox.margin>
-                     <Insets bottom="8.0" top="8.0" />
-                  </VBox.margin>
-               </Button>
-            </children>
-            <GridPane.margin>
-               <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
-            </GridPane.margin>
-         </VBox>
-         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #A27811; -fx-background-radius: 16;" GridPane.rowIndex="1">
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-            <children>
-               <Label text="RECOMPENSA X" textFill="WHITE">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-                  <VBox.margin>
-                     <Insets bottom="8.0" top="8.0" />
-                  </VBox.margin>
-               </Label>
-               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@icons/award_icon.png" />
-                  </image>
-               </ImageView>
-               <Button mnemonicParsing="false" style="-fx-background-color: none; -fx-border-color: #ffffff; -fx-border-radius: 8; -fx-min-width: 240;" text="Aplicar" textFill="WHITE">
-                  <opaqueInsets>
-                     <Insets />
-                  </opaqueInsets>
-                  <VBox.margin>
-                     <Insets bottom="8.0" top="8.0" />
-                  </VBox.margin>
-               </Button>
-            </children>
-            <GridPane.margin>
-               <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
-            </GridPane.margin>
-         </VBox>
-         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #A27811; -fx-background-radius: 16;" GridPane.columnIndex="1" GridPane.rowIndex="1">
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-            <children>
-               <Label text="RECOMPENSA X" textFill="WHITE">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-                  <VBox.margin>
-                     <Insets bottom="8.0" top="8.0" />
-                  </VBox.margin>
-               </Label>
-               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@icons/award_icon.png" />
-                  </image>
-               </ImageView>
-               <Button mnemonicParsing="false" style="-fx-background-color: none; -fx-border-color: #ffffff; -fx-border-radius: 8; -fx-min-width: 240;" text="Aplicar" textFill="WHITE">
-                  <opaqueInsets>
-                     <Insets />
-                  </opaqueInsets>
-                  <VBox.margin>
-                     <Insets bottom="8.0" top="8.0" />
-                  </VBox.margin>
-               </Button>
-            </children>
-            <GridPane.margin>
-               <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
-            </GridPane.margin>
-         </VBox>
-         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #A27811; -fx-background-radius: 16;" GridPane.columnIndex="2" GridPane.rowIndex="1">
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-            <children>
-               <Label text="RECOMPENSA X" textFill="WHITE">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-                  <VBox.margin>
-                     <Insets bottom="8.0" top="8.0" />
-                  </VBox.margin>
-               </Label>
-               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@icons/award_icon.png" />
-                  </image>
-               </ImageView>
-               <Button mnemonicParsing="false" style="-fx-background-color: none; -fx-border-color: #ffffff; -fx-border-radius: 8; -fx-min-width: 240;" text="Aplicar" textFill="WHITE">
-                  <opaqueInsets>
-                     <Insets />
-                  </opaqueInsets>
-                  <VBox.margin>
-                     <Insets bottom="8.0" top="8.0" />
-                  </VBox.margin>
-               </Button>
-            </children>
-            <GridPane.margin>
-               <Insets bottom="8.0" left="16.0" right="16.0" top="8.0" />
-            </GridPane.margin>
-         </VBox>
-        </children>
-    </GridPane>
-    <Label layoutX="544.0" layoutY="215.0" text="Recompensas Disponíveis">
+         </AnchorPane>
+     </content>
+      <padding>
+         <Insets bottom="16.0" left="16.0" right="16.0" top="16.0" />
+      </padding>
+   </ScrollPane>
+    <Label layoutX="544.0" layoutY="232.0" text="Recompensas Disponíveis">
         <font>
             <Font name="System Bold" size="25.0" />
         </font>
@@ -239,7 +64,7 @@
             </DropShadow>
         </effect>
     </Button>
-   <Button fx:id="voltar1" layoutX="153.0" layoutY="210.0" mnemonicParsing="false" onAction="#novaRecompensaClicked" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: FED355; -fx-border-color: BE8E00;" text="Nova Recompensa">
+   <Button fx:id="voltar1" layoutX="1250.0" layoutY="175.0" mnemonicParsing="false" onAction="#novaRecompensaClicked" prefHeight="40.0" prefWidth="142.0" style="-fx-background-color: FED355; -fx-border-color: BE8E00;" text="Nova Recompensa">
       <font>
          <Font name="Roboto Light" size="14.0" />
       </font>
