@@ -18,7 +18,7 @@ public abstract class PadraoDAO <E extends Entidade> {
     }
 
     public abstract E localiza(int codigo) throws SQLException;
-    public abstract void Insert(E entidade);
+    public abstract void Insert(E entidade) throws SQLException;
     public abstract void Update(E entidade);
     public abstract void Delete(E entidade);
     public abstract ArrayList<E> lista() throws SQLException;

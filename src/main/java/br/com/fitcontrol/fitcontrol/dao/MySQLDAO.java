@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
     protected final String STRING_CONEXAO = "jdbc:mysql://localhost:3306/fitcontroldb"; //"jdbc:mysql://localhost:3306/fitcontroldb";
-    protected final String USUARIO = "root";
-    protected final String SENHA = "lsc2021";
+    protected final String USUARIO = System.getenv("FIT_CONTROL_DB_USER");
+    protected final String SENHA = System.getenv("FIT_CONTROL_DB_PSW");
     protected boolean Has_Status =false; // tem a coluna de status, delete não é permanente e consulta somente aos dados com status<>0
     private String tabela;
 
@@ -25,7 +25,7 @@ public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
 
 
     @Override
-    public void Insert(Entidade entidade) {
+    public void Insert(Entidade entidade) throws SQLException {
         try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA )) {
             String SQL = getInsertCommand((E) entidade);
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {

@@ -5,9 +5,7 @@ import br.com.fitcontrol.fitcontrol.dao.MySQLDAO;
 import br.com.fitcontrol.fitcontrol.models.AcessoModel;
 import br.com.fitcontrol.fitcontrol.models.ItensRecompensaModel;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ItensRecompensaMySQLDAO <E extends Entidade> extends MySQLDAO {
 
@@ -21,6 +19,35 @@ public class ItensRecompensaMySQLDAO <E extends Entidade> extends MySQLDAO {
     protected String getInsertCommand(Entidade entidade) {
         String SQL= "Insert into " + getTabela() + "(Descricao,Foto) values (?,?)";
         return SQL;
+    }
+
+    @Override
+    public void Insert(Entidade entidade) throws SQLException {
+        ItensRecompensaModel item = (ItensRecompensaModel)entidade;
+        Connection conn = null;
+        try  {
+            conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA);
+            conn.setAutoCommit(false);
+            String SQL = getInsertCommand((E) entidade);
+            PreparedStatement stmt = conn.prepareStatement(SQL);
+            PrepareStatementInsertUpdate((E) entidade,stmt);
+            stmt.execute();
+
+            SQL="Insert into tbItensXRecompensa (idItens,idRecompensa) values (?,?)";
+            stmt = conn.prepareStatement(SQL);
+            stmt.setInt(1,item.getId());
+            stmt.setInt(2,item.getIdRecompensa());
+            stmt.execute();
+
+            conn.commit();
+            conn.close();
+
+
+        } catch (SQLException throwables) {
+            conn.rollback();
+            throwables.printStackTrace();
+            conn.close();
+        }
     }
 
     @Override

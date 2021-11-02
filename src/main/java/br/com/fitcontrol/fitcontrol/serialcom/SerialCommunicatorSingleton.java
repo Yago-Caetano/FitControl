@@ -2,6 +2,7 @@ package br.com.fitcontrol.fitcontrol.serialcom;
 
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 
+import java.sql.SQLException;
 import java.util.Stack;
 
 import br.com.fitcontrol.fitcontrol.publishers.PublisherSerial;
@@ -23,16 +24,50 @@ import static br.com.fitcontrol.fitcontrol.serialcom.EnumSerialFunctions.*;
  *
  *
  *                                      Examples
- *   CHECK-IN EVENT USER ID 1515
  *
- *   02 00 15 15 03
+ *   ---------------------------------- CHECK-IN EVENT ------------------------------------
  *
- *   CHECK-OUT EVENT USER ID 1515
+ *                                  Payload description
+ *  *     -------------------------------------------------------------------------------------
+ *  *    |     STX       |           FUNCTION        |             DATA         |     ETX     |
+ *  *    -------------------------------------------------------------------------------------
+ *  *    |    0x02       |            0x00           |  Catraca ID  |  User ID  |    0x03   |
+ *  *    -----------------------------------------------------------------------------------
  *
- *   02 01 15 15 03
+ *   CHECK-IN EVENT USER ID b2d9c5c7-6645-484d-9850-f1c7800380e8
+ *   Catraca ID: 87eb8029-5e94-405c-b85d-e03f607e3232
  *
- *   ERROR 5:
- *   02 02 05 03
+ *   02 00 62 38 37 65 62 38 30 32 39 2d 35 65 39 34 2d 34 30 35 63 2d 62 38 35 64 2d 65 30 33 66 36 30 37 65 33 32 33 32 32 64 39 63 35 63 37 2d 36 36 34 35 2d 34 38 34 64 2d 39 38 35 30 2d 66 31 63 37 38 30 30 33 38 30 65 38 03
+ *
+ *
+ *      ---------------------------------- CHECK-OUT EVENT ------------------------------------
+ *
+ *                                   Payload description
+ *    -------------------------------------------------------------------------------------
+ *    |     STX       |           FUNCTION        |             DATA         |     ETX     |
+ *    -------------------------------------------------------------------------------------
+ *    |    0x02       |            0x01           |  Catraca ID  |  User ID  |    0x03   |
+ *    -----------------------------------------------------------------------------------
+ *
+ *   USER ID: b2d9c5c7-6645-484d-9850-f1c7800380e8
+ *   Catraca ID: 87eb8029-5e94-405c-b85d-e03f607e3232
+ *
+ *   02 01 62 38 37 65 62 38 30 32 39 2d 35 65 39 34 2d 34 30 35 63 2d 62 38 35 64 2d 65 30 33 66 36 30 37 65 33 32 33 32 32 64 39 63 35 63 37 2d 36 36 34 35 2d 34 38 34 64 2d 39 38 35 30 2d 66 31 63 37 38 30 30 33 38 30 65 38 03
+ *
+ *
+ *      ---------------------------------- ERROR EVENT ------------------------------------
+ *
+ *                                    Payload description
+ *     --------------------------------------------------------------------------------------------
+ *     |     STX       |           FUNCTION        |             DATA               |     ETX     |
+ *     -------------------------------------------------------------------------------------------
+ *     |    0x02       |            0x02           |  Catraca ID  |  ERROR VALUE    |    0x03     |
+ *     -------------------------------------------------------------------------------------------
+ *
+ *   ERROR Value: 5
+ *   Catraca ID: 87eb8029-5e94-405c-b85d-e03f607e3232
+ *
+ *   02 02 38 37 65 62 38 30 32 39 2d 35 65 39 34 2d 34 30 35 63 2d 62 38 35 64 2d 65 30 33 66 36 30 37 65 33 32 33 32 05 03
  *
  *
  *
@@ -108,6 +143,10 @@ public class SerialCommunicatorSingleton extends Thread {
         FLAG_PORT_OPENNED = true;
     }
 
+    public boolean isConnected(){
+        return FLAG_PORT_OPENNED;
+    }
+
     /**
      * @brief: Close a COM connection
      */
@@ -118,8 +157,7 @@ public class SerialCommunicatorSingleton extends Thread {
     }
 
 
-    private void checkFunctionAndDispatchEvent(int[] data,int function)
-    {
+    private void checkFunctionAndDispatchEvent(int[] data,int function) throws SQLException {
         if(mPublisher == null)
             return;
 
@@ -149,8 +187,7 @@ public class SerialCommunicatorSingleton extends Thread {
      * @brief: Handle serial incoming data
      * @param bruteSerialData
      */
-    private void handleIncommingData(byte[] bruteSerialData)
-    {
+    private void handleIncommingData(byte[] bruteSerialData) throws SQLException {
         //simple validation
         if((bruteSerialData[0] == 2) && (bruteSerialData[bruteSerialData.length-1] == 3))
         {

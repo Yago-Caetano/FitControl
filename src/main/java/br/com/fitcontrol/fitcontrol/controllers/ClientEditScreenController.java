@@ -42,7 +42,18 @@ public class ClientEditScreenController implements Initializable {
     private boolean update;
     @FXML
     protected void voltarClicked() {
-        executeNavigation(NavigationSingleton.CLIENTS_SCREEN);
+        try {
+            navigation.goBack(new iNavCallback() {
+                @Override
+                public void navigateCb(String screenName) throws Exception {
+                    FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
+                    Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
+                    navigation.getStage().setScene(scene);
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

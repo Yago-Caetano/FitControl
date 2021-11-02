@@ -11,6 +11,7 @@ import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherSerial;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
+import br.com.fitcontrol.fitcontrol.serialcom.SerialCommunicatorSingleton;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,6 +19,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class FitControlMain extends Application {
 
@@ -44,19 +46,15 @@ public class FitControlMain extends Application {
 
         //publisher tela
         PublisherTela publisherTela = new PublisherTela(evManager);
-/*
+
+        //Serial Communication
         SerialCommunicatorSingleton ser = SerialCommunicatorSingleton.getInstance();
 
         //register publisher
         ser.registerPublisher(publisherSerial);
 
-        //teste para abertura de porta serial
-        for(SerialPort s : ser.getAvailablePorts())
-        {
-            System.out.println(s.getSystemPortName() + " - " + s.getDescriptivePortName());
-        }
+        //start Serial Thread
         ser.start();
-        ser.connect(ser.getAvailablePorts()[2]);*/
 
 
 

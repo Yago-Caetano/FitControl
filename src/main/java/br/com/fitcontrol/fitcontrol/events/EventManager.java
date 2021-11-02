@@ -4,6 +4,7 @@ import br.com.fitcontrol.fitcontrol.FitControlContext;
 import br.com.fitcontrol.fitcontrol.listenners.ISubscriber;
 import br.com.fitcontrol.fitcontrol.models.EventModel;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class EventManager {
         }
     }
 
-    public synchronized void notify(EnumEventTypes event, FitControlContext context){
+    public synchronized void notify(EnumEventTypes event, FitControlContext context) throws SQLException {
         for (EventModel e: Events) {
             if(e.getEventType() == event)
             {

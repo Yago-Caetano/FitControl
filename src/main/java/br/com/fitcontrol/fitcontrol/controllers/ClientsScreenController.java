@@ -67,7 +67,18 @@ public class ClientsScreenController implements Initializable {
 
     @FXML
     protected void voltarClicked() {
-        executeNavigation(NavigationSingleton.MAIN_SCREEN);
+        try {
+            navigation.goBack(new iNavCallback() {
+                @Override
+                public void navigateCb(String screenName) throws Exception {
+                    FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
+                    Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
+                    navigation.getStage().setScene(scene);
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     @FXML
     protected void novoClienteClicked() {
@@ -139,7 +150,6 @@ public class ClientsScreenController implements Initializable {
                 final TableCell<ClienteModel, Void> cell = new TableCell<ClienteModel, Void>() {
 
                     private final Button btnDeletar = new Button("Deletar");
-
                     {
                         btnDeletar.setStyle("-fx-background-color:#e05f55;");
                         btnDeletar.setOnAction((ActionEvent event) -> {
@@ -147,7 +157,11 @@ public class ClientsScreenController implements Initializable {
                             EventManager evtmanager = new EventManager();
 
                             PublisherTela p = new PublisherTela(evtmanager);
-                            p.DeleteUser(cliente);
+                            try {
+                                p.DeleteUser(cliente);
+                            } catch (SQLException e) {
+                                e.printStackTrace();
+                            }
 
                             try {
                                 carregarDados();

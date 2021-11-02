@@ -55,7 +55,7 @@ public  class NavigationSingleton {
     public Stage getStage(){return  stagePrincipal;}
 
 
-    public void goBack(iNavCallback navigationCallback) throws IOException {
+    public void goBack(iNavCallback navigationCallback) throws Exception {
         if(telas.size()>1)
         {
             telas.pop();
