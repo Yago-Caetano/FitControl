@@ -8,7 +8,7 @@
 - [x] Cadastro de alunos
 - [x] Cadastro de Funcionários
 - [x] Cadastro de recompensas
-- [ ] Comunicação com catraca
+- [x] Comunicação com catraca
 - [x] Software desktop com interface gráfica
 - [ ] Sistema de pontuação por frequencia na academia
 - [ ] Emissão de relatórios em PDF
@@ -55,16 +55,15 @@ A figura abaixo exibe como deve ser configurado o IntelliJ
 
 ### Configurar Banco de Dados  🎲  🪑
 
-Na atual revisão a configuração do banco de dados é realizada na classe **MySQLDAO** 
-conforme mostrado abaixo
+Para configurar o banco de dados é necessário criar duas variaveis de ambiente sendo
 
 
 ```
-  protected final String USUARIO = "sua credencial de acessp";
-  protected final String SENHA = "sua senha";
+  FIT_CONTROL_DB_USER = "sua credencial de acesso";
+  FIT_CONTROL_DB_PSW = "sua senha";
 ```
 
-Caso o banco não tenha sido instalado, execute esse [arquivo](./MySQL/CriaBancoFitControl.sql)
+Caso o banco não tenha sido criado, execute esse [arquivo](./MySQL/CriaBancoFitControl.sql)
 
 ### Entregas 💪😎
 

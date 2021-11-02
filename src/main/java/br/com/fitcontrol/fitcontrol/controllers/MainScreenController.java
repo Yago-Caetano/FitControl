@@ -3,11 +3,14 @@ package br.com.fitcontrol.fitcontrol.controllers;
 import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
+import br.com.fitcontrol.fitcontrol.publishers.PublisherSerial;
+import br.com.fitcontrol.fitcontrol.serialcom.SerialCommunicatorSingleton;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
@@ -22,6 +25,8 @@ public class MainScreenController implements Initializable {
     @FXML
     private HBox catracaHbox,pagamentoHbox,alunoHbox,staffHbox,rewardHbox,relatHbox;
 
+    @FXML
+    private Label lbStatusCOM;
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -34,6 +39,13 @@ public class MainScreenController implements Initializable {
         staffHbox.addEventFilter(MouseEvent.MOUSE_CLICKED,staffClicked);
         rewardHbox.addEventFilter(MouseEvent.MOUSE_CLICKED,rewardClicked);
         relatHbox.addEventFilter(MouseEvent.MOUSE_CLICKED,relatClicked);
+
+        SerialCommunicatorSingleton serial = SerialCommunicatorSingleton.getInstance();
+
+        if(serial.isConnected())
+            lbStatusCOM.setText("Catracas Conectadas");
+        else
+            lbStatusCOM.setText("Catracas Desconectadas");
 
     }
 

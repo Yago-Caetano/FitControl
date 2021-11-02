@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.CatracaScreenController">
@@ -18,7 +20,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="108.0" layoutY="229.0" prefHeight="293.0" prefWidth="1214.0" style="-fx-border-color: A27811; -fx-border-radius: 16;">
+      <Pane layoutX="108.0" layoutY="313.0" prefHeight="293.0" prefWidth="1214.0" style="-fx-border-color: A27811; -fx-border-radius: 16;">
          <children>
             <Button fx:id="novaCatraca" layoutX="39.0" layoutY="15.0" mnemonicParsing="false" onAction="#novaCatracaClicked" prefHeight="40.0" prefWidth="92.0" style="-fx-border-color: BE8E00; -fx-background-color: FED355;" text="Nova Catraca">
                <font>
@@ -44,7 +46,7 @@
             </TableView>
          </children>
       </Pane>
-      <Pane layoutX="117.0" layoutY="559.0" prefHeight="404.0" prefWidth="1205.0" style="-fx-border-color: D79D04; -fx-border-radius: 41;">
+      <Pane layoutX="117.0" layoutY="631.0" prefHeight="332.0" prefWidth="1214.0" style="-fx-border-color: D79D04; -fx-border-radius: 41;">
          <children>
             <Label layoutX="509.0" layoutY="37.0" text="Ações da Catraca X">
                <font>
@@ -80,5 +82,27 @@
             </DropShadow>
          </effect>
       </Button>
+      <StackPane layoutX="827.0" layoutY="196.0" prefHeight="88.0" prefWidth="493.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="24.0" fill="#1f93ff00" height="87.0" stroke="#a17612" strokeType="INSIDE" style="-fx-border-color: A27811;" width="493.0" />
+            <Spinner fx:id="spCOMPorts" editable="true" StackPane.alignment="CENTER_RIGHT">
+               <StackPane.margin>
+                  <Insets right="152.0" />
+               </StackPane.margin></Spinner>
+            <Label text="Portas Disponiveis:" textFill="#a17612" StackPane.alignment="CENTER_RIGHT">
+               <StackPane.margin>
+                  <Insets right="320.0" />
+               </StackPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="btConectar" alignment="BOTTOM_LEFT" mnemonicParsing="false" style="-fx-border-color: BE8E00; -fx-background-color: FED355;" text="CONECTAR" StackPane.alignment="CENTER_RIGHT">
+               <StackPane.margin>
+                  <Insets right="40.0" />
+               </StackPane.margin>
+            </Button>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>
