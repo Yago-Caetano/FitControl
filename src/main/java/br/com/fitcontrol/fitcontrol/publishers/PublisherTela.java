@@ -2,6 +2,7 @@ package br.com.fitcontrol.fitcontrol.publishers;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
 import br.com.fitcontrol.fitcontrol.FitControlContext;
+import br.com.fitcontrol.fitcontrol.controllers.EmployeeEditScreenController;
 import br.com.fitcontrol.fitcontrol.events.EnumEventTypes;
 import br.com.fitcontrol.fitcontrol.events.EventManager;
 import br.com.fitcontrol.fitcontrol.listenners.*;

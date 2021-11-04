@@ -22,19 +22,12 @@
         </children></StackPane>
    <StackPane id="container-principal" layoutY="159.0" prefHeight="868.0" prefWidth="1438.0" AnchorPane.topAnchor="159.0">
       <children>
+         <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#ffffff00" height="758.0" stroke="#d79d04" strokeType="INSIDE" width="1340.0" />
          <TextField fx:id="txtID" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
             <StackPane.margin>
                <Insets left="100.0" right="1000.0" top="220.0" />
             </StackPane.margin>
          </TextField>
-         <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="31.0" text="ID" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
-            <font>
-               <Font name="Arial" size="23.0" />
-            </font>
-            <StackPane.margin>
-               <Insets left="100.0" top="180.0" />
-            </StackPane.margin>
-         </Label>
          <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="341.0" text="Cadastrar / Editar colaborador" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_CENTER">
             <font>
                <Font name="Arial" size="23.0" />
@@ -48,12 +41,12 @@
                <Font name="Arial" size="23.0" />
             </font>
             <StackPane.margin>
-               <Insets left="100.0" top="290.0" />
+               <Insets left="100.0" top="270.0" />
             </StackPane.margin>
          </Label>
          <TextField fx:id="txtNomeColaborador" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
             <StackPane.margin>
-               <Insets left="100.0" right="700.0" top="345.0" />
+               <Insets left="100.0" right="700.0" top="305.0" />
             </StackPane.margin>
          </TextField>
          <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="56.0" text="Nível" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
@@ -61,17 +54,17 @@
                <Font name="Arial" size="23.0" />
             </font>
             <StackPane.margin>
-               <Insets left="100.0" top="400.0" />
+               <Insets left="970.0" top="270.0" />
             </StackPane.margin>
          </Label>
          <RadioButton fx:id="RndBtnGerente" mnemonicParsing="false" scaleX="2.0" scaleY="2.0" text="Gerente" wrapText="true" StackPane.alignment="TOP_LEFT">
             <StackPane.margin>
-               <Insets left="130.0" top="460.0" />
+               <Insets left="1000.0" top="330.0" />
             </StackPane.margin>
          </RadioButton>
          <RadioButton fx:id="RndBtnFuncionario" layoutX="140.0" layoutY="470.0" mnemonicParsing="false" scaleX="2.0" scaleY="2.0" text="Funcionário" wrapText="true" StackPane.alignment="TOP_LEFT">
             <StackPane.margin>
-               <Insets left="139.0" top="510.0" />
+               <Insets left="1010.0" top="380.0" />
             </StackPane.margin>
          </RadioButton>
          <Button fx:id="txtSalvar" mnemonicParsing="false" prefHeight="72.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Salvar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
@@ -82,7 +75,7 @@
                <Font name="Arial" size="23.0" />
             </font>
          </Button>
-         <Button fx:id="BtnCancelar" layoutX="140.0" layoutY="610.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Cancelar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+         <Button fx:id="BtnCancelar" layoutX="140.0" layoutY="610.0" mnemonicParsing="false" onAction="#voltarClicked" prefHeight="72.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Cancelar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
             <font>
                <Font name="Arial" size="23.0" />
             </font>
@@ -90,15 +83,32 @@
                <Insets left="350.0" top="600.0" />
             </StackPane.margin>
          </Button>
-         <Button fx:id="BtnVoltar" mnemonicParsing="false" onMouseClicked="#voltarClicked" prefHeight="72.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Voltar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+         <Label alignment="CENTER" layoutX="110.0" layoutY="280.0" pickOnBounds="false" prefHeight="32.0" prefWidth="68.0" text="Email" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
             <font>
                <Font name="Arial" size="23.0" />
             </font>
             <StackPane.margin>
-               <Insets left="1200.0" top="720.0" />
+               <Insets left="100.0" top="355.0" />
             </StackPane.margin>
-         </Button>
-         <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#ffffff00" height="758.0" stroke="#d79d04" strokeType="INSIDE" width="1340.0" />
+         </Label>
+         <TextField fx:id="txtEmail" layoutX="110.0" layoutY="315.0" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+               <Insets left="100.0" right="700.0" top="390.0" />
+            </StackPane.margin>
+         </TextField>
+         <Label alignment="CENTER" layoutX="110.0" layoutY="365.0" pickOnBounds="false" prefHeight="32.0" prefWidth="68.0" text="Senha" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
+            <font>
+               <Font name="Arial" size="23.0" />
+            </font>
+            <StackPane.margin>
+               <Insets left="100.0" top="440.0" />
+            </StackPane.margin>
+         </Label>
+         <TextField fx:id="txtSenha" layoutX="110.0" layoutY="400.0" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+               <Insets left="100.0" right="700.0" top="480.0" />
+            </StackPane.margin>
+         </TextField>
       </children>
    </StackPane>
 </AnchorPane>
