@@ -18,5 +18,6 @@ public enum EnumEventTypes {
     EVENT_TYPE_USER_DELETE,
     EVENT_TYPE_CATRACA_ERRO,
     EVENT_TYPE_Employee_Register,
-    EVENT_TYPE_Employee_Update
+    EVENT_TYPE_Employee_Update,
+    EVENT_TYPE_Employee_Delete
 }

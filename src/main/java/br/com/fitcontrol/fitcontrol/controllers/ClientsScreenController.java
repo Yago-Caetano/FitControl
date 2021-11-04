@@ -61,8 +61,6 @@ public class ClientsScreenController implements Initializable {
     @FXML
     public TableColumn<ClienteModel,Void> acao;
 
-
-
     private NavigationSingleton navigation;
 
     @FXML

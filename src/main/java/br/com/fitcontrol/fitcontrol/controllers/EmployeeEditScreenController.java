@@ -95,6 +95,7 @@ public class EmployeeEditScreenController implements Initializable {
             funcionario.setLogin(txtEmail.getText());
             funcionario.setSenha(txtSenha.getText());
             funcionario.setTelefone(txtTelefone.getText());
+            funcionario.setNivel(EnumTipoUsuarios.FUNCIONARIO.getCode());
             p.UpdateEmployee(funcionario);
             setUpdate(false);
         }
@@ -104,5 +105,18 @@ public class EmployeeEditScreenController implements Initializable {
 
     void setUpdate(boolean b) {
         this.update = b;
+    }
+
+    /**
+     * Preenche os TextFields da tela com o cliente que deseja editar.
+     */
+    void preencheTextField(FuncionarioModel funcionario) {
+
+        txtID.setText(Integer.toString(funcionario.getId()));
+        txtNomeColaborador.setText(funcionario.getNome());
+        txtTelefone.setText(funcionario.getTelefone());
+        txtEmail.setText(funcionario.getLogin());
+        txtSenha.setText(funcionario.getSenha());
+
     }
 }
