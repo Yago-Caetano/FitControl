@@ -29,6 +29,8 @@ public class PublisherTela {
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_USER_UPDATE,new UserUpdateListenner());
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_REWARD_REGISTER,new RewardRegisterListenner());
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_REWARD_UPDATE,new RewardUpdateListenner());
+        mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_Employee_Register,new EmployeeRegisterListenner());
+        mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_Employee_Update,new EmployeeUpdateListenner());
     }
 
 
@@ -63,6 +65,16 @@ public class PublisherTela {
         FitControlContext c = new FitControlContext();
         c.setEntityData(e);
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_REWARD_UPDATE,c);
+    }
+    public void RegisterEmployee(Entidade e) throws SQLException {
+        FitControlContext c = new FitControlContext();
+        c.setEntityData(e);
+        mEventManager.notify(EnumEventTypes.EVENT_TYPE_Employee_Register,c);
+    }
+    public void UpdateEmployee(Entidade e) throws SQLException {
+        FitControlContext c = new FitControlContext();
+        c.setEntityData(e);
+        mEventManager.notify(EnumEventTypes.EVENT_TYPE_Employee_Update,c);
     }
 
 

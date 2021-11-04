@@ -1,6 +1,7 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
 import br.com.fitcontrol.fitcontrol.Acesso.Acessologin;
+import br.com.fitcontrol.fitcontrol.Acesso.FuncionarioLogado;
 import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.dao.Acesso.AcessoMySQLDAO;
 import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
@@ -12,17 +13,21 @@ import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LoginScreenController implements Initializable {
 
@@ -33,29 +38,48 @@ public class LoginScreenController implements Initializable {
     public TextField txtSenha;
     @FXML
     protected void entrarClicked() throws Exception {
-       /* FuncionarioMySQLDAO dao = new FuncionarioMySQLDAO();
+        FuncionarioMySQLDAO dao = new FuncionarioMySQLDAO();
         ArrayList<FuncionarioModel> lista = dao.lista();
         Acessologin validar = new Acessologin();
+        String login = txtLogin.getText();
+        String senha = txtSenha.getText();
 
         for (FuncionarioModel f: lista
              ) {
-            if(f.getLogin() == txtLogin.getText()){
+            if(f.getLogin().equals(login)){
+                f.setSenha(senha);
+                if(validar.validaUsuario(f)){
 
-                if(validar.validaUsuario(f))
+                   /* FXMLLoader loader = new FXMLLoader(FitControlMain.class.getResource("main-screen.fxml"));
+                    try {
+                        loader.load();
+                    } catch (IOException ex) {
+                        Logger.getLogger(LoginScreenController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    MainScreenController main = loader.getController();
+
+                    main.RecebeLogin(f);
+                    Parent parent = loader.getRoot();
+                    navigation.getStage().setScene(new Scene(parent));*/
+
+                    FuncionarioLogado.setNome(f.getNome());
                     executeNavigation(NavigationSingleton.MAIN_SCREEN);
+
+                }
                 else{
                     txtSenha.setText("");
                     txtLogin.setText("");
+                    txtLogin.setPromptText("Login");
                     txtSenha.setPromptText("Senha Inválida");
                 }
-
+            }else {
+                txtSenha.setText("");
+                txtLogin.setText("");
+                txtSenha.setPromptText("Senha");
+                txtLogin.setPromptText("Login não encontrado");
             }
         }
-        txtSenha.setText("");
-        txtLogin.setText("");
-        txtLogin.setPromptText("Usuário inválido");*/
-
-        executeNavigation(NavigationSingleton.MAIN_SCREEN);
 
     }
     @FXML

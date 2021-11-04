@@ -28,7 +28,7 @@ public class EmployeeEditScreenController implements Initializable {
     @FXML
     public RadioButton RndBtnGerente;
     @FXML
-    public TextField txtID,txtNomeColaborador,txtEmail,txtSenha;
+    public TextField txtID,txtNomeColaborador,txtEmail,txtSenha, txtTelefone;
 
     private NavigationSingleton navigation;
     private boolean update;
@@ -58,6 +58,9 @@ public class EmployeeEditScreenController implements Initializable {
         RndBtnFuncionario.setToggleGroup(tg);
         RndBtnGerente.setToggleGroup(tg);
 
+        txtID.setDisable(true);
+        txtID.setVisible(false);
+
     }
 
     /***
@@ -72,6 +75,7 @@ public class EmployeeEditScreenController implements Initializable {
         funcionario.setNome(txtNomeColaborador.getText());
         funcionario.setLogin(txtEmail.getText());
         funcionario.setSenha(txtSenha.getText());
+        funcionario.setTelefone(txtTelefone.getText());
 
         if(RndBtnFuncionario.isSelected())
             funcionario.setNivel(EnumTipoUsuarios.FUNCIONARIO.getCode());
@@ -82,19 +86,23 @@ public class EmployeeEditScreenController implements Initializable {
 
         //Verifica se é Edit ou Insert
         if(!update){
-            p.RegisterUser(funcionario);
+            p.RegisterEmployee(funcionario);
         }
         else{
-            cliente = (ClienteModel) (dao.localiza(Integer.parseInt(txtID.getText())));
-            cliente.setId(Integer.parseInt(txtID.getText()));
-            cliente.setNome(txtNomeCliente.getText());
-            cliente.setLogin(txtEmail.getText());
-            cliente.setTelefone(txtTelefone.getText());
-            cliente.setPontos(0);
-            p.UpdateUser(cliente);
+            funcionario = (FuncionarioModel) (dao.localiza(Integer.parseInt(txtID.getText())));
+            funcionario.setId(Integer.parseInt(txtID.getText()));
+            funcionario.setNome(txtNomeColaborador.getText());
+            funcionario.setLogin(txtEmail.getText());
+            funcionario.setSenha(txtSenha.getText());
+            funcionario.setTelefone(txtTelefone.getText());
+            p.UpdateEmployee(funcionario);
             setUpdate(false);
         }
         voltarClicked();
 
+    }
+
+    void setUpdate(boolean b) {
+        this.update = b;
     }
 }
