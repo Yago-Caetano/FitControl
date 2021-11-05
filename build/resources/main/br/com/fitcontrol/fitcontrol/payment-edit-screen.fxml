@@ -38,7 +38,7 @@
                <Point3D />
             </rotationAxis>
          </TextField>
-         <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#ffffff00" height="758.0" stroke="#d79d04" strokeType="INSIDE" width="1340.0" />
+         <Rectangle fx:id="txtIdCliente" arcHeight="40.0" arcWidth="40.0" fill="#ffffff00" height="758.0" stroke="#d79d04" strokeType="INSIDE" width="1340.0" />
          <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="31.0" text="ID" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
             <font>
                <Font name="Arial" size="23.0" />

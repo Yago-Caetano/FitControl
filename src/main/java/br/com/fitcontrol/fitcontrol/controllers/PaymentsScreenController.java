@@ -96,7 +96,7 @@ public class PaymentsScreenController implements Initializable {
 
         tabela.setItems(list);
 
-        //colunaAcoes();
+        colunaAcoes();
     }
 
     public void carregarDados() throws SQLException {
@@ -146,11 +146,11 @@ public class PaymentsScreenController implements Initializable {
                         btnEditar.setOnAction((ActionEvent event) -> {
                             PagamentoModel pagamento = getTableView().getItems().get(getIndex());
 
-                            FXMLLoader loader = new FXMLLoader(FitControlMain.class.getResource("client-edit-screen.fxml"));
+                            FXMLLoader loader = new FXMLLoader(FitControlMain.class.getResource("payment-edit-screen.fxml"));
                             try {
                                 loader.load();
                             } catch (IOException ex) {
-                                Logger.getLogger(ClientsScreenController.class.getName()).log(Level.SEVERE, null, ex);
+                                Logger.getLogger(PaymentsScreenController.class.getName()).log(Level.SEVERE, null, ex);
                             }
 
                             PaymentEditScreenController paymentEditController = loader.getController();
