@@ -24,30 +24,6 @@
    <StackPane id="container-principal" layoutX="8.0" layoutY="171.0" prefHeight="876.0" prefWidth="1450.0">
       <children>
          <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#ffffff00" height="758.0" stroke="#d79d04" strokeType="INSIDE" width="1340.0" />
-         <ImageView fx:id="ImgLupaID" fitHeight="32.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
-            <image>
-               <Image url="@icons/relat_icon.png" />
-            </image>
-            <StackPane.margin>
-               <Insets left="475.0" top="200.0" />
-            </StackPane.margin>
-         </ImageView>
-         <TextField fx:id="txtID" prefHeight="36.0" prefWidth="321.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10; -fx-background-radius: 10;" StackPane.alignment="TOP_LEFT">
-            <StackPane.margin>
-               <Insets left="100.0" right="1000.0" top="200.0" />
-            </StackPane.margin>
-            <rotationAxis>
-               <Point3D />
-            </rotationAxis>
-         </TextField>
-         <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="31.0" text="ID" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
-            <font>
-               <Font name="Arial" size="23.0" />
-            </font>
-            <StackPane.margin>
-               <Insets left="100.0" top="160.0" />
-            </StackPane.margin>
-         </Label>
          <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="341.0" text="Cadastrar / Editar cliente" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_CENTER">
             <font>
                <Font name="Arial" size="23.0" />
@@ -119,6 +95,10 @@
                <Insets left="975.0" top="380.0" />
             </StackPane.margin>
          </ImageView>
+         <TextField fx:id="txtID" layoutX="110.0" layoutY="758.0" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+               <Insets left="100.0" right="1000.0" top="200.0" />
+            </StackPane.margin></TextField>
       </children>
    </StackPane>
 

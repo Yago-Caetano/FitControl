@@ -61,8 +61,6 @@ public class ClientsScreenController implements Initializable {
     @FXML
     public TableColumn<ClienteModel,Void> acao;
 
-
-
     private NavigationSingleton navigation;
 
     @FXML
@@ -127,9 +125,19 @@ public class ClientsScreenController implements Initializable {
 
     public void carregarDados() throws SQLException {
 
-        ObservableList<ClienteModel> listaTeste = FXCollections.observableArrayList(dao.lista());
+        ObservableList<ClienteModel> lista = FXCollections.observableArrayList(dao.lista());
 
-        tabela.setItems(listaTeste);
+        if(lista.isEmpty()){
+            ClienteModel cliente1 = new ClienteModel(1,"teste1","t1","571",100);
+            ClienteModel cliente2 = new ClienteModel(2,"teste2","t2","572",200);
+            dao.Insert(cliente1);
+            dao.Insert(cliente2);
+            lista.addAll( cliente1,cliente2);
+
+        }
+
+
+        tabela.setItems(lista);
     }
 
     private void colunaAcoes(){

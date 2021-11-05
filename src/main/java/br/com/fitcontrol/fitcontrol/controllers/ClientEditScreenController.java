@@ -59,6 +59,8 @@ public class ClientEditScreenController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         navigation = NavigationSingleton.getInstance();
+        txtID.setDisable(true);
+        txtID.setVisible(false);
     }
 
     /***
@@ -70,7 +72,6 @@ public class ClientEditScreenController implements Initializable {
         ClienteModel cliente = new ClienteModel();
         ClienteMySQLDAO dao = new ClienteMySQLDAO();
 
-        cliente.setId(Integer.parseInt(txtID.getText()));
         cliente.setNome(txtNomeCliente.getText());
         cliente.setLogin(txtEmail.getText());
         cliente.setTelefone(txtTelefone.getText());
@@ -84,7 +85,7 @@ public class ClientEditScreenController implements Initializable {
             p.RegisterUser(cliente);
         }
         else{                            // Edit
-            cliente = (ClienteModel) (dao.localiza(cliente.getId()));
+            cliente = (ClienteModel) (dao.localiza(Integer.parseInt(txtID.getText())));
             cliente.setId(Integer.parseInt(txtID.getText()));
             cliente.setNome(txtNomeCliente.getText());
             cliente.setLogin(txtEmail.getText());
@@ -107,8 +108,6 @@ public class ClientEditScreenController implements Initializable {
         txtEmail.setText(aluno.getLogin());
         txtNomeCliente.setText(aluno.getNome());
 
-        txtID.setEditable(false);
-        txtID.setDisable(true);
     }
 
     void setUpdate(boolean b) {

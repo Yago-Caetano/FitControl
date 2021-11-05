@@ -13,27 +13,32 @@
             <Insets />
          </opaqueInsets>
          <children>
-            <ImageView fitHeight="88.0" fitWidth="260.0" layoutX="176.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="88.0" fitWidth="260.0" layoutX="176.0" layoutY="82.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icons/icone.png" />
                </image>
             </ImageView>
+            <Button fx:id="cadastrar" layoutX="116.0" layoutY="505.0" mnemonicParsing="false" onAction="#cadastrarClicked" prefHeight="65.0" prefWidth="381.0" style="-fx-background-color: transparent; -fx-border-color: FFFFFF; -fx-border-width: 4; -fx-border-radius: 16;" text="CADASTRAR">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="entrar" layoutX="116.0" layoutY="430.0" mnemonicParsing="false" onAction="#entrarClicked" prefHeight="65.0" prefWidth="381.0" style="-fx-background-color: transparent; -fx-border-color: FFFFFF; -fx-border-width: 4; -fx-border-radius: 16;" text="ENTRAR">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
-      <TextField layoutX="469.0" layoutY="479.0" prefHeight="65.0" prefWidth="493.0" promptText="Email" style="-fx-background-radius: 16;">
+      <TextField fx:id="txtLogin" layoutX="469.0" layoutY="469.0" prefHeight="65.0" prefWidth="493.0" promptText="Email" style="-fx-background-radius: 16;">
          <font>
             <Font name="Roboto Light" size="24.0" />
          </font>
       </TextField>
-      <TextField layoutX="469.0" layoutY="607.0" prefHeight="65.0" prefWidth="493.0" promptText="Senha" style="-fx-background-radius: 16;">
+      <TextField fx:id="txtSenha" layoutX="469.0" layoutY="597.0" prefHeight="65.0" prefWidth="493.0" promptText="Senha" style="-fx-background-radius: 16;">
          <font>
             <Font name="Roboto Light" size="24.0" />
          </font>
       </TextField>
-      <Button fx:id="entrar" layoutX="529.0" layoutY="720.0" mnemonicParsing="false" onAction="#entrarClicked" prefHeight="65.0" prefWidth="381.0" style="-fx-background-color: transparent; -fx-border-color: FFFFFF; -fx-border-width: 4; -fx-border-radius: 16;" text="ENTRAR">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

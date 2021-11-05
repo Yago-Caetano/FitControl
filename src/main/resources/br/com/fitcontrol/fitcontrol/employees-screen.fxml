@@ -27,7 +27,7 @@
        <TableColumn fx:id="id" prefWidth="306.5" text="Id" />
        <TableColumn fx:id="nome" prefWidth="306.5" text="Nome" />
          <TableColumn fx:id="nivel" prefWidth="306.5" text="Nível" />
-         <TableColumn prefWidth="306.5" text="Ações" />
+         <TableColumn fx:id="acao" prefWidth="306.5" text="Ações" />
      </columns>
    </TableView>
    <Pane layoutX="327.0" layoutY="331.0" prefHeight="40.0" prefWidth="884.0" style="-fx-background-color: #FFDC75; -fx-border-color: #BE8E00;">

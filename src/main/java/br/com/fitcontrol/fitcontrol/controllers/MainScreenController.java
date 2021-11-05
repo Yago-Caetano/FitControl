@@ -1,6 +1,9 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
+import br.com.fitcontrol.fitcontrol.Acesso.FuncionarioLogado;
 import br.com.fitcontrol.fitcontrol.FitControlMain;
+import br.com.fitcontrol.fitcontrol.models.ClienteModel;
+import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherSerial;
@@ -21,12 +24,21 @@ import java.util.ResourceBundle;
 public class MainScreenController implements Initializable {
 
     private NavigationSingleton navigation;
+    private FuncionarioModel funcionario;
 
     @FXML
     private HBox catracaHbox,pagamentoHbox,alunoHbox,staffHbox,rewardHbox,relatHbox;
 
     @FXML
     private Label lbStatusCOM;
+    @FXML
+    private Label lbFuncionario;
+
+    @FXML
+    protected void LogoutClicked() {
+        FuncionarioLogado.setNome("");
+        executeNavigation(NavigationSingleton.LOGIN_SCREEN);
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -46,6 +58,8 @@ public class MainScreenController implements Initializable {
             lbStatusCOM.setText("Catracas Conectadas");
         else
             lbStatusCOM.setText("Catracas Desconectadas");
+
+        lbFuncionario.setText("Olá " + FuncionarioLogado.getNome());
 
     }
 
@@ -100,6 +114,8 @@ public class MainScreenController implements Initializable {
 
         }
     };
+
+
 
     private void executeNavigation(int screenId)
     {

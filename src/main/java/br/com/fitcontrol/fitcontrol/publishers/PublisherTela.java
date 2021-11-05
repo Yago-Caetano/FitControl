@@ -2,6 +2,7 @@ package br.com.fitcontrol.fitcontrol.publishers;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
 import br.com.fitcontrol.fitcontrol.FitControlContext;
+import br.com.fitcontrol.fitcontrol.controllers.EmployeeEditScreenController;
 import br.com.fitcontrol.fitcontrol.events.EnumEventTypes;
 import br.com.fitcontrol.fitcontrol.events.EventManager;
 import br.com.fitcontrol.fitcontrol.listenners.*;
@@ -28,6 +29,9 @@ public class PublisherTela {
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_USER_UPDATE,new UserUpdateListenner());
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_REWARD_REGISTER,new RewardRegisterListenner());
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_REWARD_UPDATE,new RewardUpdateListenner());
+        mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_Employee_Register,new EmployeeRegisterListenner());
+        mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_Employee_Update,new EmployeeUpdateListenner());
+        mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_Employee_Delete,new EmployeeDeleteListenner());
     }
 
 
@@ -38,15 +42,15 @@ public class PublisherTela {
     }
 
 
-    public void RegisterUser(Entidade e) throws SQLException {
-        FitControlContext c = new FitControlContext();
-        c.setEntityData(e);
-        mEventManager.notify(EnumEventTypes.EVENT_TYPE_USER_REGISTER,c);
-    }
     public void DeleteUser(Entidade e) throws SQLException {
         FitControlContext c = new FitControlContext();
         c.setEntityData(e);
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_USER_DELETE,c);
+    }
+    public void RegisterUser(Entidade e) throws SQLException {
+        FitControlContext c = new FitControlContext();
+        c.setEntityData(e);
+        mEventManager.notify(EnumEventTypes.EVENT_TYPE_USER_REGISTER,c);
     }
     public void UpdateUser(Entidade e) throws SQLException {
         FitControlContext c = new FitControlContext();
@@ -63,6 +67,19 @@ public class PublisherTela {
         c.setEntityData(e);
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_REWARD_UPDATE,c);
     }
-
-
+    public void RegisterEmployee(Entidade e) throws SQLException {
+        FitControlContext c = new FitControlContext();
+        c.setEntityData(e);
+        mEventManager.notify(EnumEventTypes.EVENT_TYPE_Employee_Register,c);
+    }
+    public void UpdateEmployee(Entidade e) throws SQLException {
+        FitControlContext c = new FitControlContext();
+        c.setEntityData(e);
+        mEventManager.notify(EnumEventTypes.EVENT_TYPE_Employee_Update,c);
+    }
+    public void DeleteEmployee(Entidade e) throws SQLException {
+        FitControlContext c = new FitControlContext();
+        c.setEntityData(e);
+        mEventManager.notify(EnumEventTypes.EVENT_TYPE_Employee_Delete,c);
+    }
 }

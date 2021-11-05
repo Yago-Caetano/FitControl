@@ -61,7 +61,7 @@
          </DropShadow>
       </effect>
    </Button>
-   <Button layoutX="143.0" layoutY="880.0" mnemonicParsing="false" onAction="#voltarClicked" prefHeight="34.0" prefWidth="52.0" style="-fx-background-color: #FED355; -fx-border-color: #BE8E00;" text="Voltar">
+   <Button layoutX="143.0" layoutY="880.0" mnemonicParsing="false" onAction="#voltarClicked" prefHeight="40.0" prefWidth="88.0" style="-fx-background-color: #FED355; -fx-border-color: #BE8E00;" text="Voltar">
       <font>
          <Font name="Roboto Light" size="12.0" />
       </font>
