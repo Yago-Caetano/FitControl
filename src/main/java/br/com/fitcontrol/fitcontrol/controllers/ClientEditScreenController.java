@@ -70,7 +70,7 @@ public class ClientEditScreenController implements Initializable {
         ClienteModel cliente = new ClienteModel();
         ClienteMySQLDAO dao = new ClienteMySQLDAO();
 
-        cliente.setId(Integer.parseInt(txtID.getText()));
+        cliente.setId((txtID.getText()));
         cliente.setNome(txtNomeCliente.getText());
         cliente.setLogin(txtEmail.getText());
         cliente.setTelefone(txtTelefone.getText());
@@ -85,7 +85,7 @@ public class ClientEditScreenController implements Initializable {
         }
         else{                            // Edit
             cliente = (ClienteModel) (dao.localiza(cliente.getId()));
-            cliente.setId(Integer.parseInt(txtID.getText()));
+            cliente.setId((txtID.getText()));
             cliente.setNome(txtNomeCliente.getText());
             cliente.setLogin(txtEmail.getText());
             cliente.setTelefone(txtTelefone.getText());
@@ -102,7 +102,7 @@ public class ClientEditScreenController implements Initializable {
      */
     void preencheTextField(ClienteModel aluno) {
 
-        txtID.setText(Integer.toString(aluno.getId()));
+        txtID.setText((aluno.getId()));
         txtTelefone.setText(aluno.getTelefone());
         txtEmail.setText(aluno.getLogin());
         txtNomeCliente.setText(aluno.getNome());

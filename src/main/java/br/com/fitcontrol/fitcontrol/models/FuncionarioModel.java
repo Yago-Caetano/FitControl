@@ -6,7 +6,7 @@ import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 public class FuncionarioModel  extends UsuarioModel {
 
 
-    public FuncionarioModel(int id, String nome,int nivel) {
+    public FuncionarioModel(String id, String nome,int nivel) {
         super(id,nome,(byte)nivel);
         this.setTipoEntidade(EnumEntidadesDisponiveis.FUNCIONARIO);
 

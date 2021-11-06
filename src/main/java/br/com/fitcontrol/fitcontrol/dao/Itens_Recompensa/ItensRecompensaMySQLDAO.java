@@ -2,7 +2,6 @@ package br.com.fitcontrol.fitcontrol.dao.Itens_Recompensa;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
 import br.com.fitcontrol.fitcontrol.dao.MySQLDAO;
-import br.com.fitcontrol.fitcontrol.models.AcessoModel;
 import br.com.fitcontrol.fitcontrol.models.ItensRecompensaModel;
 
 import java.sql.*;
@@ -17,7 +16,7 @@ public class ItensRecompensaMySQLDAO <E extends Entidade> extends MySQLDAO {
     }
     @Override
     protected String getInsertCommand(Entidade entidade) {
-        String SQL= "Insert into " + getTabela() + "(Descricao,Foto) values (?,?)";
+        String SQL= "Insert into " + getTabela() + "(id,Descricao,Foto) values (?,?,?)";
         return SQL;
     }
 
@@ -29,13 +28,14 @@ public class ItensRecompensaMySQLDAO <E extends Entidade> extends MySQLDAO {
             conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA);
             conn.setAutoCommit(false);
             String SQL = getInsertCommand((E) entidade);
+            entidade.setId();
             PreparedStatement stmt = conn.prepareStatement(SQL);
-            PrepareStatementInsertUpdate((E) entidade,stmt);
+            this.PrepareStatementInsert((E) entidade,stmt);
             stmt.execute();
 
             SQL="Insert into tbItensXRecompensa (idItens,idRecompensa) values (?,?)";
             stmt = conn.prepareStatement(SQL);
-            stmt.setInt(1,item.getId());
+            stmt.setString(1,item.getId());
             stmt.setInt(2,item.getIdRecompensa());
             stmt.execute();
 
@@ -58,8 +58,17 @@ public class ItensRecompensaMySQLDAO <E extends Entidade> extends MySQLDAO {
     }
 
     @Override
-    protected void PrepareStatementInsertUpdate(Entidade entidade, PreparedStatement stmt) throws SQLException {
+    protected void PrepareStatementInsert(Entidade entidade, PreparedStatement stmt) throws SQLException {
 
+        ItensRecompensaModel Item=(ItensRecompensaModel)entidade;
+        stmt.setString(1,Item.getDescricao());
+        stmt.setString(2,Item.getDescricao());
+        stmt.setString(3,Item.getFoto());
+
+    }
+
+    @Override
+    protected void PrepareStatementUpdate(Entidade entidade, PreparedStatement stmt) throws SQLException {
         ItensRecompensaModel Item=(ItensRecompensaModel)entidade;
         stmt.setString(1,Item.getDescricao());
         stmt.setString(2,Item.getFoto());
@@ -70,7 +79,7 @@ public class ItensRecompensaMySQLDAO <E extends Entidade> extends MySQLDAO {
     protected Entidade preencheEntidade(ResultSet rs) {
         ItensRecompensaModel Item = new ItensRecompensaModel();
         try {
-            Item.setId(rs.getInt("id"));
+            Item.setId(rs.getString("id"));
             Item.setDescricao(rs.getString("Descricao"));
             Item.setFoto(rs.getString("Foto"));
 

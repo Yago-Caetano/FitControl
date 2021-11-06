@@ -73,8 +73,8 @@ public class CatracaScreenController implements Initializable {
         modelo.setCellValueFactory(
                 new PropertyValueFactory<CatracaModel, String>("modelo"));
 
-        ObservableList<CatracaModel> list = FXCollections.observableArrayList(new CatracaModel(1, "Catraca 1"),
-                new CatracaModel(2, "Catraca 2"), new CatracaModel(3, "Catraca 3"));
+        ObservableList<CatracaModel> list = FXCollections.observableArrayList(new CatracaModel("1", "Catraca 1"),
+                new CatracaModel("2", "Catraca 2"), new CatracaModel("3", "Catraca 3"));
 
         tabela.setItems(list);
 

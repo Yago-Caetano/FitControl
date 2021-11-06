@@ -6,7 +6,7 @@ import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 public class ClienteModel  extends UsuarioModel {
 
 
-    public ClienteModel(int id, String nome, String email, String telefone, int pontos){
+    public ClienteModel(String id, String nome, String email, String telefone, int pontos){
         super(id,nome,(byte)1);
         super.setLogin(email);
         super.setTelefone(telefone);

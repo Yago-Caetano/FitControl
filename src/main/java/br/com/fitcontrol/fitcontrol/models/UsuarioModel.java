@@ -35,7 +35,7 @@ public class UsuarioModel  extends Entidade {
         this.setTipoEntidade(EnumEntidadesDisponiveis.USUARIO);
 
     }
-    public UsuarioModel(int id, String nome, byte nivel) {
+    public UsuarioModel(String id, String nome, byte nivel) {
         super.setId(id);
         this.nome = nome;
         this.nivel = nivel;

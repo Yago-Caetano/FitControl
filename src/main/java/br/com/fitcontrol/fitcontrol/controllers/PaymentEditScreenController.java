@@ -73,7 +73,7 @@ public class PaymentEditScreenController implements Initializable {
 
     void preencheTextField(PagamentoModel pagamento) {
 
-        txtID.setText(Integer.toString(pagamento.getId()));
+        txtID.setText((pagamento.getId()));
         txtData.format(pagamento.getData());
         txtID.setText(Integer.toString(pagamento.getIdCliente()));
         txtValor.setText(Double.toString(pagamento.getValor()));

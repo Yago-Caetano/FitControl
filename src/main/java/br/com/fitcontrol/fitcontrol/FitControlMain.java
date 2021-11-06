@@ -3,10 +3,12 @@ package br.com.fitcontrol.fitcontrol;
 import br.com.fitcontrol.fitcontrol.Basis.Repositorio;
 import br.com.fitcontrol.fitcontrol.Config.Config;
 import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
+import br.com.fitcontrol.fitcontrol.Enums.EnumTipoUsuarios;
 import br.com.fitcontrol.fitcontrol.Fabricas.FabricaRepositorio;
 import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
 import br.com.fitcontrol.fitcontrol.events.EventManager;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
+import br.com.fitcontrol.fitcontrol.models.UsuarioModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherSerial;
@@ -18,8 +20,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Map;
+
 
 public class FitControlMain extends Application {
 
@@ -30,11 +31,6 @@ public class FitControlMain extends Application {
         Config.getInstance().setDatabase(main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio.MYSQL);
         navigation = NavigationSingleton.getInstance();
         navigation.setStage(primaryStage);
-
-
-        Repositorio repositorio = FabricaRepositorio.Fabrica();
-        var user  =repositorio.GetAll(EnumEntidadesDisponiveis.USUARIO);
-
 
         EventManager evManager = new EventManager();
 

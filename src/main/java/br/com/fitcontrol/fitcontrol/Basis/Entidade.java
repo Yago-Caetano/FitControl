@@ -2,9 +2,11 @@ package br.com.fitcontrol.fitcontrol.Basis;
 
 import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 
+import java.util.UUID;
+
 public class Entidade {
 
-    private int id;
+    private String id;
 
     private EnumEntidadesDisponiveis TipoEntidade;
 
@@ -16,16 +18,24 @@ public class Entidade {
         TipoEntidade = tipoEntidade;
     }
 
+    private String CreateId()
+    {
+        UUID uuid = UUID.randomUUID();
+        return uuid.toString();
+    }
+
     public Entidade() {
     }
 
-    public int getId() {
+    public String getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
-
+    public void setId (){
+        this.id = CreateId();
+    }
 
 }

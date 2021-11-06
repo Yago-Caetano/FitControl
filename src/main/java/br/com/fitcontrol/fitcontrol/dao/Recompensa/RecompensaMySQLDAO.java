@@ -17,7 +17,7 @@ public class RecompensaMySQLDAO <E extends Entidade> extends MySQLDAO {
     }
     @Override
     protected String getInsertCommand(Entidade entidade) {
-        String SQL= "Insert into " + getTabela() + "(Titulo,Pontos) values (?,?)";
+        String SQL= "Insert into " + getTabela() + "(id,Titulo,Pontos) values (?,?,?)";
         return SQL;
     }
 
@@ -29,11 +29,19 @@ public class RecompensaMySQLDAO <E extends Entidade> extends MySQLDAO {
     }
 
     @Override
-    protected void PrepareStatementInsertUpdate(Entidade entidade, PreparedStatement stmt) throws SQLException {
+    protected void PrepareStatementInsert(Entidade entidade, PreparedStatement stmt) throws SQLException {
+        RecompensaModel recom=(RecompensaModel)entidade;
+        stmt.setString(1,recom.getId());
+        stmt.setString(2,recom.getDescricao());
+        stmt.setInt(3,recom.getPontosNecessarios());
+
+    }
+
+    @Override
+    protected void PrepareStatementUpdate(Entidade entidade, PreparedStatement stmt) throws SQLException {
         RecompensaModel recom=(RecompensaModel)entidade;
         stmt.setString(1,recom.getDescricao());
         stmt.setInt(2,recom.getPontosNecessarios());
-
     }
 
     @Override
@@ -41,7 +49,7 @@ public class RecompensaMySQLDAO <E extends Entidade> extends MySQLDAO {
         RecompensaModel recom = new RecompensaModel();
         try {
 
-            recom.setId(rs.getInt("id"));
+            recom.setId(rs.getString("id"));
             recom.setDescricao(rs.getString("Titulo"));
             recom.setPontosNecessarios(rs.getInt("Pontos"));
 

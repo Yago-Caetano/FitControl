@@ -17,7 +17,7 @@ public class UsuarioMySQLDAO <E extends Entidade> extends MySQLDAO {
     protected E preencheEntidade(ResultSet rs) {
         UsuarioModel entidade = new UsuarioModel();
         try {
-            entidade.setId(rs.getInt("id"));
+            entidade.setId(rs.getString("id"));
             entidade.setNome(rs.getString("Nome"));
             entidade.setTelefone(rs.getString("Telefone"));
             entidade.setLogin(rs.getString("Email"));
@@ -52,7 +52,7 @@ public class UsuarioMySQLDAO <E extends Entidade> extends MySQLDAO {
     @Override
     protected String getInsertCommand(Entidade entidade) {
         UsuarioModel user=(UsuarioModel)entidade;
-        String SQL= "Insert into " + getTabela() + "(Nome,Telefone,Email,Senha,_Status,NivelAcesso) values (?,?,?,?,?,?)";
+        String SQL= "Insert into " + getTabela() + "(id,Nome,Telefone,Email,Senha,_Status,NivelAcesso) values (?,?,?,?,?,?,?)";
         return SQL;
     }
 
@@ -64,7 +64,19 @@ public class UsuarioMySQLDAO <E extends Entidade> extends MySQLDAO {
     }
 
     @Override
-    protected void PrepareStatementInsertUpdate(Entidade entidade, PreparedStatement stmt) throws SQLException {
+    protected void PrepareStatementInsert(Entidade entidade, PreparedStatement stmt) throws SQLException {
+        UsuarioModel user = (UsuarioModel) entidade;
+        stmt.setString(1,user.getId());
+        stmt.setString(2,user.getNome());
+        stmt.setString(3,user.getTelefone());
+        stmt.setString(4,user.getLogin());
+        stmt.setString(5,user.getSenha());
+        stmt.setByte(6,(byte)1);
+        stmt.setByte(7,user.getNivel());
+    }
+
+    @Override
+    protected void PrepareStatementUpdate(Entidade entidade, PreparedStatement stmt) throws SQLException {
         UsuarioModel user = (UsuarioModel) entidade;
         stmt.setString(1,user.getNome());
         stmt.setString(2,user.getTelefone());

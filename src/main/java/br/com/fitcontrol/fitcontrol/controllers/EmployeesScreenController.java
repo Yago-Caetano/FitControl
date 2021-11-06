@@ -81,8 +81,8 @@ public class EmployeesScreenController implements Initializable {
                 new PropertyValueFactory<FuncionarioModel, Integer>("nivel"));
 
 
-        ObservableList<FuncionarioModel> list = FXCollections.observableArrayList(new FuncionarioModel(1 ,"Jeferson",1),
-                new FuncionarioModel(2 ,"Claudia",2),new FuncionarioModel(3 ,"Roberta",3),new FuncionarioModel(4 ,"Murilo",1));
+        ObservableList<FuncionarioModel> list = FXCollections.observableArrayList(new FuncionarioModel("1" ,"Jeferson",1),
+                new FuncionarioModel("2" ,"Claudia",2),new FuncionarioModel("3" ,"Roberta",3),new FuncionarioModel("4" ,"Murilo",1));
 
         tabela.setItems(list);
 

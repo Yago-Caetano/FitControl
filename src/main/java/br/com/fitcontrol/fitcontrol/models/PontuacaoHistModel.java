@@ -6,8 +6,8 @@ import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 public class PontuacaoHistModel extends Entidade {
 
     private int pontos;
-    private int idAcesso;
-    private int idCliente;
+    private String idAcesso;
+    private String idCliente;
 
     public PontuacaoHistModel() {
         this.setTipoEntidade(EnumEntidadesDisponiveis.PONTUACAO);
@@ -22,19 +22,19 @@ public class PontuacaoHistModel extends Entidade {
         this.pontos = pontos;
     }
 
-    public int getIdAcesso() {
+    public String getIdAcesso() {
         return idAcesso;
     }
 
-    public void setIdAcesso(int idAcesso) {
+    public void setIdAcesso(String idAcesso) {
         this.idAcesso = idAcesso;
     }
 
-    public int getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 }

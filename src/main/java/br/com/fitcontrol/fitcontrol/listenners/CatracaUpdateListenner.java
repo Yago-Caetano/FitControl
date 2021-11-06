@@ -9,6 +9,6 @@ public class CatracaUpdateListenner implements ISubscriber
     public void update(FitControlContext context) {
         CatracaModel catraca = new CatracaModel();
         catraca = (CatracaModel) context.getEntityData();
-        System.out.println("Catraca ID:" + Integer.toString(catraca.getId()) + " Atualizada");
+        System.out.println("Catraca ID:" + (catraca.getId()) + " Atualizada");
     }
 }

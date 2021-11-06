@@ -19,7 +19,7 @@ public class AcessoMySQLDAO  <E extends Entidade> extends MySQLDAO {
     @Override
     protected String getInsertCommand(Entidade entidade) {
         AcessoModel acesso=(AcessoModel)entidade;
-        String SQL= "Insert into " + getTabela() + "(_Data,tipo,idFuncionario,idCliente,idCatraca) values (?,?,?,?,?)";
+        String SQL= "Insert into " + getTabela() + "(id,_Data,tipo,idFuncionario,idCliente,idCatraca) values (?,?,?,?,?,?)";
         return SQL;
     }
 
@@ -31,7 +31,19 @@ public class AcessoMySQLDAO  <E extends Entidade> extends MySQLDAO {
     }
 
     @Override
-    protected void PrepareStatementInsertUpdate(Entidade entidade, PreparedStatement stmt) throws SQLException {
+    protected void PrepareStatementInsert(Entidade entidade, PreparedStatement stmt) throws SQLException {
+        AcessoModel acesso=(AcessoModel)entidade;
+        stmt.setString(1,acesso.getId());
+        stmt.setDate(2,acesso.getData());
+        stmt.setByte(3,acesso.getTipo());
+        stmt.setInt(4,acesso.getIdFuncionario());
+        stmt.setInt(5,acesso.getIdCliente());
+        stmt.setInt(6,acesso.getIdCatraca());
+
+    }
+
+    @Override
+    protected void PrepareStatementUpdate(Entidade entidade, PreparedStatement stmt) throws SQLException {
         AcessoModel acesso=(AcessoModel)entidade;
         stmt.setDate(1,acesso.getData());
         stmt.setByte(2,acesso.getTipo());
@@ -45,7 +57,7 @@ public class AcessoMySQLDAO  <E extends Entidade> extends MySQLDAO {
     protected Entidade preencheEntidade(ResultSet rs) {
         AcessoModel acessoModel = new AcessoModel();
         try {
-            acessoModel.setId(rs.getInt("id"));
+            acessoModel.setId(rs.getString("id"));
             acessoModel.setData(rs.getDate("_Data"));
             acessoModel.setTipo(rs.getByte("tipo"));
             acessoModel.setIdFuncionario(rs.getInt("idFuncionario"));
