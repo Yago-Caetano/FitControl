@@ -26,6 +26,9 @@ public class PublisherTela {
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_USER_UPDATE,new UserUpdateListenner());
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_REWARD_REGISTER,new RewardRegisterListenner());
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_REWARD_UPDATE,new RewardUpdateListenner());
+        mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_CATRACA_REGISTER, new CatracaRegisterListenner());
+        mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_CATRACA_DELETE, new CatracaDeleteListenner());
+        mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_CATRACA_UPDATE, new CatracaUpdateListenner());
     }
 
 
@@ -65,6 +68,21 @@ public class PublisherTela {
         FitControlContext c = new FitControlContext();
         c.setEntityData(e);
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_REWARD_UPDATE,c);
+    }
+    public void RegisterCatraca(Entidade e) throws SQLException {
+        FitControlContext c = new FitControlContext();
+        c.setEntityData(e);
+        mEventManager.notify(EnumEventTypes.EVENT_TYPE_CATRACA_REGISTER,c);
+    }
+    public void DeleteCatraca(Entidade e) throws SQLException {
+        FitControlContext c = new FitControlContext();
+        c.setEntityData(e);
+        mEventManager.notify(EnumEventTypes.EVENT_TYPE_CATRACA_DELETE,c);
+    }
+    public void UpdateCatraca(Entidade e) throws SQLException {
+        FitControlContext c = new FitControlContext();
+        c.setEntityData(e);
+        mEventManager.notify(EnumEventTypes.EVENT_TYPE_CATRACA_UPDATE,c);
     }
 
 

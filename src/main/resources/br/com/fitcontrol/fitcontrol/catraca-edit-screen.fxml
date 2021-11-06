@@ -1,56 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.CatracaEditScreenController">
-   <children>
-      <Pane layoutX="39.0" layoutY="202.0" prefHeight="780.0" prefWidth="1362.0" style="-fx-border-color: E7AD00; -fx-border-radius: 8;">
-         <children>
-            <Button fx:id="voltar" layoutX="1163.0" layoutY="693.0" mnemonicParsing="false" onAction="#voltarClicked" prefHeight="66.0" prefWidth="165.0" style="-fx-background-color: A27811;" text="Voltar" textFill="WHITE">
-               <font>
-                  <Font name="Roboto Light" size="18.0" />
-               </font>
-            </Button>
-            <Button layoutX="184.0" layoutY="524.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="165.0" style="-fx-background-color: A27811;" text="Salvar" textFill="WHITE">
-               <font>
-                  <Font name="Roboto Light" size="18.0" />
-               </font>
-            </Button>
-            <Button layoutX="413.0" layoutY="524.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="165.0" style="-fx-background-color: A27811;" text="Cancelar" textFill="WHITE">
-               <font>
-                  <Font name="Roboto Light" size="18.0" />
-               </font>
-            </Button>
-            <TextField layoutX="174.0" layoutY="101.0" prefHeight="33.0" prefWidth="322.0" style="-fx-border-color: E7AD00; -fx-border-radius: 10; -fx-background-radius: 10;" />
-            <Label layoutX="186.0" layoutY="53.0" prefHeight="41.0" prefWidth="37.0" text="ID">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="25.0" fitWidth="29.0" layoutX="511.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@icons/Pesquisa.png" />
-               </image>
-            </ImageView>
-            <TextField layoutX="177.0" layoutY="198.0" prefHeight="34.0" prefWidth="462.0" style="-fx-border-color: E7AD00; -fx-border-radius: 10; -fx-background-radius: 10;" />
-            <Label layoutX="186.0" layoutY="157.0" prefHeight="41.0" prefWidth="75.0" text="Modelo">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="455.0" layoutY="23.0" text="Cadastrar/Editar Catraca">
-               <font>
-                  <Font size="24.0" />
-               </font></Label>
-         </children></Pane>
-      <Pane prefHeight="160.0" prefWidth="1440.0" style="-fx-background-color: FFBF00;" />
-      <ImageView fitHeight="88.0" fitWidth="260.0" layoutX="62.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@icons/icone.png" />
-         </image>
-      </ImageView>
-   </children>
+   <StackPane prefHeight="160.0" prefWidth="1440.0">
+      <children>
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffbf00" height="160.0" stroke="BLACK" strokeType="INSIDE" width="1445.0" />
+         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+            <image>
+               <Image url="@icons/icone.png" />
+            </image>
+            <StackPane.margin>
+               <Insets left="160.0" />
+            </StackPane.margin>
+         </ImageView>
+      </children></StackPane>
+
+   <StackPane id="container-principal" layoutX="8.0" layoutY="171.0" prefHeight="876.0" prefWidth="1450.0">
+      <children>
+         <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#ffffff00" height="758.0" stroke="#d79d04" strokeType="INSIDE" width="1340.0" />
+         <ImageView fx:id="ImgLupaID" fitHeight="32.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="TOP_LEFT">
+            <image>
+               <Image url="@icons/relat_icon.png" />
+            </image>
+            <StackPane.margin>
+               <Insets left="475.0" top="200.0" />
+            </StackPane.margin>
+         </ImageView>
+         <TextField fx:id="txtID" prefHeight="36.0" prefWidth="321.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10; -fx-background-radius: 10;" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+               <Insets left="100.0" right="1000.0" top="200.0" />
+            </StackPane.margin>
+            <rotationAxis>
+               <Point3D />
+            </rotationAxis>
+         </TextField>
+         <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="31.0" text="ID" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
+            <font>
+               <Font name="Arial" size="23.0" />
+            </font>
+            <StackPane.margin>
+               <Insets left="100.0" top="160.0" />
+            </StackPane.margin>
+         </Label>
+         <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="341.0" text="Cadastrar / Editar catraca" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_CENTER">
+            <font>
+               <Font name="Arial" size="23.0" />
+            </font>
+            <StackPane.margin>
+               <Insets top="100.0" />
+            </StackPane.margin>
+         </Label>
+         <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="179.0" text="Modelo da catraca" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
+            <font>
+               <Font name="Arial" size="23.0" />
+            </font>
+            <StackPane.margin>
+               <Insets left="100.0" top="250.0" />
+            </StackPane.margin>
+         </Label>
+         <TextField fx:id="txtModelo" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+               <Insets left="100.0" right="500.0" top="290.0" />
+            </StackPane.margin>
+         </TextField>
+         <Button fx:id="BtnSalvar" mnemonicParsing="false" onMouseClicked="#salvarClicked" prefHeight="72.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Salvar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+               <Insets left="130.0" top="650.0" />
+            </StackPane.margin>
+            <font>
+               <Font name="Arial" size="23.0" />
+            </font>
+         </Button>
+         <Button fx:id="BtnCancelar" layoutX="140.0" layoutY="610.0" mnemonicParsing="false" onAction="#voltarClicked" prefHeight="72.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Cancelar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+            <font>
+               <Font name="Arial" size="23.0" />
+            </font>
+            <StackPane.margin>
+               <Insets left="350.0" top="650.0" />
+            </StackPane.margin>
+         </Button>
+      </children>
+   </StackPane>
 </AnchorPane>
