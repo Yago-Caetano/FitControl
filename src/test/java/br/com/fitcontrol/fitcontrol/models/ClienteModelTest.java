@@ -26,6 +26,6 @@ public class ClienteModelTest {
         assertEquals(cliente.getTelefone(),"98573");
 
         //Confere se a quantidade de pontos é 500
-        assertEquals(cliente.getId(),500);
+        assertEquals(cliente.getPontos(),500);
     }
 }
