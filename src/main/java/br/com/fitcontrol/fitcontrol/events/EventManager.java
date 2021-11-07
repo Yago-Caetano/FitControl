@@ -32,7 +32,7 @@ public class EventManager {
         }
     }
 
-    public synchronized void notify(EnumEventTypes event, FitControlContext context) throws SQLException {
+    public synchronized void notify(EnumEventTypes event, FitControlContext context) throws Exception {
         for (EventModel e: Events) {
             if(e.getEventType() == event)
             {

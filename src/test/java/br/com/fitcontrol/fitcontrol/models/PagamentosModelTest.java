@@ -9,11 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PagamentosModelTest
 {
+
     @Test
     public void test()
     {
         Date datateste = java.sql.Date.valueOf("2022-01-04");
-        PagamentoModel pagamento = new PagamentoModel(1, datateste, 34.99);
+        PagamentoModel pagamento = new PagamentoModel("1", datateste, 34.99);
 
         //chack if the date is 04-April-2022
         assertEquals(pagamento.getData(),"2022-01-04");

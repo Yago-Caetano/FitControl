@@ -65,34 +65,41 @@ public class ClientEditScreenController implements Initializable {
      * Salva ou altera um cliente dependendo do valor do boolean update.
      */
     @FXML
-    protected void salvarClicked() throws SQLException {
-        ClienteModel cliente = new ClienteModel();
-        ClienteMySQLDAO dao = new ClienteMySQLDAO();
+    protected void salvarClicked() throws Exception {
+        try{
+            ClienteModel cliente = new ClienteModel();
+            ClienteMySQLDAO dao = new ClienteMySQLDAO();
 
-        cliente.setId((txtID.getText()));
-        cliente.setNome(txtNomeCliente.getText());
-        cliente.setLogin(txtEmail.getText());
-        cliente.setTelefone(txtTelefone.getText());
-        cliente.setPontos(0);
-
-
-        PublisherTela p = PublisherTela.getInstance();
-
-        //Verifica se é Edit ou Insert
-        if(!update){                        //Insert
-            p.RegisterUser(cliente);
-        }
-        else{                            // Edit
-            cliente = (ClienteModel) (dao.localiza(cliente.getId()));
             cliente.setId((txtID.getText()));
             cliente.setNome(txtNomeCliente.getText());
             cliente.setLogin(txtEmail.getText());
             cliente.setTelefone(txtTelefone.getText());
             cliente.setPontos(0);
-            p.UpdateUser(cliente);
-            setUpdate(false);
+
+
+            PublisherTela p = PublisherTela.getInstance();
+
+            //Verifica se é Edit ou Insert
+            if(!update){                        //Insert
+                p.RegisterUser(cliente);
+            }
+            else{                            // Edit
+                cliente = (ClienteModel) (dao.localiza(cliente.getId()));
+                cliente.setId((txtID.getText()));
+                cliente.setNome(txtNomeCliente.getText());
+                cliente.setLogin(txtEmail.getText());
+                cliente.setTelefone(txtTelefone.getText());
+                cliente.setPontos(0);
+                p.UpdateUser(cliente);
+                setUpdate(false);
+            }
+            voltarClicked();
         }
-        voltarClicked();
+        catch(Exception e)
+        {
+
+        }
+        
 
     }
 

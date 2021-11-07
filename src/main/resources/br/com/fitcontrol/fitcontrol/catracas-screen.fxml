@@ -53,17 +53,17 @@
                   <Font name="Roboto Light" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="52.0" layoutY="128.0" mnemonicParsing="false" prefHeight="168.0" prefWidth="274.0" style="-fx-background-color: A27811;" text="Liberar Acesso" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="52.0" layoutY="128.0" mnemonicParsing="false" onMouseClicked="#liberarAcessoClicked" prefHeight="168.0" prefWidth="274.0" style="-fx-background-color: A27811;" text="Liberar Acesso" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="464.0" layoutY="128.0" mnemonicParsing="false" prefHeight="168.0" prefWidth="274.0" style="-fx-background-color: A27811;" text="Bloquear Acesso" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="464.0" layoutY="128.0" mnemonicParsing="false" onMouseClicked="#bloquearAcessoClicked" prefHeight="168.0" prefWidth="274.0" style="-fx-background-color: A27811;" text="Bloquear Acesso" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="876.0" layoutY="131.0" mnemonicParsing="false" prefHeight="168.0" prefWidth="274.0" style="-fx-background-color: A27811;" text="Reiniciar Catraca" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="876.0" layoutY="131.0" mnemonicParsing="false" onMouseClicked="#reiniciarCatracaClicked" prefHeight="168.0" prefWidth="274.0" style="-fx-background-color: A27811;" text="Reiniciar Catraca" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

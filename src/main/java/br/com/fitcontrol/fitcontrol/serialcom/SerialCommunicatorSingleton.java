@@ -157,7 +157,7 @@ public class SerialCommunicatorSingleton extends Thread {
     }
 
 
-    private void checkFunctionAndDispatchEvent(int[] data,int function) throws SQLException {
+    private void checkFunctionAndDispatchEvent(int[] data,int function) throws Exception {
         if(mPublisher == null)
             return;
 
@@ -187,7 +187,7 @@ public class SerialCommunicatorSingleton extends Thread {
      * @brief: Handle serial incoming data
      * @param bruteSerialData
      */
-    private void handleIncommingData(byte[] bruteSerialData) throws SQLException {
+    private void handleIncommingData(byte[] bruteSerialData) throws Exception {
         //simple validation
         if((bruteSerialData[0] == 2) && (bruteSerialData[bruteSerialData.length-1] == 3))
         {

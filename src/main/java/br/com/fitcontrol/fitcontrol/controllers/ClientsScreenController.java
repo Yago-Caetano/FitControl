@@ -146,13 +146,13 @@ public class ClientsScreenController implements Initializable {
                             PublisherTela p =  PublisherTela.getInstance();
                             try {
                                 p.DeleteUser(cliente);
-                            } catch (SQLException e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
 
                             try {
                                 carregarDados();
-                            } catch (SQLException e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
 

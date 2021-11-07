@@ -123,13 +123,13 @@ public class PaymentsScreenController implements Initializable {
                             PublisherTela p = PublisherTela.getInstance();
                             try {
                                 p.DeleteUser(pagamento);
-                            } catch (SQLException e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
 
                             try {
                                 carregarDados();
-                            } catch (SQLException e) {
+                            } catch (Exception e) {
                                 e.printStackTrace();
                             }
 

@@ -20,17 +20,17 @@ public class PublisherSerial {
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_CATRACA_ERRO, new CatracaErroListenner());
     }
 
-    public void CheckInEvent() throws SQLException {
+    public void CheckInEvent() throws Exception {
         FitControlContext c = new FitControlContext();
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_ACESS_CHECK_IN,c);
     }
 
-    public void CheckOutEvent() throws SQLException {
+    public void CheckOutEvent() throws Exception {
         FitControlContext c = new FitControlContext();
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_ACESS_CHECK_OUT,c);
     }
 
-    public void ErroEvent() throws SQLException {
+    public void ErroEvent() throws Exception {
         FitControlContext c = new FitControlContext();
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_CATRACA_ERRO,c);
     }

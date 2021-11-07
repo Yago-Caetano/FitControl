@@ -7,6 +7,7 @@ import br.com.fitcontrol.fitcontrol.models.CatracaModel;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
+import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import br.com.fitcontrol.fitcontrol.serialcom.SerialCommunicatorSingleton;
 import com.fazecast.jSerialComm.SerialPort;
 import javafx.collections.FXCollections;
@@ -147,7 +148,6 @@ public class CatracaScreenController implements Initializable {
         @Override
         public void handle(MouseEvent e) {
 
-
             try
             {
                 if(serialPortsMap.size()==0)
@@ -189,16 +189,31 @@ public class CatracaScreenController implements Initializable {
 
     @FXML
     protected void liberarAcessoClicked() {
-        
+        PublisherTela publisher = PublisherTela.getInstance();
+        try {
+            publisher.grantAcess(new CatracaModel());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     protected void bloquearAcessoClicked() {
-
+        PublisherTela publisher = PublisherTela.getInstance();
+        try {
+            publisher.blockCatraca(new CatracaModel());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     protected void reiniciarCatracaClicked() {
-
+        PublisherTela publisher = PublisherTela.getInstance();
+        try {
+            publisher.restartCatraca(new CatracaModel());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -14,12 +14,12 @@ public class CatracaModelTest {
     @Test
     public void test()
     {
-        CatracaModel catracaModel = new CatracaModel(1,"Catraca1");
+        CatracaModel catracaModel = new CatracaModel("1","Catraca1");
 
         //chack if the name is Catraca1
         assertEquals(catracaModel.getModelo(),"Catraca1");
 
         //check if the id is 1
-        assertEquals(catracaModel.getId(),1);
+        assertEquals(catracaModel.getId(),"1");
     }
 }
