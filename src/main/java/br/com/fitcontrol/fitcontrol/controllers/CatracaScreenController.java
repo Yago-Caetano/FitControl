@@ -191,7 +191,12 @@ public class CatracaScreenController implements Initializable {
     protected void liberarAcessoClicked() {
         PublisherTela publisher = PublisherTela.getInstance();
         try {
-            publisher.grantAcess(new CatracaModel());
+            if(tabela.getSelectionModel().isEmpty())
+                return;
+
+            CatracaModel SelectedCatraca = tabela.getSelectionModel().getSelectedItem();
+            publisher.grantAcess(SelectedCatraca);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -201,7 +206,12 @@ public class CatracaScreenController implements Initializable {
     protected void bloquearAcessoClicked() {
         PublisherTela publisher = PublisherTela.getInstance();
         try {
-            publisher.blockCatraca(new CatracaModel());
+            if(tabela.getSelectionModel().isEmpty())
+                return;
+
+            CatracaModel SelectedCatraca = tabela.getSelectionModel().getSelectedItem();
+            publisher.blockCatraca(SelectedCatraca);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -211,7 +221,12 @@ public class CatracaScreenController implements Initializable {
     protected void reiniciarCatracaClicked() {
         PublisherTela publisher = PublisherTela.getInstance();
         try {
-            publisher.restartCatraca(new CatracaModel());
+            if(tabela.getSelectionModel().isEmpty())
+                return;
+
+            CatracaModel SelectedCatraca = tabela.getSelectionModel().getSelectedItem();
+            publisher.restartCatraca(SelectedCatraca);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

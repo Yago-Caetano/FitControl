@@ -21,8 +21,17 @@ public class PublisherTela {
 
     public PublisherTela()
     {
-        if(mEventManager == null)
-            return;
+
+
+    }
+
+
+    public void registerEventManager(EventManager eventManager){
+        mEventManager = eventManager;
+        registerListenners();
+    }
+
+    private void registerListenners(){
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_USER_REGISTER,new UserRegisterListenner());
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_USER_DELETE,new UserDeleteListenner());
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_USER_UPDATE,new UserUpdateListenner());
@@ -40,14 +49,6 @@ public class PublisherTela {
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_CATRACA_BLOCK, new CatracaBlockListenner());
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_CATRACA_RESTART, new CatracaRestartListenner());
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_CATRACA_UNLOCK, new CatracaUnlockListenner());
-
-
-    }
-
-
-    public void registerEventManager(EventManager eventManager){
-        mEventManager = eventManager;
-
     }
 
 

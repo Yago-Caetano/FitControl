@@ -121,8 +121,8 @@ public  class NavigationSingleton {
         }
 
 
-        if(telaAtual != null)
-            telas.add(resourceName);
+
+        telas.add(resourceName);
 
         telaAtual = resourceName;
 
