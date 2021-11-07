@@ -7,25 +7,24 @@ import br.com.fitcontrol.fitcontrol.models.CatracaModel;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
+import br.com.fitcontrol.fitcontrol.serialcom.SerialCommunicatorSingleton;
+import com.fazecast.jSerialComm.SerialPort;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
-<<<<<<< Updated upstream
 import java.util.ResourceBundle;
-=======
 import java.sql.SQLException;
 import java.util.*;
->>>>>>> Stashed changes
 
 public class CatracaScreenController implements Initializable {
 
@@ -38,15 +37,32 @@ public class CatracaScreenController implements Initializable {
     public TableColumn<CatracaModel, String> modelo;
 
     private NavigationSingleton navigation;
+
     @FXML
-    private Button voltar, novoCliente;
+    private Spinner<String> spCOMPorts;
+
+    private Map<String, SerialPort> serialPortsMap;
 
     @FXML
     private Button liberarAcesso, bloquearAcesso, reiniciarCatraca;
 
     @FXML
+    private Button voltar, novoCliente, btConectar;
+
+    @FXML
     protected void voltarClicked() {
-        executeNavigation(NavigationSingleton.MAIN_SCREEN);
+        try {
+            NavigationSingleton.getInstance().goBack(new iNavCallback() {
+                @Override
+                public void navigateCb(String screenName) throws Exception {
+                    FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
+                    Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
+                    navigation.getStage().setScene(scene);
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -62,12 +78,11 @@ public class CatracaScreenController implements Initializable {
         modelo.setCellValueFactory(
                 new PropertyValueFactory<CatracaModel, String>("modelo"));
 
-<<<<<<< Updated upstream
         ObservableList<CatracaModel> list = FXCollections.observableArrayList(new CatracaModel(1, "Catraca 1"),
                 new CatracaModel(2, "Catraca 2"), new CatracaModel(3, "Catraca 3"));
 
         tabela.setItems(list);
-=======
+
         try {
             carregarDados();
         } catch (SQLException e) {
@@ -113,7 +128,6 @@ public class CatracaScreenController implements Initializable {
                 new SpinnerValueFactory.ListSpinnerValueFactory<String>(ports);
 
         spCOMPorts.setValueFactory(valueFactory);
->>>>>>> Stashed changes
     }
 
     private void executeNavigation(int screenId) {
@@ -127,8 +141,7 @@ public class CatracaScreenController implements Initializable {
         });
     }
 
-<<<<<<< Updated upstream
-=======
+
     //Creating the mouse event handler
     EventHandler<MouseEvent> btConectaClicked = new EventHandler<MouseEvent>() {
         @Override
@@ -174,7 +187,6 @@ public class CatracaScreenController implements Initializable {
         tabela.setItems(lista);
     }
 
->>>>>>> Stashed changes
     @FXML
     protected void liberarAcessoClicked() {
         

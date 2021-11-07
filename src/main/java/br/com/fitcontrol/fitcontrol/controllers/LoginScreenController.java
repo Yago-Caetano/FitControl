@@ -50,19 +50,6 @@ public class LoginScreenController implements Initializable {
                 f.setSenha(senha);
                 if(validar.validaUsuario(f)){
 
-                   /* FXMLLoader loader = new FXMLLoader(FitControlMain.class.getResource("main-screen.fxml"));
-                    try {
-                        loader.load();
-                    } catch (IOException ex) {
-                        Logger.getLogger(LoginScreenController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                    MainScreenController main = loader.getController();
-
-                    main.RecebeLogin(f);
-                    Parent parent = loader.getRoot();
-                    navigation.getStage().setScene(new Scene(parent));*/
-
                     FuncionarioLogado.setNome(f.getNome());
                     executeNavigation(NavigationSingleton.MAIN_SCREEN);
 

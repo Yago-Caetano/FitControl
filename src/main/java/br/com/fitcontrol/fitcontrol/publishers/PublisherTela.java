@@ -7,6 +7,8 @@ import br.com.fitcontrol.fitcontrol.events.EventManager;
 import br.com.fitcontrol.fitcontrol.listenners.*;
 import br.com.fitcontrol.fitcontrol.serialcom.SerialCommunicatorSingleton;
 
+import java.sql.SQLException;
+
 public class PublisherTela {
 
     /*private static PublisherTela instance = new PublisherTela();
@@ -29,8 +31,12 @@ public class PublisherTela {
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_CATRACA_REGISTER, new CatracaRegisterListenner());
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_CATRACA_DELETE, new CatracaDeleteListenner());
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_CATRACA_UPDATE, new CatracaUpdateListenner());
-    }
 
+
+        mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_Employee_Register,new EmployeeRegisterListenner());
+        mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_Employee_Update,new EmployeeUpdateListenner());
+        mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_Employee_Delete,new EmployeeDeleteListenner());
+    }
 
 
     public void registerEventManager(EventManager eventManager){
@@ -39,31 +45,31 @@ public class PublisherTela {
     }
 
 
-    public void RegisterUser(Entidade e)
+    public void RegisterUser(Entidade e)  throws SQLException
     {
         FitControlContext c = new FitControlContext();
         c.setEntityData(e);
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_USER_REGISTER,c);
     }
-    public void DeleteUser(Entidade e)
+    public void DeleteUser(Entidade e)  throws SQLException
     {
         FitControlContext c = new FitControlContext();
         c.setEntityData(e);
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_USER_DELETE,c);
     }
-    public void UpdateUser(Entidade e)
+    public void UpdateUser(Entidade e)  throws SQLException
     {
         FitControlContext c = new FitControlContext();
         c.setEntityData(e);
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_USER_UPDATE,c);
     }
-    public void RegisterReward(Entidade e)
+    public void RegisterReward(Entidade e)  throws SQLException
     {
         FitControlContext c = new FitControlContext();
         c.setEntityData(e);
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_REWARD_REGISTER,c);
     }
-    public void UpdateReward(Entidade e)
+    public void UpdateReward(Entidade e)  throws SQLException
     {
         FitControlContext c = new FitControlContext();
         c.setEntityData(e);
@@ -85,5 +91,19 @@ public class PublisherTela {
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_CATRACA_UPDATE,c);
     }
 
-
+    public void RegisterEmployee(Entidade e) throws SQLException {
+        FitControlContext c = new FitControlContext();
+        c.setEntityData(e);
+        mEventManager.notify(EnumEventTypes.EVENT_TYPE_Employee_Register,c);
+    }
+    public void UpdateEmployee(Entidade e) throws SQLException {
+        FitControlContext c = new FitControlContext();
+        c.setEntityData(e);
+        mEventManager.notify(EnumEventTypes.EVENT_TYPE_Employee_Update,c);
+    }
+    public void DeleteEmployee(Entidade e) throws SQLException {
+        FitControlContext c = new FitControlContext();
+        c.setEntityData(e);
+        mEventManager.notify(EnumEventTypes.EVENT_TYPE_Employee_Delete,c);
+    }
 }
