@@ -56,7 +56,7 @@
                <Insets top="100.0" />
             </StackPane.margin>
          </Label>
-         <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="237.0" text="Modelo da catraca" wrapText="true" StackPane.alignment="TOP_LEFT">
+         <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="237.0" text="Nome da catraca" wrapText="true" StackPane.alignment="TOP_LEFT">
             <font>
                <Font name="Arial" size="23.0" />
             </font>
@@ -64,7 +64,7 @@
                <Insets left="100.0" top="250.0" />
             </StackPane.margin>
          </Label>
-         <TextField fx:id="txtModelo" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
+         <TextField fx:id="txtNome" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
             <StackPane.margin>
                <Insets left="100.0" right="500.0" top="290.0" />
             </StackPane.margin>
@@ -85,6 +85,19 @@
                <Insets left="350.0" top="650.0" />
             </StackPane.margin>
          </Button>
+         <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="59.0" text="Modelo da catraca" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
+            <font>
+               <Font name="Arial" size="23.0" />
+            </font>
+            <StackPane.margin>
+               <Insets left="100.0" top="340.0" />
+            </StackPane.margin>
+         </Label>
+         <TextField fx:id="txtModelo" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+               <Insets left="100.0" right="500.0" top="380.0" />
+            </StackPane.margin>
+         </TextField>
       </children>
    </StackPane>
 </AnchorPane>
