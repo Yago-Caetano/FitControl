@@ -88,8 +88,8 @@ public class EmployeeEditScreenController implements Initializable {
             p.RegisterEmployee(funcionario);
         }
         else{
-            funcionario = (FuncionarioModel) (dao.localiza(Integer.parseInt(txtID.getText())));
-            funcionario.setId(Integer.parseInt(txtID.getText()));
+            funcionario = (FuncionarioModel) (dao.localiza(txtID.getText()));
+            funcionario.setId(txtID.getText());
             funcionario.setNome(txtNomeColaborador.getText());
             funcionario.setLogin(txtEmail.getText());
             funcionario.setSenha(txtSenha.getText());
@@ -111,7 +111,7 @@ public class EmployeeEditScreenController implements Initializable {
      */
     void preencheTextField(FuncionarioModel funcionario) {
 
-        txtID.setText(Integer.toString(funcionario.getId()));
+        txtID.setText(funcionario.getId());
         txtNomeColaborador.setText(funcionario.getNome());
         txtTelefone.setText(funcionario.getTelefone());
         txtEmail.setText(funcionario.getLogin());

@@ -66,7 +66,6 @@ public class ClientEditScreenController implements Initializable {
      */
     @FXML
     protected void salvarClicked() throws SQLException {
-        EventManager evtManager = new EventManager();
         ClienteModel cliente = new ClienteModel();
         ClienteMySQLDAO dao = new ClienteMySQLDAO();
 
@@ -77,7 +76,7 @@ public class ClientEditScreenController implements Initializable {
         cliente.setPontos(0);
 
 
-        PublisherTela p = new PublisherTela(evtManager);
+        PublisherTela p = PublisherTela.getInstance();
 
         //Verifica se é Edit ou Insert
         if(!update){                        //Insert
