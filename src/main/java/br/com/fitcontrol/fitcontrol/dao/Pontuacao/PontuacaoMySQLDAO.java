@@ -19,7 +19,7 @@ public class PontuacaoMySQLDAO <E extends Entidade> extends MySQLDAO {
     }
     @Override
     protected String getInsertCommand(Entidade entidade) {
-        String SQL= "Insert into " + getTabela() + "(Pontos,idAcesso,idCliente) values (?,?,?)";
+        String SQL= "Insert into " + getTabela() + "(id,Pontos,idAcesso,idCliente) values (?,?,?,?)";
         return SQL;
     }
 
@@ -31,11 +31,20 @@ public class PontuacaoMySQLDAO <E extends Entidade> extends MySQLDAO {
     }
 
     @Override
-    protected void PrepareStatementInsertUpdate(Entidade entidade, PreparedStatement stmt) throws SQLException {
+    protected void PrepareStatementInsert(Entidade entidade, PreparedStatement stmt) throws SQLException {
+        PontuacaoHistModel pont=(PontuacaoHistModel)entidade;
+        stmt.setString(1,pont.getId());
+        stmt.setInt(1,pont.getPontos());
+        stmt.setString(2,pont.getIdAcesso());
+        stmt.setString(3,pont.getIdCliente());
+    }
+
+    @Override
+    protected void PrepareStatementUpdate(Entidade entidade, PreparedStatement stmt) throws SQLException {
         PontuacaoHistModel pont=(PontuacaoHistModel)entidade;
         stmt.setInt(1,pont.getPontos());
-        stmt.setInt(2,pont.getIdAcesso());
-        stmt.setInt(3,pont.getIdCliente());
+        stmt.setString(2,pont.getIdAcesso());
+        stmt.setString(3,pont.getIdCliente());
     }
 
     @Override
@@ -43,10 +52,10 @@ public class PontuacaoMySQLDAO <E extends Entidade> extends MySQLDAO {
         PontuacaoHistModel pont = new PontuacaoHistModel();
         try {
 
-            pont.setId(rs.getInt("id"));
-            pont.setId(rs.getInt("Pontos"));
-            pont.setId(rs.getInt("idAcesso"));
-            pont.setId(rs.getInt("idCliente"));
+            pont.setId(rs.getString("id"));
+            pont.setPontos(rs.getInt("Pontos"));
+            pont.setIdAcesso(rs.getString("idAcesso"));
+            pont.setIdCliente(rs.getString("idCliente"));
 
         } catch (SQLException ex) {
             //Logger.getLogger(UsuarioMySQLDAO.class.getName()).log(Level.SEVERE, null, ex);

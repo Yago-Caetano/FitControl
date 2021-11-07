@@ -14,7 +14,7 @@ public class PagamentoModel  extends Entidade {
         this.setTipoEntidade(EnumEntidadesDisponiveis.PAGAMENTO);
 
     }
-    public PagamentoModel(int id, Date data, double valor) {
+    public PagamentoModel(String id, Date data, double valor) {
         super.setId(id);
         this.data = data;
         this.valor = valor;

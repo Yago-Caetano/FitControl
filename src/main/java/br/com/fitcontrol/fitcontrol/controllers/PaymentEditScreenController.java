@@ -27,12 +27,20 @@ public class PaymentEditScreenController implements Initializable {
     @FXML
     public TextField txtID;
     @FXML
-    public TextField txtData;
+    public Integer txtIDCliente;
+    @FXML
+    public DateFormat txtData;
     @FXML
     public TextField txtValor;
-    @FXML
-    public TextField txtEmail;
 
+    @FXML
+    public TableView<PagamentoModel> tabela;
+    @FXML
+    public TableColumn<PagamentoModel, Integer> id;
+    @FXML
+    public  TableColumn<PagamentoModel, String> data;
+    @FXML
+    public  TableColumn<PagamentoModel, Double> valor;
 
     private boolean update;
     private NavigationSingleton navigation;
@@ -65,8 +73,8 @@ public class PaymentEditScreenController implements Initializable {
 
     void preencheTextField(PagamentoModel pagamento) {
 
-        txtID.setText(Integer.toString(pagamento.getId()));
-        txtData.setText(pagamento.getData().toString());
+        txtID.setText((pagamento.getId()));
+        txtData.format(pagamento.getData());
         txtID.setText(Integer.toString(pagamento.getIdCliente()));
         txtValor.setText(Double.toString(pagamento.getValor()));
 

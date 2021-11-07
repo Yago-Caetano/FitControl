@@ -18,7 +18,7 @@ public class RecompensaHistMySQLDAO  <E extends Entidade> extends MySQLDAO {
     }
     @Override
     protected String getInsertCommand(Entidade entidade) {
-        String SQL= "Insert into " + getTabela() + "(_Data,Pontos,Titulo,IdCliente) values (?,?,?,?)";
+        String SQL= "Insert into " + getTabela() + "(id,_Data,Pontos,Titulo,IdCliente) values (?,?,?,?,?)";
         return SQL;
     }
 
@@ -30,12 +30,22 @@ public class RecompensaHistMySQLDAO  <E extends Entidade> extends MySQLDAO {
     }
 
     @Override
-    protected void PrepareStatementInsertUpdate(Entidade entidade, PreparedStatement stmt) throws SQLException {
+    protected void PrepareStatementInsert(Entidade entidade, PreparedStatement stmt) throws SQLException {
+        RecompensaHistModel recom=(RecompensaHistModel)entidade;
+        stmt.setString(1,recom.getId());
+        stmt.setDate(2,recom.getData());
+        stmt.setInt(3,recom.getPontos());
+        stmt.setString(4,recom.getTitulo());
+        stmt.setInt(5,recom.getIdCliente());
+    }
+
+    @Override
+    protected void PrepareStatementUpdate(Entidade entidade, PreparedStatement stmt) throws SQLException {
         RecompensaHistModel recom=(RecompensaHistModel)entidade;
         stmt.setDate(1,recom.getData());
         stmt.setInt(2,recom.getPontos());
-        stmt.setString(2,recom.getTitulo());
-        stmt.setInt(2,recom.getIdCliente());
+        stmt.setString(3,recom.getTitulo());
+        stmt.setInt(4,recom.getIdCliente());
     }
 
     @Override
@@ -43,7 +53,7 @@ public class RecompensaHistMySQLDAO  <E extends Entidade> extends MySQLDAO {
         RecompensaHistModel recom = new RecompensaHistModel();
         try {
 
-            recom.setId(rs.getInt("id"));
+            recom.setId(rs.getString("id"));
             recom.setData(rs.getDate("_Data"));
             recom.setPontos(rs.getInt("Pontos"));
             recom.setTitulo(rs.getString("Titulo"));

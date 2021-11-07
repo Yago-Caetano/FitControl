@@ -20,7 +20,7 @@ public class PagamentosMySQLDAO <E extends Entidade> extends MySQLDAO {
 
     @Override
     protected String getInsertCommand(Entidade entidade) {
-        String SQL= "Insert into " + getTabela() + "(_Data,idCliente,idFuncionario,Valor) values (?,?,?,?)";
+        String SQL= "Insert into " + getTabela() + "(id,_Data,idCliente,idFuncionario,Valor) values (?,?,?,?,?)";
         return SQL;
     }
 
@@ -32,21 +32,31 @@ public class PagamentosMySQLDAO <E extends Entidade> extends MySQLDAO {
     }
 
     @Override
-    protected void PrepareStatementInsertUpdate(Entidade entidade, PreparedStatement stmt) throws SQLException {
+    protected void PrepareStatementInsert(Entidade entidade, PreparedStatement stmt) throws SQLException {
 
+        PagamentoModel pagamento=(PagamentoModel)entidade;
+        stmt.setString(1,pagamento.getId());
+        stmt.setDate(2,pagamento.getData());
+        stmt.setInt(3,pagamento.getIdCliente());
+        stmt.setInt(4,pagamento.getIdFuncionario());
+        stmt.setDouble(5,pagamento.getValor());
+
+    }
+
+    @Override
+    protected void PrepareStatementUpdate(Entidade entidade, PreparedStatement stmt) throws SQLException {
         PagamentoModel pagamento=(PagamentoModel)entidade;
         stmt.setDate(1,pagamento.getData());
         stmt.setInt(2,pagamento.getIdCliente());
         stmt.setInt(3,pagamento.getIdFuncionario());
         stmt.setDouble(4,pagamento.getValor());
-
     }
 
     @Override
     protected Entidade preencheEntidade(ResultSet rs) {
         PagamentoModel pagamento = new PagamentoModel();
         try {
-            pagamento.setId(rs.getInt("id"));
+            pagamento.setId(rs.getString("id"));
             pagamento.setData(rs.getDate("_Data"));
             pagamento.setIdCliente(rs.getInt("idCliente"));
             pagamento.setIdFuncionario(rs.getInt("idFuncionario"));

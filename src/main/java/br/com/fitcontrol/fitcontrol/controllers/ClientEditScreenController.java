@@ -59,8 +59,6 @@ public class ClientEditScreenController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         navigation = NavigationSingleton.getInstance();
-        txtID.setDisable(true);
-        txtID.setVisible(false);
     }
 
     /***
@@ -68,25 +66,26 @@ public class ClientEditScreenController implements Initializable {
      */
     @FXML
     protected void salvarClicked() throws SQLException {
-
+        EventManager evtManager = new EventManager();
         ClienteModel cliente = new ClienteModel();
         ClienteMySQLDAO dao = new ClienteMySQLDAO();
 
+        cliente.setId((txtID.getText()));
         cliente.setNome(txtNomeCliente.getText());
         cliente.setLogin(txtEmail.getText());
         cliente.setTelefone(txtTelefone.getText());
         cliente.setPontos(0);
 
 
-        PublisherTela p = PublisherTela.getInstance();
+        PublisherTela p = new PublisherTela(evtManager);
 
         //Verifica se é Edit ou Insert
         if(!update){                        //Insert
             p.RegisterUser(cliente);
         }
         else{                            // Edit
-            cliente = (ClienteModel) (dao.localiza(Integer.parseInt(txtID.getText())));
-            cliente.setId(Integer.parseInt(txtID.getText()));
+            cliente = (ClienteModel) (dao.localiza(cliente.getId()));
+            cliente.setId((txtID.getText()));
             cliente.setNome(txtNomeCliente.getText());
             cliente.setLogin(txtEmail.getText());
             cliente.setTelefone(txtTelefone.getText());
@@ -103,11 +102,13 @@ public class ClientEditScreenController implements Initializable {
      */
     void preencheTextField(ClienteModel aluno) {
 
-        txtID.setText(Integer.toString(aluno.getId()));
+        txtID.setText((aluno.getId()));
         txtTelefone.setText(aluno.getTelefone());
         txtEmail.setText(aluno.getLogin());
         txtNomeCliente.setText(aluno.getNome());
 
+        txtID.setEditable(false);
+        txtID.setDisable(true);
     }
 
     void setUpdate(boolean b) {

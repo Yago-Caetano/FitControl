@@ -55,7 +55,7 @@ public class RewardEditScreenController implements Initializable {
         RecompensaModel recompensa = new RecompensaModel();
         PublisherTela p =  PublisherTela.getInstance();
 
-        recompensa.setId(Integer.parseInt(txtID.getText()));
+        recompensa.setId((txtID.getText()));
         recompensa.setDescricao(txtTitulo.getText());
         recompensa.setPontosNecessarios(Integer.parseInt(txtQtPontos.getText()));
 

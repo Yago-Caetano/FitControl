@@ -14,7 +14,7 @@ public class RepositorioMySQL  extends Repositorio {
 
 
     @Override
-    public Entidade localiza(int codigo, EnumEntidadesDisponiveis tipoEntidade) {
+    public Entidade localiza(String codigo, EnumEntidadesDisponiveis tipoEntidade) {
         PadraoDAO dao = FabricaDAOs.Fabrica(tipoEntidade, main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio.MYSQL);
         Entidade entidade = null;
         try {

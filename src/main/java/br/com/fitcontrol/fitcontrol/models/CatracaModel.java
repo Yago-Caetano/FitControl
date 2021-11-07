@@ -15,7 +15,7 @@ public class CatracaModel extends Entidade {
         this.setTipoEntidade(EnumEntidadesDisponiveis.CATRACA);
     }
 
-    public CatracaModel(int id, String modelo) {
+    public CatracaModel(String id, String modelo) {
         this.modelo = modelo;
         this.setTipoEntidade(EnumEntidadesDisponiveis.CATRACA);
         super.setId(id);

@@ -1,7 +1,6 @@
 package br.com.fitcontrol.fitcontrol.dao;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
-import br.com.fitcontrol.fitcontrol.dao.PadraoDAO;
 
 import java.sql.*;
 
@@ -28,8 +27,9 @@ public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
     public void Insert(Entidade entidade) throws SQLException {
         try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA )) {
             String SQL = getInsertCommand((E) entidade);
+            entidade.setId();
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
-                PrepareStatementInsertUpdate((E) entidade,stmt);
+                this.PrepareStatementInsert((E) entidade,stmt);
                 stmt.execute();
             }
         } catch (SQLException throwables) {
@@ -43,7 +43,7 @@ public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
         try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA )) {
             String SQL = getUpdateCommand((E) entidade);
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
-                PrepareStatementInsertUpdate((E) entidade,stmt);
+                this.PrepareStatementUpdate((E) entidade,stmt);
                 stmt.executeUpdate();
             }
         } catch (SQLException throwables) {
@@ -60,7 +60,7 @@ public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
             else
                 SQL = "delete from " +this.tabela + " where id = ? ";
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
-               stmt.setInt(1,entidade.getId());
+               stmt.setString(1,entidade.getId());
                 stmt.executeUpdate();
             }
         } catch (SQLException throwables) {
@@ -76,7 +76,7 @@ public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
      * @throws SQLException
      */
     @Override
-    public E localiza (int codigo) throws SQLException {
+    public E localiza (String codigo) throws SQLException {
         E entidade = null;
         try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA )) {
             String SQL;
@@ -85,7 +85,7 @@ public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
             else
                 SQL= "select * from " + this.tabela + " where Id = ?";
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
-                stmt.setInt(1, codigo);
+                stmt.setString(1, codigo);
                 try (ResultSet rs = stmt.executeQuery()) {
                     if (rs.next()){
                         entidade = preencheEntidade(rs);
@@ -99,7 +99,8 @@ public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
     protected String getTabela() {return tabela;}
     protected abstract String getInsertCommand(E entidade);
     protected abstract String getUpdateCommand(E entidade);
-    protected abstract void PrepareStatementInsertUpdate(E entidade,PreparedStatement stmt) throws SQLException;
+    protected abstract void PrepareStatementInsert(E entidade, PreparedStatement stmt) throws SQLException;
+    protected abstract void PrepareStatementUpdate(E entidade, PreparedStatement stmt) throws SQLException;
 
     /*
     protected String getLocalizaCommand() {

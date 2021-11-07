@@ -10,7 +10,7 @@ public class RecompensaModel  extends Entidade {
     private int PontosNecessarios;
 
     public RecompensaModel(){}
-    public RecompensaModel(Integer id,int Pontos,String Descricao) {
+    public RecompensaModel(String id,int Pontos,String Descricao) {
         this.Descricao = Descricao;
         super.setId(id);
         this.PontosNecessarios = Pontos;
