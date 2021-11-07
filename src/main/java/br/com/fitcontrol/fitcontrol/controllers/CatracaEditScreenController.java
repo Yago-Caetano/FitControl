@@ -58,7 +58,6 @@ public class CatracaEditScreenController implements Initializable {
      */
     @FXML
     protected void salvarClicked() throws SQLException {
-        EventManager evtManager = new EventManager();
         CatracaModel catraca = new CatracaModel();
         CatracaMySQLDAO dao = new CatracaMySQLDAO();
 
@@ -67,7 +66,7 @@ public class CatracaEditScreenController implements Initializable {
         catraca.setModelo(txtModelo.getText());
 
 
-        PublisherTela p = new PublisherTela(evtManager);
+        PublisherTela p = PublisherTela.getInstance();
 
         //Verifica se é Edit ou Insert
         if(!update){                        //Insert

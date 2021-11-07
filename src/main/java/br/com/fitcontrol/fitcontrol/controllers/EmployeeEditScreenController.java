@@ -68,7 +68,6 @@ public class EmployeeEditScreenController implements Initializable {
      */
     @FXML
     protected void salvarClicked() throws SQLException {
-        EventManager evtManager = new EventManager();
         FuncionarioModel funcionario = new FuncionarioModel();
         FuncionarioMySQLDAO dao = new FuncionarioMySQLDAO();
 
@@ -82,7 +81,7 @@ public class EmployeeEditScreenController implements Initializable {
         else
             funcionario.setNivel(EnumTipoUsuarios.FUNCIONARIO.getCode());   //Falta o Gerente
 
-        PublisherTela p = new PublisherTela(evtManager);
+        PublisherTela p = PublisherTela.getInstance();
 
         //Verifica se é Edit ou Insert
         if(!update){

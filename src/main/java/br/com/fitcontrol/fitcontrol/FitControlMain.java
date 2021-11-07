@@ -45,7 +45,8 @@ public class FitControlMain extends Application {
         PublisherSerial publisherSerial = new PublisherSerial(evManager);
 
         //publisher tela
-        PublisherTela publisherTela = new PublisherTela(evManager);
+        PublisherTela publisherTela = PublisherTela.getInstance();
+        publisherTela.registerEventManager(evManager);
 
         //Serial Communication
         SerialCommunicatorSingleton ser = SerialCommunicatorSingleton.getInstance();

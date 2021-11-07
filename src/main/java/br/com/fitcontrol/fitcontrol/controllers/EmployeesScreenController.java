@@ -124,9 +124,8 @@ public class EmployeesScreenController implements Initializable {
                         btnDeletar.setStyle("-fx-background-color:#e05f55;");
                         btnDeletar.setOnAction((ActionEvent event) -> {
                             FuncionarioModel funcionario = getTableView().getItems().get(getIndex());
-                            EventManager evtmanager = new EventManager();
 
-                            PublisherTela p = new PublisherTela(evtmanager);
+                            PublisherTela p = PublisherTela.getInstance();
                             try {
                                 p.DeleteEmployee(funcionario);
                             } catch (SQLException e) {

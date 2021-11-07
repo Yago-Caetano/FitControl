@@ -11,18 +11,19 @@ import java.sql.SQLException;
 
 public class PublisherTela {
 
-    /*private static PublisherTela instance = new PublisherTela();
+    private static PublisherTela instance = new PublisherTela();
 
     public static PublisherTela getInstance()
     {
         return instance;
-    }*/
+    }
 
     EventManager mEventManager;
 
-    public PublisherTela(EventManager eventManager)
+    public PublisherTela()
     {
-        mEventManager = eventManager;
+        if(mEventManager == null)
+            return;
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_USER_REGISTER,new UserRegisterListenner());
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_USER_DELETE,new UserDeleteListenner());
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_USER_UPDATE,new UserUpdateListenner());

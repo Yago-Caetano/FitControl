@@ -152,9 +152,8 @@ public class ClientsScreenController implements Initializable {
                         btnDeletar.setStyle("-fx-background-color:#e05f55;");
                         btnDeletar.setOnAction((ActionEvent event) -> {
                             ClienteModel cliente = getTableView().getItems().get(getIndex());
-                            EventManager evtmanager = new EventManager();
 
-                            PublisherTela p = new PublisherTela(evtmanager);
+                            PublisherTela p =  PublisherTela.getInstance();
                             try {
                                 p.DeleteUser(cliente);
                             } catch (SQLException e) {
