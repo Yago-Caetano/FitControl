@@ -14,13 +14,13 @@ public class ClienteModelTest {
         ClienteModel cliente = new ClienteModel("1", "Rafaela", "r","98573",500);
 
         //Confere se o nome é Rafaela
-        assertEquals(cliente.getNome(),"Rafeala");
+        assertEquals(cliente.getNome(),"Rafaela");
 
         //Confere se o email/login é r
         assertEquals(cliente.getLogin(),"r");
 
         //Confere se o id é 1
-        assertEquals(cliente.getId(),1);
+        assertEquals(cliente.getId(),"1");
 
         //Confere se o telefone é 98573
         assertEquals(cliente.getTelefone(),"98573");

@@ -40,7 +40,7 @@ public class CatracaEditScreenController implements Initializable {
                 @Override
                 public void navigateCb(String screenName) throws Exception {
                     FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                    Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
+                    Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
                     navigation.getStage().setScene(scene);
                 }
             });
@@ -57,30 +57,37 @@ public class CatracaEditScreenController implements Initializable {
      * Salva ou altera um cliente dependendo do valor do boolean update.
      */
     @FXML
-    protected void salvarClicked() throws SQLException {
-        CatracaModel catraca = new CatracaModel();
-        CatracaMySQLDAO dao = new CatracaMySQLDAO();
+    protected void salvarClicked() {
+        try{
+            CatracaModel catraca = new CatracaModel();
+            CatracaMySQLDAO dao = new CatracaMySQLDAO();
 
-        catraca.setId(txtID.getText());
-        catraca.setNome(txtNome.getText());
-        catraca.setModelo(txtModelo.getText());
-
-
-        PublisherTela p = PublisherTela.getInstance();
-
-        //Verifica se é Edit ou Insert
-        if(!update){                        //Insert
-            p.RegisterCatraca(catraca);
-        }
-        else{                            // Edit
-            catraca = (CatracaModel) (dao.localiza(catraca.getId()));
             catraca.setId(txtID.getText());
             catraca.setNome(txtNome.getText());
             catraca.setModelo(txtModelo.getText());
-            p.UpdateCatraca(catraca);
-            setUpdate(false);
+
+
+            PublisherTela p = PublisherTela.getInstance();
+
+            //Verifica se é Edit ou Insert
+            if(!update){                        //Insert
+                p.RegisterCatraca(catraca);
+            }
+            else{                            // Edit
+                catraca = (CatracaModel) (dao.localiza(catraca.getId()));
+                catraca.setId(txtID.getText());
+                catraca.setNome(txtNome.getText());
+                catraca.setModelo(txtModelo.getText());
+                p.UpdateCatraca(catraca);
+                setUpdate(false);
+            }
+            voltarClicked();
         }
-        voltarClicked();
+        catch(Exception e)
+        {
+
+        }
+
 
     }
 

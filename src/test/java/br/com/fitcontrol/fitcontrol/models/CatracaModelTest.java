@@ -20,6 +20,6 @@ public class CatracaModelTest {
         assertEquals(catracaModel.getModelo(),"Catraca1");
 
         //check if the id is 1
-        assertEquals(catracaModel.getId(),1);
+        assertEquals(catracaModel.getId(),"1");
     }
 }

@@ -51,24 +51,30 @@ public class RewardEditScreenController implements Initializable {
 
     @FXML
     protected void salvarClicked() throws SQLException {
+        try{
+            RecompensaModel recompensa = new RecompensaModel();
+            PublisherTela p =  PublisherTela.getInstance();
 
-        RecompensaModel recompensa = new RecompensaModel();
-        PublisherTela p =  PublisherTela.getInstance();
-
-        recompensa.setId((txtID.getText()));
-        recompensa.setDescricao(txtTitulo.getText());
-        recompensa.setPontosNecessarios(Integer.parseInt(txtQtPontos.getText()));
+            recompensa.setId((txtID.getText()));
+            recompensa.setDescricao(txtTitulo.getText());
+            recompensa.setPontosNecessarios(Integer.parseInt(txtQtPontos.getText()));
 
 
-        //Verifica se é Edit ou Insert
-        if(!update){                        //Insert
-            p.RegisterReward(recompensa);
-            voltarClicked();
+            //Verifica se é Edit ou Insert
+            if(!update){                        //Insert
+                p.RegisterReward(recompensa);
+                voltarClicked();
+            }
+            else{                               // Edit
+                p.UpdateReward(recompensa);
+                setUpdate(false);
+                voltarClicked();
+            }
+
         }
-        else{                               // Edit
-            p.UpdateReward(recompensa);
-            setUpdate(false);
-            voltarClicked();
+        catch(Exception e)
+        {
+            
         }
 
     }

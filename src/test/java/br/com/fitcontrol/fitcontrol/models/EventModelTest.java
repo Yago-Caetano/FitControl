@@ -7,9 +7,7 @@ import static br.com.fitcontrol.fitcontrol.events.EnumEventTypes.EVENT_TYPE_ACES
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EventModelTest {
-    /**
-     *  This is a dummy example of how use junit API
-     */
+
     @Test
     public void test()
     {

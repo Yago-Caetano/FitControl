@@ -7,6 +7,7 @@ import br.com.fitcontrol.fitcontrol.models.CatracaModel;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
+import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import br.com.fitcontrol.fitcontrol.serialcom.SerialCommunicatorSingleton;
 import com.fazecast.jSerialComm.SerialPort;
 import javafx.collections.FXCollections;
@@ -56,7 +57,7 @@ public class CatracaScreenController implements Initializable {
                 @Override
                 public void navigateCb(String screenName) throws Exception {
                     FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                    Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
+                    Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
                     navigation.getStage().setScene(scene);
                 }
             });
@@ -135,7 +136,7 @@ public class CatracaScreenController implements Initializable {
             @Override
             public void navigateCb(String screenName) throws IOException {
                 FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
+                Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
                 navigation.getStage().setScene(scene);
             }
         });
@@ -146,7 +147,6 @@ public class CatracaScreenController implements Initializable {
     EventHandler<MouseEvent> btConectaClicked = new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent e) {
-
 
             try
             {
@@ -189,16 +189,46 @@ public class CatracaScreenController implements Initializable {
 
     @FXML
     protected void liberarAcessoClicked() {
-        
+        PublisherTela publisher = PublisherTela.getInstance();
+        try {
+            if(tabela.getSelectionModel().isEmpty())
+                return;
+
+            CatracaModel SelectedCatraca = tabela.getSelectionModel().getSelectedItem();
+            publisher.grantAcess(SelectedCatraca);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     protected void bloquearAcessoClicked() {
+        PublisherTela publisher = PublisherTela.getInstance();
+        try {
+            if(tabela.getSelectionModel().isEmpty())
+                return;
 
+            CatracaModel SelectedCatraca = tabela.getSelectionModel().getSelectedItem();
+            publisher.blockCatraca(SelectedCatraca);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     protected void reiniciarCatracaClicked() {
+        PublisherTela publisher = PublisherTela.getInstance();
+        try {
+            if(tabela.getSelectionModel().isEmpty())
+                return;
 
+            CatracaModel SelectedCatraca = tabela.getSelectionModel().getSelectedItem();
+            publisher.restartCatraca(SelectedCatraca);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

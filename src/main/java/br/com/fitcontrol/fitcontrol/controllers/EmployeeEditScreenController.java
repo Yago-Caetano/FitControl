@@ -39,7 +39,7 @@ public class EmployeeEditScreenController implements Initializable {
                 @Override
                 public void navigateCb(String screenName) throws Exception {
                     FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                    Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
+                    Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
                     navigation.getStage().setScene(scene);
                 }
             });
@@ -58,8 +58,6 @@ public class EmployeeEditScreenController implements Initializable {
         RndBtnFuncionario.setToggleGroup(tg);
         RndBtnGerente.setToggleGroup(tg);
 
-        txtID.setDisable(true);
-        txtID.setVisible(false);
 
     }
 
@@ -68,37 +66,44 @@ public class EmployeeEditScreenController implements Initializable {
      */
     @FXML
     protected void salvarClicked() throws SQLException {
-        FuncionarioModel funcionario = new FuncionarioModel();
-        FuncionarioMySQLDAO dao = new FuncionarioMySQLDAO();
+        try{
+            FuncionarioModel funcionario = new FuncionarioModel();
+            FuncionarioMySQLDAO dao = new FuncionarioMySQLDAO();
 
-        funcionario.setNome(txtNomeColaborador.getText());
-        funcionario.setLogin(txtEmail.getText());
-        funcionario.setSenha(txtSenha.getText());
-        funcionario.setTelefone(txtTelefone.getText());
-
-        if(RndBtnFuncionario.isSelected())
-            funcionario.setNivel(EnumTipoUsuarios.FUNCIONARIO.getCode());
-        else
-            funcionario.setNivel(EnumTipoUsuarios.FUNCIONARIO.getCode());   //Falta o Gerente
-
-        PublisherTela p = PublisherTela.getInstance();
-
-        //Verifica se é Edit ou Insert
-        if(!update){
-            p.RegisterEmployee(funcionario);
-        }
-        else{
-            funcionario = (FuncionarioModel) (dao.localiza(txtID.getText()));
-            funcionario.setId(txtID.getText());
             funcionario.setNome(txtNomeColaborador.getText());
             funcionario.setLogin(txtEmail.getText());
             funcionario.setSenha(txtSenha.getText());
             funcionario.setTelefone(txtTelefone.getText());
-            funcionario.setNivel(EnumTipoUsuarios.FUNCIONARIO.getCode());
-            p.UpdateEmployee(funcionario);
-            setUpdate(false);
+
+            if(RndBtnFuncionario.isSelected())
+                funcionario.setNivel(EnumTipoUsuarios.FUNCIONARIO.getCode());
+            else
+                funcionario.setNivel(EnumTipoUsuarios.FUNCIONARIO.getCode());   //Falta o Gerente
+
+            PublisherTela p = PublisherTela.getInstance();
+
+            //Verifica se é Edit ou Insert
+            if(!update){
+                p.RegisterEmployee(funcionario);
+            }
+            else{
+                funcionario = (FuncionarioModel) (dao.localiza(txtID.getText()));
+                funcionario.setId(txtID.getText());
+                funcionario.setNome(txtNomeColaborador.getText());
+                funcionario.setLogin(txtEmail.getText());
+                funcionario.setSenha(txtSenha.getText());
+                funcionario.setTelefone(txtTelefone.getText());
+                funcionario.setNivel(EnumTipoUsuarios.FUNCIONARIO.getCode());
+                p.UpdateEmployee(funcionario);
+                setUpdate(false);
+            }
+            voltarClicked();
         }
-        voltarClicked();
+        catch(Exception e)
+        {
+
+        }
+
 
     }
 
