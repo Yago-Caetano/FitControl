@@ -2,6 +2,7 @@ package br.com.fitcontrol.fitcontrol.dao.Funcionario;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
 import br.com.fitcontrol.fitcontrol.Enums.EnumTipoUsuarios;
+import br.com.fitcontrol.fitcontrol.dao.ConexaoMySQL;
 import br.com.fitcontrol.fitcontrol.dao.MySQLDAO;
 import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
 import br.com.fitcontrol.fitcontrol.models.UsuarioModel;
@@ -19,7 +20,7 @@ public class FuncionarioMySQLDAO  <E extends Entidade> extends MySQLDAO {
     @Override
     public Entidade localiza(String codigo) throws SQLException {
         FuncionarioModel entidade = null;
-        try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA )) {
+        try (Connection conexao = ConexaoMySQL.GetConexaoBD()) {
             String SQL;
             if (Has_Status)
                 SQL= "select * from " + getTabela() + " where Id = ? and _Status>0 and NivelAcesso=?";
@@ -41,7 +42,7 @@ public class FuncionarioMySQLDAO  <E extends Entidade> extends MySQLDAO {
     @Override
     public ArrayList lista() throws SQLException {
         ArrayList<FuncionarioModel> entidades = new ArrayList();
-        try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+        try (Connection conexao = ConexaoMySQL.GetConexaoBD()) {
             String SQL;
             if (Has_Status)
                 SQL= "select * from " + getTabela() + " where _Status > 0 and  NivelAcesso="+ EnumTipoUsuarios.FUNCIONARIO.getCode();

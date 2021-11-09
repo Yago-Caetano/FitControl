@@ -2,6 +2,7 @@ package br.com.fitcontrol.fitcontrol.dao;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ public abstract class PadraoDAO <E extends Entidade> {
     protected Class<E> entityClass;
 
     public PadraoDAO(Class entityClass) {
-
+        this.entityClass=entityClass;
     }
 
     public void DAO(Class<E> entityClass){
@@ -23,7 +24,7 @@ public abstract class PadraoDAO <E extends Entidade> {
     public abstract void Delete(E entidade);
     public abstract ArrayList<E> lista() throws SQLException;
 
-    protected E getInstanceOfE()
+    public E getInstanceOfE()
     {
         try
         {

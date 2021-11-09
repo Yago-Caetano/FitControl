@@ -1,6 +1,7 @@
 package br.com.fitcontrol.fitcontrol.dao.Usuario;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
+import br.com.fitcontrol.fitcontrol.dao.ConexaoMySQL;
 import br.com.fitcontrol.fitcontrol.dao.MySQLDAO;
 import br.com.fitcontrol.fitcontrol.models.UsuarioModel;
 
@@ -33,7 +34,7 @@ public class UsuarioMySQLDAO <E extends Entidade> extends MySQLDAO {
     public UsuarioModel login(String _login,String _senha) throws SQLException {
         UsuarioModel user = null;
 
-        try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA )) {
+        try (Connection conexao = ConexaoMySQL.GetConexaoBD()) {
             String SQL = "select * from " + getTabela() + " where Email = ? and Senha = ?";
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
                 stmt.setString(1, _login);

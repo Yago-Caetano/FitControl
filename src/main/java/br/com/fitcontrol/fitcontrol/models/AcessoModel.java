@@ -8,19 +8,19 @@ import java.util.Date;
 public class AcessoModel extends Entidade {
     private java.sql.Date data;
     private byte tipo;
-    private int idCliente;
-    private int idFuncionario;
-    private int idCatraca;
+    private String idCliente;
+    private String idFuncionario;
+    private String idCatraca;
 
     public AcessoModel() {
         this.setTipoEntidade(EnumEntidadesDisponiveis.ACESSO);
     }
 
-    public int getIdFuncionario() {
+    public String getIdFuncionario() {
         return idFuncionario;
     }
 
-    public void setIdFuncionario(int idFuncionario) {
+    public void setIdFuncionario(String idFuncionario) {
         this.idFuncionario = idFuncionario;
     }
 
@@ -40,19 +40,19 @@ public class AcessoModel extends Entidade {
         this.tipo = tipo;
     }
 
-    public int getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 
-    public int getIdCatraca() {
+    public String getIdCatraca() {
         return idCatraca;
     }
 
-    public void setIdCatraca(int idCatraca) {
+    public void setIdCatraca(String idCatraca) {
         this.idCatraca = idCatraca;
     }
 }

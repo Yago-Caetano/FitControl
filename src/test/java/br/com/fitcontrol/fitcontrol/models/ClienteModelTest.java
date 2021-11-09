@@ -11,7 +11,7 @@ public class ClienteModelTest {
     @Test
     public void test()
     {
-        ClienteModel cliente = new ClienteModel(1, "Rafaela", "r","98573",500);
+        ClienteModel cliente = new ClienteModel("1", "Rafaela", "r","98573",500);
 
         //Confere se o nome é Rafaela
         assertEquals(cliente.getNome(),"Rafeala");

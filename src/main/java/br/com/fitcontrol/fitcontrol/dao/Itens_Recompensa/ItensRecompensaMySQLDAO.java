@@ -1,6 +1,7 @@
 package br.com.fitcontrol.fitcontrol.dao.Itens_Recompensa;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
+import br.com.fitcontrol.fitcontrol.dao.ConexaoMySQL;
 import br.com.fitcontrol.fitcontrol.dao.MySQLDAO;
 import br.com.fitcontrol.fitcontrol.models.ItensRecompensaModel;
 
@@ -25,7 +26,7 @@ public class ItensRecompensaMySQLDAO <E extends Entidade> extends MySQLDAO {
         ItensRecompensaModel item = (ItensRecompensaModel)entidade;
         Connection conn = null;
         try  {
-            conn = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA);
+            conn = ConexaoMySQL.GetConexaoBD();
             conn.setAutoCommit(false);
             String SQL = getInsertCommand((E) entidade);
             entidade.setId();

@@ -3,10 +3,12 @@ package br.com.fitcontrol.fitcontrol.RepositorioMySQL;
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
 import br.com.fitcontrol.fitcontrol.Basis.Repositorio;
 import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
+import br.com.fitcontrol.fitcontrol.dao.ConexaoMySQL;
 import br.com.fitcontrol.fitcontrol.dao.PadraoDAO;
 import br.com.fitcontrol.fitcontrol.Fabricas.FabricaDAOs;
 import br.com.fitcontrol.fitcontrol.dao.Usuario.UsuarioMySQLDAO;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -57,12 +59,14 @@ public class RepositorioMySQL  extends Repositorio {
     @Override
     public void Update(Entidade entidade, EnumEntidadesDisponiveis tipoEntidade) {
         PadraoDAO dao = FabricaDAOs.Fabrica(tipoEntidade, main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio.MYSQL);
-        dao.Update(entidade);
+            dao.Update(entidade);
+
     }
 
     @Override
     public void Delete(Entidade entidade, EnumEntidadesDisponiveis tipoEntidade) {
         PadraoDAO dao = FabricaDAOs.Fabrica(tipoEntidade, main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio.MYSQL);
-        dao.Delete(entidade);
+            dao.Delete(entidade);
+
     }
 }

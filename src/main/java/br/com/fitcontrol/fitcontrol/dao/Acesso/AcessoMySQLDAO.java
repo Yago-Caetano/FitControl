@@ -36,9 +36,9 @@ public class AcessoMySQLDAO  <E extends Entidade> extends MySQLDAO {
         stmt.setString(1,acesso.getId());
         stmt.setDate(2,acesso.getData());
         stmt.setByte(3,acesso.getTipo());
-        stmt.setInt(4,acesso.getIdFuncionario());
-        stmt.setInt(5,acesso.getIdCliente());
-        stmt.setInt(6,acesso.getIdCatraca());
+        stmt.setString(4,acesso.getIdFuncionario());
+        stmt.setString(5,acesso.getIdCliente());
+        stmt.setString(6,acesso.getIdCatraca());
 
     }
 
@@ -47,9 +47,9 @@ public class AcessoMySQLDAO  <E extends Entidade> extends MySQLDAO {
         AcessoModel acesso=(AcessoModel)entidade;
         stmt.setDate(1,acesso.getData());
         stmt.setByte(2,acesso.getTipo());
-        stmt.setInt(3,acesso.getIdFuncionario());
-        stmt.setInt(4,acesso.getIdCliente());
-        stmt.setInt(5,acesso.getIdCatraca());
+        stmt.setString(3,acesso.getIdFuncionario());
+        stmt.setString(4,acesso.getIdCliente());
+        stmt.setString(5,acesso.getIdCatraca());
 
     }
 
@@ -60,9 +60,9 @@ public class AcessoMySQLDAO  <E extends Entidade> extends MySQLDAO {
             acessoModel.setId(rs.getString("id"));
             acessoModel.setData(rs.getDate("_Data"));
             acessoModel.setTipo(rs.getByte("tipo"));
-            acessoModel.setIdFuncionario(rs.getInt("idFuncionario"));
-            acessoModel.setIdCliente(rs.getInt("idCliente"));
-            acessoModel.setIdCatraca(rs.getInt("idCatraca"));
+            acessoModel.setIdFuncionario(rs.getString("idFuncionario"));
+            acessoModel.setIdCliente(rs.getString("idCliente"));
+            acessoModel.setIdCatraca(rs.getString("idCatraca"));
 
         } catch (SQLException ex) {
             //Logger.getLogger(UsuarioMySQLDAO.class.getName()).log(Level.SEVERE, null, ex);

@@ -16,7 +16,7 @@ public class FuncionarioModelTest {
         funcionario.setTelefone("11112");
         funcionario.setLogin("m");
         funcionario.setNome("Murilo");
-        funcionario.setId(10);
+        funcionario.setId("10");
 
         //Confere se o nome é Murilo
         assertEquals(funcionario.getNome(),"Murilo");

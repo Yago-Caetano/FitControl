@@ -11,7 +11,7 @@ public class RecompensaModelTest
     @Test
     public void test()
     {
-        RecompensaModel recompensa = new RecompensaModel(1, 100, "Recompensa1");
+        RecompensaModel recompensa = new RecompensaModel("1", 100, "Recompensa1");
 
         //chack if the description is Recompensa1
         assertEquals(recompensa.getDescricao(),"Recompensa1");

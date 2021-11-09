@@ -7,25 +7,36 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
-    protected final String STRING_CONEXAO = "jdbc:mysql://127.0.0.1:3306/fitcontroldb"; //"jdbc:mysql://localhost:3306/fitcontroldb";
-    protected final String USUARIO = System.getenv("FIT_CONTROL_DB_USER");
-    protected final String SENHA = System.getenv("FIT_CONTROL_DB_PSW");
+
     protected boolean Has_Status =false; // tem a coluna de status, delete não é permanente e consulta somente aos dados com status<>0
     private String tabela;
+    private boolean Conectar_banco_teste=false;
+
 
     public MySQLDAO(Class entityClass) {
         super(entityClass);
     }
 
+    /*
+    Indica que o banco utilizado será o banco de testes
+    * */
+    public void SetTeste()
+    {
+        Conectar_banco_teste=true;
+    }
     protected void setTabela(String value){
         tabela = value;
     }
 
 
 
+
+
+
+
     @Override
     public void Insert(Entidade entidade) throws SQLException {
-        try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA )) {
+        try (Connection conexao = ConexaoMySQL.GetConexaoBD()) {
             String SQL = getInsertCommand((E) entidade);
             entidade.setId();
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
@@ -40,7 +51,7 @@ public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
 
     @Override
     public void Update(Entidade entidade) {
-        try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA )) {
+        try (Connection conexao = ConexaoMySQL.GetConexaoBD()) {
             String SQL = getUpdateCommand((E) entidade);
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
                 this.PrepareStatementUpdate((E) entidade,stmt);
@@ -53,7 +64,7 @@ public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
 
     @Override
     public void Delete(Entidade entidade) {
-        try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA )) {
+        try (Connection conexao = ConexaoMySQL.GetConexaoBD()) {
             String SQL;
             if (Has_Status)
                 SQL = "Update " +getTabela() + " Set _Status = 0 where Id  = ? ";
@@ -78,7 +89,7 @@ public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
     @Override
     public E localiza (String codigo) throws SQLException {
         E entidade = null;
-        try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA )) {
+        try (Connection conexao = ConexaoMySQL.GetConexaoBD()) {
             String SQL;
             if (Has_Status)
                 SQL= "select * from " + this.tabela + " where Id = ? and _Status>0";
@@ -124,7 +135,7 @@ public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
     @Override
     public ArrayList<E> lista() throws SQLException {
         ArrayList<E> entidades = new ArrayList();
-        try (Connection conexao = DriverManager.getConnection(STRING_CONEXAO, USUARIO, SENHA)) {
+        try (Connection conexao = ConexaoMySQL.GetConexaoBD()) {
             String SQL;
             if (Has_Status)
                 SQL= "select * from " + this.tabela + " where _Status > 0";
