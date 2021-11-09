@@ -26,8 +26,7 @@ public class PaymentEditScreenController implements Initializable {
 
     @FXML
     public TextField txtID;
-    @FXML
-    public Integer txtIDCliente;
+
     @FXML
     public DateFormat txtData;
     @FXML
@@ -53,7 +52,7 @@ public class PaymentEditScreenController implements Initializable {
                 @Override
                 public void navigateCb(String screenName) throws Exception {
                     FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                    Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
+                    Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
                     navigation.getStage().setScene(scene);
                 }
             });

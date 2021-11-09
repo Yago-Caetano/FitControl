@@ -120,8 +120,6 @@ public  class NavigationSingleton {
                 break;
         }
 
-
-
         telas.add(resourceName);
 
         telaAtual = resourceName;

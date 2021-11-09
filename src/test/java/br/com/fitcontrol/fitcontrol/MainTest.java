@@ -1,8 +1,6 @@
 package br.com.fitcontrol.fitcontrol;
 
-import br.com.fitcontrol.fitcontrol.models.CatracaModelTest;
-import br.com.fitcontrol.fitcontrol.models.ClienteModelTest;
-import br.com.fitcontrol.fitcontrol.models.EventModelTest;
+import br.com.fitcontrol.fitcontrol.models.*;
 import br.com.fitcontrol.fitcontrol.serialcom.SerialCommunicatorSingletonTest;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +11,7 @@ public class MainTest {
     {
         testModels();
         testSerialCommFunctions();
+        testControllers();
     }
 
     private void testModels()
@@ -20,6 +19,14 @@ public class MainTest {
         new CatracaModelTest().test();
         new ClienteModelTest().test();
         new EventModelTest().test();
+        new PagamentosModelTest().test();
+        new RecompensaModelTest().test();
+
+    }
+
+    private void testControllers()
+    {
+        new ClienteModelTest().test();
     }
 
     private void testSerialCommFunctions(){ new SerialCommunicatorSingletonTest().test();}

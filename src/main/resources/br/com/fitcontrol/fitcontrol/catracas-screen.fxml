@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.CatracaScreenController">
+<AnchorPane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.CatracaScreenController">
    <children>
-      <Pane prefHeight="160.0" prefWidth="1440.0" style="-fx-background-color: FFBF00;">
+      <Pane maxWidth="1280.0" prefHeight="160.0" prefWidth="1440.0" style="-fx-background-color: FFBF00;">
          <children>
             <ImageView fitHeight="88.0" fitWidth="260.0" layoutX="62.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -20,7 +27,7 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="108.0" layoutY="313.0" prefHeight="293.0" prefWidth="1214.0" style="-fx-border-color: A27811; -fx-border-radius: 16;">
+      <Pane layoutX="190.0" layoutY="290.0" maxHeight="200.0" maxWidth="900.0" minHeight="200.0" minWidth="900.0" prefHeight="200.0" prefWidth="900.0" style="-fx-border-color: A27811; -fx-border-radius: 16;">
          <children>
             <Button fx:id="novaCatraca" layoutX="39.0" layoutY="15.0" mnemonicParsing="false" onAction="#novaCatracaClicked" prefHeight="40.0" prefWidth="92.0" style="-fx-border-color: BE8E00; -fx-background-color: FED355;" text="Nova Catraca">
                <font>
@@ -34,7 +41,7 @@
                   </DropShadow>
                </effect>
             </Button>
-            <TableView fx:id="tabela" layoutX="33.0" layoutY="67.0" prefHeight="190.0" prefWidth="1161.0" stylesheets="@css/tabela.css">
+            <TableView fx:id="tabela" layoutY="67.0" maxHeight="140.0" maxWidth="900.0" minWidth="900.0" prefHeight="190.0" prefWidth="900.0" stylesheets="@css/tabela.css">
               <columns>
                 <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
                 <TableColumn fx:id="modelo" prefWidth="75.0" text="Modelo" />
@@ -46,31 +53,31 @@
             </TableView>
          </children>
       </Pane>
-      <Pane layoutX="117.0" layoutY="631.0" prefHeight="332.0" prefWidth="1214.0" style="-fx-border-color: D79D04; -fx-border-radius: 41;">
+      <Pane layoutX="190.0" layoutY="500.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="900.0" style="-fx-border-color: D79D04; -fx-border-radius: 41;">
          <children>
-            <Label layoutX="509.0" layoutY="37.0" text="Ações da Catraca X">
+            <Label layoutX="370.0" layoutY="8.0" text="Ações da Catraca X">
                <font>
                   <Font name="Roboto Light" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="52.0" layoutY="128.0" mnemonicParsing="false" onMouseClicked="#liberarAcessoClicked" prefHeight="168.0" prefWidth="274.0" style="-fx-background-color: A27811;" text="Liberar Acesso" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="30.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#liberarAcessoClicked" prefHeight="80.0" prefWidth="260.0" style="-fx-background-color: A27811;" text="Liberar Acesso" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="464.0" layoutY="128.0" mnemonicParsing="false" onMouseClicked="#bloquearAcessoClicked" prefHeight="168.0" prefWidth="274.0" style="-fx-background-color: A27811;" text="Bloquear Acesso" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="325.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#bloquearAcessoClicked" prefHeight="80.0" prefWidth="260.0" style="-fx-background-color: A27811;" text="Bloquear Acesso" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="876.0" layoutY="131.0" mnemonicParsing="false" onMouseClicked="#reiniciarCatracaClicked" prefHeight="168.0" prefWidth="274.0" style="-fx-background-color: A27811;" text="Reiniciar Catraca" textAlignment="CENTER" textFill="WHITE">
+            <Button layoutX="620.0" layoutY="100.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#reiniciarCatracaClicked" prefHeight="80.0" prefWidth="260.0" style="-fx-background-color: A27811;" text="Reiniciar Catraca" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
          </children>
       </Pane>
-      <Button fx:id="voltar" layoutX="117.0" layoutY="976.0" mnemonicParsing="false" onAction="#voltarClicked" prefHeight="34.0" prefWidth="80.0" style="-fx-border-color: BE8E00; -fx-background-color: FED355;" text="Voltar">
+      <Button fx:id="voltar" layoutX="80.0" layoutY="680.0" mnemonicParsing="false" onAction="#voltarClicked" prefHeight="34.0" prefWidth="80.0" style="-fx-border-color: BE8E00; -fx-background-color: FED355;" text="Voltar">
          <font>
             <Font name="Roboto Light" size="12.0" />
          </font>
@@ -82,7 +89,7 @@
             </DropShadow>
          </effect>
       </Button>
-      <StackPane layoutX="827.0" layoutY="196.0" prefHeight="88.0" prefWidth="493.0">
+      <StackPane layoutX="756.0" layoutY="195.0" prefHeight="88.0" prefWidth="493.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="24.0" fill="#1f93ff00" height="87.0" stroke="#a17612" strokeType="INSIDE" style="-fx-border-color: A27811;" width="493.0" />
             <Spinner fx:id="spCOMPorts" editable="true" StackPane.alignment="CENTER_RIGHT">

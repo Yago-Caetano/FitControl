@@ -39,7 +39,7 @@ public class EmployeeEditScreenController implements Initializable {
                 @Override
                 public void navigateCb(String screenName) throws Exception {
                     FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                    Scene scene = new Scene(fxmlLoader.load(), 1440, 1024);
+                    Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
                     navigation.getStage().setScene(scene);
                 }
             });
@@ -58,8 +58,6 @@ public class EmployeeEditScreenController implements Initializable {
         RndBtnFuncionario.setToggleGroup(tg);
         RndBtnGerente.setToggleGroup(tg);
 
-        txtID.setDisable(true);
-        txtID.setVisible(false);
 
     }
 
