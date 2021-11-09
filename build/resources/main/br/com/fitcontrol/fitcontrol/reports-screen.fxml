@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.ReportScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.ReportScreenController">
    <children>
-      <Pane prefHeight="160.0" prefWidth="1440.0" style="-fx-background-color: FFBF00;">
+      <Pane prefHeight="112.5" prefWidth="1280.0" style="-fx-background-color: FFBF00;">
          <children>
-            <ImageView fitHeight="88.0" fitWidth="260.0" layoutX="62.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="62.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@icons/icone.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="428.0" layoutY="224.0" prefHeight="75.0" prefWidth="596.0" style="-fx-border-color: E9AF00; -fx-border-radius: 10;">
+      <Pane layoutX="340.0" layoutY="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="600.0" style="-fx-border-color: E9AF00; -fx-border-radius: 10;">
          <children>
             <ImageView fitHeight="25.0" fitWidth="29.0" layoutX="466.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -57,14 +61,14 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane layoutX="118.0" layoutY="340.0" prefHeight="512.0" prefWidth="1203.0" style="-fx-border-color: D79D04; -fx-border-radius: 41;">
+      <Pane layoutX="190.0" layoutY="250.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="900.0" style="-fx-border-color: D79D04; -fx-border-radius: 41;">
          <children>
-            <Label layoutX="477.0" layoutY="24.0" text="Selecione o Tipo de Relatório">
+            <Label layoutX="350.0" layoutY="24.0" text="Selecione o Tipo de Relatório">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Button alignment="BASELINE_LEFT" layoutX="117.0" layoutY="160.0" mnemonicParsing="false" prefHeight="192.0" prefWidth="270.0" style="-fx-background-color: A27811; -fx-background-radius: 7;" text="Alunos" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="30.0" layoutY="160.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="100.0" prefWidth="250.0" style="-fx-background-color: A27811; -fx-background-radius: 7;" text="Alunos" textFill="WHITE">
                <font>
                   <Font name="Roboto Light" size="18.0" />
                </font>
@@ -75,7 +79,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-            <Button alignment="BASELINE_LEFT" layoutX="466.0" layoutY="160.0" mnemonicParsing="false" prefHeight="192.0" prefWidth="270.0" style="-fx-background-color: A27811; -fx-background-radius: 7;" text="Staff" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="330.0" layoutY="160.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="100.0" prefWidth="250.0" style="-fx-background-color: A27811; -fx-background-radius: 7;" text="Staff" textFill="WHITE">
                <font>
                   <Font name="Roboto Light" size="18.0" />
                </font>
@@ -87,7 +91,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" layoutX="815.0" layoutY="160.0" mnemonicParsing="false" prefHeight="192.0" prefWidth="270.0" style="-fx-background-color: A27811; -fx-background-radius: 7;" text="Pagamentos" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="620.0" layoutY="160.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="250.0" style="-fx-background-color: A27811; -fx-background-radius: 7;" text="Pagamentos" textFill="WHITE">
                <font>
                   <Font name="Roboto Light" size="18.0" />
                </font>
@@ -100,7 +104,7 @@
                </graphic>
             </Button>
          </children></Pane>
-      <Button fx:id="voltar" layoutX="195.0" layoutY="889.0" mnemonicParsing="false" onAction="#voltarClicked" prefHeight="34.0" prefWidth="60.0" style="-fx-background-color: FED355; -fx-border-color: BE8E00;" text="Voltar">
+      <Button fx:id="voltar" layoutX="90.0" layoutY="650.0" mnemonicParsing="false" onAction="#voltarClicked" prefHeight="34.0" prefWidth="60.0" style="-fx-background-color: FED355; -fx-border-color: BE8E00;" text="Voltar">
          <font>
             <Font name="Roboto Light" size="14.0" />
          </font>
