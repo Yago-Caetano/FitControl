@@ -20,6 +20,7 @@ import javafx.scene.control.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class EmployeeEditScreenController implements Initializable {
@@ -29,6 +30,8 @@ public class EmployeeEditScreenController implements Initializable {
     public RadioButton RndBtnGerente;
     @FXML
     public TextField txtID,txtNomeColaborador,txtEmail,txtSenha, txtTelefone;
+    @FXML
+    public Label lbErroNome,lbErroEmail,lbErroTelefone,lbErroSenha,lbErroNivel;
 
     private NavigationSingleton navigation;
     private boolean update;
@@ -83,7 +86,7 @@ public class EmployeeEditScreenController implements Initializable {
             PublisherTela p = PublisherTela.getInstance();
 
             //Verifica se é Edit ou Insert
-            if(!update){
+            if(!update && !validarDados()){
                 p.RegisterEmployee(funcionario);
             }
             else{
@@ -104,6 +107,66 @@ public class EmployeeEditScreenController implements Initializable {
 
         }
 
+
+    }
+
+    public Boolean validarDados() throws SQLException {
+        Boolean erro = false;
+        FuncionarioMySQLDAO dao = new FuncionarioMySQLDAO();
+        ArrayList<FuncionarioModel> lista = dao.lista();
+
+        lbErroTelefone.setText("");
+        lbErroNome.setText("");
+        lbErroEmail.setText("");
+        lbErroSenha.setText("");
+        lbErroNivel.setText("");
+
+        if(txtTelefone.getText().trim() == null || txtTelefone.getText().trim().isEmpty()){
+            erro = true;
+            lbErroTelefone.setText("Preencha o Telefone");
+        }
+        if(txtNomeColaborador.getText().trim() == null || txtNomeColaborador.getText().trim().isEmpty()){
+            erro = true;
+            lbErroNome.setText("Preencha o Nome");
+        }
+        if(txtEmail.getText().trim() == null || txtEmail.getText().trim().isEmpty()){
+            erro = true;
+            lbErroEmail.setText("Preencha o Email");
+        }
+        if(txtSenha.getText().trim() == null || txtSenha.getText().trim().isEmpty()){
+            erro = true;
+            lbErroSenha.setText("Preencha a Senha");
+        }
+
+        if(!RndBtnFuncionario.isSelected() && !RndBtnGerente.isSelected()){
+            erro = true;
+            lbErroNivel.setText("Escolha um Nível");
+        }
+
+        if(erro)
+            return true;
+
+        if(!txtTelefone.getText().trim().matches("[0-9]+")){
+            erro = true;
+            lbErroTelefone.setText("Digite apenas números");
+        }
+
+        if(lista.stream().filter(c -> c.getNome().equals(txtNomeColaborador.getText().trim())).findFirst().isPresent()){
+            erro = true;
+            lbErroNome.setText("Nome ja está em uso");
+        }
+
+        if(lista.stream().filter(c -> c.getLogin().equals(txtEmail.getText().trim())).findFirst().isPresent()){
+            erro = true;
+            lbErroEmail.setText("Email ja está em uso");
+        }
+
+        if(lista.stream().filter(c -> c.getTelefone().equals(txtTelefone.getText().trim())).findFirst().isPresent()){
+            erro = true;
+            lbErroTelefone.setText("Email ja está em uso");
+        }
+
+        return erro;
 
     }
 

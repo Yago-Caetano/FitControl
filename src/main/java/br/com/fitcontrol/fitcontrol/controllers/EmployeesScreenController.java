@@ -26,15 +26,14 @@ public class EmployeesScreenController implements Initializable {
     @FXML
     public TableView<FuncionarioModel> tabela;
     @FXML
-    public TableColumn<FuncionarioModel, Integer> id;
+    public TableColumn<FuncionarioModel, String> id;
     @FXML
     public  TableColumn<FuncionarioModel, String> nome;
     @FXML
     public TableColumn<FuncionarioModel, Integer> nivel;
 
     private NavigationSingleton navigation;
-    @FXML
-    private Button voltar,novoFuncionario;
+
     @FXML
     protected void voltarClicked() {
         try {
@@ -74,7 +73,7 @@ public class EmployeesScreenController implements Initializable {
         navigation = NavigationSingleton.getInstance();
 
         id.setCellValueFactory(
-                new PropertyValueFactory<FuncionarioModel, Integer>("id"));
+                new PropertyValueFactory<FuncionarioModel, String>("id"));
         nome.setCellValueFactory(
                 new PropertyValueFactory<FuncionarioModel, String>("nome"));
         nivel.setCellValueFactory(
