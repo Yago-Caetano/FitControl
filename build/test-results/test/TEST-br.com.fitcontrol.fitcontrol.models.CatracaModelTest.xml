@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="br.com.fitcontrol.fitcontrol.models.CatracaModelTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-10-16T01:05:20" hostname="DESKTOP-6TEUHKL" time="0.019">
-  <properties/>
-  <testcase name="test()" classname="br.com.fitcontrol.fitcontrol.models.CatracaModelTest" time="0.019"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

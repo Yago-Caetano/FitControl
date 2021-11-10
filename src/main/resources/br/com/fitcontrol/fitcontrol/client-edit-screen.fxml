@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.ClientEditScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.ClientEditScreenController">
 
     <StackPane prefHeight="160.0" prefWidth="1440.0">
         <children>
@@ -99,6 +95,35 @@
                <Insets left="975.0" top="380.0" />
             </StackPane.margin>
          </ImageView>
+         <Label fx:id="lbErroNome" textFill="RED" StackPane.alignment="TOP_LEFT">
+            <font>
+               <Font size="18.0" />
+            </font>
+            <StackPane.margin>
+               <Insets left="480.0" top="110.0" />
+            </StackPane.margin>
+         </Label>
+         <Label fx:id="lbErroEmail" layoutX="490.0" layoutY="120.0" textFill="RED" StackPane.alignment="TOP_LEFT">
+            <font>
+               <Font size="18.0" />
+            </font>
+            <StackPane.margin>
+               <Insets left="480.0" top="200.0" />
+            </StackPane.margin>
+         </Label>
+         <Label fx:id="lbErroTelefone" layoutX="490.0" layoutY="210.0" textFill="RED" StackPane.alignment="TOP_LEFT">
+            <font>
+               <Font size="18.0" />
+            </font>
+            <StackPane.margin>
+               <Insets left="480.0" top="290.0" />
+            </StackPane.margin>
+         </Label>
+         <TextField fx:id="txtID" disable="true" editable="false" layoutX="110.0" layoutY="120.0" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" visible="false" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+               <Insets bottom="100.0" left="600.0" right="100.0" top="110.0" />
+            </StackPane.margin>
+         </TextField>
       </children>
    </StackPane>
 

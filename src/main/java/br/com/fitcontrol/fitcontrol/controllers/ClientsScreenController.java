@@ -49,7 +49,7 @@ public class ClientsScreenController implements Initializable {
     @FXML
     public TableView<ClienteModel> tabela;
     @FXML
-    public TableColumn<ClienteModel, Integer> id;
+    public TableColumn<ClienteModel, String> id;
     @FXML
     public  TableColumn<ClienteModel, String> nome;
     @FXML
@@ -92,7 +92,7 @@ public class ClientsScreenController implements Initializable {
         navigation = NavigationSingleton.getInstance();
 
         id.setCellValueFactory(
-                new PropertyValueFactory<ClienteModel, Integer>("id"));
+                new PropertyValueFactory<ClienteModel, String>("id"));
         nome.setCellValueFactory(
                 new PropertyValueFactory<ClienteModel, String>("nome"));
         email.setCellValueFactory(
@@ -105,6 +105,8 @@ public class ClientsScreenController implements Initializable {
         try {
             carregarDados();
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
         colunaAcoes();
@@ -123,9 +125,21 @@ public class ClientsScreenController implements Initializable {
         });
     }
 
-    public void carregarDados() throws SQLException {
+    public void carregarDados() throws Exception {
 
         ObservableList<ClienteModel> lista = FXCollections.observableArrayList(dao.lista());
+
+       /* if(lista.isEmpty()){
+            PublisherTela p = new PublisherTela();
+            ClienteModel c = new ClienteModel();
+            c.setNome("Cliente1");
+            c.setLogin("cliente1");
+            c.setTelefone("00009");
+            c.setPontos(0);
+            p.RegisterUser(c);
+            carregarDados();
+        }*/
+
 
         tabela.setItems(lista);
     }
