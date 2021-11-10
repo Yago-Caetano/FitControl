@@ -77,8 +77,7 @@ public class ClientEditScreenController implements Initializable {
                 if (!update && !validarDados()) {                        //Insert
                     p.RegisterUser(cliente);
                 } else {                            // Edit
-                    cliente = (ClienteModel) (dao.localiza(cliente.getId()));
-                    cliente.setId((txtID.getText()));
+                    cliente = (ClienteModel) (dao.localiza(txtID.getText()));
                     cliente.setNome(txtNomeCliente.getText());
                     cliente.setLogin(txtEmail.getText());
                     cliente.setTelefone(txtTelefone.getText());
