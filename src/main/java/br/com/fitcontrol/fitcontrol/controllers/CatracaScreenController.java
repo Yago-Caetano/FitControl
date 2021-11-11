@@ -3,6 +3,7 @@ package br.com.fitcontrol.fitcontrol.controllers;
 import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.dao.Catraca.CatracaMySQLDAO;
 import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
+import br.com.fitcontrol.fitcontrol.listenners.ISubscriber;
 import br.com.fitcontrol.fitcontrol.models.CatracaModel;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;

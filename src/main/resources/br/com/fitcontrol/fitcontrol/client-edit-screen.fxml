@@ -45,7 +45,7 @@
                <Insets left="100.0" right="430.0" top="110.0" />
             </StackPane.margin>
          </TextField>
-         <Button fx:id="BtnSalvar" mnemonicParsing="false" onMouseClicked="#salvarClicked" prefHeight="50.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Salvar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+         <Button fx:id="BtnSalvar" mnemonicParsing="false" onAction="#voltarClicked" onMouseClicked="#salvarClicked" prefHeight="50.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Salvar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
             <StackPane.margin>
                <Insets left="130.0" top="360.0" />
             </StackPane.margin>

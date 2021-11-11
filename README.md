@@ -24,6 +24,7 @@
 
  #### 🔌 Comunicação Serial  💻 
 
+##### Estrutura Protocolo
 
 Abaixo é apresentado a estrutura do protocolo de comunicação da catraca
 
@@ -42,7 +43,127 @@ Abaixo é apresentado a estrutura do protocolo de comunicação da catraca
     </tr>
  </table>
 
- 
+##### Funções
+
+###### Evento de Check In
+
+Indica a entrada de um cliente na loja através da catraca
+
+<table>
+ <tr>
+      <th>STX</th>
+      <th>FUNÇÃO</th>
+      <th colspan="2">DADOS</th>
+      <th>ETX</th>
+    </tr>
+    <tr>
+      <td>0x02</td>
+      <td>0x00</td>
+      <td>ID Catraca</td>
+      <td>ID Usuário</td>
+      <td>0x03</td>
+    </tr>
+</table>
+
+
+###### Evento de Check Out
+
+Indica a saída de um cliente na loja através da catraca
+
+<table>
+ <tr>
+      <th>STX</th>
+      <th>FUNÇÃO</th>
+      <th colspan="2">DADOS</th>
+      <th>ETX</th>
+    </tr>
+    <tr>
+      <td>0x02</td>
+      <td>0x01</td>
+      <td>ID Catraca</td>
+      <td>ID Usuário</td>
+      <td>0x03</td>
+    </tr>
+</table>
+
+###### Evento de Erro
+
+Indica algum erro causado ocorrido na catraca
+
+<table>
+ <tr>
+      <th>STX</th>
+      <th>FUNÇÃO</th>
+      <th colspan="2">DADOS</th>
+      <th>ETX</th>
+    </tr>
+    <tr>
+      <td>0x02</td>
+      <td>0x02</td>
+      <td>ID Catraca</td>
+      <td>Cód Erro</td>
+      <td>0x03</td>
+    </tr>
+</table>
+
+###### Forçar Liberação de Catraca
+
+Força a liberação da catraca
+
+<table>
+ <tr>
+      <th>STX</th>
+      <th>FUNÇÃO</th>
+      <th>DADOS</th>
+      <th>ETX</th>
+    </tr>
+    <tr>
+      <td>0x02</td>
+      <td>0x03</td>
+      <td>ID Catraca</td>
+      <td>0x03</td>
+    </tr>
+</table>
+
+
+###### Bloquear Catraca
+
+Bloqueia a Catraca
+
+<table>
+ <tr>
+      <th>STX</th>
+      <th>FUNÇÃO</th>
+      <th>DADOS</th>
+      <th>ETX</th>
+    </tr>
+    <tr>
+      <td>0x02</td>
+      <td>0x04</td>
+      <td>ID Catraca</td>
+      <td>0x03</td>
+    </tr>
+</table>
+
+###### Desbloquear Catraca
+
+Desbloqueia a Catraca
+
+<table>
+ <tr>
+      <th>STX</th>
+      <th>FUNÇÃO</th>
+      <th>DADOS</th>
+      <th>ETX</th>
+    </tr>
+    <tr>
+      <td>0x02</td>
+      <td>0x05</td>
+      <td>ID Catraca</td>
+      <td>0x03</td>
+    </tr>
+</table>
+
  ### ⚠️ Sobre o desenvolvimento ⚠️
 
 - Plataforma utilizada : Intellj
