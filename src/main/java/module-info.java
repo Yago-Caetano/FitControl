@@ -12,4 +12,5 @@ module br.com.fitcontrol.fitcontrol {
     opens br.com.fitcontrol.fitcontrol.Basis;
     exports br.com.fitcontrol.fitcontrol;
     exports br.com.fitcontrol.fitcontrol.controllers;
+    opens br.com.fitcontrol.fitcontrol.models.relatorios;
 }
