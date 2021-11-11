@@ -3,6 +3,7 @@ package br.com.fitcontrol.fitcontrol.listenners;
 import br.com.fitcontrol.fitcontrol.FitControlContext;
 import br.com.fitcontrol.fitcontrol.dao.Catraca.CatracaMySQLDAO;
 import br.com.fitcontrol.fitcontrol.models.CatracaModel;
+import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 
 public class CatracaDeleteListenner implements ISubscriber
 {

@@ -9,6 +9,7 @@ import br.com.fitcontrol.fitcontrol.dao.Funcionario.FuncionarioMySQLDAO;
 import br.com.fitcontrol.fitcontrol.error.ErrorPopUp;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
+import br.com.fitcontrol.fitcontrol.models.UsuarioModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import javafx.fxml.FXML;
@@ -37,45 +38,21 @@ public class LoginScreenController implements Initializable {
     @FXML
     protected void entrarClicked() throws Exception {
 
-        Acessologin validar = new Acessologin();
-        String login = txtLogin.getText();
-        String senha = txtSenha.getText();
+        Acessologin login = new Acessologin();
 
-        FuncionarioModel func = new FuncionarioModel();
-        func.setLogin(login);
-        func.setSenha(senha);
-        if(validar.validaUsuario(func))
+        UsuarioModel UserModel = new UsuarioModel();
+        UserModel.setLogin(txtLogin.getText());
+        UserModel.setSenha(txtSenha.getText());
+
+        if(login.validaUsuario(UserModel))
         {
-            FuncionarioLogado.setNome(func.getNome());
             executeNavigation(NavigationSingleton.MAIN_SCREEN);
         }
         else
         {
             clearFields();
-            navigation.showErrorMessage("Senha Inválida");
+            navigation.showErrorMessage("Login não encontrado");
         }
-
-        /*for (FuncionarioModel f: lista
-             ) {
-            if(f.getLogin().equals(login)){
-                f.setSenha(senha);
-                if(validar.validaUsuario(f)){
-
-                    FuncionarioLogado.setNome(f.getNome());
-                    executeNavigation(NavigationSingleton.MAIN_SCREEN);
-
-                }
-                else{
-                    clearFields();
-                    navigation.showErrorMessage("Senha Inválida");
-
-                }
-            }else {
-                clearFields();
-                navigation.showErrorMessage("Login não encontrado");
-
-            }
-        }*/
 
     }
 
