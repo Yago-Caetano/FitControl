@@ -51,20 +51,17 @@ public class LoginScreenController implements Initializable {
 
                     FuncionarioLogado.setNome(f.getNome());
                     executeNavigation(NavigationSingleton.MAIN_SCREEN);
-
+                    return;
                 }
                 else{
                     clearFields();
                     navigation.showErrorMessage("Senha Inválida");
-
+                    return;
                 }
-            }else {
-                clearFields();
-                navigation.showErrorMessage("Login não encontrado");
-
             }
         }
-
+        clearFields();
+        navigation.showErrorMessage("Login não encontrado");
     }
 
     private void clearFields()

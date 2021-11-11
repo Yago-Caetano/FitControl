@@ -74,7 +74,7 @@ public class ClienteMySQLDAO<E extends Entidade> extends MySQLDAO {
     @Override
     protected String getUpdateCommand(Entidade entidade) {
         UsuarioModel user=(UsuarioModel)entidade;
-        String SQL= "Update " + getTabela() + " Set Nome=?,Telefone=?,Email=?,Senha=?,_Status=?,NivelAcesso=? where id="+ user.getId();
+        String SQL= "Update " + getTabela() + " Set Nome=?,Telefone=?,Email=?,Senha=?,_Status=?,NivelAcesso=? where id="+ "\"" + user.getId() + "\"";
         return SQL;
     }
 

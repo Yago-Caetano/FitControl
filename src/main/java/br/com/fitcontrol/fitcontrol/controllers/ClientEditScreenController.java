@@ -92,6 +92,7 @@ public class ClientEditScreenController implements Initializable {
         }
         catch(Exception e){
         }
+        voltarClicked();
     }
 
 
@@ -99,6 +100,7 @@ public class ClientEditScreenController implements Initializable {
         Boolean erro = false;
         ClienteMySQLDAO dao = new ClienteMySQLDAO();
         ArrayList<ClienteModel> lista = dao.lista();
+        String mensagemDeErro = "";
 
         lbErroTelefone.setText("");
         lbErroNome.setText("");
@@ -107,38 +109,51 @@ public class ClientEditScreenController implements Initializable {
         if(txtTelefone.getText().trim() == null || txtTelefone.getText().trim().isEmpty()){
             erro = true;
             lbErroTelefone.setText("Preencha o Telefone");
+            mensagemDeErro += "Preencha o Telefone\n";
         }
         if(txtNomeCliente.getText().trim() == null || txtNomeCliente.getText().trim().isEmpty()){
             erro = true;
             lbErroNome.setText("Preencha o Nome");
+            mensagemDeErro += "Preencha o Nome\n";
         }
         if(txtEmail.getText().trim() == null || txtEmail.getText().trim().isEmpty()){
             erro = true;
             lbErroEmail.setText("Preencha o Email");
+            mensagemDeErro += "Preencha o Email\n";
         }
 
-        if(erro)
+        if(erro){
+            navigation.showErrorMessage(mensagemDeErro);
             return true;
+        }
+
 
         if(!txtTelefone.getText().trim().matches("[0-9]+")){
             erro = true;
             lbErroTelefone.setText("Digite apenas números");
+            mensagemDeErro += "Digite apenas números no Telefone\n";
         }
 
         if(lista.stream().filter(c -> c.getNome().equals(txtNomeCliente.getText().trim())).findFirst().isPresent()){
             erro = true;
             lbErroNome.setText("Nome ja está em uso");
+            mensagemDeErro += "Nome ja está em uso\n";
         }
 
         if(lista.stream().filter(c -> c.getLogin().equals(txtEmail.getText().trim())).findFirst().isPresent()){
             erro = true;
             lbErroEmail.setText("Email ja está em uso");
+            mensagemDeErro += "Email ja está em uso\n";
         }
 
         if(lista.stream().filter(c -> c.getTelefone().equals(txtTelefone.getText().trim())).findFirst().isPresent()){
             erro = true;
-            lbErroTelefone.setText("Email ja está em uso");
+            lbErroTelefone.setText("Telefone ja está em uso");
+            mensagemDeErro += "Telefone ja está em uso\n";
         }
+
+        if(mensagemDeErro != "")
+            navigation.showErrorMessage(mensagemDeErro);
 
         return erro;
 
