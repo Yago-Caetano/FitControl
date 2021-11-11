@@ -1,7 +1,6 @@
 package br.com.fitcontrol.fitcontrol.Enums;
 
 public enum EnumEntidadesDisponiveis {
-    USUARIO("funcionario ou cliente"),
     FUNCIONARIO ("funcionario"),
     CLIENTE ("cliente"),
     CATRACA("catraca"),

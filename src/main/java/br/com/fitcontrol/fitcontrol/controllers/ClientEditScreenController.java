@@ -2,21 +2,15 @@
 
 package br.com.fitcontrol.fitcontrol.controllers;
 
-import br.com.fitcontrol.fitcontrol.FitControlContext;
 import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
-import br.com.fitcontrol.fitcontrol.events.EventManager;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
-import br.com.fitcontrol.fitcontrol.models.PagamentoModel;
-import br.com.fitcontrol.fitcontrol.models.UsuarioModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
-import br.com.fitcontrol.fitcontrol.publishers.PublisherSerial;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 

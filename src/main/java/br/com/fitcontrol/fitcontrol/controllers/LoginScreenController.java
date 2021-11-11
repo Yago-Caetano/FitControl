@@ -36,14 +36,26 @@ public class LoginScreenController implements Initializable {
     public PasswordField txtSenha;
     @FXML
     protected void entrarClicked() throws Exception {
-        FuncionarioMySQLDAO dao = new FuncionarioMySQLDAO();
-        ArrayList<FuncionarioModel> lista = dao.lista();
 
         Acessologin validar = new Acessologin();
         String login = txtLogin.getText();
         String senha = txtSenha.getText();
 
-        for (FuncionarioModel f: lista
+        FuncionarioModel func = new FuncionarioModel();
+        func.setLogin(login);
+        func.setSenha(senha);
+        if(validar.validaUsuario(func))
+        {
+            FuncionarioLogado.setNome(func.getNome());
+            executeNavigation(NavigationSingleton.MAIN_SCREEN);
+        }
+        else
+        {
+            clearFields();
+            navigation.showErrorMessage("Senha Inválida");
+        }
+
+        /*for (FuncionarioModel f: lista
              ) {
             if(f.getLogin().equals(login)){
                 f.setSenha(senha);
@@ -63,7 +75,7 @@ public class LoginScreenController implements Initializable {
                 navigation.showErrorMessage("Login não encontrado");
 
             }
-        }
+        }*/
 
     }
 

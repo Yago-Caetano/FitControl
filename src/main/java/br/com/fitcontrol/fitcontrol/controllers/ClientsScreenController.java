@@ -1,24 +1,18 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
 
-import br.com.fitcontrol.fitcontrol.FitControlContext;
 import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
-import br.com.fitcontrol.fitcontrol.events.EventManager;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
-import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
-import br.com.fitcontrol.fitcontrol.models.UsuarioModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -26,20 +20,12 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Callback;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;

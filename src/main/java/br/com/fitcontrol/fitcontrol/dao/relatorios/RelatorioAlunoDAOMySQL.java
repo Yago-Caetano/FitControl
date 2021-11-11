@@ -25,8 +25,8 @@ public class RelatorioAlunoDAOMySQL <E extends RelatorioModel> extends Relatorio
     protected String GetSQLRelatorio() {
 
         String SQL="Select tbA._Data as Data,tbU.Nome as Cliente,tbU2.Nome as Funcionario,tbc.Nome as Catraca from tbAcesso tbA "+
-                "inner join tbUsuarios tbU on tbA.idCliente=tbU.id "+
-                "inner join tbUsuarios tbU2 on tbA.idFuncionario=tbU2.id inner join tbCatracas tbc on tbc.id=tbA.idCatraca where "+
+                "inner join tbFuncionarios tbU on tbA.idCliente=tbU.id "+
+                "inner join tbFuncionarios tbU2 on tbA.idFuncionario=tbU2.id inner join tbCatracas tbc on tbc.id=tbA.idCatraca where "+
                 "tbA._Data >=? and tbA._Data <=? and tbU.NivelAcesso=1 ";
         return SQL;
     }

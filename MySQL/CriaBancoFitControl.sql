@@ -1,14 +1,22 @@
 create database Fitcontroldb;
 use Fitcontroldb;
-create table tbUsuarios(
+create table tbFuncionarios(
 	id varchar(50) not null ,
     Nome varchar(50) unique not null,
     Telefone varchar(50)  not null,
     Email varchar(50) unique not null,
     Senha varchar(200) not null,
     _Status int8,
-    Pontos int default 0,
     NivelAcesso int8 not null,
+    Primary key (id)
+);
+create table tbClientes(
+	id varchar(50) not null ,
+    Nome varchar(50) unique not null,
+    Telefone varchar(50)  not null,
+    Email varchar(50) unique not null,
+    _Status int8,
+    Pontos int default 0,
     Primary key (id)
 );
 create table tbCatracas(
@@ -26,8 +34,8 @@ create table tbAcesso(
     idFuncionario varchar(50) ,
     idCliente varchar(50) ,
     idCatraca varchar(50) not null,
-    foreign key (idFuncionario) references tbUsuarios (id),
-    foreign key (idCliente) references tbUsuarios (id),
+    foreign key (idFuncionario) references tbFuncionarios (id),
+    foreign key (idCliente) references tbClientes (id),
 	foreign key (idCatraca) references tbCatracas (id),
     Primary key (id)
 );
@@ -55,7 +63,7 @@ create table tbRecompensaHist(
     Pontos int not null,
 	Titulo  varchar(50) unique not null,
     IdCliente varchar(50) not null,
-    foreign key (IdCliente) references tbUsuarios (id),
+    foreign key (IdCliente) references tbClientes (id),
 	Primary key (id)
 );
 create table tbPontuacaoHist(
@@ -64,7 +72,7 @@ create table tbPontuacaoHist(
     idAcesso varchar(50),
     idCliente varchar(50) not null,
 	foreign key (idAcesso) references tbAcesso (id),
-    foreign key (idCliente) references tbUsuarios (id),
+    foreign key (idCliente) references tbClientes (id),
     Primary key (id)
 );
 create table tbPagamentos(
@@ -73,8 +81,8 @@ create table tbPagamentos(
     idCliente varchar(50) not null,
     idFuncionario varchar(50) not null,
     Valor real not null,
-    foreign key (idFuncionario) references tbUsuarios (id),
-    foreign key (idCliente) references tbUsuarios (id),
+    foreign key (idFuncionario) references tbFuncionarios (id),
+    foreign key (idCliente) references tbClientes (id),
     Primary key (id)
 );
 select * from tbUsuarios
@@ -90,6 +98,11 @@ Select tbA._Data as Data,tbU.Nome as Cliente,tbU2.Nome as Funcionario,tbc.Nome a
 inner join tbUsuarios tbU on tbA.idCliente=tbU.id
 inner join tbUsuarios tbU2 on tbA.idFuncionario=tbU2.id inner join tbCatracas tbc on tbc.id=tbA.idCatraca where 
 tbA._Data >='2021-11-09' and tbA._Data <='2021-11-11 '  and tbU.NivelAcesso=1 
+
+
+Select tbA._Data as Data, tbU2.Nome as Funcionario,tbc.Nome as Catraca from tbAcesso tbA
+inner join tbUsuarios tbU2 on tbA.idFuncionario=tbU2.id inner join tbCatracas tbc on tbc.id=tbA.idCatraca where
+tbA._Data >='2021-11-09' and tbA._Data <='2021-11-11 '  and tbU2.NivelAcesso=2 and tbA.idCliente is null
 
 update tbUsuarios Set Nome='Cliente 1' where id='111'
 

@@ -1,9 +1,8 @@
 package br.com.fitcontrol.fitcontrol.Acesso;
 
 import br.com.fitcontrol.fitcontrol.Basis.Repositorio;
-import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 import br.com.fitcontrol.fitcontrol.Fabricas.FabricaRepositorio;
-import br.com.fitcontrol.fitcontrol.models.UsuarioModel;
+import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
 
 public class Acessologin {
     public Acessologin() {
@@ -13,12 +12,12 @@ public class Acessologin {
         return senhaRepositorio.equals(senhaDigitada);
     }
 
-    public boolean validaUsuario(UsuarioModel user) throws Exception {
+    public boolean validaUsuario(FuncionarioModel user) throws Exception {
         boolean retorno = false;
         Repositorio repositorio = FabricaRepositorio.Fabrica();
-        UsuarioModel usuario = (UsuarioModel)repositorio.login(user.getLogin(),user.getSenha(), EnumEntidadesDisponiveis.USUARIO);
-        if (usuario != null) {
-            retorno = this.validaSenha(usuario.getSenha(), user.getSenha());
+        FuncionarioModel func = (FuncionarioModel)repositorio.login(user.getLogin(),user.getSenha());
+        if (func != null) {
+            retorno = this.validaSenha(func.getSenha(), func.getSenha());
         }
 
         return retorno;

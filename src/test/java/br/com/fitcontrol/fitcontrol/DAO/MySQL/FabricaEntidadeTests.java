@@ -59,7 +59,7 @@ public class FabricaEntidadeTests {
         ClienteModel cliente= new ClienteModel();
         cliente.setId();
         cliente.setLogin("l111");
-        cliente.setNivel(EnumTipoUsuarios.CLIENTE.getCode());
+        //cliente.setNivel(EnumTipoUsuarios.CLIENTE.getCode());
         cliente.setNome("cliente de teste");
         cliente.setPontos(0);
         cliente.setTelefone("tell");
@@ -72,7 +72,7 @@ public class FabricaEntidadeTests {
         func.setLogin("ff11");
         func.setNivel(EnumTipoUsuarios.FUNCIONARIO.getCode());
         func.setNome("funcionario de teste");
-        func.setPontos(0);
+        //func.setPontos(0);
         func.setTelefone("tell");
         return func;
     }
