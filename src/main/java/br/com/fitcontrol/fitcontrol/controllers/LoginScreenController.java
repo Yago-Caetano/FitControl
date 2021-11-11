@@ -6,6 +6,7 @@ import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.dao.Acesso.AcessoMySQLDAO;
 import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
 import br.com.fitcontrol.fitcontrol.dao.Funcionario.FuncionarioMySQLDAO;
+import br.com.fitcontrol.fitcontrol.error.ErrorPopUp;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
@@ -15,10 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -35,11 +33,12 @@ public class LoginScreenController implements Initializable {
     @FXML
     public TextField txtLogin;
     @FXML
-    public TextField txtSenha;
+    public PasswordField txtSenha;
     @FXML
     protected void entrarClicked() throws Exception {
         FuncionarioMySQLDAO dao = new FuncionarioMySQLDAO();
         ArrayList<FuncionarioModel> lista = dao.lista();
+
         Acessologin validar = new Acessologin();
         String login = txtLogin.getText();
         String senha = txtSenha.getText();
@@ -55,29 +54,36 @@ public class LoginScreenController implements Initializable {
 
                 }
                 else{
-                    txtSenha.setText("");
-                    txtLogin.setText("");
-                    txtLogin.setPromptText("Login");
-                    txtSenha.setPromptText("Senha Inválida");
+                    clearFields();
+                    navigation.showErrorMessage("Senha Inválida");
+
                 }
             }else {
-                txtSenha.setText("");
-                txtLogin.setText("");
-                txtSenha.setPromptText("Senha");
-                txtLogin.setPromptText("Login não encontrado");
+                clearFields();
+                navigation.showErrorMessage("Login não encontrado");
+
             }
         }
 
     }
+
+    private void clearFields()
+    {
+        txtSenha.setText("");
+        txtLogin.setText("");
+    }
+
+
     @FXML
     protected void cadastrarClicked() {
-        executeNavigation(NavigationSingleton.EMPLOYEE_EDIT_SCREEN);
+        executeNavigation(NavigationSingleton.CLIENTS_EDIT_SCREEN);
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         navigation = NavigationSingleton.getInstance();
+
     }
 
     private void executeNavigation(int screenId)

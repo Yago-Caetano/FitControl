@@ -1,5 +1,6 @@
 package br.com.fitcontrol.fitcontrol.models;
 
+import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 import br.com.fitcontrol.fitcontrol.Enums.EnumTipoUsuarios;
 import org.junit.jupiter.api.Test;
 
@@ -28,12 +29,12 @@ public class FuncionarioModelTest {
         assertEquals(funcionario.getSenha(),"123");
 
         //Confere se o id é 10
-        assertEquals(funcionario.getId(),10);
+        assertEquals(funcionario.getId(),"10");
 
         //Confere se o telefone é 11112
         assertEquals(funcionario.getTelefone(),"11112");
 
         //Confere se o usuário é um funcionário
-        assertEquals(funcionario.getTipoEntidade(),2);
+        assertEquals(funcionario.getTipoEntidade(), EnumEntidadesDisponiveis.FUNCIONARIO);
     }
 }

@@ -6,6 +6,7 @@ import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 import br.com.fitcontrol.fitcontrol.Enums.EnumTipoUsuarios;
 import br.com.fitcontrol.fitcontrol.Fabricas.FabricaRepositorio;
 import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
+import br.com.fitcontrol.fitcontrol.error.ErrorPopUp;
 import br.com.fitcontrol.fitcontrol.events.EventManager;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.models.UsuarioModel;
@@ -69,6 +70,7 @@ public class FitControlMain extends Application {
             }
         });
         primaryStage.show();
+
     }
 
 }
