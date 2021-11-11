@@ -1,6 +1,7 @@
 package br.com.fitcontrol.fitcontrol.dao;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
+import br.com.fitcontrol.fitcontrol.FileOutput.FileOutput;
 import br.com.fitcontrol.fitcontrol.models.relatorios.RelatorioAlunoModel;
 import br.com.fitcontrol.fitcontrol.models.relatorios.RelatorioModel;
 
@@ -50,7 +51,8 @@ public abstract class  RelatorioDAOMySQL <E extends RelatorioModel> extends Rela
         List<E> relatorio=GetRelatorioFromMySQL();
         List<String[]>ConvertedData=PrepareData(relatorio);
         try {
-            CreateCSVFile(ConvertedData);
+            FileOutput file = new FileOutput();
+            file.CreateCSVFile(ConvertedData);
         } catch (IOException e) {
             e.printStackTrace();
         }

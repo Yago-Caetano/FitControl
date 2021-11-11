@@ -5,6 +5,7 @@ import br.com.fitcontrol.fitcontrol.dao.ConexaoMySQL;
 import br.com.fitcontrol.fitcontrol.dao.RelatorioDAO;
 import br.com.fitcontrol.fitcontrol.dao.relatorios.RelatorioAlunoDAOMySQL;
 import br.com.fitcontrol.fitcontrol.dao.relatorios.RelatorioFuncionarioDAOMySQL;
+import br.com.fitcontrol.fitcontrol.dao.relatorios.RelatorioPagamentoDAOMySQL;
 import br.com.fitcontrol.fitcontrol.models.relatorios.RelatorioAlunoModel;
 import br.com.fitcontrol.fitcontrol.models.relatorios.RelatorioFuncionarioModel;
 import br.com.fitcontrol.fitcontrol.models.relatorios.RelatorioModel;
@@ -39,7 +40,7 @@ public class FabricaRelatorios {
             case FUNCIONARIO:
                 return new RelatorioFuncionarioDAOMySQL(data1,data2);
             case PAGAMENTO:
-                return null;
+                return new RelatorioPagamentoDAOMySQL(data1,data2);
             default:
                 return null;
         }

@@ -6,8 +6,6 @@ import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 public class CatracaModel extends Entidade {
 
     private String modelo;
-    private String nome;
-    private byte tipo;
     private byte status;
 
     public CatracaModel()
@@ -19,22 +17,6 @@ public class CatracaModel extends Entidade {
         this.modelo = modelo;
         this.setTipoEntidade(EnumEntidadesDisponiveis.CATRACA);
         super.setId(id);
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public byte getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(byte tipo) {
-        this.tipo = tipo;
     }
 
     public byte getStatus() {
