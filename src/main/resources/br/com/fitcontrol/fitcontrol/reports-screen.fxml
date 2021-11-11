@@ -92,7 +92,7 @@
                   <Font name="Roboto Light" size="18.0" />
                </font>
                <graphic>
-                  <ImageView fx:id="PagamentoBtn" fitHeight="79.5" fitWidth="79.5" onDragDetected="#PagamentoClicked" pickOnBounds="true" preserveRatio="true">
+                  <ImageView  fitHeight="79.5" fitWidth="79.5" onDragDetected="#PagamentoClicked" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icons/pay_icon.png" />
                      </image>
