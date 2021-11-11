@@ -9,6 +9,7 @@ import br.com.fitcontrol.fitcontrol.dao.Funcionario.FuncionarioMySQLDAO;
 import br.com.fitcontrol.fitcontrol.error.ErrorPopUp;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
+import br.com.fitcontrol.fitcontrol.models.UsuarioModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import javafx.fxml.FXML;
@@ -36,33 +37,21 @@ public class LoginScreenController implements Initializable {
     public PasswordField txtSenha;
     @FXML
     protected void entrarClicked() throws Exception {
-        FuncionarioMySQLDAO dao = new FuncionarioMySQLDAO();
-        ArrayList<FuncionarioModel> lista = dao.lista();
 
-        Acessologin validar = new Acessologin();
-        String login = txtLogin.getText();
-        String senha = txtSenha.getText();
+        Acessologin login = new Acessologin();
 
-        for (FuncionarioModel f: lista
-             ) {
-            if(f.getLogin().equals(login)){
-                f.setSenha(senha);
-                if(validar.validaUsuario(f)){
+        UsuarioModel UserModel = new UsuarioModel();
+        UserModel.setLogin(txtLogin.getText());
+        UserModel.setSenha(txtSenha.getText());
 
-                    FuncionarioLogado.setNome(f.getNome());
-                    executeNavigation(NavigationSingleton.MAIN_SCREEN);
-
-                }
-                else{
-                    clearFields();
-                    navigation.showErrorMessage("Senha Inválida");
-
-                }
-            }else {
-                clearFields();
-                navigation.showErrorMessage("Login não encontrado");
-
-            }
+        if(login.validaUsuario(UserModel))
+        {
+            executeNavigation(NavigationSingleton.MAIN_SCREEN);
+        }
+        else
+        {
+            clearFields();
+            navigation.showErrorMessage("Login não encontrado");
         }
 
     }
