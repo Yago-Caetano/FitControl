@@ -114,6 +114,7 @@ public class EmployeeEditScreenController implements Initializable {
         Boolean erro = false;
         FuncionarioMySQLDAO dao = new FuncionarioMySQLDAO();
         ArrayList<FuncionarioModel> lista = dao.lista();
+        String mensagemDeErro = "";
 
         lbErroTelefone.setText("");
         lbErroNome.setText("");
@@ -124,47 +125,61 @@ public class EmployeeEditScreenController implements Initializable {
         if(txtTelefone.getText().trim() == null || txtTelefone.getText().trim().isEmpty()){
             erro = true;
             lbErroTelefone.setText("Preencha o Telefone");
+            mensagemDeErro += "Preencha o Telefone\n";
         }
         if(txtNomeColaborador.getText().trim() == null || txtNomeColaborador.getText().trim().isEmpty()){
             erro = true;
             lbErroNome.setText("Preencha o Nome");
+            mensagemDeErro += "Preencha o Nome\n";
         }
         if(txtEmail.getText().trim() == null || txtEmail.getText().trim().isEmpty()){
             erro = true;
             lbErroEmail.setText("Preencha o Email");
+            mensagemDeErro += "Preencha o Email\n";
         }
         if(txtSenha.getText().trim() == null || txtSenha.getText().trim().isEmpty()){
             erro = true;
             lbErroSenha.setText("Preencha a Senha");
+            mensagemDeErro += "Preencha a Senha\n";
         }
 
         if(!RndBtnFuncionario.isSelected() && !RndBtnGerente.isSelected()){
             erro = true;
             lbErroNivel.setText("Escolha um Nível");
+            mensagemDeErro += "Escolha um Nível\n";
         }
 
-        if(erro)
+        if(erro){
+            navigation.showErrorMessage(mensagemDeErro);
             return true;
+        }
 
         if(!txtTelefone.getText().trim().matches("[0-9]+")){
             erro = true;
             lbErroTelefone.setText("Digite apenas números");
+            mensagemDeErro += "Digite apenas números no Telefone\n";
         }
 
         if(lista.stream().filter(c -> c.getNome().equals(txtNomeColaborador.getText().trim())).findFirst().isPresent()){
             erro = true;
             lbErroNome.setText("Nome ja está em uso");
+            mensagemDeErro += "Nome ja está em uso\n";
         }
 
         if(lista.stream().filter(c -> c.getLogin().equals(txtEmail.getText().trim())).findFirst().isPresent()){
             erro = true;
             lbErroEmail.setText("Email ja está em uso");
+            mensagemDeErro += "Email ja está em uso\n";
         }
 
         if(lista.stream().filter(c -> c.getTelefone().equals(txtTelefone.getText().trim())).findFirst().isPresent()){
             erro = true;
-            lbErroTelefone.setText("Email ja está em uso");
+            lbErroTelefone.setText("Telefone ja está em uso");
+            mensagemDeErro += "Telefone ja está em uso\n";
         }
+
+        if(mensagemDeErro != "")
+            navigation.showErrorMessage(mensagemDeErro);
 
         return erro;
 
@@ -184,6 +199,9 @@ public class EmployeeEditScreenController implements Initializable {
         txtTelefone.setText(funcionario.getTelefone());
         txtEmail.setText(funcionario.getLogin());
         txtSenha.setText(funcionario.getSenha());
+
+        if(funcionario.getNivel() == EnumTipoUsuarios.FUNCIONARIO.getCode())
+            RndBtnFuncionario.setSelected(true);
 
     }
 }
