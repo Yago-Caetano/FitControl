@@ -12,8 +12,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.util.StringConverter;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +24,8 @@ import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import javax.swing.JFileChooser;
 
@@ -30,6 +34,7 @@ public class ReportScreenController implements Initializable {
     java.sql.Date data1;
     java.sql.Date data2;
     String path;
+    String pattern = "dd/MM/yyyy";
 
     private NavigationSingleton navigation;
     @FXML
@@ -41,9 +46,9 @@ public class ReportScreenController implements Initializable {
     @FXML
     private Button AlunoBtn;
     @FXML
-    private TextField Data1txt;
+    private DatePicker Data1txt;
     @FXML
-    private TextField Data2txt;
+    private DatePicker Data2txt;
     @FXML
     protected void voltarClicked() {
         try {
@@ -142,15 +147,44 @@ public class ReportScreenController implements Initializable {
             }
         }
     }
+    private void InitilizaeDatePicker(DatePicker datePicker)
+    {
+        datePicker.setPromptText(pattern.toLowerCase());
+        datePicker.setConverter(new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+
+
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+        });
+    }
 
 
     public void initialize(URL location, ResourceBundle resources){
+        InitilizaeDatePicker(Data1txt);
+        InitilizaeDatePicker(Data2txt);
         navigation = NavigationSingleton.getInstance();
     }
 
     private boolean ValidaDatas()
     {
-        if(Data1txt.getText().length()==0 || Data2txt.getText().length()==0 )
+        if(Data1txt.getValue()== null|| Data2txt.getValue()== null )
         {
             NavigationSingleton.getInstance().showErrorMessage("Data inválida!");
             return false;
@@ -158,10 +192,10 @@ public class ReportScreenController implements Initializable {
         else
         {
 
-            DateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
+            DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
             try {
-                data1 = new java.sql.Date(fmt.parse(Data1txt.getText()).getTime());
-                data2 = new java.sql.Date(fmt.parse(Data2txt.getText()).getTime());
+                data1 = new java.sql.Date(fmt.parse(Data1txt.getValue().toString()).getTime());
+                data2 = new java.sql.Date(fmt.parse((Data2txt.getValue().toString())).getTime());
 
                 return true;
 
