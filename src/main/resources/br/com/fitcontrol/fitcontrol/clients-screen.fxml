@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@css/tabela.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.ClientsScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@css/tabela.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.ClientsScreenController">
     <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="112.0" prefWidth="1280.0">
         <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffbf00" height="160.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
@@ -30,11 +24,11 @@
         </children></StackPane>
    <Pane layoutX="327.0" layoutY="200.0" prefHeight="40.0" prefWidth="700.0" style="-fx-background-color: FFDC75; -fx-border-color: BE8E00;">
       <children>
-         <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="700.0" style="-fx-background-color: FFDC75; -fx-border-color: BE8E00;">
+         <TextField fx:id="txtNomeFiltro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="700.0" style="-fx-background-color: FFDC75; -fx-border-color: BE8E00;">
             <font>
                <Font name="Roboto Light" size="12.0" />
             </font></TextField>
-         <ImageView fitHeight="26.0" fitWidth="45.0" layoutX="720.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="26.0" fitWidth="45.0" layoutX="720.0" layoutY="7.0" onMouseClicked="#filterClicked" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@icons/Pesquisa.png" />
             </image></ImageView>

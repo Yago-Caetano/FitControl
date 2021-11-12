@@ -3,7 +3,9 @@ package br.com.fitcontrol.fitcontrol.controllers;
 
 import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
+import br.com.fitcontrol.fitcontrol.dao.ParametroFiltroDAO;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
+import br.com.fitcontrol.fitcontrol.models.PagamentoModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
@@ -15,10 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
@@ -26,6 +25,9 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,6 +49,9 @@ public class ClientsScreenController implements Initializable {
     @FXML
     public TableColumn<ClienteModel,Void> acao;
 
+    @FXML
+    public TextField txtNomeFiltro;
+
     private NavigationSingleton navigation;
 
     @FXML
@@ -64,6 +69,7 @@ public class ClientsScreenController implements Initializable {
             e.printStackTrace();
         }
     }
+
     @FXML
     protected void novoClienteClicked() {
         executeNavigation(NavigationSingleton.CLIENTS_EDIT_SCREEN);
@@ -98,6 +104,30 @@ public class ClientsScreenController implements Initializable {
         colunaAcoes();
 
     }
+
+    @FXML
+    private void filterClicked(){
+        List<ParametroFiltroDAO> params = new ArrayList<>();
+
+
+
+        if(txtNomeFiltro.getText().length()>0)
+        {
+
+            ParametroFiltroDAO mParam = new ParametroFiltroDAO("Nome", "%" + txtNomeFiltro.getText() + "%"," LIKE ");
+            params.add(mParam);
+        }
+
+        try {
+            ArrayList<ClienteModel> filtragem = dao.filtro(params);
+
+            tabela.setItems(FXCollections.observableArrayList(filtragem));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void executeNavigation(int screenId)
     {
