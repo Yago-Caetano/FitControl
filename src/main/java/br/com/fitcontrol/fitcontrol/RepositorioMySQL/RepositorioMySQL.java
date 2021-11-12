@@ -70,8 +70,8 @@ public class RepositorioMySQL  extends Repositorio {
     }
 
     @Override
-    public void GetRelatorio(Date data1, Date data2, EnumTipoRelatorio tiporelatorio) {
+    public void GetRelatorio(Date data1, Date data2, EnumTipoRelatorio tiporelatorio,String path) {
         RelatorioDAO dao = FabricaRelatorios.Fabrica(data1,data2,tiporelatorio,main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio.MYSQL);
-        dao.GetRelatorio();
+        dao.GetRelatorio(path);
     }
 }

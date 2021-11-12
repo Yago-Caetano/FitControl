@@ -15,5 +15,5 @@ public abstract class Repositorio {
     public abstract void Insert(Entidade entidade, EnumEntidadesDisponiveis tipoEntidade) throws SQLException;
     public abstract void Update(Entidade entidade, EnumEntidadesDisponiveis tipoEntidade);
     public abstract void Delete(Entidade entidade, EnumEntidadesDisponiveis tipoEntidade);
-    public abstract void  GetRelatorio (Date data1,Date data2, EnumTipoRelatorio tiporelatorio);
+    public abstract void  GetRelatorio (Date data1,Date data2, EnumTipoRelatorio tiporelatorio,String path);
 }

@@ -26,7 +26,7 @@ public abstract class RelatorioDAO <E extends RelatorioModel> {
         this.entityClass=entityClass;
     }
 
-    public abstract void GetRelatorio();
+    public abstract void GetRelatorio(String path);
 
 
 }

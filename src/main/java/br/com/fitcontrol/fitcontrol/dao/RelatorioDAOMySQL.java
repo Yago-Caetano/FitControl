@@ -46,13 +46,13 @@ public abstract class  RelatorioDAOMySQL <E extends RelatorioModel> extends Rela
     protected  abstract E PreencheRelatorio(ResultSet rs);
 
     @Override
-    public void GetRelatorio() {
+    public void GetRelatorio(String path) {
 
         List<E> relatorio=GetRelatorioFromMySQL();
         List<String[]>ConvertedData=PrepareData(relatorio);
         try {
             FileOutput file = new FileOutput();
-            file.CreateCSVFile(ConvertedData);
+            file.CreateCSVFile(ConvertedData,path);
         } catch (IOException e) {
             e.printStackTrace();
         }

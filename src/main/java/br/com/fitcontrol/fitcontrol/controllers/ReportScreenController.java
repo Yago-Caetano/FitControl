@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,11 +22,13 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
+import javax.swing.JFileChooser;
 
 public class ReportScreenController implements Initializable {
 
     java.sql.Date data1;
     java.sql.Date data2;
+    String path;
 
     private NavigationSingleton navigation;
     @FXML
@@ -33,7 +36,7 @@ public class ReportScreenController implements Initializable {
     @FXML
     private Button Staffbtn;
     @FXML
-    private Button PagamentoBtn;
+    private ImageView PagamentoBtn;
     @FXML
     private Button AlunoBtn;
     @FXML
@@ -61,8 +64,15 @@ public class ReportScreenController implements Initializable {
         {
             Repositorio r = null;
             try {
-                r = FabricaRepositorio.Fabrica();
-                r.GetRelatorio(data1,data2, EnumTipoRelatorio.ALUNO);
+                if(OpenFileDialog())
+                {
+                    r = FabricaRepositorio.Fabrica();
+                    r.GetRelatorio(data1,data2, EnumTipoRelatorio.ALUNO,path);
+                }
+                else
+                {
+
+                }
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -75,22 +85,55 @@ public class ReportScreenController implements Initializable {
         {
             Repositorio r = null;
             try {
-                r = FabricaRepositorio.Fabrica();
-                r.GetRelatorio(data1,data2, EnumTipoRelatorio.FUNCIONARIO);
+                if(OpenFileDialog())
+                {
+                    r = FabricaRepositorio.Fabrica();
+                    r.GetRelatorio(data1,data2, EnumTipoRelatorio.FUNCIONARIO,path);
+                }
+                else
+                {
+
+                }
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
+    private boolean OpenFileDialog()
+    {
+        //Create a file chooser
+        final JFileChooser fc = new JFileChooser();
+
+        fc.setCurrentDirectory(new java.io.File("."));
+        fc.setDialogTitle("Escolha o o diretorio para salvar");
+        int userSelection = fc.showSaveDialog(null);
+        if (userSelection==JFileChooser.APPROVE_OPTION)
+        {
+            path=fc.getSelectedFile().getPath();
+            return true;
+        }
+
+        return false;
+    }
     @FXML
-    protected void PagamentoClicked() {
+    protected void pagamentoClicked() {
         if(ValidaDatas())
         {
             Repositorio r = null;
             try {
-                r = FabricaRepositorio.Fabrica();
-                r.GetRelatorio(data1,data2, EnumTipoRelatorio.PAGAMENTO);
+
+                if(OpenFileDialog())
+                {
+                    r = FabricaRepositorio.Fabrica();
+                    r.GetRelatorio(data1,data2, EnumTipoRelatorio.PAGAMENTO,path);
+                }
+                else
+                {
+
+                }
+
+
 
             } catch (Exception e) {
                 e.printStackTrace();

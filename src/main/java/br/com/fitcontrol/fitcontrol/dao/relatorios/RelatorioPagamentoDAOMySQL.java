@@ -24,7 +24,7 @@ public class RelatorioPagamentoDAOMySQL <E extends RelatorioModel> extends Relat
         String SQL="Select tbP._Data as Data,tbC.Nome as Cliente,tbF.Nome as Funcionario, tbP.Valor as Valor "+
                 "from tbPagamentos tbP inner join tbClientes tbC on tbC.id=tbP.idCliente "+
                 "inner join tbFuncionarios tbF on tbF.id=tbP.idFuncionario "+
-                "where tbA._Data >=? and tbA._Data <=?";
+                "where tbP._Data >=? and tbP._Data <=?";
         return SQL;
     }
 

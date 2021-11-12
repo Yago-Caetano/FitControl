@@ -9,18 +9,18 @@ import java.util.stream.Stream;
 
 public class FileOutput {
 
-    protected static final String CSV_FILE_NAME="Teste.csv";
-
     protected String convertToCSV(String[] data) {
         return Stream.of(data)
                 .collect(Collectors.joining(","));
     }
-    public void CreateCSVFile(List<String[]> lista) throws IOException {
 
-       File csvOutputFile = new File(CSV_FILE_NAME);
+    public void CreateCSVFile(List<String[]> lista,String path) throws IOException {
+        //Create a file chooser
+        File csvOutputFile = new File(path);
         try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
-            lista.stream().map(this::convertToCSV);
+            lista.stream()
+                    .map(this::convertToCSV)
+                    .forEach(pw::println);
         }
-        //assertTrue(csvOutputFile.exists());
     }
 }
