@@ -157,6 +157,11 @@
                <Insets left="580.0" top="182.0" />
             </StackPane.margin>
          </Label>
+         <TextField fx:id="txtID" alignment="CENTER" editable="false" layoutX="58.0" layoutY="190.0" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" visible="false" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+               <Insets left="700.0" right="100.0" top="240.0" />
+            </StackPane.margin>
+         </TextField>
       </children>
    </StackPane>
 </AnchorPane>

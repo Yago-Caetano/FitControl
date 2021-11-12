@@ -5,6 +5,7 @@ import br.com.fitcontrol.fitcontrol.Enums.EnumTipoUsuarios;
 import br.com.fitcontrol.fitcontrol.dao.ConexaoMySQL;
 import br.com.fitcontrol.fitcontrol.dao.MySQLDAO;
 import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
+import br.com.fitcontrol.fitcontrol.models.UsuarioModel;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class FuncionarioMySQLDAO  <E extends Entidade> extends MySQLDAO {
     public FuncionarioMySQLDAO() {
         super(FuncionarioModel.class);
         super.Has_Status=true;
-        setTabela("tbFuncionarios");
+        setTabela("tbUsuarios");
     }
 
     @Override
@@ -37,23 +38,7 @@ public class FuncionarioMySQLDAO  <E extends Entidade> extends MySQLDAO {
         }
         return entidade;
     }
-    public FuncionarioModel login(String _login,String _senha) throws SQLException {
-        FuncionarioModel user = null;
 
-        try (Connection conexao = ConexaoMySQL.GetConexaoBD()) {
-            String SQL = "select * from " + getTabela() + " where Email = ? and Senha = ?";
-            try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
-                stmt.setString(1, _login);
-                stmt.setString(2, _senha);
-                try (ResultSet rs = stmt.executeQuery()) {
-                    if (rs.next()){
-                        user = (FuncionarioModel) preencheEntidade(rs);
-                    }
-                }
-            }
-        }
-        return user;
-    }
     @Override
     public ArrayList lista() throws SQLException {
         ArrayList<FuncionarioModel> entidades = new ArrayList();
@@ -78,21 +63,21 @@ public class FuncionarioMySQLDAO  <E extends Entidade> extends MySQLDAO {
 
     @Override
     protected String getInsertCommand(Entidade entidade) {
-        FuncionarioModel user=(FuncionarioModel)entidade;
+        UsuarioModel user=(UsuarioModel)entidade;
         String SQL= "Insert into " + getTabela() + "(id,Nome,Telefone,Email,Senha,_Status,NivelAcesso) values (?,?,?,?,?,?,?)";
         return SQL;
     }
 
     @Override
     protected String getUpdateCommand(Entidade entidade) {
-        FuncionarioModel user=(FuncionarioModel)entidade;
-        String SQL= "Update " + getTabela() + " Set Nome=?,Telefone=?,Email=?,Senha=?,_Status=?,NivelAcesso=? where id="+ user.getId();
+        UsuarioModel user=(UsuarioModel)entidade;
+        String SQL= "Update " + getTabela() + " Set Nome=?,Telefone=?,Email=?,Senha=?,_Status=?,NivelAcesso=? where id="+ "\"" + user.getId() + "\"";
         return SQL;
     }
 
     @Override
     protected void PrepareStatementInsert(Entidade entidade, PreparedStatement stmt) throws SQLException {
-        FuncionarioModel user = (FuncionarioModel) entidade;
+        UsuarioModel user = (UsuarioModel) entidade;
         stmt.setString(1,user.getId());
         stmt.setString(2,user.getNome());
         stmt.setString(3,user.getTelefone());
@@ -104,7 +89,7 @@ public class FuncionarioMySQLDAO  <E extends Entidade> extends MySQLDAO {
     }
     @Override
     protected void PrepareStatementUpdate(Entidade entidade, PreparedStatement stmt) throws SQLException {
-        FuncionarioModel user = (FuncionarioModel) entidade;
+        UsuarioModel user = (UsuarioModel) entidade;
         stmt.setString(1,user.getNome());
         stmt.setString(2,user.getTelefone());
         stmt.setString(3,user.getLogin());
