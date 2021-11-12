@@ -1,10 +1,13 @@
 package br.com.fitcontrol.fitcontrol.dao;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
+import br.com.fitcontrol.fitcontrol.Enums.EnumTipoUsuarios;
+import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 
 import java.sql.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
 
@@ -29,11 +32,6 @@ public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
     }
 
 
-
-
-
-
-
     @Override
     public void Insert(Entidade entidade) throws SQLException {
         try (Connection conexao = ConexaoMySQL.GetConexaoBD()) {
@@ -47,6 +45,45 @@ public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
             throwables.printStackTrace();
         }
 
+    }
+
+
+    @Override
+    public ArrayList filtro(List parametros) throws SQLException {
+        List<ParametroFiltroDAO> mParametros = (List<ParametroFiltroDAO>) parametros;
+        ArrayList<ClienteModel> entidades = new ArrayList<>();
+        try (Connection conexao = ConexaoMySQL.GetConexaoBD()) {
+            String SQL;
+            if (Has_Status)
+            {
+                //SQL= "select * from " + getTabela() + " where NivelAcesso= 1";
+                SQL= "select * from " + getTabela() + " where _Status > 0 and  NivelAcesso="+ EnumTipoUsuarios.CLIENTE.getCode();
+
+                for (ParametroFiltroDAO param:mParametros) {
+                    SQL += " and ";
+                    SQL += param.getCampo() + param.getOperador() + "'" + param.getValor() + "'";
+                }
+            }
+            else
+            {
+                SQL= "select * from " + getTabela() +" where  NivelAcesso="+ EnumTipoUsuarios.CLIENTE.getCode();
+
+                for (ParametroFiltroDAO param:mParametros) {
+                    SQL += " and ";
+                    SQL += param.getCampo() + param.getOperador() + "'" + param.getValor() + "'";
+                }
+            }
+            try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
+                try (ResultSet rs = stmt.executeQuery()) {
+                    while (rs.next()){
+                        ClienteModel entidade = (ClienteModel) preencheEntidade(rs);
+                        entidades.add(entidade);
+                    }
+                }
+            }
+        }
+
+        return entidades;
     }
 
     @Override

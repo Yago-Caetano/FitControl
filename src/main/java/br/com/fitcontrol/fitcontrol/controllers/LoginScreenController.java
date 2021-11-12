@@ -65,7 +65,7 @@ public class LoginScreenController implements Initializable {
 
     @FXML
     protected void cadastrarClicked() {
-        executeNavigation(NavigationSingleton.CLIENTS_EDIT_SCREEN);
+        executeNavigation(NavigationSingleton.EMPLOYEE_EDIT_SCREEN);
     }
 
 

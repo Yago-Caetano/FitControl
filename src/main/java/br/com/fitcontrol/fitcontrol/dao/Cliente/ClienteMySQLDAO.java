@@ -4,13 +4,13 @@ import br.com.fitcontrol.fitcontrol.Basis.Entidade;
 import br.com.fitcontrol.fitcontrol.Enums.EnumTipoUsuarios;
 import br.com.fitcontrol.fitcontrol.dao.ConexaoMySQL;
 import br.com.fitcontrol.fitcontrol.dao.MySQLDAO;
-import br.com.fitcontrol.fitcontrol.models.CatracaModel;
+import br.com.fitcontrol.fitcontrol.dao.ParametroFiltroDAO;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
-import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
 import br.com.fitcontrol.fitcontrol.models.UsuarioModel;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ClienteMySQLDAO<E extends Entidade> extends MySQLDAO {
     public ClienteMySQLDAO() {
@@ -63,6 +63,9 @@ public class ClienteMySQLDAO<E extends Entidade> extends MySQLDAO {
 
         return entidades;
     }
+
+
+
 
     @Override
     protected String getInsertCommand(Entidade entidade) {

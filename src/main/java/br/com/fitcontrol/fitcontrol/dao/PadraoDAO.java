@@ -5,6 +5,7 @@ import br.com.fitcontrol.fitcontrol.Basis.Entidade;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class PadraoDAO <E extends Entidade> {
 
@@ -23,6 +24,8 @@ public abstract class PadraoDAO <E extends Entidade> {
     public abstract void Update(E entidade);
     public abstract void Delete(E entidade);
     public abstract ArrayList<E> lista() throws SQLException;
+
+    public abstract ArrayList<E> filtro(List<ParametroFiltroDAO> parametros) throws SQLException;
 
     public E getInstanceOfE()
     {

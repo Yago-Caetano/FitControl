@@ -76,7 +76,7 @@
                <Font name="Arial" size="23.0" />
             </font>
          </Button>
-         <Button fx:id="BtnCancelar" layoutX="140.0" layoutY="610.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Cancelar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+         <Button fx:id="BtnCancelar" layoutX="140.0" layoutY="610.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#voltarClicked" prefHeight="50.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Cancelar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
             <font>
                <Font name="Arial" size="23.0" />
             </font>
