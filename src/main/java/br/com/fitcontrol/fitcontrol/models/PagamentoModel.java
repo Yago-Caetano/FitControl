@@ -8,8 +8,8 @@ import java.sql.Date;
 public class PagamentoModel  extends Entidade {
     private Date data;
     private double valor;
-    private int idCliente;
-    private int idFuncionario;
+    private String idCliente;
+    private String idFuncionario;
     public PagamentoModel(){
         this.setTipoEntidade(EnumEntidadesDisponiveis.PAGAMENTO);
 
@@ -22,19 +22,19 @@ public class PagamentoModel  extends Entidade {
 
     }
 
-    public int getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 
-    public int getIdFuncionario() {
+    public String getIdFuncionario() {
         return idFuncionario;
     }
 
-    public void setIdFuncionario(int idFuncionario) {
+    public void setIdFuncionario(String idFuncionario) {
         this.idFuncionario = idFuncionario;
     }
 

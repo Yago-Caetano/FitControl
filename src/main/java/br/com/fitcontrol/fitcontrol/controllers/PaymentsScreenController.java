@@ -18,10 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
@@ -31,6 +28,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -51,9 +50,16 @@ public class PaymentsScreenController implements Initializable {
     @FXML
     public  TableColumn<PagamentoModel, Void> acao;
 
-    private NavigationSingleton navigation;
     @FXML
-    private Button voltar,novoPagamento;
+    public DatePicker dtStart,dtEnd;
+
+    @FXML
+    public TextField txtValor;
+
+    private NavigationSingleton navigation;
+
+
+
     @FXML
     protected void voltarClicked(){
         try {
@@ -104,14 +110,35 @@ public class PaymentsScreenController implements Initializable {
 
     @FXML
     protected void filterClicked(){
-        ParametroFiltroDAO mParam = new ParametroFiltroDAO("_Data","2021-10-11",">=");
-        List<ParametroFiltroDAO> params = new ArrayList<>();
-        params.add(mParam);
 
+        List<ParametroFiltroDAO> params = new ArrayList<>();
+
+        if(dtStart.getValue() != null)
+        {
+            String data = dtStart.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            ParametroFiltroDAO mParam = new ParametroFiltroDAO("_Data",data,">=");
+            params.add(mParam);
+        }
+
+        if(dtEnd.getValue() != null)
+        {
+            String data = dtEnd.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            ParametroFiltroDAO mParam = new ParametroFiltroDAO("_Data",data,"<=");
+            params.add(mParam);
+
+        }
+
+        if(txtValor.getText().length()>0)
+        {
+
+            ParametroFiltroDAO mParam = new ParametroFiltroDAO("Valor",txtValor.getText(),"=");
+            params.add(mParam);
+        }
 
         try {
                 ArrayList<PagamentoModel> filtragem = dao.filtro(params);
-                filtragem.size();
+
+                tabela.setItems(FXCollections.observableArrayList(filtragem));
 
         } catch (Exception e) {
             e.printStackTrace();

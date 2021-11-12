@@ -51,13 +51,13 @@ public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
     @Override
     public ArrayList filtro(List parametros) throws SQLException {
         List<ParametroFiltroDAO> mParametros = (List<ParametroFiltroDAO>) parametros;
-        ArrayList<ClienteModel> entidades = new ArrayList<>();
+        ArrayList<E> entidades = new ArrayList<>();
         try (Connection conexao = ConexaoMySQL.GetConexaoBD()) {
             String SQL;
             if (Has_Status)
             {
                 //SQL= "select * from " + getTabela() + " where NivelAcesso= 1";
-                SQL= "select * from " + getTabela() + " where _Status > 0 and  NivelAcesso="+ EnumTipoUsuarios.CLIENTE.getCode();
+                SQL= "select * from " + getTabela() + " where _Status > 0";
 
                 for (ParametroFiltroDAO param:mParametros) {
                     SQL += " and ";
@@ -66,17 +66,22 @@ public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
             }
             else
             {
-                SQL= "select * from " + getTabela() +" where  NivelAcesso="+ EnumTipoUsuarios.CLIENTE.getCode();
+                int i = 0;
+                SQL= "select * from " + getTabela();
 
                 for (ParametroFiltroDAO param:mParametros) {
-                    SQL += " and ";
+                    if(i>0)
+                        SQL += " and ";
+                    else
+                        SQL += " where ";
                     SQL += param.getCampo() + param.getOperador() + "'" + param.getValor() + "'";
+                    i++;
                 }
             }
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
                 try (ResultSet rs = stmt.executeQuery()) {
                     while (rs.next()){
-                        ClienteModel entidade = (ClienteModel) preencheEntidade(rs);
+                        E entidade =  preencheEntidade(rs);
                         entidades.add(entidade);
                     }
                 }

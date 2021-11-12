@@ -74,7 +74,7 @@ public class PaymentEditScreenController implements Initializable {
 
         txtID.setText((pagamento.getId()));
         txtData.format(pagamento.getData());
-        txtID.setText(Integer.toString(pagamento.getIdCliente()));
+        txtID.setText(pagamento.getIdCliente());
         txtValor.setText(Double.toString(pagamento.getValor()));
 
         txtID.setEditable(false);

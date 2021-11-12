@@ -37,8 +37,8 @@ public class PagamentosMySQLDAO <E extends Entidade> extends MySQLDAO {
         PagamentoModel pagamento=(PagamentoModel)entidade;
         stmt.setString(1,pagamento.getId());
         stmt.setDate(2,pagamento.getData());
-        stmt.setInt(3,pagamento.getIdCliente());
-        stmt.setInt(4,pagamento.getIdFuncionario());
+        stmt.setString(3,pagamento.getIdCliente());
+        stmt.setString(4,pagamento.getIdFuncionario());
         stmt.setDouble(5,pagamento.getValor());
 
     }
@@ -47,8 +47,8 @@ public class PagamentosMySQLDAO <E extends Entidade> extends MySQLDAO {
     protected void PrepareStatementUpdate(Entidade entidade, PreparedStatement stmt) throws SQLException {
         PagamentoModel pagamento=(PagamentoModel)entidade;
         stmt.setDate(1,pagamento.getData());
-        stmt.setInt(2,pagamento.getIdCliente());
-        stmt.setInt(3,pagamento.getIdFuncionario());
+        stmt.setString(2,pagamento.getIdCliente());
+        stmt.setString(3,pagamento.getIdFuncionario());
         stmt.setDouble(4,pagamento.getValor());
     }
 
@@ -58,8 +58,8 @@ public class PagamentosMySQLDAO <E extends Entidade> extends MySQLDAO {
         try {
             pagamento.setId(rs.getString("id"));
             pagamento.setData(rs.getDate("_Data"));
-            pagamento.setIdCliente(rs.getInt("idCliente"));
-            pagamento.setIdFuncionario(rs.getInt("idFuncionario"));
+            pagamento.setIdCliente(rs.getString("idCliente"));
+            pagamento.setIdFuncionario(rs.getString("idFuncionario"));
             pagamento.setValor(rs.getDouble("Valor"));
 
         } catch (SQLException ex) {
