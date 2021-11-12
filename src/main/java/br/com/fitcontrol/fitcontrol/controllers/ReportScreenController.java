@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -111,7 +112,15 @@ public class ReportScreenController implements Initializable {
         if (userSelection==JFileChooser.APPROVE_OPTION)
         {
             path=fc.getSelectedFile().getPath();
-            return true;
+            if(path.length()==0)
+                return false;
+
+            if (!path .endsWith(".csv"))
+            {
+                path += ".csv";
+                return true;
+            }
+            
         }
 
         return false;
