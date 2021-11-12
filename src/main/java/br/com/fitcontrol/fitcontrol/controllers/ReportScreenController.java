@@ -71,9 +71,8 @@ public class ReportScreenController implements Initializable {
                     r.GetRelatorio(data1,data2, EnumTipoRelatorio.ALUNO,path);
                 }
                 else
-                {
+                    NavigationSingleton.getInstance().showErrorMessage("Operação cancelada!");
 
-                }
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -92,9 +91,8 @@ public class ReportScreenController implements Initializable {
                     r.GetRelatorio(data1,data2, EnumTipoRelatorio.FUNCIONARIO,path);
                 }
                 else
-                {
+                    NavigationSingleton.getInstance().showErrorMessage("Operação cancelada!");
 
-                }
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -112,9 +110,6 @@ public class ReportScreenController implements Initializable {
         if (userSelection==JFileChooser.APPROVE_OPTION)
         {
             path=fc.getSelectedFile().getPath();
-            if(path.length()==0)
-                return false;
-
             if (!path .endsWith(".csv"))
             {
                 path += ".csv";
@@ -138,9 +133,7 @@ public class ReportScreenController implements Initializable {
                     r.GetRelatorio(data1,data2, EnumTipoRelatorio.PAGAMENTO,path);
                 }
                 else
-                {
-
-                }
+                    NavigationSingleton.getInstance().showErrorMessage("Operação cancelada!");
 
 
 
@@ -159,6 +152,7 @@ public class ReportScreenController implements Initializable {
     {
         if(Data1txt.getText().length()==0 || Data2txt.getText().length()==0 )
         {
+            NavigationSingleton.getInstance().showErrorMessage("Data inválida!");
             return false;
         }
         else
@@ -172,7 +166,7 @@ public class ReportScreenController implements Initializable {
                 return true;
 
             } catch (ParseException e) {
-                e.printStackTrace();
+                NavigationSingleton.getInstance().showErrorMessage("Data inválida!");
             }
         }
 
