@@ -2,6 +2,7 @@ package br.com.fitcontrol.fitcontrol.controllers;
 
 import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.dao.Pagamento.PagamentosMySQLDAO;
+import br.com.fitcontrol.fitcontrol.dao.ParametroFiltroDAO;
 import br.com.fitcontrol.fitcontrol.events.EventManager;
 import br.com.fitcontrol.fitcontrol.models.CatracaModel;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
@@ -30,6 +31,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -98,6 +101,24 @@ public class PaymentsScreenController implements Initializable {
 
         colunaAcoes();
     }
+
+    @FXML
+    protected void filterClicked(){
+        ParametroFiltroDAO mParam = new ParametroFiltroDAO("_Data","2021-10-11",">=");
+        List<ParametroFiltroDAO> params = new ArrayList<>();
+        params.add(mParam);
+
+
+        try {
+                ArrayList<PagamentoModel> filtragem = dao.filtro(params);
+                filtragem.size();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
     public void carregarDados() throws SQLException {
 

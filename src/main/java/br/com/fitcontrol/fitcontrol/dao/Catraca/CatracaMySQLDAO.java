@@ -2,12 +2,14 @@ package br.com.fitcontrol.fitcontrol.dao.Catraca;
 
 import br.com.fitcontrol.fitcontrol.Basis.Entidade;
 import br.com.fitcontrol.fitcontrol.dao.MySQLDAO;
-import br.com.fitcontrol.fitcontrol.models.AcessoModel;
+import br.com.fitcontrol.fitcontrol.dao.ParametroFiltroDAO;
 import br.com.fitcontrol.fitcontrol.models.CatracaModel;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CatracaMySQLDAO <E extends Entidade> extends MySQLDAO {
     public CatracaMySQLDAO() {
@@ -55,5 +57,11 @@ public class CatracaMySQLDAO <E extends Entidade> extends MySQLDAO {
             //Logger.getLogger(UsuarioMySQLDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return (E)catraca;
+    }
+
+
+    @Override
+    public ArrayList filtro(List parametros) throws SQLException {
+        return null;
     }
 }

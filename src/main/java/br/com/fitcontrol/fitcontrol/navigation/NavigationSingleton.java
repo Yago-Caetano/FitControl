@@ -61,7 +61,9 @@ public  class NavigationSingleton {
         {
             telas.pop();
             telaAtual = telas.pop();
+            telas.add(telaAtual);
             navigationCallback.navigateCb(telaAtual);
+
         }
     }
 
