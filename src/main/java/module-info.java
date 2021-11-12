@@ -5,6 +5,7 @@ module br.com.fitcontrol.fitcontrol {
     requires java.sql;
 
     requires com.fazecast.jSerialComm;
+    requires java.desktop;
 
 
     opens br.com.fitcontrol.fitcontrol.controllers to javafx.fxml;

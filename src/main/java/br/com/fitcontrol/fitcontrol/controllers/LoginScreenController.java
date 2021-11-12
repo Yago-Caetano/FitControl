@@ -3,13 +3,7 @@ package br.com.fitcontrol.fitcontrol.controllers;
 import br.com.fitcontrol.fitcontrol.Acesso.Acessologin;
 import br.com.fitcontrol.fitcontrol.Acesso.FuncionarioLogado;
 import br.com.fitcontrol.fitcontrol.FitControlMain;
-import br.com.fitcontrol.fitcontrol.dao.Acesso.AcessoMySQLDAO;
-import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
-import br.com.fitcontrol.fitcontrol.dao.Funcionario.FuncionarioMySQLDAO;
-import br.com.fitcontrol.fitcontrol.error.ErrorPopUp;
-import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
-import br.com.fitcontrol.fitcontrol.models.UsuarioModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import javafx.fxml.FXML;
@@ -40,7 +34,7 @@ public class LoginScreenController implements Initializable {
 
         Acessologin login = new Acessologin();
 
-        UsuarioModel UserModel = new UsuarioModel();
+        FuncionarioModel UserModel = new FuncionarioModel();
         UserModel.setLogin(txtLogin.getText());
         UserModel.setSenha(txtSenha.getText());
 

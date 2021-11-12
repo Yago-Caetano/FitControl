@@ -20,14 +20,14 @@ public class CatracaMySQLDAO <E extends Entidade> extends MySQLDAO {
     @Override
     protected String getInsertCommand(Entidade entidade) {
         CatracaModel catraca=(CatracaModel)entidade;
-        String SQL= "Insert into " + getTabela() + "(id,Nome,Modelo,Tipo,_Status) values (?,?,?,?,?)";
+        String SQL= "Insert into " + getTabela() + "(id,Nome,_Status) values (?,?,?)";
         return SQL;
     }
 
     @Override
     protected String getUpdateCommand(Entidade entidade) {
         CatracaModel catraca=(CatracaModel)entidade;
-        String SQL= "Update " + getTabela() + " Set Nome=?,Modelo=?,Tipo=?,_Status=? where id="+ catraca.getId();
+        String SQL= "Update " + getTabela() + " Set Nome=? where id="+ catraca.getId();
         return SQL;
     }
 
@@ -35,18 +35,13 @@ public class CatracaMySQLDAO <E extends Entidade> extends MySQLDAO {
     protected void PrepareStatementInsert(Entidade entidade, PreparedStatement stmt) throws SQLException {
         CatracaModel catraca = (CatracaModel) entidade;
         stmt.setString(1, catraca.getId());
-        stmt.setString(2,catraca.getNome());
-        stmt.setString(3,catraca.getModelo());
-        stmt.setByte(4,catraca.getTipo());
-        stmt.setByte(5,catraca.getStatus());
+        stmt.setString(2,catraca.getModelo());
+        stmt.setByte(3,(byte)1);
     }
     @Override
     protected void PrepareStatementUpdate(Entidade entidade, PreparedStatement stmt) throws SQLException {
         CatracaModel catraca = (CatracaModel) entidade;
-        stmt.setString(1,catraca.getNome());
-        stmt.setString(2,catraca.getModelo());
-        stmt.setByte(3,catraca.getTipo());
-        stmt.setByte(4,catraca.getStatus());
+        stmt.setString(1,catraca.getModelo());
 
     }
 
@@ -55,9 +50,7 @@ public class CatracaMySQLDAO <E extends Entidade> extends MySQLDAO {
         CatracaModel catraca = new CatracaModel();
         try {
             catraca.setId(rs.getString("id"));
-            catraca.setNome(rs.getString("Nome"));
             catraca.setModelo(rs.getString("Modelo"));
-            catraca.setTipo(rs.getByte("Tipo"));
             catraca.setStatus(rs.getByte("_Status"));
 
         } catch (SQLException ex) {

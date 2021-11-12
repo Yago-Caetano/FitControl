@@ -5,11 +5,11 @@ import br.com.fitcontrol.fitcontrol.Basis.Repositorio;
 import br.com.fitcontrol.fitcontrol.Enums.EnumEntidadesDisponiveis;
 import br.com.fitcontrol.fitcontrol.Enums.EnumTipoRelatorio;
 import br.com.fitcontrol.fitcontrol.Fabricas.FabricaRelatorios;
+import br.com.fitcontrol.fitcontrol.dao.Funcionario.FuncionarioMySQLDAO;
 import br.com.fitcontrol.fitcontrol.dao.PadraoDAO;
 import br.com.fitcontrol.fitcontrol.Fabricas.FabricaDAOs;
 import br.com.fitcontrol.fitcontrol.dao.RelatorioDAO;
-import br.com.fitcontrol.fitcontrol.dao.Usuario.UsuarioMySQLDAO;
-import br.com.fitcontrol.fitcontrol.models.relatorios.RelatorioModel;
+
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -38,10 +38,8 @@ public class RepositorioMySQL  extends Repositorio {
     }
 
     @Override
-    public Entidade login(String login, String Senha, EnumEntidadesDisponiveis tipoEntidade) {
-        if (tipoEntidade.equals(EnumEntidadesDisponiveis.USUARIO))
-        {
-            UsuarioMySQLDAO dao = new UsuarioMySQLDAO();
+    public Entidade login(String login, String Senha) {
+            FuncionarioMySQLDAO dao = new FuncionarioMySQLDAO();
             Entidade entidade = null;
             try {
                 entidade = dao.login(login,Senha);
@@ -49,8 +47,6 @@ public class RepositorioMySQL  extends Repositorio {
                 //Logger.getLogger(RepositorioMySQL.class.getName()).log(Level.SEVERE, null, ex);
             }
             return entidade;
-        }
-        return null;
     }
 
     @Override
@@ -74,8 +70,8 @@ public class RepositorioMySQL  extends Repositorio {
     }
 
     @Override
-    public void GetRelatorio(Date data1, Date data2, EnumTipoRelatorio tiporelatorio) {
+    public void GetRelatorio(Date data1, Date data2, EnumTipoRelatorio tiporelatorio,String path) {
         RelatorioDAO dao = FabricaRelatorios.Fabrica(data1,data2,tiporelatorio,main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio.MYSQL);
-        dao.GetRelatorio();
+        dao.GetRelatorio(path);
     }
 }

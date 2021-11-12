@@ -14,8 +14,8 @@ public class UserRegisterListenner implements ISubscriber{
         ClienteModel cliente = new ClienteModel();
         ClienteMySQLDAO dao = new ClienteMySQLDAO();
         cliente = (ClienteModel) context.getEntityData();
-        cliente.setSenha("123");
-        cliente.setNivel(EnumTipoUsuarios.CLIENTE.getCode());;
+       // cliente.setSenha("123");
+        //cliente.setNivel(EnumTipoUsuarios.CLIENTE.getCode());;
         dao.Insert(cliente);
 
     }

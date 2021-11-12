@@ -20,7 +20,7 @@ public class AccessCheckInListenner implements ISubscriber{
 
             CatracaModel catraca = new CatracaModel();
             catraca = (CatracaModel) context.getEntityData();
-            System.out.println("ENTROU PELA CATRACA" + catraca.getNome());
+            System.out.println("ENTROU PELA CATRACA" + catraca.getModelo());
 
         } catch (Exception e) {
             e.printStackTrace();

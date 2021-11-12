@@ -87,12 +87,12 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" layoutX="620.0" layoutY="160.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="250.0" style="-fx-background-color: A27811; -fx-background-radius: 7;" text="Pagamentos" textFill="WHITE">
+            <Button alignment="BASELINE_LEFT" layoutX="620.0" layoutY="160.0" mnemonicParsing="false" onMouseClicked="#pagamentoClicked" prefHeight="100.0" prefWidth="250.0" style="-fx-background-color: A27811; -fx-background-radius: 7;" text="Pagamentos" textFill="WHITE">
                <font>
                   <Font name="Roboto Light" size="18.0" />
                </font>
                <graphic>
-                  <ImageView  fitHeight="79.5" fitWidth="79.5" onDragDetected="#PagamentoClicked" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="PagamentoBtn" fitHeight="79.5" fitWidth="79.5" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@icons/pay_icon.png" />
                      </image>

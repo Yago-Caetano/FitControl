@@ -16,7 +16,7 @@ public abstract class RelatorioDAO <E extends RelatorioModel> {
     protected  Date data1;
     protected  Date data2;
 
-    protected final String CSV_FILE_NAME="Teste.csv";
+
 
     protected Class<E> entityClass;
 
@@ -26,20 +26,7 @@ public abstract class RelatorioDAO <E extends RelatorioModel> {
         this.entityClass=entityClass;
     }
 
-    public abstract void GetRelatorio();
+    public abstract void GetRelatorio(String path);
 
-    protected String convertToCSV(String[] data) {
-        return Stream.of(data)
-                .collect(Collectors.joining(","));
-    }
-    protected void CreateCSVFile(List<String[]> lista) throws IOException {
 
-        File csvOutputFile = new File(CSV_FILE_NAME);
-        try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
-            lista.stream()
-                    .map(this::convertToCSV)
-                    .forEach(pw::println);
-        }
-        //assertTrue(csvOutputFile.exists());
-    }
 }

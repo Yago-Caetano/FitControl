@@ -11,8 +11,6 @@ import br.com.fitcontrol.fitcontrol.dao.Pagamento.PagamentosMySQLDAO;
 import br.com.fitcontrol.fitcontrol.dao.Pontuacao.PontuacaoMySQLDAO;
 import br.com.fitcontrol.fitcontrol.dao.Recompensa.RecompensaMySQLDAO;
 import br.com.fitcontrol.fitcontrol.dao.RecompensaHist.RecompensaHistMySQLDAO;
-import br.com.fitcontrol.fitcontrol.dao.Usuario.UsuarioMySQLDAO;
-import br.com.fitcontrol.fitcontrol.models.CatracaModel;
 
 public class FabricaDAOs {
     public static br.com.fitcontrol.fitcontrol.dao.PadraoDAO  Fabrica(EnumEntidadesDisponiveis enumEntidade, main.java.br.com.fitcontrol.fitcontrol.Enums.EnumTipoRepositorio repositorio) {
@@ -30,9 +28,7 @@ public class FabricaDAOs {
         PadraoDAO retorno;
         switch (enumEntidade)
         {
-            case USUARIO:
-                retorno = new UsuarioMySQLDAO();
-                break;
+
             case FUNCIONARIO :
                 retorno = new FuncionarioMySQLDAO();
                 break;

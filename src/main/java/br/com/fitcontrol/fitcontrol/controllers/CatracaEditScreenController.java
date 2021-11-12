@@ -63,7 +63,6 @@ public class CatracaEditScreenController implements Initializable {
             CatracaMySQLDAO dao = new CatracaMySQLDAO();
 
             catraca.setId(txtID.getText());
-            catraca.setNome(txtNome.getText());
             catraca.setModelo(txtModelo.getText());
 
 
@@ -76,7 +75,6 @@ public class CatracaEditScreenController implements Initializable {
             else{                            // Edit
                 catraca = (CatracaModel) (dao.localiza(catraca.getId()));
                 catraca.setId(txtID.getText());
-                catraca.setNome(txtNome.getText());
                 catraca.setModelo(txtModelo.getText());
                 p.UpdateCatraca(catraca);
                 setUpdate(false);
@@ -99,7 +97,6 @@ public class CatracaEditScreenController implements Initializable {
     void preencheTextField(CatracaModel catraca) {
 
         txtID.setText(catraca.getId());
-        txtNome.setText(catraca.getNome());
         txtModelo.setText(catraca.getModelo());
 
         txtID.setEditable(false);
