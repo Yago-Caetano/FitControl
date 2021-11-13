@@ -1,13 +1,8 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
-import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.dao.Catraca.CatracaMySQLDAO;
-import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
-import br.com.fitcontrol.fitcontrol.listenners.ISubscriber;
 import br.com.fitcontrol.fitcontrol.models.CatracaModel;
-import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
-import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import br.com.fitcontrol.fitcontrol.serialcom.SerialCommunicatorSingleton;
 import com.fazecast.jSerialComm.SerialPort;
@@ -15,20 +10,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.sql.SQLException;
 import java.util.*;
 
-public class CatracaScreenController implements Initializable {
+public class CatracaScreenController extends PadrãoController implements Initializable {
 
 
     @FXML
@@ -54,14 +46,7 @@ public class CatracaScreenController implements Initializable {
     @FXML
     protected void voltarClicked() {
         try {
-            NavigationSingleton.getInstance().goBack(new iNavCallback() {
-                @Override
-                public void navigateCb(String screenName) throws Exception {
-                    FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                    Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-                    navigation.getStage().setScene(scene);
-                }
-            });
+            NavigationSingleton.getInstance().goBack();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -133,14 +118,7 @@ public class CatracaScreenController implements Initializable {
     }
 
     private void executeNavigation(int screenId) {
-        navigation.navigate(screenId, new iNavCallback() {
-            @Override
-            public void navigateCb(String screenName) throws IOException {
-                FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-                navigation.getStage().setScene(scene);
-            }
-        });
+        navigation.navigate(screenId);
     }
 
 
@@ -231,5 +209,16 @@ public class CatracaScreenController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+
+    @Override
+    public Object getDataFromPreviousScreen() {
+        return null;
+    }
+
+    @Override
+    protected void PreviousScreenDataReceived() {
+
     }
 }

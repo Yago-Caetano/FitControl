@@ -5,9 +5,7 @@ import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
 import br.com.fitcontrol.fitcontrol.dao.ParametroFiltroDAO;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
-import br.com.fitcontrol.fitcontrol.models.PagamentoModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
-import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,14 +23,13 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ClientsScreenController implements Initializable {
+public class ClientsScreenController extends  PadrãoController implements Initializable {
 
     @FXML
     public TableView<ClienteModel> tabela;
@@ -57,14 +54,7 @@ public class ClientsScreenController implements Initializable {
     @FXML
     protected void voltarClicked() {
         try {
-            navigation.goBack(new iNavCallback() {
-                @Override
-                public void navigateCb(String screenName) throws Exception {
-                    FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                    Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-                    navigation.getStage().setScene(scene);
-                }
-            });
+            navigation.goBack();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -110,7 +100,6 @@ public class ClientsScreenController implements Initializable {
         List<ParametroFiltroDAO> params = new ArrayList<>();
 
 
-
         if(txtNomeFiltro.getText().length()>0)
         {
 
@@ -131,14 +120,7 @@ public class ClientsScreenController implements Initializable {
 
     private void executeNavigation(int screenId)
     {
-        navigation.navigate(screenId, new iNavCallback() {
-            @Override
-            public void navigateCb(String screenName) throws IOException {
-                FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-                navigation.getStage().setScene(scene);
-            }
-        });
+        navigation.navigate(screenId);
     }
 
     public void carregarDados() throws Exception {
@@ -198,19 +180,8 @@ public class ClientsScreenController implements Initializable {
                         btnEditar.setOnAction((ActionEvent event) -> {
                             ClienteModel aluno = getTableView().getItems().get(getIndex());
 
-                            FXMLLoader loader = new FXMLLoader(FitControlMain.class.getResource("client-edit-screen.fxml"));
-                            try {
-                                loader.load();
-                            } catch (IOException ex) {
-                                Logger.getLogger(ClientsScreenController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
 
-                            ClientEditScreenController clientEditController = loader.getController();
-
-                            clientEditController.setUpdate(true);
-                            clientEditController.preencheTextField(aluno);
-                            Parent parent = loader.getRoot();
-                            navigation.getStage().setScene(new Scene(parent));
+                            navigation.navigate(NavigationSingleton.CLIENTS_EDIT_SCREEN,aluno);
 
                         });
 
@@ -236,5 +207,16 @@ public class ClientsScreenController implements Initializable {
         acao.setCellFactory(cellFactory);
 
         tabela.getColumns().add(acao);
+    }
+
+
+    @Override
+    public Object getDataFromPreviousScreen() {
+        return null;
+    }
+
+    @Override
+    protected void PreviousScreenDataReceived() {
+
     }
 }

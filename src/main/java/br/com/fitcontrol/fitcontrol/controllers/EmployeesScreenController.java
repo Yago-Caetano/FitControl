@@ -2,14 +2,12 @@ package br.com.fitcontrol.fitcontrol.controllers;
 
 
 import br.com.fitcontrol.fitcontrol.FitControlMain;
-import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
 import br.com.fitcontrol.fitcontrol.dao.Funcionario.FuncionarioMySQLDAO;
 import br.com.fitcontrol.fitcontrol.dao.ParametroFiltroDAO;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
 
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
-import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,7 +31,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class EmployeesScreenController implements Initializable {
+public class EmployeesScreenController extends PadrãoController implements Initializable {
 
     @FXML
     public TableView<FuncionarioModel> tabela;
@@ -54,14 +52,7 @@ public class EmployeesScreenController implements Initializable {
     @FXML
     protected void voltarClicked() {
         try {
-            navigation.goBack(new iNavCallback() {
-                @Override
-                public void navigateCb(String screenName) throws IOException {
-                    FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                    Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-                    navigation.getStage().setScene(scene);
-                }
-            });
+            navigation.goBack();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -76,14 +67,7 @@ public class EmployeesScreenController implements Initializable {
 
     private void executeNavigation(int screenId)
     {
-        navigation.navigate(screenId, new iNavCallback() {
-            @Override
-            public void navigateCb(String screenName) throws IOException {
-                FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-                navigation.getStage().setScene(scene);
-            }
-        });
+        navigation.navigate(screenId);
     }
 
     @FXML
@@ -121,11 +105,6 @@ public class EmployeesScreenController implements Initializable {
         nivel.setCellValueFactory(
                 new PropertyValueFactory<FuncionarioModel, Integer>("nivel"));
 
-
-        /*ObservableList<FuncionarioModel> list = FXCollections.observableArrayList(new FuncionarioModel("1" ,"Jeferson",1),
-                new FuncionarioModel("2" ,"Claudia",2),new FuncionarioModel("3" ,"Roberta",3),new FuncionarioModel("4" ,"Murilo",1));
-
-        tabela.setItems(list);*/
 
         try {
             carregarDados();
@@ -182,19 +161,7 @@ public class EmployeesScreenController implements Initializable {
                         btnEditar.setOnAction((ActionEvent event) -> {
                             FuncionarioModel funcionario = getTableView().getItems().get(getIndex());
 
-                            FXMLLoader loader = new FXMLLoader(FitControlMain.class.getResource("employee-edit-screen.fxml"));
-                            try {
-                                loader.load();
-                            } catch (IOException ex) {
-                                Logger.getLogger(EmployeesScreenController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-
-                            EmployeeEditScreenController employeeEditController = loader.getController();
-
-                            employeeEditController.setUpdate(true);
-                            employeeEditController.preencheTextField(funcionario);
-                            Parent parent = loader.getRoot();
-                            navigation.getStage().setScene(new Scene(parent));
+                            navigation.navigate(NavigationSingleton.EMPLOYEE_EDIT_SCREEN,funcionario);
 
                         });
 
@@ -220,5 +187,10 @@ public class EmployeesScreenController implements Initializable {
         acao.setCellFactory(cellFactory);
 
         tabela.getColumns().add(acao);
+    }
+
+    @Override
+    protected void PreviousScreenDataReceived() {
+
     }
 }

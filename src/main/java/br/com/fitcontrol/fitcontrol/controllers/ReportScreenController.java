@@ -2,29 +2,22 @@ package br.com.fitcontrol.fitcontrol.controllers;
 
 import br.com.fitcontrol.fitcontrol.Basis.Repositorio;
 import br.com.fitcontrol.fitcontrol.Enums.EnumTipoRelatorio;
-import br.com.fitcontrol.fitcontrol.Fabricas.FabricaRelatorios;
 import br.com.fitcontrol.fitcontrol.Fabricas.FabricaRepositorio;
-import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
-import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
-import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ResourceBundle;
 import javax.swing.JFileChooser;
 
-public class ReportScreenController implements Initializable {
+public class ReportScreenController extends PadrãoController implements Initializable {
 
     java.sql.Date data1;
     java.sql.Date data2;
@@ -46,14 +39,7 @@ public class ReportScreenController implements Initializable {
     @FXML
     protected void voltarClicked() {
         try {
-                navigation.goBack(new iNavCallback() {
-                    @Override
-                    public void navigateCb(String screenName) throws Exception {
-                        FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-                        navigation.getStage().setScene(scene);
-                    }
-                });
+                navigation.goBack();
             } catch (Exception e) {
                 e.printStackTrace();
         }
@@ -172,4 +158,8 @@ public class ReportScreenController implements Initializable {
     }
 
 
+    @Override
+    protected void PreviousScreenDataReceived() {
+
+    }
 }

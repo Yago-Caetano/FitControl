@@ -1,27 +1,20 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
 import br.com.fitcontrol.fitcontrol.Acesso.FuncionarioLogado;
-import br.com.fitcontrol.fitcontrol.FitControlMain;
-import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
-import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
-import br.com.fitcontrol.fitcontrol.publishers.PublisherSerial;
 import br.com.fitcontrol.fitcontrol.serialcom.SerialCommunicatorSingleton;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainScreenController implements Initializable {
+public class MainScreenController extends PadrãoController implements Initializable {
 
     private NavigationSingleton navigation;
     private FuncionarioModel funcionario;
@@ -119,13 +112,11 @@ public class MainScreenController implements Initializable {
 
     private void executeNavigation(int screenId)
     {
-        navigation.navigate(screenId, new iNavCallback() {
-            @Override
-            public void navigateCb(String screenName) throws IOException {
-                FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-                navigation.getStage().setScene(scene);
-            }
-        });
+        navigation.navigate(screenId);
+    }
+
+    @Override
+    protected void PreviousScreenDataReceived() {
+
     }
 }

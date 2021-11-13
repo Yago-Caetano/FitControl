@@ -1,30 +1,21 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
 import br.com.fitcontrol.fitcontrol.Enums.EnumTipoUsuarios;
-import br.com.fitcontrol.fitcontrol.FitControlMain;
-import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
 import br.com.fitcontrol.fitcontrol.dao.Funcionario.FuncionarioMySQLDAO;
-import br.com.fitcontrol.fitcontrol.events.EventManager;
-import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
-import br.com.fitcontrol.fitcontrol.models.PagamentoModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
-import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import br.com.fitcontrol.fitcontrol.popup.ErrorPopUpSingleton;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class EmployeeEditScreenController implements Initializable {
+public class EmployeeEditScreenController extends PadrãoController implements Initializable {
     @FXML
     public RadioButton RndBtnFuncionario;
     @FXML
@@ -39,14 +30,7 @@ public class EmployeeEditScreenController implements Initializable {
     @FXML
     protected void voltarClicked() {
         try {
-            navigation.goBack(new iNavCallback() {
-                @Override
-                public void navigateCb(String screenName) throws Exception {
-                    FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                    Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-                    navigation.getStage().setScene(scene);
-                }
-            });
+            navigation.goBack();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -204,5 +188,11 @@ public class EmployeeEditScreenController implements Initializable {
         if(funcionario.getNivel() == EnumTipoUsuarios.FUNCIONARIO.getCode())
             RndBtnFuncionario.setSelected(true);
 
+    }
+
+    @Override
+    protected void PreviousScreenDataReceived() {
+        preencheTextField((FuncionarioModel) DataFromPreviousScreen);
+        update = true;
     }
 }

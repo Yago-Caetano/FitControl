@@ -1,27 +1,18 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
-import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.dao.Catraca.CatracaMySQLDAO;
-import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
-import br.com.fitcontrol.fitcontrol.events.EventManager;
 import br.com.fitcontrol.fitcontrol.models.CatracaModel;
-import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
-import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class CatracaEditScreenController implements Initializable {
+public class CatracaEditScreenController extends PadrãoController implements Initializable {
     @FXML
     public TextField txtID;
     @FXML
@@ -36,14 +27,7 @@ public class CatracaEditScreenController implements Initializable {
     @FXML
     protected void voltarClicked() {
         try {
-            navigation.goBack(new iNavCallback() {
-                @Override
-                public void navigateCb(String screenName) throws Exception {
-                    FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                    Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-                    navigation.getStage().setScene(scene);
-                }
-            });
+            navigation.goBack();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -107,6 +91,17 @@ public class CatracaEditScreenController implements Initializable {
         this.update = key;
     }
 
+
+
+    @Override
+    public Object getDataFromPreviousScreen() {
+        return null;
+    }
+
+    @Override
+    protected void PreviousScreenDataReceived() {
+
+    }
 }
 
 

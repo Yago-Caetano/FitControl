@@ -1,27 +1,20 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
-import br.com.fitcontrol.fitcontrol.FitControlMain;
-import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
-import br.com.fitcontrol.fitcontrol.dao.Pagamento.PagamentosMySQLDAO;
-import br.com.fitcontrol.fitcontrol.models.ClienteModel;
+import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
 import br.com.fitcontrol.fitcontrol.models.PagamentoModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
-import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.util.ResourceBundle;
 
-public class PaymentEditScreenController implements Initializable {
+public class PaymentEditScreenController extends PadrãoController implements Initializable {
 
 
     @FXML
@@ -48,14 +41,7 @@ public class PaymentEditScreenController implements Initializable {
     @FXML
     protected void voltarClicked() {
         try {
-            navigation.goBack(new iNavCallback() {
-                @Override
-                public void navigateCb(String screenName) throws Exception {
-                    FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                    Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-                    navigation.getStage().setScene(scene);
-                }
-            });
+            navigation.goBack();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -82,4 +68,9 @@ public class PaymentEditScreenController implements Initializable {
     }
 
 
+    @Override
+    protected void PreviousScreenDataReceived() {
+        preencheTextField((PagamentoModel) DataFromPreviousScreen);
+        update = true;
+    }
 }

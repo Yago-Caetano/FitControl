@@ -1,5 +1,11 @@
 package br.com.fitcontrol.fitcontrol.navigation;
 
+import br.com.fitcontrol.fitcontrol.FitControlMain;
+import br.com.fitcontrol.fitcontrol.controllers.PadrãoController;
+import br.com.fitcontrol.fitcontrol.controllers.PaymentEditScreenController;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.util.Stack;
@@ -50,13 +56,16 @@ public  class NavigationSingleton {
     public Stage getStage(){return  stagePrincipal;}
 
 
-    public void goBack(iNavCallback navigationCallback) throws Exception {
+    public void goBack() throws Exception {
         if(telas.size()>1)
         {
             telas.pop();
             telaAtual = telas.pop();
             telas.add(telaAtual);
-            navigationCallback.navigateCb(telaAtual);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(telaAtual));
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+            stagePrincipal.setScene(scene);
 
         }
     }
@@ -123,11 +132,42 @@ public  class NavigationSingleton {
 
     }
 
-    public void navigate(int screenId,iNavCallback navigationCallback)
+
+    public void navigate(int screenId,Object data)
     {
         try{
             setCurrentScreen(screenId);
-            navigationCallback.navigateCb(telaAtual);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(telaAtual));
+            Parent load = fxmlLoader.load();
+
+            PadrãoController controller = fxmlLoader.getController();
+            controller.setDataFromPreviousScreen(data);
+
+            Scene scene = new Scene(load, 1280, 720);
+            stagePrincipal.setScene(scene);
+
+
+        }
+        catch (Exception e)
+        {
+
+        }
+
+
+
+
+    }
+
+    public void navigate(int screenId)
+    {
+        try{
+            setCurrentScreen(screenId);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(telaAtual));
+            Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+            stagePrincipal.setScene(scene);
+
 
         }
         catch(Exception e)

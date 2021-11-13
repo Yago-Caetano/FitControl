@@ -3,12 +3,8 @@ package br.com.fitcontrol.fitcontrol.controllers;
 import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.dao.Pagamento.PagamentosMySQLDAO;
 import br.com.fitcontrol.fitcontrol.dao.ParametroFiltroDAO;
-import br.com.fitcontrol.fitcontrol.events.EventManager;
-import br.com.fitcontrol.fitcontrol.models.CatracaModel;
-import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.models.PagamentoModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
-import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,17 +22,15 @@ import javafx.util.Callback;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class PaymentsScreenController implements Initializable {
+public class PaymentsScreenController extends PadrãoController implements Initializable {
 
     @FXML
     public TableView<PagamentoModel> tabela;
@@ -63,14 +57,7 @@ public class PaymentsScreenController implements Initializable {
     @FXML
     protected void voltarClicked(){
         try {
-            navigation.goBack(new iNavCallback() {
-                @Override
-                public void navigateCb(String screenName) throws Exception {
-                    FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                    Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-                    navigation.getStage().setScene(scene);
-                }
-            });
+            navigation.goBack();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -193,19 +180,7 @@ public class PaymentsScreenController implements Initializable {
                         btnEditar.setOnAction((ActionEvent event) -> {
                             PagamentoModel pagamento = getTableView().getItems().get(getIndex());
 
-                            FXMLLoader loader = new FXMLLoader(FitControlMain.class.getResource("payment-edit-screen.fxml"));
-                            try {
-                                loader.load();
-                            } catch (IOException ex) {
-                                Logger.getLogger(PaymentsScreenController.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-
-                            PaymentEditScreenController paymentEditController = loader.getController();
-
-                            paymentEditController.setUpdate(true);
-                            paymentEditController.preencheTextField(pagamento);
-                            Parent parent = loader.getRoot();
-                            navigation.getStage().setScene(new Scene(parent));
+                            navigation.navigate(NavigationSingleton.PAYMENT_EDIT_SCREEN,pagamento);
 
                         });
 
@@ -235,14 +210,12 @@ public class PaymentsScreenController implements Initializable {
 
     private void executeNavigation(int screenId)
     {
-        navigation.navigate(screenId, new iNavCallback() {
-            @Override
-            public void navigateCb(String screenName) throws IOException {
-                FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-                navigation.getStage().setScene(scene);
-            }
-        });
+        navigation.navigate(screenId);
+    }
+
+    @Override
+    protected void PreviousScreenDataReceived() {
+
     }
 }
 

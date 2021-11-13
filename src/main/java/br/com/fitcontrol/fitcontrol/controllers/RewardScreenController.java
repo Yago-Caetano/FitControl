@@ -1,44 +1,27 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
-import br.com.fitcontrol.fitcontrol.FitControlMain;
-import br.com.fitcontrol.fitcontrol.dao.Catraca.CatracaMySQLDAO;
 import br.com.fitcontrol.fitcontrol.dao.Recompensa.RecompensaMySQLDAO;
-import br.com.fitcontrol.fitcontrol.models.CatracaModel;
 import br.com.fitcontrol.fitcontrol.models.RecompensaModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
-import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
-import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
-import org.junit.jupiter.api.parallel.Resources;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class RewardScreenController implements Initializable {
+public class RewardScreenController extends PadrãoController implements Initializable {
 
     @FXML
     private GridPane gridRecompensas;
@@ -50,14 +33,7 @@ public class RewardScreenController implements Initializable {
     @FXML
     protected void voltarClicked() {
         try {
-            navigation.goBack(new iNavCallback() {
-                @Override
-                public void navigateCb(String screenName) throws Exception {
-                    FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                    Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-                    navigation.getStage().setScene(scene);
-                }
-            });
+            navigation.goBack();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -70,14 +46,7 @@ public class RewardScreenController implements Initializable {
 
     private void executeNavigation(int screenId)
     {
-        navigation.navigate(screenId, new iNavCallback() {
-            @Override
-            public void navigateCb(String screenName) throws IOException {
-                FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-                navigation.getStage().setScene(scene);
-            }
-        });
+        navigation.navigate(screenId);
     }
 
 
@@ -175,5 +144,10 @@ public class RewardScreenController implements Initializable {
         navigation = NavigationSingleton.getInstance();
 
         fillGrid();
+    }
+
+    @Override
+    protected void PreviousScreenDataReceived() {
+
     }
 }

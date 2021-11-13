@@ -2,26 +2,21 @@
 
 package br.com.fitcontrol.fitcontrol.controllers;
 
-import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
-import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
 import br.com.fitcontrol.fitcontrol.popup.ErrorPopUpSingleton;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ClientEditScreenController implements Initializable {
+public class ClientEditScreenController extends PadrãoController implements Initializable {
     public TextField txtEmail,txtTelefone,txtNomeCliente,txtID;
     @FXML
     public Label lbErroNome,lbErroEmail,lbErroTelefone;
@@ -32,14 +27,7 @@ public class ClientEditScreenController implements Initializable {
     @FXML
     protected void voltarClicked() {
         try {
-            navigation.goBack(new iNavCallback() {
-                @Override
-                public void navigateCb(String screenName) throws Exception {
-                    FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                    Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-                    navigation.getStage().setScene(scene);
-                }
-            });
+            navigation.goBack();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -48,6 +36,7 @@ public class ClientEditScreenController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         navigation = NavigationSingleton.getInstance();
+
     }
 
     /***
@@ -78,7 +67,6 @@ public class ClientEditScreenController implements Initializable {
                     cliente.setTelefone(txtTelefone.getText());
                     cliente.setPontos(0);
                     p.UpdateUser(cliente);
-                    setUpdate(false);
 
             }
 
@@ -166,19 +154,15 @@ public class ClientEditScreenController implements Initializable {
         txtID.setDisable(true);
     }
 
-    void setUpdate(boolean b) {
-        this.update = b;
-    }
-
     private void executeNavigation(int screenId)
     {
-        navigation.navigate(screenId, new iNavCallback() {
-            @Override
-            public void navigateCb(String screenName) throws IOException {
-                FXMLLoader fxmlLoader = new FXMLLoader(FitControlMain.class.getResource(screenName));
-                Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-                navigation.getStage().setScene(scene);
-            }
-        });
+        navigation.navigate(screenId);
+    }
+
+
+    @Override
+    protected void PreviousScreenDataReceived() {
+        preencheTextField((ClienteModel) DataFromPreviousScreen);
+        update = true;
     }
 }
