@@ -60,9 +60,9 @@ public class FuncionarioMySQLDAO  <E extends Entidade> extends MySQLDAO {
         try (Connection conexao = ConexaoMySQL.GetConexaoBD()) {
             String SQL;
             if (Has_Status)
-                SQL= "select * from " + getTabela() + " where _Status > 0 and  NivelAcesso="+ EnumTipoUsuarios.FUNCIONARIO.getCode();
+                SQL= "select * from " + getTabela() + " where _Status > 0 and  NivelAcesso>="+ EnumTipoUsuarios.FUNCIONARIO.getCode();
             else
-                SQL= "select * from " + getTabela() +" where  NivelAcesso="+ EnumTipoUsuarios.FUNCIONARIO.getCode();
+                SQL= "select * from " + getTabela() +" where  NivelAcesso>="+ EnumTipoUsuarios.FUNCIONARIO.getCode();
             try (PreparedStatement stmt = conexao.prepareStatement(SQL)) {
                 try (ResultSet rs = stmt.executeQuery()) {
                     while (rs.next()){

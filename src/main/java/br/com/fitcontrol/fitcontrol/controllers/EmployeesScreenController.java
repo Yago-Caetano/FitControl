@@ -52,6 +52,9 @@ public class EmployeesScreenController extends PadrãoController implements Init
     private NavigationSingleton navigation;
 
     @FXML
+    private Button novoFuncionario;
+
+    @FXML
     protected void voltarClicked() {
         try {
             navigation.goBack();
@@ -107,8 +110,11 @@ public class EmployeesScreenController extends PadrãoController implements Init
         nivel.setCellValueFactory(
                 new PropertyValueFactory<FuncionarioModel, Integer>("nivel"));
 
-
-        try {
+        if(FuncionarioLogadoSingleton.getInstance().getEmployeeSigned().getNivel() != EnumTipoUsuarios.GERENTE.getCode())
+        {
+            novoFuncionario.setDisable(true);
+        }
+            try {
             carregarDados();
         } catch (SQLException e) {
             e.printStackTrace();
