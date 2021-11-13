@@ -30,23 +30,7 @@
                <Insets left="443.0" top="110.0" />
             </StackPane.margin>
          </ImageView>
-         <TextField fx:id="txtID" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
-            <StackPane.margin>
-               <Insets left="100.0" right="1000.0" top="110.0" />
-            </StackPane.margin>
-            <rotationAxis>
-               <Point3D />
-            </rotationAxis>
-         </TextField>
          <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#ffffff00" height="450.0" stroke="#d79d04" strokeType="INSIDE" width="900.0" />
-         <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="31.0" text="ID" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
-            <font>
-               <Font name="Arial" size="23.0" />
-            </font>
-            <StackPane.margin>
-               <Insets left="100.0" top="80.0" />
-            </StackPane.margin>
-         </Label>
          <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="341.0" text="Cadastrar / Editar pagamento" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_CENTER">
             <font>
                <Font name="Arial" size="23.0" />
@@ -63,12 +47,11 @@
                <Insets left="100.0" top="160.0" />
             </StackPane.margin>
          </Label>
-         <TextField prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
+         <DatePicker fx:id="txtData" editable="false" prefHeight="36.0" prefWidth="371.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
             <StackPane.margin>
                <Insets left="100.0" right="430.0" top="196.0" />
-            </StackPane.margin>
-         </TextField>
-         <Button fx:id="BtnSalvar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#voltarClicked" prefHeight="50.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Salvar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+            </StackPane.margin></DatePicker>
+         <Button fx:id="BtnSalvar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#salvarClicked" prefHeight="50.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Salvar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
             <StackPane.margin>
                <Insets left="130.0" top="380.0" />
             </StackPane.margin>
@@ -76,7 +59,7 @@
                <Font name="Arial" size="23.0" />
             </font>
          </Button>
-         <Button fx:id="BtnCancelar" layoutX="140.0" layoutY="610.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#voltarClicked" prefHeight="50.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Cancelar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+         <Button fx:id="BtnCancelar" layoutX="140.0" layoutY="610.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#voltarClicked" onMouseClicked="#voltarClicked" prefHeight="50.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Cancelar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
             <font>
                <Font name="Arial" size="23.0" />
             </font>
@@ -97,17 +80,17 @@
                <Insets left="100.0" right="430.0" top="282.0" />
             </StackPane.margin>
          </TextField>
-         <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="59.0" text="Email" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
+         <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="146.0" text="Email Cliente" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
             <font>
                <Font name="Arial" size="23.0" />
             </font>
             <StackPane.margin>
-               <Insets left="500.0" top="80.0" />
+               <Insets left="100.0" top="80.0" />
             </StackPane.margin>
          </Label>
          <TextField fx:id="txtEmail" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
             <StackPane.margin>
-               <Insets left="500.0" right="60.0" top="110.0" />
+               <Insets left="100.0" right="430.0" top="110.0" />
             </StackPane.margin>
          </TextField>
       </children>

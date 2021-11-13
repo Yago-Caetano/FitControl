@@ -49,6 +49,10 @@ public class PublisherTela {
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_CATRACA_BLOCK, new CatracaBlockListenner());
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_CATRACA_RESTART, new CatracaRestartListenner());
         mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_CATRACA_UNLOCK, new CatracaUnlockListenner());
+
+        mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_PAYMENT_REGISTER_PAYMENT,new PaymentRegisterListenner());
+        mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_PAYMENT_UPDATE_PAYMENT,new PaymenteUpdateListenner());
+        mEventManager.subscriber(EnumEventTypes.EVENT_TYPE_PAYMENT_DELETE_PAYMENT,new PaymentDeleteListenner());
     }
 
 
@@ -136,6 +140,22 @@ public class PublisherTela {
         FitControlContext c = new FitControlContext();
         c.setEntityData(e);
         mEventManager.notify(EnumEventTypes.EVENT_TYPE_CATRACA_UNLOCK,c);
+    }
+
+    public void RegisterPayment(Entidade e) throws Exception {
+        FitControlContext c = new FitControlContext();
+        c.setEntityData(e);
+        mEventManager.notify(EnumEventTypes.EVENT_TYPE_PAYMENT_REGISTER_PAYMENT,c);
+    }
+    public void UpdatePayment(Entidade e) throws Exception {
+        FitControlContext c = new FitControlContext();
+        c.setEntityData(e);
+        mEventManager.notify(EnumEventTypes.EVENT_TYPE_PAYMENT_UPDATE_PAYMENT,c);
+    }
+    public void DeletePayment(Entidade e) throws Exception {
+        FitControlContext c = new FitControlContext();
+        c.setEntityData(e);
+        mEventManager.notify(EnumEventTypes.EVENT_TYPE_PAYMENT_DELETE_PAYMENT,c);
     }
 
 }

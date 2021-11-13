@@ -73,7 +73,6 @@ public class ClientEditScreenController extends PadrãoController implements Ini
         }
         catch(Exception e){
         }
-        voltarClicked();
     }
 
 
