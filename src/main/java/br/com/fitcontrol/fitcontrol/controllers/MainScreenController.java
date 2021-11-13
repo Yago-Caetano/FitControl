@@ -1,6 +1,6 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
-import br.com.fitcontrol.fitcontrol.Acesso.FuncionarioLogado;
+import br.com.fitcontrol.fitcontrol.Acesso.FuncionarioLogadoSingleton;
 import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.serialcom.SerialCommunicatorSingleton;
@@ -29,7 +29,7 @@ public class MainScreenController extends PadrãoController implements Initializ
 
     @FXML
     protected void LogoutClicked() {
-        FuncionarioLogado.setNome("");
+        FuncionarioLogadoSingleton.getInstance().signedOut();
         executeNavigation(NavigationSingleton.LOGIN_SCREEN);
     }
 
@@ -52,7 +52,7 @@ public class MainScreenController extends PadrãoController implements Initializ
         else
             lbStatusCOM.setText("Catracas Desconectadas");
 
-        lbFuncionario.setText("Olá " + FuncionarioLogado.getNome());
+        lbFuncionario.setText("Olá " + FuncionarioLogadoSingleton.getInstance().getEmployeeSigned().getNome());
 
     }
 

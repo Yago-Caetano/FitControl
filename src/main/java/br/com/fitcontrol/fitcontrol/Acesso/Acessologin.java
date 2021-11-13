@@ -12,14 +12,15 @@ public class Acessologin {
         return senhaRepositorio.equals(senhaDigitada);
     }
 
-    public boolean validaUsuario(FuncionarioModel user) throws Exception {
-        boolean retorno = false;
+    public FuncionarioModel validaUsuario(FuncionarioModel user) throws Exception {
+        FuncionarioModel retValue = null;
         Repositorio repositorio = FabricaRepositorio.Fabrica();
         FuncionarioModel func = (FuncionarioModel)repositorio.login(user.getLogin(),user.getSenha());
         if (func != null) {
-            retorno = this.validaSenha(func.getSenha(), func.getSenha());
+            if(this.validaSenha(func.getSenha(), func.getSenha()))
+                retValue = func;
         }
 
-        return retorno;
+        return retValue;
     }
 }

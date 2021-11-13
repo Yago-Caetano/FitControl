@@ -1,5 +1,6 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
+import br.com.fitcontrol.fitcontrol.Acesso.FuncionarioLogadoSingleton;
 import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
 import br.com.fitcontrol.fitcontrol.dao.Pagamento.PagamentosMySQLDAO;
 import br.com.fitcontrol.fitcontrol.dao.ParametroFiltroDAO;
@@ -93,6 +94,8 @@ public class PaymentEditScreenController extends PadrãoController implements In
                 ErrorPopUpSingleton.getInstance().showError("Usuário não encontrado");
                 return;
             }
+
+            pagamento.setIdFuncionario(FuncionarioLogadoSingleton.getInstance().getEmployeeSigned().getId());
 
             PublisherTela p = PublisherTela.getInstance();
 

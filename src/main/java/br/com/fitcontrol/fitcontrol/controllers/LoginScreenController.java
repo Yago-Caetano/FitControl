@@ -1,6 +1,7 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
 import br.com.fitcontrol.fitcontrol.Acesso.Acessologin;
+import br.com.fitcontrol.fitcontrol.Acesso.FuncionarioLogadoSingleton;
 import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.popup.ErrorPopUpSingleton;
@@ -23,13 +24,16 @@ public class LoginScreenController extends  PadrãoController implements Initial
 
         Acessologin login = new Acessologin();
 
-        FuncionarioModel UserModel = new FuncionarioModel();
-        UserModel.setLogin(txtLogin.getText());
-        UserModel.setSenha(txtSenha.getText());
+        FuncionarioModel Funcionario = new FuncionarioModel();
+        Funcionario.setLogin(txtLogin.getText());
+        Funcionario.setSenha(txtSenha.getText());
 
-        if(login.validaUsuario(UserModel))
+        Funcionario = login.validaUsuario(Funcionario);
+        if(Funcionario != null)
         {
+            FuncionarioLogadoSingleton.getInstance().setEmployeeSigned(Funcionario);
             executeNavigation(NavigationSingleton.MAIN_SCREEN);
+
         }
         else
         {
