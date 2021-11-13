@@ -11,6 +11,7 @@ import java.util.List;
 
 public abstract class MySQLDAO <E extends Entidade> extends PadraoDAO {
 
+
     protected boolean Has_Status =false; // tem a coluna de status, delete não é permanente e consulta somente aos dados com status<>0
     private String tabela;
     private boolean Conectar_banco_teste=false;

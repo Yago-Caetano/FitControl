@@ -8,11 +8,12 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public abstract class RelatorioDAO <E extends RelatorioModel> {
-
+    protected final Logger LOGGER = Logger.getLogger(this.getClass().getName());
     protected  Date data1;
     protected  Date data2;
 
