@@ -10,6 +10,7 @@ import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
 import br.com.fitcontrol.fitcontrol.models.PagamentoModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
+import br.com.fitcontrol.fitcontrol.popup.ErrorPopUpSingleton;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -100,7 +101,7 @@ public class EmployeeEditScreenController implements Initializable {
                 p.UpdateEmployee(funcionario);
                 setUpdate(false);
             }
-            voltarClicked();
+
         }
         catch(Exception e)
         {
@@ -150,7 +151,7 @@ public class EmployeeEditScreenController implements Initializable {
         }
 
         if(erro){
-            navigation.showErrorMessage(mensagemDeErro);
+            ErrorPopUpSingleton.getInstance().showError(mensagemDeErro);
             return true;
         }
 
@@ -179,7 +180,7 @@ public class EmployeeEditScreenController implements Initializable {
         }
 
         if(mensagemDeErro != "")
-            navigation.showErrorMessage(mensagemDeErro);
+            ErrorPopUpSingleton.getInstance().showError(mensagemDeErro);
 
         return erro;
 

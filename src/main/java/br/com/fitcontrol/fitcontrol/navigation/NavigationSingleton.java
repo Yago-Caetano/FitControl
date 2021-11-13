@@ -1,13 +1,7 @@
 package br.com.fitcontrol.fitcontrol.navigation;
 
-import br.com.fitcontrol.fitcontrol.FitControlMain;
-import br.com.fitcontrol.fitcontrol.error.ErrorPopUp;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.util.Queue;
 import java.util.Stack;
 
 public  class NavigationSingleton {
@@ -143,8 +137,4 @@ public  class NavigationSingleton {
 
     }
 
-    public void showErrorMessage(String Message)
-    {
-        new ErrorPopUp(stagePrincipal).showError(Message);
-    }
 }

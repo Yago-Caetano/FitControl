@@ -1,46 +1,49 @@
-package br.com.fitcontrol.fitcontrol.error;
+package br.com.fitcontrol.fitcontrol.popup;
 
-import javafx.application.Application;
+import br.com.fitcontrol.fitcontrol.serialcom.SerialCommunicatorSingleton;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.io.File;
 
-public class ErrorPopUp {
+public class SucessPopUpSingleton {
+
+    private static SucessPopUpSingleton instance = new SucessPopUpSingleton();
 
     Stage PrimaryStage;
 
-    public ErrorPopUp(Stage primaryStage){
-        PrimaryStage = primaryStage;
+    public static SucessPopUpSingleton getInstance()
+    {
+        return instance;
+    }
+
+    public void registerStage(Stage tgtStage){
+        PrimaryStage = tgtStage;
     }
 
 
-    public void showError(String ErrorMessage)
+    public void showPopUp(String Message)
     {
         Popup popup = new Popup();
 
         //Stage dialog = new Stage();
-       //dialog.initModality(Modality.APPLICATION_MODAL);
+        //dialog.initModality(Modality.APPLICATION_MODAL);
         //dialog.initOwner(PrimaryStage);
 
         VBox dialogVbox = new VBox(20);
         dialogVbox.setPadding(new Insets(8,8,8,8));
-        dialogVbox.setStyle("-fx-background-color:#ad102a;");
+        dialogVbox.setStyle("-fx-background-color:#038f28;");
         dialogVbox.setAlignment(Pos.CENTER);
 
         //insert logo
@@ -53,16 +56,12 @@ public class ErrorPopUp {
         IvLogo.setFitWidth(150.0);
         dialogVbox.getChildren().add(IvLogo);
 
-        //insert error header
-        Text TxtHeader = new Text("Ops!");
-        TxtHeader.setFill(Color.WHITE);
-        TxtHeader.setFont(new Font(24));
-
-        dialogVbox.getChildren().add(TxtHeader);
 
         //insert text
-        Text TxtMessage = new Text(ErrorMessage);
+        Text TxtMessage = new Text(Message);
         TxtMessage.setFill(Color.WHITE);
+        TxtMessage.setFont(new Font(18));
+
         dialogVbox.getChildren().add(TxtMessage);
 
 
@@ -74,14 +73,14 @@ public class ErrorPopUp {
 
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
 
-                    public void handle(ActionEvent e)
-                    {
-                        if (!popup.isShowing())
-                            popup.show(PrimaryStage);
-                        else
-                            popup.hide();
-                    }
-                };
+            public void handle(ActionEvent e)
+            {
+                if(!popup.isShowing())
+                    popup.show(PrimaryStage);
+                else
+                    popup.hide();
+            }
+        };
 
         // when button is pressed
         BtOk.setOnAction(event);
@@ -95,6 +94,5 @@ public class ErrorPopUp {
         popup.show(PrimaryStage);
         //dialog.show();
     }
-
 
 }

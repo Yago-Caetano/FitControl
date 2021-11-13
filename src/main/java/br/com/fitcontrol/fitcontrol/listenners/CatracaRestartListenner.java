@@ -3,6 +3,7 @@ package br.com.fitcontrol.fitcontrol.listenners;
 import br.com.fitcontrol.fitcontrol.FitControlContext;
 import br.com.fitcontrol.fitcontrol.models.CatracaModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
+import br.com.fitcontrol.fitcontrol.popup.ErrorPopUpSingleton;
 import br.com.fitcontrol.fitcontrol.serialcom.EnumSerialFunctions;
 import br.com.fitcontrol.fitcontrol.serialcom.SerialCommunicatorSingleton;
 
@@ -22,8 +23,7 @@ public class CatracaRestartListenner implements ISubscriber{
         }
         else
         {
-            NavigationSingleton navigation = NavigationSingleton.getInstance();
-            navigation.showErrorMessage("Não há catraca conectada!");
+            ErrorPopUpSingleton.getInstance().showError("Não há catraca conectada!");
         }
     }
 }

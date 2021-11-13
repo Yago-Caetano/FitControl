@@ -7,6 +7,7 @@ import br.com.fitcontrol.fitcontrol.dao.Cliente.ClienteMySQLDAO;
 import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
+import br.com.fitcontrol.fitcontrol.popup.ErrorPopUpSingleton;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -79,8 +80,6 @@ public class ClientEditScreenController implements Initializable {
                     p.UpdateUser(cliente);
                     setUpdate(false);
 
-                voltarClicked();
-
             }
 
         }
@@ -117,7 +116,7 @@ public class ClientEditScreenController implements Initializable {
         }
 
         if(erro){
-            navigation.showErrorMessage(mensagemDeErro);
+            ErrorPopUpSingleton.getInstance().showError(mensagemDeErro);
             return true;
         }
 
@@ -147,7 +146,7 @@ public class ClientEditScreenController implements Initializable {
         }
 
         if(mensagemDeErro != "")
-            navigation.showErrorMessage(mensagemDeErro);
+            ErrorPopUpSingleton.getInstance().showError(mensagemDeErro);
 
         return erro;
 

@@ -63,12 +63,10 @@ public class RewardEditScreenController implements Initializable {
             //Verifica se é Edit ou Insert
             if(!update){                        //Insert
                 p.RegisterReward(recompensa);
-                voltarClicked();
             }
             else{                               // Edit
                 p.UpdateReward(recompensa);
                 setUpdate(false);
-                voltarClicked();
             }
 
         }

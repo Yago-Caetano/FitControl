@@ -6,6 +6,7 @@ import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
+import br.com.fitcontrol.fitcontrol.popup.ErrorPopUpSingleton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -45,7 +46,7 @@ public class LoginScreenController implements Initializable {
         else
         {
             clearFields();
-            navigation.showErrorMessage("Login não encontrado");
+            ErrorPopUpSingleton.getInstance().showError("Login não encontrado");
         }
 
     }

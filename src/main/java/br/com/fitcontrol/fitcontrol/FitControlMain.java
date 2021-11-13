@@ -4,6 +4,8 @@ import br.com.fitcontrol.fitcontrol.Config.Config;
 import br.com.fitcontrol.fitcontrol.events.EventManager;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.navigation.iNavCallback;
+import br.com.fitcontrol.fitcontrol.popup.ErrorPopUpSingleton;
+import br.com.fitcontrol.fitcontrol.popup.SucessPopUpSingleton;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherSerial;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import br.com.fitcontrol.fitcontrol.serialcom.SerialCommunicatorSingleton;
@@ -46,6 +48,13 @@ public class FitControlMain extends Application {
         //start Serial Thread
         ser.start();
 
+
+        SucessPopUpSingleton SucessPopUp = SucessPopUpSingleton.getInstance();
+        SucessPopUp.registerStage(primaryStage);
+
+
+        ErrorPopUpSingleton ErrorPopUp = ErrorPopUpSingleton.getInstance();
+        ErrorPopUp.registerStage(primaryStage);
 
 
         navigation = NavigationSingleton.getInstance();
