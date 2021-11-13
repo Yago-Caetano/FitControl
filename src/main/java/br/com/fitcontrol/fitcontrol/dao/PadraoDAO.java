@@ -6,8 +6,11 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public abstract class PadraoDAO <E extends Entidade> {
+
+    protected final Logger LOGGER = Logger.getLogger(this.getClass().getName());
 
     protected Class<E> entityClass;
 
