@@ -26,7 +26,7 @@ public class AcessoMySQLDAO  <E extends Entidade> extends MySQLDAO {
     @Override
     protected String getUpdateCommand(Entidade entidade) {
         AcessoModel acesso=(AcessoModel)entidade;
-        String SQL= "Update " + getTabela() + " Set _Data=?,tipo=?,idFuncionario=?,idCliente=?,idCatraca=? where id ="+acesso.getId();
+        String SQL= "Update " + getTabela() + " Set _Data=?,tipo=?,idFuncionario=?,idCliente=?,idCatraca=? where id ='"+acesso.getId() + "'";
         return SQL;
     }
 

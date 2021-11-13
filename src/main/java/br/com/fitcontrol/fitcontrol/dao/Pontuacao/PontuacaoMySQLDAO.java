@@ -26,7 +26,7 @@ public class PontuacaoMySQLDAO <E extends Entidade> extends MySQLDAO {
     @Override
     protected String getUpdateCommand(Entidade entidade) {
         PontuacaoHistModel pont=(PontuacaoHistModel)entidade;
-        String SQL= "Update " + getTabela() + " Set Pontos=?,idAcesso=?,idCliente=? where id ="+pont.getId();
+        String SQL= "Update " + getTabela() + " Set Pontos=?,idAcesso=?,idCliente=? where id ='"+pont.getId() +"'";
         return SQL;
     }
 

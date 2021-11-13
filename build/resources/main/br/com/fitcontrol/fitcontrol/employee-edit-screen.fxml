@@ -44,7 +44,7 @@
                <Insets left="48.0" right="420.0" top="110.0" />
             </StackPane.margin>
          </TextField>
-         <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="56.0" text="Nível" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
+         <Label fx:id="lbNivel" alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="56.0" text="Nível" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
             <font>
                <Font name="Arial" size="23.0" />
             </font>

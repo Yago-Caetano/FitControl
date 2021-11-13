@@ -24,6 +24,9 @@ public class ClientEditScreenController extends PadrãoController implements Ini
 
     private NavigationSingleton navigation;
     private boolean update;
+
+    private ClienteModel mClient;
+
     @FXML
     protected void voltarClicked() {
         try {
@@ -45,28 +48,27 @@ public class ClientEditScreenController extends PadrãoController implements Ini
     @FXML
     protected void salvarClicked() throws Exception {
         try {
+                if(!validarDados())
+                    return;
 
-                ClienteModel cliente = new ClienteModel();
+                if(!update)
+                    mClient = new ClienteModel();
+
                 ClienteMySQLDAO dao = new ClienteMySQLDAO();
 
-                cliente.setNome(txtNomeCliente.getText());
-                cliente.setLogin(txtEmail.getText());
-                cliente.setTelefone(txtTelefone.getText());
-                cliente.setPontos(0);
+                mClient.setNome(txtNomeCliente.getText());
+                mClient.setLogin(txtEmail.getText());
+                mClient.setTelefone(txtTelefone.getText());
+                mClient.setPontos(0);
 
 
                 PublisherTela p = PublisherTela.getInstance();
 
                 //Verifica se é Edit ou Insert
-                if (!update && !validarDados()) {                        //Insert
-                    p.RegisterUser(cliente);
+                if (!update) {                        //Insert
+                    p.RegisterUser(mClient);
                 } else {                            // Edit
-                    cliente = (ClienteModel) (dao.localiza(txtID.getText()));
-                    cliente.setNome(txtNomeCliente.getText());
-                    cliente.setLogin(txtEmail.getText());
-                    cliente.setTelefone(txtTelefone.getText());
-                    cliente.setPontos(0);
-                    p.UpdateUser(cliente);
+                    p.UpdateUser(mClient);
 
             }
 
@@ -77,7 +79,7 @@ public class ClientEditScreenController extends PadrãoController implements Ini
 
 
     public Boolean validarDados() throws SQLException {
-        Boolean erro = false;
+        Boolean ret = true;
         ClienteMySQLDAO dao = new ClienteMySQLDAO();
         ArrayList<ClienteModel> lista = dao.lista();
         String mensagemDeErro = "";
@@ -86,56 +88,39 @@ public class ClientEditScreenController extends PadrãoController implements Ini
         lbErroNome.setText("");
         lbErroEmail.setText("");
 
-        if(txtTelefone.getText().trim() == null || txtTelefone.getText().trim().isEmpty()){
-            erro = true;
+        if(txtTelefone.getText().trim().isEmpty()){
+            ret = false;
             lbErroTelefone.setText("Preencha o Telefone");
             mensagemDeErro += "Preencha o Telefone\n";
         }
-        if(txtNomeCliente.getText().trim() == null || txtNomeCliente.getText().trim().isEmpty()){
-            erro = true;
+        if( txtNomeCliente.getText().trim().isEmpty()){
+            ret = false;
             lbErroNome.setText("Preencha o Nome");
             mensagemDeErro += "Preencha o Nome\n";
         }
-        if(txtEmail.getText().trim() == null || txtEmail.getText().trim().isEmpty()){
-            erro = true;
+        if(txtEmail.getText().trim().isEmpty()){
+            ret = false;
             lbErroEmail.setText("Preencha o Email");
             mensagemDeErro += "Preencha o Email\n";
         }
 
-        if(erro){
+        if(!ret){
             ErrorPopUpSingleton.getInstance().showError(mensagemDeErro);
-            return true;
+            return ret;
         }
 
 
         if(!txtTelefone.getText().trim().matches("[0-9]+")){
-            erro = true;
+            ret = false;
             lbErroTelefone.setText("Digite apenas números");
             mensagemDeErro += "Digite apenas números no Telefone\n";
         }
 
-        if(lista.stream().filter(c -> c.getNome().equals(txtNomeCliente.getText().trim())).findFirst().isPresent()){
-            erro = true;
-            lbErroNome.setText("Nome ja está em uso");
-            mensagemDeErro += "Nome ja está em uso\n";
-        }
-
-        if(lista.stream().filter(c -> c.getLogin().equals(txtEmail.getText().trim())).findFirst().isPresent()){
-            erro = true;
-            lbErroEmail.setText("Email ja está em uso");
-            mensagemDeErro += "Email ja está em uso\n";
-        }
-
-        if(lista.stream().filter(c -> c.getTelefone().equals(txtTelefone.getText().trim())).findFirst().isPresent()){
-            erro = true;
-            lbErroTelefone.setText("Telefone ja está em uso");
-            mensagemDeErro += "Telefone ja está em uso\n";
-        }
 
         if(mensagemDeErro != "")
             ErrorPopUpSingleton.getInstance().showError(mensagemDeErro);
 
-        return erro;
+        return ret;
 
     }
 
@@ -163,5 +148,6 @@ public class ClientEditScreenController extends PadrãoController implements Ini
     protected void PreviousScreenDataReceived() {
         preencheTextField((ClienteModel) DataFromPreviousScreen);
         update = true;
+        mClient = (ClienteModel) DataFromPreviousScreen;
     }
 }

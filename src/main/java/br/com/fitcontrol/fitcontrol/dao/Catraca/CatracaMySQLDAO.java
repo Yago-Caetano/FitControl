@@ -27,7 +27,7 @@ public class CatracaMySQLDAO <E extends Entidade> extends MySQLDAO {
     @Override
     protected String getUpdateCommand(Entidade entidade) {
         CatracaModel catraca=(CatracaModel)entidade;
-        String SQL= "Update " + getTabela() + " Set Nome=? where id="+ catraca.getId();
+        String SQL= "Update " + getTabela() + " Set Nome=? where id='"+ catraca.getId()+"'";
         return SQL;
     }
 

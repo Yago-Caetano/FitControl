@@ -54,7 +54,7 @@ public class ItensRecompensaMySQLDAO <E extends Entidade> extends MySQLDAO {
     @Override
     protected String getUpdateCommand(Entidade entidade) {
         ItensRecompensaModel Item=(ItensRecompensaModel)entidade;
-        String SQL= "Update " + getTabela() + " Set Descricao=?,Foto=? where id ="+Item.getId();
+        String SQL= "Update " + getTabela() + " Set Descricao=?,Foto=? where id ='"+Item.getId()+"'";
         return SQL;
     }
 

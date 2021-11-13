@@ -50,6 +50,7 @@ public class PaymentEditScreenController extends PadrãoController implements In
 
     private boolean update;
     private NavigationSingleton navigation;
+    private PagamentoModel mPagamento = null;
 
     @FXML
     protected void voltarClicked() {
@@ -70,12 +71,14 @@ public class PaymentEditScreenController extends PadrãoController implements In
             if(!validarDados())
                 return;
 
-            PagamentoModel pagamento = new PagamentoModel();
+            if(!update)
+                mPagamento = new PagamentoModel();
+
             PagamentosMySQLDAO dao = new PagamentosMySQLDAO();
 
-            pagamento.setValor(Double.parseDouble(txtValor.getText()));
+            mPagamento.setValor(Double.parseDouble(txtValor.getText()));
 
-            pagamento.setData(Date.valueOf(txtData.getValue()));
+            mPagamento.setData(Date.valueOf(txtData.getValue()));
 
             //get client by e-mail
             ClienteMySQLDAO clientDAO = new ClienteMySQLDAO();
@@ -88,22 +91,22 @@ public class PaymentEditScreenController extends PadrãoController implements In
             ArrayList<ClienteModel> userFilter = clientDAO.filtro(params);
 
             if(userFilter.size()>0)
-                pagamento.setIdCliente(userFilter.get(0).getId());
+                mPagamento.setIdCliente(userFilter.get(0).getId());
             else
             {
                 ErrorPopUpSingleton.getInstance().showError("Usuário não encontrado");
                 return;
             }
 
-            pagamento.setIdFuncionario(FuncionarioLogadoSingleton.getInstance().getEmployeeSigned().getId());
+            mPagamento.setIdFuncionario(FuncionarioLogadoSingleton.getInstance().getEmployeeSigned().getId());
 
             PublisherTela p = PublisherTela.getInstance();
 
             //Verifica se é Edit ou Insert
             if (!update) {                        //Insert
-                p.RegisterPayment(pagamento);
+                p.RegisterPayment(mPagamento);
             } else {                            // Edit
-                p.UpdatePayment(pagamento);
+                p.UpdatePayment(mPagamento);
             }
 
         }
@@ -161,20 +164,31 @@ public class PaymentEditScreenController extends PadrãoController implements In
     }
 
     void preencheTextField(PagamentoModel pagamento) {
+        try{
+            //get user e-mail
+            ClienteMySQLDAO clientDAO = new ClienteMySQLDAO();
+            ClienteModel cliModel = (ClienteModel) clientDAO.localiza(pagamento.getIdCliente());
 
-        txtID.setText((pagamento.getId()));
-        txtData.setValue(pagamento.getData().toLocalDate());
-        txtID.setText(pagamento.getIdCliente());
-        txtValor.setText(Double.toString(pagamento.getValor()));
+            txtEmail.setText(cliModel.getLogin());
 
-        txtID.setEditable(false);
-        txtID.setDisable(true);
+            txtData.setValue(pagamento.getData().toLocalDate());
+            txtValor.setText(Double.toString(pagamento.getValor()));
+
+            txtEmail.setDisable(true);
+            txtEmail.setEditable(false);
+        }
+        catch(Exception e)
+        {
+
+        }
+
     }
 
 
     @Override
     protected void PreviousScreenDataReceived() {
         preencheTextField((PagamentoModel) DataFromPreviousScreen);
+        mPagamento = (PagamentoModel) DataFromPreviousScreen;
         update = true;
     }
 }

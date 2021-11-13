@@ -27,7 +27,7 @@ public class PagamentosMySQLDAO <E extends Entidade> extends MySQLDAO {
     @Override
     protected String getUpdateCommand(Entidade entidade) {
         PagamentoModel pagamento=(PagamentoModel)entidade;
-        String SQL= "Update " + getTabela() + " Set _Data=?,idCliente=?,idFuncionario=?,Valor=? where id ="+pagamento.getId();
+        String SQL= "Update " + getTabela() + " Set _Data=?,idCliente=?,idFuncionario=?,Valor=? where id ='"+pagamento.getId()+"'";
         return SQL;
     }
 

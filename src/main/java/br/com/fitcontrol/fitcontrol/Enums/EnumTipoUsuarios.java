@@ -6,7 +6,8 @@ import java.util.Map;
 
 public enum EnumTipoUsuarios {
     CLIENTE((byte)1),
-    FUNCIONARIO((byte)2);
+    FUNCIONARIO((byte)2),
+    GERENTE((byte)3);
 
     private static final Map<Integer, EnumTipoUsuarios> lookup
             = new HashMap<Integer, EnumTipoUsuarios>();

@@ -25,7 +25,7 @@ public class RecompensaHistMySQLDAO  <E extends Entidade> extends MySQLDAO {
     @Override
     protected String getUpdateCommand(Entidade entidade) {
         RecompensaHistModel recom=(RecompensaHistModel)entidade;
-        String SQL= "Update " + getTabela() + " Set _Data=?,Pontos=?,Titulo=?,IdCliente=? where id ="+recom.getId();
+        String SQL= "Update " + getTabela() + " Set _Data=?,Pontos=?,Titulo=?,IdCliente=? where id ='"+recom.getId()+"'";
         return SQL;
     }
 

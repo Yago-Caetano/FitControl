@@ -1,6 +1,8 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
 
+import br.com.fitcontrol.fitcontrol.Acesso.FuncionarioLogadoSingleton;
+import br.com.fitcontrol.fitcontrol.Enums.EnumTipoUsuarios;
 import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.dao.Funcionario.FuncionarioMySQLDAO;
 import br.com.fitcontrol.fitcontrol.dao.ParametroFiltroDAO;
@@ -130,9 +132,15 @@ public class EmployeesScreenController extends PadrãoController implements Init
             public TableCell<FuncionarioModel, Void> call(final TableColumn<FuncionarioModel, Void> param) {
                 final TableCell<FuncionarioModel, Void> cell = new TableCell<FuncionarioModel, Void>() {
 
+
+
                     private final Button btnDeletar = new Button("Deletar");
                     {
                         btnDeletar.setStyle("-fx-background-color:#e05f55;");
+                        if(FuncionarioLogadoSingleton.getInstance().getEmployeeSigned().getNivel() != EnumTipoUsuarios.GERENTE.getCode())
+                        {
+                            btnDeletar.setDisable(true);
+                        }
                         btnDeletar.setOnAction((ActionEvent event) -> {
                             FuncionarioModel funcionario = getTableView().getItems().get(getIndex());
 
@@ -156,6 +164,11 @@ public class EmployeesScreenController extends PadrãoController implements Init
                     private final Button btnEditar = new Button("Editar");
 
                     {
+                        if(FuncionarioLogadoSingleton.getInstance().getEmployeeSigned().getNivel() != EnumTipoUsuarios.GERENTE.getCode())
+                        {
+                            btnEditar.setDisable(true);
+                        }
+
                         btnEditar.setStyle("-fx-background-color:#2bc5d6;");
 
                         btnEditar.setOnAction((ActionEvent event) -> {
@@ -165,7 +178,10 @@ public class EmployeesScreenController extends PadrãoController implements Init
 
                         });
 
-                    }
+                    };
+
+
+
 
 
                     @Override

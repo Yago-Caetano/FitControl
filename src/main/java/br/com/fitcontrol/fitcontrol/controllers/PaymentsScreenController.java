@@ -3,6 +3,7 @@ package br.com.fitcontrol.fitcontrol.controllers;
 import br.com.fitcontrol.fitcontrol.FitControlMain;
 import br.com.fitcontrol.fitcontrol.dao.Pagamento.PagamentosMySQLDAO;
 import br.com.fitcontrol.fitcontrol.dao.ParametroFiltroDAO;
+import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
 import br.com.fitcontrol.fitcontrol.models.PagamentoModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
@@ -87,10 +88,12 @@ public class PaymentsScreenController extends PadrãoController implements Initi
             e.printStackTrace();
         }
 
-        tabela.setItems(list);
-
+        carregarDados();
         colunaAcoes();
     }
+
+
+
 
     @FXML
     protected void filterClicked(){
@@ -131,11 +134,16 @@ public class PaymentsScreenController extends PadrãoController implements Initi
     }
 
 
-    public void carregarDados() throws SQLException {
+    public void carregarDados() {
 
-        ObservableList<PagamentoModel> listaTeste = FXCollections.observableArrayList(dao.lista());
+        ObservableList<PagamentoModel> lista = null;
+        try {
+            lista = FXCollections.observableArrayList(dao.lista());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-        tabela.setItems(listaTeste);
+        tabela.setItems(lista);
     }
 
     private void colunaAcoes(){

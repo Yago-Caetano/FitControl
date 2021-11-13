@@ -1,5 +1,6 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
+import br.com.fitcontrol.fitcontrol.Acesso.FuncionarioLogadoSingleton;
 import br.com.fitcontrol.fitcontrol.Enums.EnumTipoUsuarios;
 import br.com.fitcontrol.fitcontrol.dao.Funcionario.FuncionarioMySQLDAO;
 import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
@@ -23,10 +24,13 @@ public class EmployeeEditScreenController extends PadrãoController implements I
     @FXML
     public TextField txtID,txtNomeColaborador,txtEmail,txtSenha, txtTelefone;
     @FXML
-    public Label lbErroNome,lbErroEmail,lbErroTelefone,lbErroSenha,lbErroNivel;
+    public Label lbErroNome,lbErroEmail,lbErroTelefone,lbErroSenha,lbErroNivel,lbNivel;
 
     private NavigationSingleton navigation;
     private boolean update;
+
+    private FuncionarioModel mFuncionario;
+
     @FXML
     protected void voltarClicked() {
         try {
@@ -46,6 +50,12 @@ public class EmployeeEditScreenController extends PadrãoController implements I
         RndBtnFuncionario.setToggleGroup(tg);
         RndBtnGerente.setToggleGroup(tg);
 
+        if(FuncionarioLogadoSingleton.getInstance().getEmployeeSigned() == null || FuncionarioLogadoSingleton.getInstance().getEmployeeSigned().getNivel() != EnumTipoUsuarios.GERENTE.getCode())
+        {
+            RndBtnFuncionario.setVisible(false);
+            RndBtnGerente.setVisible(false);
+            lbNivel.setVisible(false);
+        }
 
     }
 
@@ -55,34 +65,33 @@ public class EmployeeEditScreenController extends PadrãoController implements I
     @FXML
     protected void salvarClicked() throws SQLException {
         try{
-            FuncionarioModel funcionario = new FuncionarioModel();
+
+            if(!validarDados())
+                return;
+
+            if(!update)
+                mFuncionario = new FuncionarioModel();
+
             FuncionarioMySQLDAO dao = new FuncionarioMySQLDAO();
 
-            funcionario.setNome(txtNomeColaborador.getText());
-            funcionario.setLogin(txtEmail.getText());
-            funcionario.setSenha(txtSenha.getText());
-            funcionario.setTelefone(txtTelefone.getText());
+            mFuncionario.setNome(txtNomeColaborador.getText());
+            mFuncionario.setLogin(txtEmail.getText());
+            mFuncionario.setSenha(txtSenha.getText());
+            mFuncionario.setTelefone(txtTelefone.getText());
 
-            if(RndBtnFuncionario.isSelected())
-                funcionario.setNivel(EnumTipoUsuarios.FUNCIONARIO.getCode());
+            if(!RndBtnFuncionario.isVisible() || RndBtnFuncionario.isSelected())
+                mFuncionario.setNivel(EnumTipoUsuarios.FUNCIONARIO.getCode());
             else
-                funcionario.setNivel(EnumTipoUsuarios.FUNCIONARIO.getCode());   //Falta o Gerente
+                mFuncionario.setNivel(EnumTipoUsuarios.GERENTE.getCode());
 
             PublisherTela p = PublisherTela.getInstance();
 
             //Verifica se é Edit ou Insert
-            if(!update && !validarDados()){
-                p.RegisterEmployee(funcionario);
+            if(!update){
+                p.RegisterEmployee(mFuncionario);
             }
             else{
-                funcionario = (FuncionarioModel) (dao.localiza(txtID.getText()));
-                funcionario.setId(txtID.getText());
-                funcionario.setNome(txtNomeColaborador.getText());
-                funcionario.setLogin(txtEmail.getText());
-                funcionario.setSenha(txtSenha.getText());
-                funcionario.setTelefone(txtTelefone.getText());
-                funcionario.setNivel(EnumTipoUsuarios.FUNCIONARIO.getCode());
-                p.UpdateEmployee(funcionario);
+                p.UpdateEmployee(mFuncionario);
                 setUpdate(false);
             }
 
@@ -96,7 +105,7 @@ public class EmployeeEditScreenController extends PadrãoController implements I
     }
 
     public Boolean validarDados() throws SQLException {
-        Boolean erro = false;
+        Boolean ret = true;
         FuncionarioMySQLDAO dao = new FuncionarioMySQLDAO();
         ArrayList<FuncionarioModel> lista = dao.lista();
         String mensagemDeErro = "";
@@ -107,66 +116,49 @@ public class EmployeeEditScreenController extends PadrãoController implements I
         lbErroSenha.setText("");
         lbErroNivel.setText("");
 
-        if(txtTelefone.getText().trim() == null || txtTelefone.getText().trim().isEmpty()){
-            erro = true;
+        if(txtTelefone.getText().trim().isEmpty()){
+            ret = false;
             lbErroTelefone.setText("Preencha o Telefone");
             mensagemDeErro += "Preencha o Telefone\n";
         }
-        if(txtNomeColaborador.getText().trim() == null || txtNomeColaborador.getText().trim().isEmpty()){
-            erro = true;
+        if( txtNomeColaborador.getText().trim().isEmpty()){
+            ret = false;
             lbErroNome.setText("Preencha o Nome");
             mensagemDeErro += "Preencha o Nome\n";
         }
-        if(txtEmail.getText().trim() == null || txtEmail.getText().trim().isEmpty()){
-            erro = true;
+        if( txtEmail.getText().trim().isEmpty()){
+            ret = false;
             lbErroEmail.setText("Preencha o Email");
             mensagemDeErro += "Preencha o Email\n";
         }
-        if(txtSenha.getText().trim() == null || txtSenha.getText().trim().isEmpty()){
-            erro = true;
+        if( txtSenha.getText().trim().isEmpty()){
+            ret = false;
             lbErroSenha.setText("Preencha a Senha");
             mensagemDeErro += "Preencha a Senha\n";
         }
 
-        if(!RndBtnFuncionario.isSelected() && !RndBtnGerente.isSelected()){
-            erro = true;
+        if(update &&!RndBtnFuncionario.isSelected() && !RndBtnGerente.isSelected()){
+            ret = false;
             lbErroNivel.setText("Escolha um Nível");
             mensagemDeErro += "Escolha um Nível\n";
         }
 
-        if(erro){
+        if(!ret){
             ErrorPopUpSingleton.getInstance().showError(mensagemDeErro);
-            return true;
+            return ret;
         }
 
         if(!txtTelefone.getText().trim().matches("[0-9]+")){
-            erro = true;
+            ret = false;
             lbErroTelefone.setText("Digite apenas números");
             mensagemDeErro += "Digite apenas números no Telefone\n";
         }
 
-        if(lista.stream().filter(c -> c.getNome().equals(txtNomeColaborador.getText().trim())).findFirst().isPresent()){
-            erro = true;
-            lbErroNome.setText("Nome ja está em uso");
-            mensagemDeErro += "Nome ja está em uso\n";
-        }
-
-        if(lista.stream().filter(c -> c.getLogin().equals(txtEmail.getText().trim())).findFirst().isPresent()){
-            erro = true;
-            lbErroEmail.setText("Email ja está em uso");
-            mensagemDeErro += "Email ja está em uso\n";
-        }
-
-        if(lista.stream().filter(c -> c.getTelefone().equals(txtTelefone.getText().trim())).findFirst().isPresent()){
-            erro = true;
-            lbErroTelefone.setText("Telefone ja está em uso");
-            mensagemDeErro += "Telefone ja está em uso\n";
-        }
 
         if(mensagemDeErro != "")
             ErrorPopUpSingleton.getInstance().showError(mensagemDeErro);
 
-        return erro;
+        return ret;
 
     }
 
@@ -194,5 +186,6 @@ public class EmployeeEditScreenController extends PadrãoController implements I
     protected void PreviousScreenDataReceived() {
         preencheTextField((FuncionarioModel) DataFromPreviousScreen);
         update = true;
+        mFuncionario = (FuncionarioModel) DataFromPreviousScreen;
     }
 }
