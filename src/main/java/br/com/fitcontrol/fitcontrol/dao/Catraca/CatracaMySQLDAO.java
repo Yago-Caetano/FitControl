@@ -50,7 +50,7 @@ public class CatracaMySQLDAO <E extends Entidade> extends MySQLDAO {
         CatracaModel catraca = new CatracaModel();
         try {
             catraca.setId(rs.getString("id"));
-            catraca.setModelo(rs.getString("Modelo"));
+            catraca.setModelo(rs.getString("Nome"));
             catraca.setStatus(rs.getByte("_Status"));
 
         } catch (SQLException ex) {

@@ -22,9 +22,14 @@ public class EmployeeEditScreenController extends PadrãoController implements I
     @FXML
     public RadioButton RndBtnGerente;
     @FXML
-    public TextField txtID,txtNomeColaborador,txtEmail,txtSenha, txtTelefone;
+    public TextField txtID,txtNomeColaborador,txtEmail, txtTelefone;
+
+    @FXML
+    public PasswordField txtSenha;
+
     @FXML
     public Label lbErroNome,lbErroEmail,lbErroTelefone,lbErroSenha,lbErroNivel,lbNivel;
+
 
     private NavigationSingleton navigation;
     private boolean update;
@@ -137,7 +142,7 @@ public class EmployeeEditScreenController extends PadrãoController implements I
             mensagemDeErro += "Preencha a Senha\n";
         }
 
-        if(update &&!RndBtnFuncionario.isSelected() && !RndBtnGerente.isSelected()){
+        if(!RndBtnFuncionario.isSelected() && !RndBtnGerente.isSelected()){
             ret = false;
             lbErroNivel.setText("Escolha um Nível");
             mensagemDeErro += "Escolha um Nível\n";

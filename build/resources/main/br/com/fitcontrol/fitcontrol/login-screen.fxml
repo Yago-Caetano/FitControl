@@ -34,12 +34,12 @@
             </TextField>
          </children>
       </Pane>
-      <Button fx:id="cadastrar" layoutX="439.0" layoutY="615.0" mnemonicParsing="false" onAction="#cadastrarClicked" prefHeight="65.0" prefWidth="381.0" style="-fx-background-color: transparent; -fx-border-color: FFBF00; -fx-border-width: 4; -fx-border-radius: 16;" text="CADASTRAR-SE">
+      <Button fx:id="cadastrar" disable="true" layoutX="439.0" layoutY="615.0" mnemonicParsing="false" onAction="#cadastrarClicked" opacity="0.0" prefHeight="65.0" prefWidth="381.0" style="-fx-background-color: transparent; -fx-border-color: FFBF00; -fx-border-width: 4; -fx-border-radius: 16;" text="CADASTRAR-SE">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Label layoutX="547.0" layoutY="585.0" text="Não possui cadastro?">
+      <Label disable="true" layoutX="547.0" layoutY="585.0" opacity="0.0" text="Não possui cadastro?">
          <font>
             <Font size="20.0" />
          </font>

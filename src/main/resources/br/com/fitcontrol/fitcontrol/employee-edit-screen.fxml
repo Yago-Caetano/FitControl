@@ -31,7 +31,7 @@
                <Insets top="8.0" />
             </StackPane.margin>
          </Label>
-         <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="226.0" text="Nome do colaborador" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
+         <Label fx:id="lbNome" alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="226.0" text="Nome do Funcionário" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
             <font>
                <Font name="Arial" size="23.0" />
             </font>
@@ -78,7 +78,7 @@
                <Insets left="350.0" top="325.0" />
             </StackPane.margin>
          </Button>
-         <Label alignment="CENTER" layoutX="110.0" layoutY="280.0" pickOnBounds="false" prefHeight="32.0" prefWidth="68.0" text="Email" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
+         <Label fx:id="lbEmail" alignment="CENTER" layoutX="110.0" layoutY="280.0" pickOnBounds="false" prefHeight="32.0" prefWidth="68.0" text="Email" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
             <font>
                <Font name="Arial" size="23.0" />
             </font>
@@ -91,7 +91,7 @@
                <Insets left="48.0" right="430.0" top="260.0" />
             </StackPane.margin>
          </TextField>
-         <Label alignment="CENTER" layoutX="110.0" layoutY="365.0" pickOnBounds="false" prefHeight="32.0" prefWidth="68.0" text="Senha" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
+         <Label fx:id="lbSenha" alignment="CENTER" layoutX="110.0" layoutY="365.0" pickOnBounds="false" prefHeight="32.0" prefWidth="68.0" text="Senha" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
             <font>
                <Font name="Arial" size="23.0" />
             </font>
@@ -99,12 +99,12 @@
                <Insets left="500.0" top="80.0" />
             </StackPane.margin>
          </Label>
-         <TextField fx:id="txtSenha" layoutX="110.0" layoutY="400.0" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
+         <PasswordField fx:id="txtSenha" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
             <StackPane.margin>
-               <Insets left="500.0" right="50.0" top="111.0" />
+               <Insets left="500.0" right="50.0" top="110.0" />
             </StackPane.margin>
-         </TextField>
-         <Label alignment="CENTER" layoutX="110.0" layoutY="450.0" pickOnBounds="false" prefHeight="32.0" prefWidth="99.0" text="Telefone" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
+         </PasswordField>
+         <Label fx:id="lbTelefone" alignment="CENTER" layoutX="110.0" layoutY="450.0" pickOnBounds="false" prefHeight="32.0" prefWidth="99.0" text="Telefone" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
             <font>
                <Font name="Arial" size="23.0" />
             </font>

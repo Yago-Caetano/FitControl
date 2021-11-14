@@ -4,6 +4,7 @@ import br.com.fitcontrol.fitcontrol.FitControlContext;
 import br.com.fitcontrol.fitcontrol.dao.Funcionario.FuncionarioMySQLDAO;
 import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
+import br.com.fitcontrol.fitcontrol.popup.ErrorPopUpSingleton;
 import br.com.fitcontrol.fitcontrol.popup.SucessPopUpSingleton;
 
 import java.sql.SQLException;
@@ -17,7 +18,7 @@ public class EmployeeRegisterListenner implements ISubscriber{
             funcionario = (FuncionarioModel) context.getEntityData();
             dao.Insert(funcionario);
 
-            SucessPopUpSingleton.getInstance().showPopUp("Cadastrado com sucesso");
+            SucessPopUpSingleton.getInstance().showPopUp("Funcionário cadastrado com sucesso");
 
 
             NavigationSingleton navigation = NavigationSingleton.getInstance();
@@ -26,7 +27,7 @@ public class EmployeeRegisterListenner implements ISubscriber{
         }
         catch(Exception e)
         {
-
+            ErrorPopUpSingleton.getInstance().showError("Falha ao cadastrar funcionário");
         }
 
 

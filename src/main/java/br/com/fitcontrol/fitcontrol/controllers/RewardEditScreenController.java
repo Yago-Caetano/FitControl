@@ -2,6 +2,7 @@ package br.com.fitcontrol.fitcontrol.controllers;
 
 import br.com.fitcontrol.fitcontrol.models.RecompensaModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
+import br.com.fitcontrol.fitcontrol.popup.ErrorPopUpSingleton;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,10 +34,13 @@ public class RewardEditScreenController extends  PadrãoController implements In
     @FXML
     protected void salvarClicked() throws SQLException {
         try{
+
+            if(!validaDados())
+                return;
+
             RecompensaModel recompensa = new RecompensaModel();
             PublisherTela p =  PublisherTela.getInstance();
 
-            recompensa.setId((txtID.getText()));
             recompensa.setDescricao(txtTitulo.getText());
             recompensa.setPontosNecessarios(Integer.parseInt(txtQtPontos.getText()));
 
@@ -56,6 +60,31 @@ public class RewardEditScreenController extends  PadrãoController implements In
             
         }
 
+    }
+
+    public  boolean validaDados(){
+
+        if(txtTitulo.getText().length()==0)
+        {
+            ErrorPopUpSingleton.getInstance().showError("Titulo Inválido");
+            return false;
+        }
+
+        if(txtQtPontos.getText().length() == 0)
+        {
+            ErrorPopUpSingleton.getInstance().showError("Pontos Inválidos");
+            return false;
+        }
+
+        try{
+            Double.parseDouble(txtQtPontos.getText());
+        }
+        catch (Exception e)
+        {
+            ErrorPopUpSingleton.getInstance().showError("Pontos Inválidos");
+            return false;
+        }
+        return true;
     }
 
     @Override

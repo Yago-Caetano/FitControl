@@ -2,18 +2,22 @@ package br.com.fitcontrol.fitcontrol.controllers;
 
 import br.com.fitcontrol.fitcontrol.dao.Catraca.CatracaMySQLDAO;
 import br.com.fitcontrol.fitcontrol.models.CatracaModel;
+import br.com.fitcontrol.fitcontrol.models.ClienteModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import br.com.fitcontrol.fitcontrol.serialcom.SerialCommunicatorSingleton;
 import com.fazecast.jSerialComm.SerialPort;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,6 +29,10 @@ public class CatracaScreenController extends PadrãoController implements Initia
 
     @FXML
     public TableView<CatracaModel> tabela;
+
+    @FXML
+    public TableColumn<CatracaModel,Void> acao;
+
     @FXML
     public TableColumn<CatracaModel, Integer> id;
     @FXML
@@ -65,18 +73,18 @@ public class CatracaScreenController extends PadrãoController implements Initia
         modelo.setCellValueFactory(
                 new PropertyValueFactory<CatracaModel, String>("modelo"));
 
-        ObservableList<CatracaModel> list = FXCollections.observableArrayList(new CatracaModel("1", "Catraca 1"),
-                new CatracaModel("2", "Catraca 2"), new CatracaModel("3", "Catraca 3"));
 
         tabela.setItems(list);
 
         try {
             carregarDados();
-        } catch (SQLException e) {
+            setUpSerialOptions();
+            colunaAcoes();
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        setUpSerialOptions();
+
     }
 
     private void setUpSerialOptions()
@@ -219,6 +227,74 @@ public class CatracaScreenController extends PadrãoController implements Initia
 
     @Override
     protected void PreviousScreenDataReceived() {
-
     }
+
+    private void colunaAcoes(){
+
+        Callback<TableColumn<CatracaModel, Void>, TableCell<CatracaModel, Void>> cellFactory = new Callback<TableColumn<CatracaModel, Void>, TableCell<CatracaModel, Void>>() {
+            @Override
+            public TableCell<CatracaModel, Void> call(final TableColumn<CatracaModel, Void> param) {
+                final TableCell<CatracaModel, Void> cell = new TableCell<CatracaModel, Void>() {
+
+                    private final Button btnDeletar = new Button("Deletar");
+                    {
+                        btnDeletar.setStyle("-fx-background-color:#e05f55;");
+                        btnDeletar.setOnAction((ActionEvent event) -> {
+                            CatracaModel catraca = getTableView().getItems().get(getIndex());
+
+                            PublisherTela p =  PublisherTela.getInstance();
+                            try {
+                                p.DeleteCatraca(catraca);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                            try {
+                                carregarDados();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+                        });
+
+                    }
+
+                    private final Button btnEditar = new Button("Editar");
+
+                    {
+                        btnEditar.setStyle("-fx-background-color:#2bc5d6;");
+
+                        btnEditar.setOnAction((ActionEvent event) -> {
+                            CatracaModel catraca = getTableView().getItems().get(getIndex());
+
+
+                            navigation.navigate(NavigationSingleton.CATRACA_EDIT_SCREEN,catraca);
+
+                        });
+
+                    }
+
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            HBox pane = new HBox(btnDeletar, btnEditar);
+                            pane.setStyle("-fx-alignment:center");
+                            setGraphic(pane);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        acao.setCellFactory(cellFactory);
+
+        tabela.getColumns().add(acao);
+    }
+
+
 }

@@ -1,8 +1,11 @@
 package br.com.fitcontrol.fitcontrol.controllers;
 
 import br.com.fitcontrol.fitcontrol.dao.Catraca.CatracaMySQLDAO;
+import br.com.fitcontrol.fitcontrol.dao.Funcionario.FuncionarioMySQLDAO;
 import br.com.fitcontrol.fitcontrol.models.CatracaModel;
+import br.com.fitcontrol.fitcontrol.models.FuncionarioModel;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
+import br.com.fitcontrol.fitcontrol.popup.ErrorPopUpSingleton;
 import br.com.fitcontrol.fitcontrol.publishers.PublisherTela;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,15 +13,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class CatracaEditScreenController extends PadrãoController implements Initializable {
     @FXML
-    public TextField txtID;
-    @FXML
-    public TextField txtNome;
-    @FXML
     public TextField txtModelo;
+
+    private CatracaModel mCatraca;
 
     private NavigationSingleton navigation;
     private boolean update;
@@ -43,35 +46,51 @@ public class CatracaEditScreenController extends PadrãoController implements In
     @FXML
     protected void salvarClicked() {
         try{
-            CatracaModel catraca = new CatracaModel();
+
+            //inserir valida dados
+            if(!validarDados())
+                return;
+
+            if(!update)
+                mCatraca = new CatracaModel();
+
             CatracaMySQLDAO dao = new CatracaMySQLDAO();
 
-            catraca.setId(txtID.getText());
-            catraca.setModelo(txtModelo.getText());
-
+            mCatraca.setModelo(txtModelo.getText());
 
             PublisherTela p = PublisherTela.getInstance();
 
             //Verifica se é Edit ou Insert
             if(!update){                        //Insert
-                p.RegisterCatraca(catraca);
+                p.RegisterCatraca(mCatraca);
             }
             else{                            // Edit
-                catraca = (CatracaModel) (dao.localiza(catraca.getId()));
-                catraca.setId(txtID.getText());
-                catraca.setModelo(txtModelo.getText());
-                p.UpdateCatraca(catraca);
+                p.UpdateCatraca(mCatraca);
                 setUpdate(false);
             }
-            voltarClicked();
         }
         catch(Exception e)
         {
-
+            ErrorPopUpSingleton.getInstance().showError("Falha ao atualizar");
         }
 
 
     }
+
+
+    public Boolean validarDados() throws SQLException {
+        Boolean ret = true;
+
+        if(txtModelo.getText().length() == 0)
+        {
+            ErrorPopUpSingleton.getInstance().showError("Insira o modelo");
+            return false;
+        }
+
+        return true;
+
+    }
+
 
 
 
@@ -80,11 +99,7 @@ public class CatracaEditScreenController extends PadrãoController implements In
      */
     void preencheTextField(CatracaModel catraca) {
 
-        txtID.setText(catraca.getId());
         txtModelo.setText(catraca.getModelo());
-
-        txtID.setEditable(false);
-        txtID.setDisable(true);
     }
 
     void setUpdate(boolean key) {
@@ -100,7 +115,9 @@ public class CatracaEditScreenController extends PadrãoController implements In
 
     @Override
     protected void PreviousScreenDataReceived() {
-
+        preencheTextField((CatracaModel) DataFromPreviousScreen);
+        update = true;
+        mCatraca = (CatracaModel) DataFromPreviousScreen;
     }
 }
 

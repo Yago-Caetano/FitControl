@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.fitcontrol.fitcontrol.controllers.RewardEditScreenController">
+    <StackPane prefHeight="112.5" prefWidth="1280.0">
+        <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffbf00" height="160.0" stroke="BLACK" strokeType="INSIDE" width="1280.0" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                <image>
+                    <Image url="@icons/icone.png" />
+                </image>
+                <StackPane.margin>
+                    <Insets left="160.0" />
+                </StackPane.margin>
+            </ImageView>
+        </children></StackPane>
+   <StackPane id="container-principal" layoutX="190.0" layoutY="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="900.0">
+      <children>
+         <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#ffffff00" height="450.0" stroke="#d79d04" strokeType="INSIDE" width="900.0" />
+         <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="341.0" text="Cadastrar / Editar  recompensas" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_CENTER">
+            <font>
+               <Font name="Arial" size="23.0" />
+            </font>
+            <StackPane.margin>
+               <Insets top="8.0" />
+            </StackPane.margin>
+         </Label>
+         <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="59.0" text="Título" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
+            <font>
+               <Font name="Arial" size="23.0" />
+            </font>
+            <StackPane.margin>
+               <Insets left="48.0" top="80.0" />
+            </StackPane.margin>
+         </Label>
+         <TextField fx:id="txtTitulo" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+               <Insets left="48.0" right="430.0" top="120.0" />
+            </StackPane.margin>
+         </TextField>
+         <Button fx:id="BtnSalvar" mnemonicParsing="false" onAction="#salvarClicked" prefHeight="50.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Salvar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+               <Insets left="130.0" top="360.0" />
+            </StackPane.margin>
+            <font>
+               <Font name="Arial" size="23.0" />
+            </font>
+         </Button>
+         <Button fx:id="BtnCancelar" layoutX="140.0" layoutY="610.0" mnemonicParsing="false" onAction="#voltarClicked" prefHeight="50.0" prefWidth="163.0" style="-fx-border-color: #d79d04; -fx-background-color: #A27811;" text="Cancelar" textFill="WHITE" StackPane.alignment="TOP_LEFT">
+            <font>
+               <Font name="Arial" size="23.0" />
+            </font>
+            <StackPane.margin>
+               <Insets left="350.0" top="360.0" />
+            </StackPane.margin>
+         </Button>
+         <Label alignment="CENTER" pickOnBounds="false" prefHeight="32.0" prefWidth="232.0" text="Quantidade de pontos" textAlignment="CENTER" wrapText="true" StackPane.alignment="TOP_LEFT">
+            <font>
+               <Font name="Arial" size="23.0" />
+            </font>
+            <StackPane.margin>
+               <Insets left="48.0" top="200.0" />
+            </StackPane.margin>
+         </Label>
+         <TextField fx:id="txtQtPontos" prefHeight="36.0" prefWidth="338.0" style="-fx-border-color: #d79d04; -fx-border-radius: 10;" StackPane.alignment="TOP_LEFT">
+            <StackPane.margin>
+               <Insets left="48.0" right="430.0" top="236.0" />
+            </StackPane.margin>
+         </TextField>
+      </children>
+   </StackPane>
+</AnchorPane>

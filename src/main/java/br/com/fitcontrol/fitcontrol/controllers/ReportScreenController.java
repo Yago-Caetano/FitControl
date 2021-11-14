@@ -7,10 +7,12 @@ import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
+import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -33,9 +35,8 @@ public class ReportScreenController extends PadrãoController implements Initial
     @FXML
     private Button AlunoBtn;
     @FXML
-    private TextField Data1txt;
-    @FXML
-    private TextField Data2txt;
+    private DatePicker Data_End_txt,Data_Start_txt;
+
     @FXML
     protected void voltarClicked() {
         try {
@@ -134,7 +135,8 @@ public class ReportScreenController extends PadrãoController implements Initial
 
     private boolean ValidaDatas()
     {
-        if(Data1txt.getText().length()==0 || Data2txt.getText().length()==0 )
+
+        if(Data_Start_txt.getValue() == null || Data_End_txt.getValue() == null )
         {
             return false;
         }
@@ -143,12 +145,12 @@ public class ReportScreenController extends PadrãoController implements Initial
 
             DateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
             try {
-                data1 = new java.sql.Date(fmt.parse(Data1txt.getText()).getTime());
-                data2 = new java.sql.Date(fmt.parse(Data2txt.getText()).getTime());
+                data1 = Date.valueOf(Data_Start_txt.getValue());
+                data2 = Date.valueOf(Data_End_txt.getValue());
 
                 return true;
 
-            } catch (ParseException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

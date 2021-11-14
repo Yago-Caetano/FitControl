@@ -52,7 +52,7 @@ public class MainScreenController extends PadrãoController implements Initializ
         else
             lbStatusCOM.setText("Catracas Desconectadas");
 
-        lbFuncionario.setText("Olá " + FuncionarioLogadoSingleton.getInstance().getEmployeeSigned().getNome());
+        lbFuncionario.setText(FuncionarioLogadoSingleton.getInstance().getEmployeeSigned().getNome().toUpperCase());
 
     }
 
