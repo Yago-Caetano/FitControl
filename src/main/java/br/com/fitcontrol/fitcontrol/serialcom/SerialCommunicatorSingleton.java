@@ -1,7 +1,11 @@
 package br.com.fitcontrol.fitcontrol.serialcom;
 
+import br.com.fitcontrol.fitcontrol.models.AcessoModel;
+import br.com.fitcontrol.fitcontrol.models.CatracaErro;
 import br.com.fitcontrol.fitcontrol.navigation.NavigationSingleton;
 
+import java.nio.charset.StandardCharsets;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.Stack;
 
@@ -216,23 +220,32 @@ public class SerialCommunicatorSingleton extends Thread {
     }
 
 
-    private void checkFunctionAndDispatchEvent(int[] data,int function) throws Exception {
+    private void checkFunctionAndDispatchEvent(byte[] data,int function) throws Exception {
         if(mPublisher == null)
             return;
 
         EnumSerialFunctions mFunction = values()[function];
+
         switch (mFunction)
         {
             case CHECK_IN:
-                mPublisher.CheckInEvent();
+                AcessoModel cInAcesso = montaAcesso(data);
+                cInAcesso.setTipo((byte)1);
+                mPublisher.CheckInEvent(cInAcesso);
                 break;
 
             case CHECK_OUT:
-                mPublisher.CheckInEvent();
+                AcessoModel cOnAcesso = montaAcesso(data);
+                cOnAcesso.setTipo((byte)0);
+                mPublisher.CheckInEvent(cOnAcesso);
                 break;
 
             case ERROR:
-                mPublisher.ErroEvent();
+                CatracaErro erro = new CatracaErro();
+                erro.setCodErro(data[38]);
+                String converted = new String(data,StandardCharsets.UTF_8);
+                erro.setIdCatraca(converted.substring(0,36));
+                mPublisher.ErroEvent(erro);
                 break;
 
             default:
@@ -241,6 +254,16 @@ public class SerialCommunicatorSingleton extends Thread {
         }
     }
 
+
+    private AcessoModel montaAcesso(byte[] data){
+        AcessoModel ret = new AcessoModel();
+        String ConvertedData = new String(data, StandardCharsets.UTF_8);
+        ret.setIdCatraca(ConvertedData.substring(0,36));
+        ret.setIdCliente(ConvertedData.substring(36,72));
+        ret.setData(new Date(System.currentTimeMillis()));
+
+        return ret;
+    }
 
     /**
      * @brief: Handle serial incoming data
@@ -252,7 +275,7 @@ public class SerialCommunicatorSingleton extends Thread {
         {
             //STX and ETX checked, then take the function
             int function = bruteSerialData[1];
-            int data[] = new int[bruteSerialData.length-3];
+            byte data[] = new byte[bruteSerialData.length-3];
 
             //take data
             for(int k = 0; k < data.length; k++)
@@ -273,7 +296,7 @@ public class SerialCommunicatorSingleton extends Thread {
      * @param function function received
      * @return
      */
-    private boolean isAValidPayload(int[] data,int function)
+    private boolean isAValidPayload(byte[] data,int function)
     {
         boolean isValid = false;
         if((function >= 0) && (function < values().length))
