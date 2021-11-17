@@ -24,7 +24,7 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'br.com.fitcontrol.fitcontrol'
-    mainClass = 'br.com.fitcontrol.fitcontrol.HelloApplication'
+    mainClass = 'br.com.fitcontrol.fitcontrol.Launcher'
 }
 
 javafx {
@@ -32,14 +32,20 @@ javafx {
     modules = ['javafx.controls', 'javafx.fxml']
 }
 
+
 dependencies {
     implementation 'com.fazecast:jSerialComm:[2.0.0,3.0.0)'
     implementation 'org.junit.jupiter:junit-jupiter:5.7.1'
     implementation fileTree(dir: 'lib', include: ['*.jar'])
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
 }
 
 test {
     useJUnitPlatform()
 }
+
+
+
+

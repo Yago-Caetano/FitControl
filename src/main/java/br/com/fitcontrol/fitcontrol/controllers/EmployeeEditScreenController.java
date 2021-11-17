@@ -184,6 +184,8 @@ public class EmployeeEditScreenController extends PadrãoController implements I
 
         if(funcionario.getNivel() == EnumTipoUsuarios.FUNCIONARIO.getCode())
             RndBtnFuncionario.setSelected(true);
+        else
+            RndBtnGerente.setSelected(true);
 
     }
 

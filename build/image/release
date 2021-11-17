@@ -1,0 +1,2 @@
+JAVA_VERSION="11.0.12"
+MODULES="java.base com.fazecast.jSerialComm java.datatransfer java.xml java.prefs java.desktop java.logging java.transaction.xa java.sql javafx.base jdk.unsupported javafx.graphics javafx.controls java.scripting javafx.fxml org.apiguardian.api java.management org.junit.platform.commons org.opentest4j org.junit.jupiter.api br.com.fitcontrol.fitcontrol"

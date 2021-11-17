@@ -259,7 +259,7 @@ public class CatracaScreenController extends PadrãoController implements Initia
 
                     }
 
-                    private final Button btnEditar = new Button("Editar");
+                    private final Button btnEditar = new Button("mEditar");
 
                     {
                         btnEditar.setStyle("-fx-background-color:#2bc5d6;");

@@ -180,7 +180,6 @@ public class ClientsScreenController extends  PadrãoController implements Initi
                         btnEditar.setOnAction((ActionEvent event) -> {
                             ClienteModel aluno = getTableView().getItems().get(getIndex());
 
-
                             navigation.navigate(NavigationSingleton.CLIENTS_EDIT_SCREEN,aluno);
 
                         });

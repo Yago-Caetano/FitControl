@@ -81,7 +81,6 @@ public class FabricaEntidadeTests {
         CatracaModel catr= new CatracaModel();
         catr.setId();
         catr.setModelo("Modelo de catraca1");
-        catr.setNome("Nome de catraca1");
         return catr;
     }
 }

@@ -162,7 +162,7 @@ public class PaymentsScreenController extends PadrãoController implements Initi
 
                             PublisherTela p = PublisherTela.getInstance();
                             try {
-                                p.DeleteUser(pagamento);
+                                p.DeletePayment(pagamento);
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
