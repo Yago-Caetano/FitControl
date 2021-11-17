@@ -10,8 +10,7 @@
 - [x] Cadastro de recompensas
 - [x] Comunicação com catraca
 - [x] Software desktop com interface gráfica
-- [ ] Sistema de pontuação por frequencia na academia
-- [ ] Emissão de relatórios em PDF
+- [x] Emissão de relatórios em CSV
 
 
 #### 🛠 Caracteristicas do sistema 🛠
@@ -190,13 +189,9 @@ Caso o banco não tenha sido criado, execute esse [arquivo](./MySQL/CriaBancoFit
 
 - [Video de apresentação](https://youtu.be/LIOv_CFsBhI)
 
-- [Apresentação Power Point](https://view.genial.ly/614bf0c96cd3ef0daf36b34d/presentation-engineering-thesis)
-
 - [Pitch](https://www.youtube.com/watch?v=MOzfB_MDtQE)
 
-- [Diagrama de Classes](./docs/uml.pdf)
-
-- [DER](./docs/der.jpg)
+- [Manual](./docs/manual.pdf)
 
 
 💻 ## Desenvolvedores
