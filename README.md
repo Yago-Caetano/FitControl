@@ -191,7 +191,7 @@ Caso o banco não tenha sido criado, execute esse [arquivo](./MySQL/CriaBancoFit
 
 - [Pitch](https://www.youtube.com/watch?v=MOzfB_MDtQE)
 
-- [Manual](./docs/manual.pdf)
+- [Manual](./docs/mDocs/Guia do Usuário.pdf)
 
 
 💻 ## Desenvolvedores
