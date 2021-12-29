@@ -1,6 +1,6 @@
 ## Projeto Fit Control
 <h5>Software de gerenciamento e controle de acesso para academias de pequeno porte<h5><br/>
-
+![Logo](./logo.png)
 <!--te-->
 
 ### Features
